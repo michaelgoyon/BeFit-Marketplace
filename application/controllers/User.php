@@ -275,17 +275,27 @@ class User extends CI_Controller {
         $this->load->view("test");
     }
 
-    public function paymaya() {
-        $this->load->view("paymaya");
+    public function topup() {
+        $this->load->view("topup");
     }
 
     public function success() {
         $data['value'] = $_COOKIE['value'];
         $temp = $this->user_model->get_wallet($this->session->userdata('userid'));
-        print_r($temp);
         $newVal = floatval($data['value']) + floatval($temp[0]->users_wallet);
         $this->user_model->success_topup(floatval($newVal));
-        redirect(base_url().'user/paymaya');
+        $this->user_model->insert_topup($this->session->userdata('userid'), floatval($data['value']));
+        unset($_COOKIE['value']);
+        redirect(base_url().'user/topup');
+    }
+
+    public function avail_service() {
+        $from = $this->session->userdata('userid');
+        $temp = $this->user_model->get_service_by_id($this->uri->segment(3));
+        $to = $temp[0]->users_id;
+        $amount = floatval($temp[0]->services_price);
+        $this->user_model->insert_order($from, $to, $amount);
+        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
  
 }

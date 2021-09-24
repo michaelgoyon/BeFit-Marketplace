@@ -24,6 +24,10 @@
 		}
 	?>
 
+<form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
+	<input type="submit" value="Buy">
+</form>
+
 <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3); ?>">
     <span class="star-cb-group">
       <input type="radio" id="rating-5" name="rating" value="5" />
