@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/index_styles.css')?>">
     <script src="https://unpkg.com/paymaya-js-sdk@2.0.0/dist/bundle.js"></script>
-    <title>BeFit Homepage</title>
+    <title>BeFit Topup</title>
 </head>
 <body>
 
@@ -55,6 +55,7 @@
 
         createOrder: function(data, actions) {
           var postValue = parseInt(document.getElementById("topup").value);
+          document.cookie = `value=${postValue}`;
           return actions.order.create({
             purchase_units: [{"amount":{"currency_code":"PHP","value":postValue}}]
           });
@@ -67,12 +68,13 @@
             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
             // Show a success message within this page, e.g.
-            const element = document.getElementById('paypal-button-container');
-            element.innerHTML = '';
-            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+            // const element = document.getElementById('paypal-button-container');
+            // element.innerHTML = '';
+            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
 
             // Or go to another URL:  actions.redirect('thank_you.html');
-            
+            actions.redirect('<?php echo base_url('user/success')?>?=<?php echo $this->session->userdata('userid'); ?>');
+
           });
         },
 

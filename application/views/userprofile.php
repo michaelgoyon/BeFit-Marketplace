@@ -79,72 +79,79 @@
 				}
 			?>
 		</div>
-		<div>
-			<form method="post" action="<?php echo base_url();?>user/add_service">
-				<div class="input-form">
-					<label>Workout Title: </label>
-					<input type="text" name="workout_title">
-				</div>
-				<div class="input-form">
-					<label>Workout Price: </label>
-					<input type="text" name="workout_price">
-				</div>
-				<div class="input-form">
-					<label>Workout Description: </label>
-					<input type="text" name="workout_description">
-				</div>
-				<div class="input-form">
-					<label>Workout Type: </label>
-					<input type="text" name="workout_type">
-				</div>
-				<div class="input-form">
-					<label>Workout Day: </label>
-					<input type="text" name="workout_day">
-				</div>
-				<div class="input-form">
-					<label>Workout Time: </label>
-					<input type="text" name="workout_time">
-				</div>
-				<div class="input-form">
-					<label>Workout Session: </label>
-					<input type="text" name="workout_session">
-				</div>
-				<div class="input-form">
-					<label>Workout Duration: </label>
-					<input type="text" name="workout_duration">
-				</div>
-				<div class="registerbtn">
-					<input type="submit" value="Add"/>
-				</div>
-			</form>
-		</div>
-		<div>
-			<table>
-				<thead>
-					<tr>
-						<th>Type of Workout</th>
-						<th>Availability</th>
-						<th>Day</th>
-						<th>Time</th>
-						<th>Session</th>
-						<th>Duration</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php 
-						foreach($services as $row) {
-							echo "<tr>";
-							echo "<td>".$row->services_type."</td>";
-							echo "<td>".($row->services_availability == 1 ? "Available" : "Unavailable")."</td>";
-							echo "<td>".$row->services_day."</td>";
-							echo "<td>".$row->services_time."</td>";
-							echo "<td>".$row->services_session."</td>";
-							echo "<td>".$row->services_duration."</td>";
-						}
-					?>
-				</tbody>
-			</table>
-		</div>
+		<?php
+		$username = $this->uri->segment(3);
+		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
+		?>
+			<div>
+				<form method="post" action="<?php echo base_url();?>user/add_service">
+					<div class="input-form">
+						<label>Workout Title: </label>
+						<input type="text" name="workout_title">
+					</div>
+					<div class="input-form">
+						<label>Workout Price: </label>
+						<input type="text" name="workout_price">
+					</div>
+					<div class="input-form">
+						<label>Workout Description: </label>
+						<input type="text" name="workout_description">
+					</div>
+					<div class="input-form">
+						<label>Workout Type: </label>
+						<input type="text" name="workout_type">
+					</div>
+					<div class="input-form">
+						<label>Workout Day: </label>
+						<input type="text" name="workout_day">
+					</div>
+					<div class="input-form">
+						<label>Workout Time: </label>
+						<input type="text" name="workout_time">
+					</div>
+					<div class="input-form">
+						<label>Workout Session: </label>
+						<input type="text" name="workout_session">
+					</div>
+					<div class="input-form">
+						<label>Workout Duration: </label>
+						<input type="text" name="workout_duration">
+					</div>
+					<div class="registerbtn">
+						<input type="submit" value="Add"/>
+					</div>
+				</form>
+			</div>
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>Type of Workout</th>
+							<th>Availability</th>
+							<th>Day</th>
+							<th>Time</th>
+							<th>Session</th>
+							<th>Duration</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php 
+							foreach($services as $row) {
+								echo "<tr>";
+								echo "<td>".$row->services_type."</td>";
+								echo "<td>".($row->services_availability == 1 ? "Available" : "Unavailable")."</td>";
+								echo "<td>".$row->services_day."</td>";
+								echo "<td>".$row->services_time."</td>";
+								echo "<td>".$row->services_session."</td>";
+								echo "<td>".$row->services_duration."</td>";
+							}
+						?>
+					</tbody>
+				</table>
+			</div>
+		<?php 
+			}
+		?>
 		<div class="btn-logout">
 			<a href="<?php echo base_url();?>user/logout">LOG OUT</a>
 		</div>

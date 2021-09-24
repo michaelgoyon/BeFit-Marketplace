@@ -106,5 +106,23 @@ class User_model extends CI_Model {
         $this->db->where('users_id', $this->session->userdata('userid'));
         $this->db->update('users');
     }
+
+    public function insert_topup($id, $value) {
+        $data = array(
+            'users_id' => $id,
+            'payments_amount' => $value
+        );
+        $this->db->insert('payments', $data);
+    }
+
+    public function insert_order($from, $to, $amount) {
+        $data = array(
+            'orders_from' => $from,
+            'orders_to' => $to,
+            'orders_status' => 0,
+            'orders_amount' => $amount
+        );
+        $this->db->insert('orders', $data);
+    }
  
 }
