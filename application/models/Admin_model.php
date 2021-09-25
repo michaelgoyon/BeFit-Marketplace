@@ -17,9 +17,15 @@ class Admin_Model extends CI_Model {
         return $result;
     }
 
-    public function get_users($limit, $start) {
+    public function get_trainee_users($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get('users');
+        $query = $this->db->get_where('users', array('users_account'=>"Trainee"));
+		return $query->result();
+    }
+
+    public function get_coach_users($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get_where('users', array('users_account'=>"Coach"));
 		return $query->result();
     }
 
@@ -33,6 +39,11 @@ class Admin_Model extends CI_Model {
         } else {  
             return false;  
         }  
+    }
+
+    public function get_ratings() {
+        $query = $this->db->get('ratings');
+		return $query->result(); 
     }
 
 	public function get_count() {

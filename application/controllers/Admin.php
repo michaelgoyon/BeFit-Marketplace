@@ -98,8 +98,14 @@ class Admin extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['records'] = $this->admin_model->get_users($config["per_page"], $page);
+		$data['trainees'] = $this->admin_model->get_trainee_users($config["per_page"], $page);
+		$data['coaches'] = $this->admin_model->get_coach_users($config["per_page"], $page);
 		$this->load->view('admin_dashboard', $data);
+	}
+
+	public function chart() {
+		$data['ratings'] = $this->admin_model->get_ratings();
+		$this->load->view('admin_chart', $data);
 	}
 
 	public function delete_data() {

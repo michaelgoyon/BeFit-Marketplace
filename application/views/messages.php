@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/index_styles.css')?>">
     <script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
-    <title>BeFit Homepage</title>
+    <title>BeFit Messages</title>
 </head>
 <body>
 
