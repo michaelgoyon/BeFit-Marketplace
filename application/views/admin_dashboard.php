@@ -28,7 +28,44 @@
             </thead>
            <tbody>
                 <?php
-                    foreach($records as $row) {
+                    foreach($trainees as $row) {
+                        echo "<tr>";
+                        echo "<td>".$row->users_id."</td>";
+                        echo "<td>".$row->users_account."</td>";
+                        echo "<td>"."<img src='".base_url().'uploads/'.$row->users_avatar."' width='80' height='80'>"."</td>";
+                        echo "<td>".$row->users_name."</td>";
+                        echo "<td>".$row->users_username."</td>"; 
+                        echo "<td>".$row->users_birthdate."</td>";
+                        echo "<td>".$row->users_email."</td>";
+                        echo "<td>".$row->users_password."</td>"; ?>
+                        <td><a href="<?php echo base_url().'admin/delete_data?id='.$row->users_id;?>">Delete</a></td>
+                        <?php
+                        echo "</tr>";
+                    }
+                ?>
+           </tbody>
+        </table>
+        <div id="app" class="page-container">
+            <?php echo $this->pagination->create_links(); ?>
+        </div>
+        
+        <table class="table-view">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User Account</th>
+                    <th>User Avatar</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Birthdate</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           <tbody>
+                <?php
+                    foreach($coaches as $row) {
                         echo "<tr>";
                         echo "<td>".$row->users_id."</td>";
                         echo "<td>".$row->users_account."</td>";
