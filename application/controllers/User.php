@@ -288,4 +288,15 @@ class User extends CI_Controller {
         redirect(base_url().'user/paymaya');
     }
  
+    public function aboutus() {
+        $this->load->view("aboutus");
+    }
+
+    public function nutrition() {
+        $this->load->view("nutrition");
+    }
+
+    public function faq() {
+        $this->load->view("faq");
+    }
 }

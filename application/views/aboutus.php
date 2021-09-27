@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/marketplace_styles.css')?>">
-    <title>BeFit Homepage</title>
+    <title>BeFit About Us</title>
 </head>
 <div class="nav">
       <ul class="items">
@@ -20,20 +20,5 @@
 </div>
 
 <body>
-    <div class="containbox">
-	<?php 
-		foreach($records as $row) {
-            echo "<div class='box'>";
-			echo "<p><a href='".base_url().'user/service/'.$row->services_id."'>".$row->services_title."</a></p>";
-            echo "<p>".$row->services_price."</p>";
-			echo "<p>".$row->services_description."</p>";
-			echo "<p>".$row->services_type."</p>";
-			echo "<p>".$row->services_time."</p>";
-			echo "<p>".$row->services_day."</p>";
-			echo "<p>".$row->services_duration."</p>";
-            echo "</div>";
-		}
-	?>
-    </div>
+	About Us
 </body>
-</html>
