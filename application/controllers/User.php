@@ -59,7 +59,8 @@ class User extends CI_Controller {
                     'users_email'=>$this->input->post('email'),
                     'users_password'=>$this->input->post('password'),
                     'users_code'=>$code,
-                    'users_active'=>false
+                    'users_active'=>false,
+                    'users_wallet'=>0
                 );
                 $id = $this->user_model->insert($user);
                 $message = 	"
