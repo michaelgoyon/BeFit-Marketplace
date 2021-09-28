@@ -80,7 +80,6 @@ html {
     text-decoration: none;
     color: white;
     font-size: 18px;
-    
 }
 .navitems a:hover{
     color: #FA632A;
@@ -113,6 +112,11 @@ html {
     display: table;
 }
 
+.nutritionheader a{
+    text-decoration: none;
+    color: #FA632A;
+    font-size: 18px;
+}
 .containbox{
 	position:relative;
 	width:1200px;
@@ -145,7 +149,7 @@ hr{
 
 .infodiv{
 	position:relative;
-	width:80%;
+	width:60%;
 	height:auto;
 	margin: 30px auto 0;
     word-wrap: break-word
@@ -169,3 +173,5 @@ hr{
     display: block;
     font-size:20px;
 }
+
+

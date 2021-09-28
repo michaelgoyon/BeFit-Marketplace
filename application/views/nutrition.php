@@ -27,13 +27,13 @@
 
 <div class="containbox">
     <div class ="nutritionheader">
-    <p>Foods for Weight Loss</p>
+    <a href="#weightloss">Foods for Weight Loss</a>
     </div>
     <div class ="nutritionheader">
-    <p>Count your Macros</p>
+    <a href="#macros">Count your Macros</a>
     </div>
     <div class ="nutritionheader">
-    <p>Benefits of Exercise</p>
+    <a href="#exercise">Benefits of Exercise</a>
     </div>
 </div>
 <hr>
@@ -45,9 +45,16 @@
         Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     </p>
 </div>
-<div class="infodiv" id="weightloss">
-    <img class="infoimg" src="<?php echo base_url('assets/images/weightlossfood.jpg')?>">
+<div class="infodiv" id="macros">
+    <img class="infoimg" src="<?php echo base_url('assets/images/macrosfood.jpg')?>">
     <p class="infohead">Count your Macros</p>
+    <p class="infotext">
+        Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    </p>
+</div>
+<div class="infodiv" id="exercise">
+    <img class="infoimg" src="<?php echo base_url('assets/images/exercise.jpg')?>">
+    <p class="infohead">Benefits of Daily Exercise</p>
     <p class="infotext">
         Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     </p>
