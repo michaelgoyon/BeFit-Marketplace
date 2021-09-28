@@ -87,7 +87,7 @@ html {
     transition: 0.3s;
 }
 
-.box{
+/*.box{
 	position:relative;
 	width: calc(400px - 30px);
 	height: calc(300px - 30px);
@@ -97,15 +97,32 @@ html {
 	box-sizing: border-box;
 	overflow:hidden;
 	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+}*/
+
+.nutritionheader{
+	position:relative;
+	width: calc(400px - 30px);
+	height: 50px;
+	background: white;
+	margin: 15px;
+	box-sizing: border-box;
+	overflow:hidden;
+	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
 .containbox{
 	position:relative;
 	width:1200px;
-	height: auto;
+	height:auto;
 	margin: 30px auto 0;
 	padding-bottom: 40px;
 	background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .ptext{
@@ -119,3 +136,36 @@ html {
     letter-spacing:4px;
     text-transform:uppercase;
   }
+
+hr{
+    border: 3px solid white;
+    width: 80%;
+    margin: auto;
+}
+
+.infodiv{
+	position:relative;
+	width:80%;
+	height:auto;
+	margin: 30px auto 0;
+    word-wrap: break-word
+}
+
+.infoimg{
+    max-width: 100%;
+    height: auto;
+}
+
+.infohead{
+    font-family: 'Poppins';
+    color:#FA632A;
+    display: block;
+    font-size:20px;
+    font-weight: bold;
+}
+.infotext{
+    font-family: 'Poppins';
+    color:white;
+    display: block;
+    font-size:20px;
+}

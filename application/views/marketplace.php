@@ -12,14 +12,18 @@
 </head>
 <div class="nav">
       <ul class="items">
-        <li><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
-		<li><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
-        <li><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
-        <li><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><img class="navlogo" src="<?php echo base_url('assets/images/befitlogo.png')?>"></a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
+		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
       </ul>
 </div>
 
 <body>
+<div class ="ptext">
+    Marketplace
+</div>
     <div class="containbox">
 	<?php 
 		foreach($records as $row) {
@@ -31,6 +35,7 @@
 			echo "<p>".$row->services_time."</p>";
 			echo "<p>".$row->services_day."</p>";
 			echo "<p>".$row->services_duration."</p>";
+            echo "<p>".$row->users_name."</p>";
             echo "</div>";
 		}
 	?>

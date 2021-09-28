@@ -243,6 +243,7 @@ class User extends CI_Controller {
             'services_day'=>$this->input->post('workout_day'),
             'services_session'=>$this->input->post('workout_session'),
             'services_duration'=>$this->input->post('workout_duration'),
+            'users_name'=>$this->session->userdata('username'),
             'users_id'=>$userid
         );
         $this->user_model->insert_service($service);
