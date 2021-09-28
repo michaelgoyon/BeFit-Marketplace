@@ -1,6 +1,9 @@
 *{
     margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
+
 html { 
     background-color:#222222;
     -webkit-background-size: cover;
@@ -80,54 +83,38 @@ html {
     text-decoration: none;
     color: white;
     font-size: 18px;
+    
 }
 .navitems a:hover{
     color: #FA632A;
     transition: 0.3s;
 }
 
-/*.box{
-	position:relative;
-	width: calc(400px - 30px);
-	height: calc(300px - 30px);
-	background: white;
-	float:left;
-	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
-	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-}*/
-
-.nutritionheader{
-	position:relative;
-	width: calc(400px - 30px);
-	height: 50px;
-	background: white;
-	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
-	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-}
-
-.nutritionheader a{
-    text-decoration: none;
-    color: #FA632A;
-    font-size: 18px;
-}
 .containbox{
-	position:relative;
-	width:1200px;
-	height:auto;
-	margin: 30px auto 0;
-	padding-bottom: 40px;
-	background-repeat: no-repeat;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    display:flex;
+    justify-content: center;
 }
+
+.box{
+	width: calc(335px - 30px);
+	height: auto;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+	margin: 15px;
+	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+}
+
+.boximg{
+    background-size: cover;
+    background-color: white;
+    height: 170px;
+    width: auto;
+}
+
+.box p{
+    color:white;
+}
+
 
 .ptext{
     position:relative;
@@ -141,37 +128,14 @@ html {
     text-transform:uppercase;
   }
 
-hr{
-    border: 3px solid white;
-    width: 80%;
-    margin: auto;
+.bookbutton {
+    background-color: #FA632A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
 }
-
-.infodiv{
-	position:relative;
-	width:60%;
-	height:auto;
-	margin: 30px auto 0;
-    word-wrap: break-word
-}
-
-.infoimg{
-    max-width: 100%;
-    height: auto;
-}
-
-.infohead{
-    font-family: 'Poppins';
-    color:#FA632A;
-    display: block;
-    font-size:20px;
-    font-weight: bold;
-}
-.infotext{
-    font-family: 'Poppins';
-    color:white;
-    display: block;
-    font-size:20px;
-}
-
-

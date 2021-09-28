@@ -28,14 +28,11 @@
 	<?php 
 		foreach($records as $row) {
             echo "<div class='box'>";
+            echo "<img class='boximg' src='".base_url()."assets/images/cardio.jpg"."'>";
 			echo "<p><a href='".base_url().'user/service/'.$row->services_id."'>".$row->services_title."</a></p>";
-            echo "<p>".$row->services_price."</p>";
-			echo "<p>".$row->services_description."</p>";
-			echo "<p>".$row->services_type."</p>";
-			echo "<p>".$row->services_time."</p>";
-			echo "<p>".$row->services_day."</p>";
-			echo "<p>".$row->services_duration."</p>";
             echo "<p>".$row->users_name."</p>";
+            echo "<p>".$row->services_price."</p>";
+            echo "<button class='bookbutton'><a href='".base_url().'user/service/'.$row->services_id."'>Book Now</a></button>";            
             echo "</div>";
 		}
 	?>

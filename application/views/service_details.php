@@ -7,10 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/index_styles.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/service_details.css')?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/ratings.css')?>">
     <title>BeFit Homepage</title>
 </head>
+<div class="nav">
+      <ul class="items">
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><img class="navlogo" src="<?php echo base_url('assets/images/befitlogo.png')?>"></a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
+		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
+      </ul>
+</div>
 <body>
 	<?php 
 		foreach($services as $row) {

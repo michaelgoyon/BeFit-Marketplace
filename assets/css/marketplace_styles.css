@@ -1,5 +1,7 @@
 *{
     margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
 html { 
     background-color:#222222;
@@ -87,26 +89,31 @@ html {
     transition: 0.3s;
 }
 
+.containbox{
+    display:flex;
+    justify-content: center;
+}
+
 .box{
-	position:relative;
-	width: calc(400px - 30px);
-	height: calc(300px - 30px);
-	background: white;
-	float:left;
+	width: calc(335px - 30px);
+	height: auto;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
 	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
 	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
 }
 
-.containbox{
-	position:relative;
-	width:1200px;
-	height: auto;
-	margin: 30px auto 0;
-	padding-bottom: 40px;
-	background-repeat: no-repeat;
+.boximg{
+    background-size: cover;
+    background-color: white;
+    height: 170px;
+    width: auto;
 }
+
+.box p{
+    color:white;
+}
+
 
 .ptext{
     position:relative;
@@ -119,3 +126,15 @@ html {
     letter-spacing:4px;
     text-transform:uppercase;
   }
+
+.bookbutton {
+    background-color: #FA632A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
