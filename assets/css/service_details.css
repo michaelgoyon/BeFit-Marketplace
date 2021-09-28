@@ -1,0 +1,141 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html { 
+    background-color:#222222;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+.container{
+    margin-top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5rem;
+    font-family: 'Poppins', 'sans-serif';
+    filter:brightness(100%);
+}
+.container h1{
+    font-size: 24px;
+    line-height: 0;
+}
+
+.container h2{
+    font-size: 60px;
+    line-height: 0;
+}
+
+.btn-container{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.btn-container a{
+    text-decoration: none;
+    background-color: #FA632A;
+    border: solid 2px #FA632A;
+    color: #FFFFFF;
+    border-radius: 10px;
+    width: 15%;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.btn-container a:hover{
+    transition: 0.2s ease-in;
+    background-color: transparent;
+    border: solid 2px #FA632A;
+    color: black;
+    font-weight: 500;
+}
+
+.nav {
+    font-size: 15px;
+    font-family: "Catamaran", sans-serif;
+    padding: 30px;
+    top: 0px;
+    background-color: #181818;
+    
+  }
+
+.nav li {
+    display: inline-block;
+    padding:0px 20px 0px 20px;
+}
+.navlogo{
+    width: 120px;
+    height: auto;
+    position:relative;
+}
+
+.navitems a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    
+}
+.navitems a:hover{
+    color: #FA632A;
+    transition: 0.3s;
+}
+
+.containbox{
+    display:flex;
+    justify-content: center;
+}
+
+.box{
+	width: calc(335px - 30px);
+	height: auto;
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+	margin: 15px;
+	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+}
+
+.boximg{
+    background-size: cover;
+    background-color: white;
+    height: 170px;
+    width: auto;
+}
+
+.box p{
+    color:white;
+}
+
+
+.ptext{
+    position:relative;
+    padding: 30px 0px 30px 0px;
+    width:100%;
+    text-align:center;
+    color:white;
+    font-family: 'Poppins';
+    font-size:48px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+  }
+
+.bookbutton {
+    background-color: #FA632A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+}
