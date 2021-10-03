@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'befit-mysql.mysql.database.azure.com',
-	'username' => 'befitadmin@befit-mysql',
+	'hostname' => 'befitdb.mysql.database.azure.com',
+	'username' => 'befitadmin@befitdb',
 	'password' => 'BusinessBros2021!',
 	'database' => 'befit',
 	'dbdriver' => 'mysqli',
