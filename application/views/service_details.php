@@ -18,23 +18,31 @@
 		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
+		<li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
       </ul>
 </div>
 <body>
+<div class="infodiv" id="weightloss">
+    <img class="infoimg" src="<?php echo base_url('assets/images/cardio.jpg')?>">
+    <p class="infotext">
 	<?php 
 		foreach($services as $row) {
-			echo "<p>".$row->services_title."</p>";
-			echo "<p>".$row->services_price."</p>";
-			echo "<p>".$row->services_description."</p>";
-			echo "<p>".$row->services_type."</p>";
-			echo "<p>".$row->services_time."</p>";
-			echo "<p>".$row->services_day."</p>";
-			echo "<p>".$row->services_duration."</p>";
+			echo "<p class='infohead'>".$row->services_title."</p>";
+			echo "<p class='infotext'>"."Price: ".$row->services_price." PHP"."</p>";
+			echo "<p class='infotext'>"."Coach: ".$row->users_name."</p>";
+			echo "<p class='infotext'>"."Description: ".$row->services_description."</p>";
+			echo "<p class='infotext'>"."Workout: ".$row->services_type."</p>";
+			echo "<p class='infotext'>"."Time: ".$row->services_time."</p>";
+			echo "<p class='infotext'>"."Day: ".$row->services_day."</p>";
+			echo "<p class='infotext'>"."Duration: ".$row->services_duration."</p>";
 		}
 	?>
+	</p>	
 
 <form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
-	<input type="submit" value="Buy">
+	<div class="registerbtn">
+		<input type="submit" value="Buy">
+	</div>	
 </form>
 
 <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3); ?>">
@@ -58,7 +66,7 @@
 	</div>
 	<div class="registerbtn">
 		<input type="submit" value="Submit">
-	</div>
+	</div>	
 </form>
 
 <?php 
@@ -69,6 +77,10 @@
 		echo "</div>";
 	}
 ?>
+</div>
+
+
 
 </body>
 </html>
+

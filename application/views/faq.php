@@ -17,9 +17,39 @@
 	  <li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
       <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
       <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
-      </ul>
+      <li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
 </div>
 
 <body>
-	FAQ
+    <div class="container-fluid">
+        <div class ="accordion">
+            <h2>Frequently Asked Questions</h2>
+            <div class ="icon"></div>
+        </div>
+        <div class ="panel">
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                 sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Duis aute irure dolor in reprehenderit in voluptate velit
+                   esse cillum dolore eu fugiat nulla pariatur. Excepteur sin
+                   t occaecat cupidatat non proident, sunt in culpa qui officia 
+                   deserunt mollit anim id est laborum."</p>
+        </div>
+
+        <div class ="accordion">
+            <h5>What does befit do?</h5>
+            <div class ="icon"></div>
+        </div>
+        <div class ="panel">
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                 sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  Duis aute irure dolor in reprehenderit in voluptate velit
+                   esse cillum dolore eu fugiat nulla pariatur. Excepteur sin
+                   t occaecat cupidatat non proident, sunt in culpa qui officia 
+                   deserunt mollit anim id est laborum."</p>
+        </div>
+    </div>
 </body>

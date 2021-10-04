@@ -1,9 +1,6 @@
 *{
     margin:0;
-    padding:0;
-    box-sizing: border-box;
 }
-
 html { 
     background-color:#222222;
     -webkit-background-size: cover;
@@ -38,6 +35,7 @@ html {
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    
 }
 
 .btn-container a{
@@ -83,38 +81,54 @@ html {
     text-decoration: none;
     color: white;
     font-size: 18px;
-    
 }
 .navitems a:hover{
     color: #FA632A;
     transition: 0.3s;
 }
 
-.containbox{
-    display:flex;
-    justify-content: center;
-}
-
-.box{
-	width: calc(335px - 30px);
-	height: auto;
-    background: rgb(0, 0, 0); /* Fallback color */
-    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+/*.box{
+	position:relative;
+	width: calc(400px - 30px);
+	height: calc(300px - 30px);
+	background: white;
+	float:left;
 	margin: 15px;
+	box-sizing: border-box;
+	overflow:hidden;
 	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+}*/
+
+.nutritionheader{
+	position:relative;
+	width: calc(400px - 30px);
+	height: 50px;
+	background: white;
+	margin: 15px;
+	box-sizing: border-box;
+	overflow:hidden;
+	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
-.boximg{
-    background-size: cover;
-    background-color: white;
-    height: 170px;
-    width: auto;
+.nutritionheader a{
+    text-decoration: none;
+    color: #FA632A;
+    font-size: 18px;
 }
-
-.box p{
-    color:white;
+.containbox{
+	position:relative;
+	width:1200px;
+	height:auto;
+	margin: 30px auto 0;
+	padding-bottom: 40px;
+	background-repeat: no-repeat;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
-
 
 .ptext{
     position:relative;
@@ -128,14 +142,72 @@ html {
     text-transform:uppercase;
   }
 
-.bookbutton {
-    background-color: #FA632A;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
+hr{
+    border: 3px solid white;
+    width: 80%;
+    margin: auto;
+}
+
+.infodiv{
+	position:relative;
+	width:60%;
+	height:auto;
+	margin: 30px auto 0;
+    word-wrap: break-word;
+    background-color: #181818;
+}
+
+.infoimg{
+    max-width: 90%;
+    height: auto;
+    display:block;
+    margin:auto;
+    padding: 50px;
+}
+
+.infohead{
+    font-family: 'Poppins';
+    color:#FA632A;
+    display: block;
+    font-size:20px;
+    font-weight: bold;
+}
+.infotext{
+    font-family: 'Poppins';
+    color:white;
+    display: block;
+    font-size:20px;
+    height: auto;
+    margin:auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.registerbtn {
+    margin-top: 1rem;
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
+input[type="submit"] {
+    font-family: 'Poppins', 'sans-serif';
+    border-radius: 2px;
+    background-color: #e5e5e5a2;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    border: none;
+    align-items: center;
+    padding: 0.5rem;
     width: 100%;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #FA632A;
+    transition: all 0.3s;
 }
