@@ -17,9 +17,12 @@
 		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
+        <li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
       </ul>
 </div>
 
 <body>
-	About Us
+<div class="aboutushead">
+    <p class="centertext">ABOUT US</p>
+</div>    
 </body>

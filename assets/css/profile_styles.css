@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #181818;
+    background-color: #222222;
 }
 
 .container{
@@ -19,7 +19,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     font-family: 'Poppins', 'sans-serif';
-    background-color: #222222;
+    background-color: #181818;
     color: #FFFFFF;
 }
 
@@ -162,4 +162,33 @@ input[type="submit"]:hover {
     border: solid 2px #FA632A;
     color: #FFFFFF;
     font-weight: 500;
+}
+
+.nav {
+    font-size: 15px;
+    font-family: "Catamaran", sans-serif;
+    padding: 30px;
+    top: 0px;
+    background-color: #181818;
+    
+  }
+
+.nav li {
+    display: inline-block;
+    padding:0px 20px 0px 20px;
+}
+.navlogo{
+    width: 120px;
+    height: auto;
+    position:relative;
+}
+
+.navitems a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+.navitems a:hover{
+    color: #FA632A;
+    transition: 0.3s;
 }
