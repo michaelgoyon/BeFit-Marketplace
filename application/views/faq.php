@@ -21,6 +21,9 @@
 </div>
 
 <body>
+<div class ="ptext">
+    FAQs
+</div>
     <!---<section>
         <h2>FAQ</h2>
         <div class="faqjs">
@@ -42,21 +45,35 @@
             </div>
         </div>
     </section>--->
-    <button class="accordion">Section 1</button>
-    <div class="panel">
-    <p>Lorem ipsum...</p>
-    </div>
 
-    <button class="accordion">Section 2</button>
-    <div class="panel">
-    <p>Lorem ipsum...</p>
-    </div>
+    <div class="faqdiv">
+        <button class="accordion">How do I avail a service?<i class="arrow down"></i></p></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
 
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-    <p>Lorem ipsum...</p>
+        <button class="accordion">How do I pay?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <button class="accordion">When do I start?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     </div>
-    
-    <script src="http://localhost/befit/assets/js/app.js"></script>
+    <script type='text/javascript' src="<?php echo base_url(); ?>assets/js/app.js"></script>
 </body>
 </html>

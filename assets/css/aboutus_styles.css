@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 *{
     margin:0;
 }
@@ -203,4 +205,95 @@ hr{
     transform: translate(-50%);
     color:white;
     font-family: 'Poppins', 'sans-serif';
+}
+
+.aboutdiv{
+	text-align: center;
+	background: #222222;
+}
+
+.head{
+	padding-top:80px;
+	color: white;
+	font-size: 20px;
+	text-transform:uppercase;
+	border-bottom: 2px solid #f47720;
+	width: 280px;
+	margin: auto;
+	line-height: 80px;
+    font-family: "Quicksand", 'sans-serif';
+}
+
+.sub-container{
+	max-width: 1200px;
+	margin: auto;
+	padding: 50px 0;
+	display: flex;
+	flex-wrap:wrap;
+	justify-content: center;
+}
+
+.mem{
+	margin: 10px;
+	padding: 20px;
+	max-width: 30%;
+	box-sizing: border-box;
+	cursor:pointer;
+	transition:0.3s;
+	
+}
+
+.mem:hover{
+	background:#ddd;
+}
+
+.mem img{
+	border: 1px solid #E1E0DE;
+	border-radius:50%px
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+.name{
+	padding: 20px;
+	color: #f47720;
+	font-size: 20px;
+    font-weight: bold;
+    font-family: "Quicksand", 'sans-serif';
+	text-transform: uppercase;
+
+}
+
+
+.text{
+	margin: 20px 0;
+	text-align:justify;
+	font-weight: 24px;
+	line-height: 25px;
+	color: white;
+	font-size: 14px;
+	font-family: "Quicksand", 'sans-serif';
+	
+}
+ 
+
+
+@media screen and (max-width: 980px){
+	
+	.mem{
+		max-width: 45%;
+	}
+	
+}
+
+@media screen and (max-width: 600px){
+	
+	.mem{
+		max-width: 100%;
+	}
+	
 }

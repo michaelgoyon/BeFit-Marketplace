@@ -25,4 +25,40 @@
 <div class="aboutushead">
     <p class="centertext">ABOUT US</p>
 </div>    
+
+<div class="aboutdiv">
+	  	<div class="head">
+		 <h1>BeFit</h1>
+		 </div>
+		 <div class="sub-container">
+			 <div class="mem">
+				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+			 
+				 <div class="name">Team</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+				 </div>
+				 </div>
+			 
+			 <div class="mem">
+				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+			 
+				 <div class="name">Coaches</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+				 </div>
+				 </div>
+			 
+			 <div class="mem">
+				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+			 
+				 <div class="name">Trainees</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos!
+					</p>
+				 </div>
+				 </div>
+			 
+			 </div>
+		 </div>
 </body>

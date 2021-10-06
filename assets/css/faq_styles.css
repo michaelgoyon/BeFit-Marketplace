@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 *{
     margin:0;
 }
@@ -228,27 +230,70 @@ html {
   }*/
 
   /* Style the buttons that are used to open and close the accordion panel */
+
+.faqdiv{
+      min-height: 100vh;
+      width: 80%;
+      margin:0 auto;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+}
+      
 .accordion {
-    background-color: #eee;
-    color: #444;
+    background-color: #222222;
+    color: white;
     cursor: pointer;
-    padding: 18px;
-    width: 50%;
-    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 60%;
     border: none;
+    text-align: left;
     outline: none;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 1px; 
     transition: 0.4s;
+    justify-content: space-between;
+
   }
   
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
+  /*.active, .accordion:hover {
     background-color: #ccc;
-  }
+  }*/
   
-  /* Style the accordion panel. Note: hidden by default */
   .panel {
     padding: 0 18px;
-    background-color: white;
-    display: none;
+    background-color: #222222;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    width: 57%;
+    border-bottom: 2px solid #FFFFFF;
+    color:#FFFFFF;
+    font-size: 20px;
+    letter-spacing: 1px; 
+    font-family: "Quicksand", sans-serif;
   }
+  .panel p{
+      padding-bottom: 20px;
+      padding-left: 0px;
+  }
+  .arrow {
+    border: solid white;
+    border-width: 0 6px 6px 0;
+    padding: 6px;
+    float: right;
+  }
+
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
