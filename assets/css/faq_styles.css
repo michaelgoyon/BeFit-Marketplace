@@ -3,6 +3,9 @@
 *{
     margin:0;
 }
+a{
+  text-decoration: none;
+}
 html { 
     background-color:#222222;
     -webkit-background-size: cover;
@@ -61,28 +64,48 @@ html {
 
 .nav {
     font-size: 15px;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Poppins', 'sans-serif';
     padding: 30px;
     top: 0px;
     background-color: #181818;
-    
   }
+
+.nav img{
+    margin-top: 3px;
+    display: block;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 35%;
+}
 
 .nav li {
     display: inline-block;
-    padding:0px 20px 0px 20px;
+    padding: 0;
+    margin: auto;
+    
 }
 .navlogo{
-    width: 120px;
+    width: 130px;
     height: auto;
-    position:relative;
+    position: relative;
+    padding: 0;
 }
 
 .navitems a{
     text-decoration: none;
     color: white;
     font-size: 18px;
-    
+    padding: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: inline;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
 }
 .navitems a:hover{
     color: #FA632A;
@@ -117,119 +140,10 @@ html {
     text-align:center;
     color:white;
     font-family: 'Poppins';
-    font-size:48px;
+    font-size:64px;
     letter-spacing:4px;
     text-transform:uppercase;
   }
-/*
-  .container-fluid{
-      width: 40%;
-      margin: 0 auto;
-      margin-top: 100px;
-  }
-
-  .container-fluid h2{
-      color:#FA632A;
-      position: relative;
-      width: 23rem;
-  }
-
-  .container-fluid h2::after{
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 12px;
-      width: 67px;
-      height: 2px;
-      background-color: orange;
-  }
-
-  .accordion{
-      width: 100%;
-      padding: 0 5px;
-      border: 2px solid orange;
-      cursor:pointer;
-      border-radius: 50px;
-      margin: 10px 0;
-      align-items: center;
-  }
-
-  .accordion .icon{
-      margin : 0 10px 0 0;
-      width: 30px;
-      height: 30px;
-      background: url(../images/befitlogo.png) no-repeat 8px 7px blue;
-      border-radius: 50%;
-      float: left;
-      transition: all .5 ease-in;
-  }
-
-  .accordion h5{
-      font-size: 22px;
-      margin: 0;
-      padding: 3px 0 0 0;
-      font-weight: normal;
-      color:white;
-  }
-
-  .panel{
-      padding: 0 15px;
-      border-left: 1px solid #FA632A;
-      margin-left: 25px;
-      font-size: 14px;
-      text-align: justify;
-      overflow: hidden;
-      max-height: 0;
-      transition: all .5s ease-in;
-  }*/
-  
-  /*section{
-      min-height: 100vh;
-      width: 80%;
-      margin:0 auto;
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .title{
-      font-size: 3rem;
-      margin: 2rem 0rem;
-  }
-
-  .faqjs{
-      max-width: 700px;
-      margin-top: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid #fff;
-      cursor: pointer;
-  }
-
-  .question{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  }
-
-  .question h3{
-      font-size: 1.8rem;
-  }
-
-  .answer {
-      max-height: 0;
-      overflow:hidden;
-  }
-  .answer p {
-      padding-top: 1rem;
-      line-height: 1.6;
-      font-size: 1.4rem;
-  }
-
-  .faq.active.answer {
-      max-height: 300px;
-  }*/
-
-  /* Style the buttons that are used to open and close the accordion panel */
 
 .faqdiv{
       min-height: 100vh;
@@ -246,7 +160,7 @@ html {
     cursor: pointer;
     padding-top: 20px;
     padding-bottom: 20px;
-    width: 60%;
+    width: 80%;
     border: none;
     text-align: left;
     outline: none;
@@ -269,7 +183,7 @@ html {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    width: 57%;
+    width: 77%;
     border-bottom: 2px solid #FFFFFF;
     color:#FFFFFF;
     font-size: 20px;
@@ -297,3 +211,83 @@ html {
     -webkit-transform: rotate(-135deg);
   }
   
+  footer img {
+    max-height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+  }
+  
+  footer ul li {
+    text-decoration: none;
+    color: aliceblue;
+  }
+  
+  footer ul li a {
+    list-style-type: none;
+    color: aliceblue;
+  }
+  footer ul li a:hover {
+    text-decoration: none;
+    color: aliceblue;
+  }
+  
+  footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #181818;
+    color: aliceblue;
+    z-index: 200;
+    padding-bottom: 10px;
+  }
+  
+  footer p {
+    text-align: center;
+    padding: 0% 20% 0% 20%;
+  }
+  
+  footer ul {
+    display: inline-block;
+    list-style-type: none;
+    padding-top: 3%;
+    margin-left: 12%;
+    margin-right: 8%;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  
+  footer hr {
+    background-color: aliceblue;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 1px;
+  }
+
+  footer ol {
+    display: block;
+    margin: auto;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  
+  footer ol li {
+    display: inline-block;
+    margin: auto;
+  }
+
+  .infohead{
+    font-family: 'Poppins';
+    color:#FA632A;
+    display: block;
+    align-items: left;
+    font-size:20px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+  footer .infohead{
+      font-size: 16px;
+  }

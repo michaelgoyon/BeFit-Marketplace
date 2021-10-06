@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
 }
 html { 
     background-color:#222222;
@@ -56,30 +63,50 @@ html {
     color: black;
     font-weight: 500;
 }
-
 .nav {
     font-size: 15px;
-    font-family: "Catamaran", sans-serif;
+    font-family: 'Poppins', 'sans-serif';
     padding: 30px;
     top: 0px;
     background-color: #181818;
-    
   }
+
+.nav img{
+    margin-top: 3px;
+    display: block;
+}
+
+.items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 35%;
+}
 
 .nav li {
     display: inline-block;
-    padding:0px 20px 0px 20px;
+    padding: 0;
+    margin: auto;
+    
 }
 .navlogo{
-    width: 120px;
+    width: 130px;
     height: auto;
-    position:relative;
+    position: relative;
+    padding: 0;
 }
 
 .navitems a{
     text-decoration: none;
     color: white;
     font-size: 18px;
+    padding: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: inline;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
 }
 .navitems a:hover{
     color: #FA632A;
@@ -107,8 +134,6 @@ html {
 	box-sizing: border-box;
 	overflow:hidden;
 	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-    margin-left: auto;
-    margin-right: auto;
     display: table;
 }
 
@@ -141,7 +166,7 @@ html {
     text-align:center;
     color:white;
     font-family: 'Poppins';
-    font-size:48px;
+    font-size:64px;
     letter-spacing:4px;
     text-transform:uppercase;
   }
@@ -179,4 +204,74 @@ hr{
     font-size:20px;
 }
 
+footer img {
+    max-height: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+  }
+  
+  footer ul li {
+    text-decoration: none;
+    color: aliceblue;
+  }
+  
+  footer ul li a {
+    list-style-type: none;
+    color: aliceblue;
+  }
+  footer ul li a:hover {
+    text-decoration: none;
+    color: aliceblue;
+  }
+  
+  footer {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #181818;
+    color: aliceblue;
+    z-index: 200;
+    padding-bottom: 10px;
+  }
+  
+  footer p {
+    text-align: center;
+    padding: 0% 20% 0% 20%;
+  }
+  
+  footer ul {
+    display: inline-block;
+    list-style-type: none;
+    padding-top: 3%;
+    margin-left: 12%;
+    margin-right: 8%;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+  
+  footer hr {
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 1px;
+    border: 1px solid white;
+    width: 80%;
+    margin: auto;
+  }
 
+  ol {
+    display: block;
+    margin: auto;
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+  
+  ol li {
+    display: inline-block;
+    margin: auto;
+  }
+  footer .infohead{
+      font-size: 16px;
+  }

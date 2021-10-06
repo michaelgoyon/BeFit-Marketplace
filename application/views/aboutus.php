@@ -23,7 +23,7 @@
 
 <body>
 <div class="aboutushead">
-    <p class="centertext">ABOUT US</p>
+    <p class="ptext">ABOUT US</p>
 </div>    
 
 <div class="aboutdiv">
@@ -32,7 +32,7 @@
 		 </div>
 		 <div class="sub-container">
 			 <div class="mem">
-				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/team.jpeg')?>">
 			 
 				 <div class="name">Team</div>
 				<div class="text">
@@ -41,7 +41,7 @@
 				 </div>
 			 
 			 <div class="mem">
-				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/trainer.png')?>">
 			 
 				 <div class="name">Coaches</div>
 				<div class="text">
@@ -50,7 +50,7 @@
 				 </div>
 			 
 			 <div class="mem">
-				 <img class="img-fluid" width="240" src="<?php echo base_url('assets/images/bg2.jpeg')?>">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/trainee.jpg')?>">
 			 
 				 <div class="name">Trainees</div>
 				<div class="text">
@@ -61,4 +61,37 @@
 			 
 			 </div>
 		 </div>
+		 
+     <footer>
+      <ul>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><p class="infohead">Marketplace</p></a></li>
+        <li><a href="">Cardio</a></li>
+        <li><a href="">Yoga</a></li>
+        <li><a href="">Strength</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/nutrition/')?>"><p class="infohead">Nutrition</p></a></li>
+        <li><a href="">Foods</a></li>
+        <li><a href="">Macros</a></li>
+        <li><a href="">Exercise</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/faq/')?>"><p class="infohead">FAQ</p></a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Payment</a></li>
+        <li><a href="">Refund</a></li>
+      </ul>
+      <ul>
+        <li><a href="<?php echo base_url('user/aboutus/')?>"><p class="infohead">About</p></a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Coaches</a></li>
+        <li><a href="">Trainees</a></li>
+      </ul>
+      
+      <hr>
+      <a href=""><img src="<?php echo base_url('assets/images/befitlogo.png')?>"/></a>
+  </footer>
 </body>
+</html>

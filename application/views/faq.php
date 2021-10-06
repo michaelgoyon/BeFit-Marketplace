@@ -56,7 +56,25 @@
                  sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
 
-        <button class="accordion">How do I pay?<i class="arrow down"></i></button>
+        <button class="accordion">What payment methods do you accept?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <button class="accordion">Im new to exercise, what should I do?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+
+        <button class="accordion">Is the service refundable?<i class="arrow down"></i></button>
         <div class="panel">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
@@ -73,7 +91,41 @@
                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                  sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
+
     </div>
+    			
+<footer>
+      <ul>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><p class="infohead">Marketplace</p></a></li>
+        <li><a href="">Cardio</a></li>
+        <li><a href="">Yoga</a></li>
+        <li><a href="">Strength</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/nutrition/')?>"><p class="infohead">Nutrition</p></a></li>
+        <li><a href="">Foods</a></li>
+        <li><a href="">Macros</a></li>
+        <li><a href="">Exercise</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/faq/')?>"><p class="infohead">FAQ</p></a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Payment</a></li>
+        <li><a href="">Refund</a></li>
+      </ul>
+      <ul>
+        <li><a href="<?php echo base_url('user/aboutus/')?>"><p class="infohead">About</p></a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Coaches</a></li>
+        <li><a href="">Trainees</a></li>
+      </ul>
+      
+      <hr>
+      <a href=""><img src="<?php echo base_url('assets/images/befitlogo.png')?>"/></a>
+  </footer>
+  
     <script type='text/javascript' src="<?php echo base_url(); ?>assets/js/app.js"></script>
 </body>
 </html>
