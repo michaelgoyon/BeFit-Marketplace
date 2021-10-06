@@ -311,4 +311,12 @@ class User extends CI_Controller {
     public function faq() {
         $this->load->view("faq");
     }
+
+    public function delete_services(){
+        if(isset($_GET['id'])) {
+			$id=$_GET['id'];
+			$this->user_model->delete_services($id);
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+    }
 }

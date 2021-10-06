@@ -8,7 +8,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/profile_styles.css')?>">
-    <title>Welcome, Trainee!</title>
+    <title>My Profile</title>
 </head>
 
 <div class="nav">
@@ -113,7 +113,7 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Description</label>
-						<input type="text" name="workout_description">
+						<textarea type="text" name="workout_description" rows="10" cols="70"></textarea>
 						<div></div>
 					</div>
 					<div class="input-form2">
@@ -153,6 +153,7 @@
 				<table>
 					<thead>
 						<tr>
+							<th>Option</th>
 							<th>Type of Workout</th>
 							<th>Availability</th>
 							<th>Day</th>
@@ -165,6 +166,9 @@
 						<?php 
 							foreach($services as $row) {
 								echo "<tr>";
+						?>
+								<td><a href="<?php echo base_url().'user/delete_services?id='.$row->services_id;?>">REMOVE</a></td>
+						<?php 
 								echo "<td>".$row->services_type."</td>";
 								echo "<td>".($row->services_availability == 1 ? "Available" : "Unavailable")."</td>";
 								echo "<td>".$row->services_day."</td>";
@@ -179,6 +183,9 @@
 		<?php 
 			}
 		?>
+		<div class="info-row">
+			<h1 id="header">CONFIRM TRAINEES</h1>
+		</div>
 		<div class="btn-logout">
 			<a href="<?php echo base_url();?>user/logout">LOG OUT</a>
 		</div>
