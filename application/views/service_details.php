@@ -30,7 +30,7 @@
 			echo "<p class='infohead'>".$row->services_title."</p>";
 			echo "<p class='infotext'>".$row->services_description."</p>";;
 			echo "<div class='servicediv'>";
-			echo "<p class='infotext orangebg'>"."DETAILS";
+			echo "<p class='infotext graybg'>"."DETAILS"."</p>";
 			echo "<p class='infotext'>"."Price: ".$row->services_price." PHP"."</p>";
 			echo "<p class='infotext'>"."Coach: ".$row->users_name."</p>";
 			echo "<p class='infotext'>"."Workout: ".$row->services_type."</p>";
@@ -40,9 +40,7 @@
 		}
 	?>
 	</p>	
-	<div class="registerbtn">
-			<a href="<?php echo base_url();?>user/marketplace">CANCEL<br></a>
-	</div>
+
 	<form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
 		<div class="registerbtn">
 			<input type="submit" value="BUY">
@@ -62,6 +60,7 @@
 		echo "</div>";
 	}
 ?>
+<label><p class="infotext">WRITE A REVIEW:</p></label>
 <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3); ?>">
     <span class="star-cb-group">
       <input type="radio" id="rating-5" name="rating" value="5" />
@@ -78,17 +77,46 @@
       <label for="rating-0">0</label>
     </span>
 	<div class="input-form">
-		<label>Comment: </label>
-		<input type="text" name="review_comment">
+		<textarea type="text" name="review_comment" rows="3" cols="70"></textarea>
 	</div>
 	<div class="registerbtn">
 		<input type="submit" value="Submit">
 	</div>	
 </form>
-
 </div>
 
+			
+<footer>
+      <ul>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><p class="infohead">Marketplace</p></a></li>
+        <li><a href="">Cardio</a></li>
+        <li><a href="">Yoga</a></li>
+        <li><a href="">Strength</a></li>
+      </ul>
 
+      <ul>
+        <li><a href="<?php echo base_url('user/nutrition/')?>"><p class="infohead">Nutrition</p></a></li>
+        <li><a href="">Foods</a></li>
+        <li><a href="">Macros</a></li>
+        <li><a href="">Exercise</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/faq/')?>"><p class="infohead">FAQ</p></a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Payment</a></li>
+        <li><a href="">Refund</a></li>
+      </ul>
+      <ul>
+        <li><a href="<?php echo base_url('user/aboutus/')?>"><p class="infohead">About</p></a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Coaches</a></li>
+        <li><a href="">Trainees</a></li>
+      </ul>
+      
+      <hr>
+      <a href=""><img src="<?php echo base_url('assets/images/befitlogo.png')?>"/></a>
+  </footer>
 
 </body>
 </html>

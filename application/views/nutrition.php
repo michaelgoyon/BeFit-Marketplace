@@ -27,15 +27,9 @@
 </div>
 
 <div class="containbox">
-    <div class ="nutritionheader">
-    <a href="#weightloss">Foods for Weight Loss</a>
-    </div>
-    <div class ="nutritionheader">
-    <a href="#macros">Count your Macros</a>
-    </div>
-    <div class ="nutritionheader">
-    <a href="#exercise">Benefits of Exercise</a>
-    </div>
+    <a href="#weightloss"><div class ="nutritionheader">Foods for Weight Loss</div></a>
+    <a href="#macros"><div class ="nutritionheader">Count your Macros</div></a>
+    <a href="#exercise"><div class ="nutritionheader">Benefits of Exercise</div></a>  
 </div>
 <hr>
 
@@ -60,4 +54,39 @@
         Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     </p>
 </div>
+
+			
+<footer>
+      <ul>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><p class="infohead">Marketplace</p></a></li>
+        <li><a href="">Cardio</a></li>
+        <li><a href="">Yoga</a></li>
+        <li><a href="">Strength</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/nutrition/')?>"><p class="infohead">Nutrition</p></a></li>
+        <li><a href="">Foods</a></li>
+        <li><a href="">Macros</a></li>
+        <li><a href="">Exercise</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="<?php echo base_url('user/faq/')?>"><p class="infohead">FAQ</p></a></li>
+        <li><a href="">Services</a></li>
+        <li><a href="">Payment</a></li>
+        <li><a href="">Refund</a></li>
+      </ul>
+      <ul>
+        <li><a href="<?php echo base_url('user/aboutus/')?>"><p class="infohead">About</p></a></li>
+        <li><a href="">Team</a></li>
+        <li><a href="">Coaches</a></li>
+        <li><a href="">Trainees</a></li>
+      </ul>
+      
+      <hr>
+      <a href=""><img src="<?php echo base_url('assets/images/befitlogo.png')?>"/></a>
+  </footer>
+  
 </body>
+</html>
