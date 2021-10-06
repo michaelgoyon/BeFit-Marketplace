@@ -124,5 +124,10 @@ class User_model extends CI_Model {
         );
         $this->db->insert('orders', $data);
     }
+
+    public function delete_services($id){
+        $this->db->where('services_id', $id);
+	    $this->db->delete('services');
+    }
  
 }
