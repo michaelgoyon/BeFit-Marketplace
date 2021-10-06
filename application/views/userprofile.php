@@ -24,31 +24,32 @@
 
 <body>
 <div class="container">
-	<div class="header">
-		<h1>Welcome, Trainee!</h1>
-	</div>
 	<div class="body-container">
 		<div class="dtls-container">
 			<?php
 				foreach($users as $row){
 			?>
 			<div class="info-row">
-				<p>Type of User:</p>
+				<p class="name"><?php echo $row->users_name; ?></p>
+			</div>
+			<div class="info-row">
 				<p><?php echo $row->users_account; ?></p>
 			</div>
-			<div class="info-row">
-				<p>Full Name:</p>
-				<p><?php echo $row->users_name; ?></p>
+			<div class="btn-edit">
+				<a href="#">Edit Profile</a>
 			</div>
 			<div class="info-row">
+				<h1 id="header">ABOUT</h1>
+			</div>
+			<div class="info-row2">
 				<p>Username:</p>
 				<p><?php echo $row->users_username; ?></p>
 			</div>
-			<div class="info-row">
+			<div class="info-row2">
 				<p>Birthdate:</p>
 				<p><?php echo $row->users_birthdate; ?></p>
 			</div>
-			<div class="info-row">
+			<div class="info-row2">
 				<p>Email:</p>
 				<p><?php echo $row->users_email; ?></p>
 			</div>
@@ -95,46 +96,60 @@
 		$username = $this->uri->segment(3);
 		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
 		?>
-			<div>
+		<h2 id="border"></h2>
+		<h1>CREATE WORKOUT OFFERS</h1>
+			<div class="workout-container">
+		
 				<form method="post" action="<?php echo base_url();?>user/add_service">
-					<div class="input-form">
-						<label>Workout Title: </label>
+					<div class="input-form2">
+						<label>Workout Title</label>
 						<input type="text" name="workout_title">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Price: </label>
+					<div class="input-form2">
+						<label>Workout Price</label>
 						<input type="text" name="workout_price">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Description: </label>
+					<div class="input-form2">
+						<label>Workout Description</label>
 						<input type="text" name="workout_description">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Type: </label>
+					<div class="input-form2">
+						<label>Workout Type</label>
 						<input type="text" name="workout_type">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Day: </label>
+					<div class="input-form2">
+						<label>Workout Day</label>
 						<input type="text" name="workout_day">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Time: </label>
+					<div class="input-form2">
+						<label>Workout Time</label>
 						<input type="text" name="workout_time">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Session: </label>
+					<div class="input-form2">
+						<label>Workout Session</label>
 						<input type="text" name="workout_session">
+						<div></div>
 					</div>
-					<div class="input-form">
-						<label>Workout Duration: </label>
+					<div class="input-form2">
+						<label>Workout Duration</label>
 						<input type="text" name="workout_duration">
+						<div></div>
 					</div>
-					<div class="registerbtn">
+					<div class="registerbtn2">
 						<input type="submit" value="Add"/>
 					</div>
 				</form>
 			</div>
 			<div>
+				<div class="info-row">
+					<h1 id="header">YOUR SCHEDULE</h1>
+				</div>
 				<table>
 					<thead>
 						<tr>
