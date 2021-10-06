@@ -21,35 +21,60 @@
 </div>
 
 <body>
-    <div class="container-fluid">
-        <div class ="accordion">
-            <h2>Frequently Asked Questions</h2>
-            <div class ="icon"></div>
+<div class ="ptext">
+    FAQs
+</div>
+    <!---<section>
+        <h2>FAQ</h2>
+        <div class="faqjs">
+            <div class="question">
+                <h3>What is FAQS?</h3>
+                <svg width="15" height="10" viewBox="0 0 42 25">
+                    <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="answer">
+                <p>
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.  
+                </p>    
+            </div>
         </div>
-        <div class ="panel">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                   esse cillum dolore eu fugiat nulla pariatur. Excepteur sin
-                   t occaecat cupidatat non proident, sunt in culpa qui officia 
-                   deserunt mollit anim id est laborum."</p>
+    </section>--->
+
+    <div class="faqdiv">
+        <button class="accordion">How do I avail a service?<i class="arrow down"></i></p></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
 
-        <div class ="accordion">
-            <h5>What does befit do?</h5>
-            <div class ="icon"></div>
+        <button class="accordion">How do I pay?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-        <div class ="panel">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                 sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                  Duis aute irure dolor in reprehenderit in voluptate velit
-                   esse cillum dolore eu fugiat nulla pariatur. Excepteur sin
-                   t occaecat cupidatat non proident, sunt in culpa qui officia 
-                   deserunt mollit anim id est laborum."</p>
+
+        <button class="accordion">When do I start?<i class="arrow down"></i></button>
+        <div class="panel">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                 ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+                 laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                 velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </div>
+    <script type='text/javascript' src="<?php echo base_url(); ?>assets/js/app.js"></script>
 </body>
+</html>
+  

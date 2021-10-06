@@ -22,15 +22,17 @@
       </ul>
 </div>
 <body>
-<div class="infodiv" id="weightloss">
+<div class="infodiv">
     <img class="infoimg" src="<?php echo base_url('assets/images/cardio.jpg')?>">
     <p class="infotext">
 	<?php 
 		foreach($services as $row) {
 			echo "<p class='infohead'>".$row->services_title."</p>";
+			echo "<p class='infotext'>".$row->services_description."</p>";;
+			echo "<div class='servicediv'>";
+			echo "<p class='infotext orangebg'>"."DETAILS";
 			echo "<p class='infotext'>"."Price: ".$row->services_price." PHP"."</p>";
 			echo "<p class='infotext'>"."Coach: ".$row->users_name."</p>";
-			echo "<p class='infotext'>"."Description: ".$row->services_description."</p>";
 			echo "<p class='infotext'>"."Workout: ".$row->services_type."</p>";
 			echo "<p class='infotext'>"."Time: ".$row->services_time."</p>";
 			echo "<p class='infotext'>"."Day: ".$row->services_day."</p>";
@@ -38,13 +40,28 @@
 		}
 	?>
 	</p>	
-
-<form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
 	<div class="registerbtn">
-		<input type="submit" value="Buy">
-	</div>	
-</form>
+			<a href="<?php echo base_url();?>user/marketplace">CANCEL<br></a>
+	</div>
+	<form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
+		<div class="registerbtn">
+			<input type="submit" value="BUY">
+		</div>	
+	</form>
+	</div><!--- closing tag for servicediv --->
+</div><!--- closing tag for infodiv --->
 
+<div class="reviewdiv">
+<p class="infotext orangebg">REVIEWS</p>
+<?php 
+	foreach($ratings as $row) {
+		echo "<div>";
+		echo "<p class='infohead'>★".$row->ratings_rate." by ".$row->users_username."</p>";
+		echo "<p class='infotext'>".$row->ratings_comment."</p>";
+		echo "<hr>";
+		echo "</div>";
+	}
+?>
 <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3); ?>">
     <span class="star-cb-group">
       <input type="radio" id="rating-5" name="rating" value="5" />
@@ -69,14 +86,6 @@
 	</div>	
 </form>
 
-<?php 
-	foreach($ratings as $row) {
-		echo "<div>";
-		echo "<p>★".$row->ratings_rate." by ".$row->users_username."</p>";
-		echo "<p>".$row->ratings_comment."</p>";
-		echo "</div>";
-	}
-?>
 </div>
 
 
