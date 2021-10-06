@@ -158,7 +158,7 @@ html {
       margin : 0 10px 0 0;
       width: 30px;
       height: 30px;
-      background: blue;
+      background: url(../images/befitlogo.png) no-repeat 8px 7px blue;
       border-radius: 50%;
       float: left;
       transition: all .5 ease-in;
