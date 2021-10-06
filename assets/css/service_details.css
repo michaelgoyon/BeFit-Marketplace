@@ -155,6 +155,7 @@ hr{
 	margin: 30px auto 0;
     word-wrap: break-word;
     background-color: #181818;
+    padding-bottom: 50px;
 }
 
 .infoimg{
@@ -163,14 +164,17 @@ hr{
     display:block;
     margin:auto;
     padding: 50px;
+
 }
 
 .infohead{
     font-family: 'Poppins';
     color:#FA632A;
     display: block;
-    font-size:20px;
+    font-size:32px;
     font-weight: bold;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .infotext{
     font-family: 'Poppins';
@@ -210,4 +214,56 @@ input[type="submit"]:hover {
     color: white;
     background-color: #FA632A;
     transition: all 0.3s;
+}
+
+.servicediv{
+	position:relative;
+	width:60%;
+	height:auto;
+	margin: 30px auto 0;
+    word-wrap: break-word;
+    background-color: #222222;
+}
+.orangebg{
+    background-color: #FA632A;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.servicediv .infotext{
+    font-family: 'Poppins';
+    color:white;
+    display: block;
+    font-size:20px;
+    height: auto;
+    margin:auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.reviewdiv{
+	position:relative;
+	width:60%;
+	height:auto;
+	margin: 30px auto 0;
+    word-wrap: break-word;
+    background-color: #181818;
+    padding-bottom: 50px;
+}
+
+.reviewdiv .infotext{
+    font-size: 16px;
+    padding-left: 80px;
+}
+
+.reviewdiv .infohead{
+    font-size: 20px;
+    padding: 5px;
+    font-weight: normal;
+}
+
+.reviewdiv hr{
+    border: 0.5px solid #8b8b8b;
+    width: 100%;
+    margin: auto;
 }
