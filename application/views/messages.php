@@ -24,7 +24,7 @@
             console.log("Initialization completed successfully");
             //You can now call login function.
             CometChatWidget.login({
-                "uid": "patrickuy"
+                "uid": "<?php echo $this->session->userdata('userusername'); ?>"
             }).then(response => {
                 CometChatWidget.launch({
                     "widgetID": "8116fe55-3361-44c1-bb27-c0e5e54d7954",
@@ -32,7 +32,7 @@
                     "roundedCorners": "true",
                     "height": "600px",
                     "width": "800px",
-                    "defaultID": 'patrickuy', //default UID (user) or GUID (group) to show,
+                    "defaultID": '<?php echo $this->session->userdata('userusername'); ?>', //default UID (user) or GUID (group) to show,
                     "defaultType": 'user' //user or group
                 });
             }, error => {

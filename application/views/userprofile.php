@@ -183,9 +183,16 @@
 		<?php 
 			}
 		?>
+		<?php
+		$username = $this->uri->segment(3);
+		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
+		?>
 		<div class="info-row">
 			<h1 id="header">CONFIRM TRAINEES</h1>
 		</div>
+		<?php 
+			}
+		?>
 		<div class="btn-logout">
 			<a href="<?php echo base_url();?>user/logout">LOG OUT</a>
 		</div>
