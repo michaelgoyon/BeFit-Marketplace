@@ -17,11 +17,13 @@ html {
 .container h1{
     font-size: 24px;
     line-height: 0;
+    color: #FFFFFF;
 }
 
 .container h2{
     font-size: 60px;
     line-height: 0;
+    color: #FFFFFF;
 }
 
 .btn-container{

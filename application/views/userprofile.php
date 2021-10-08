@@ -20,6 +20,17 @@
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
       </ul>
+	  <ul class="items2">
+	  	<li class="with-submenu">
+            My Profile &dtrif;
+            <ul class="submenu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="<?php echo base_url();?>user/topup">Wallet</a></li>
+                <li><a href="#">Bookings</a></li>
+                <li><a href="<?php echo base_url();?>user/logout">Log Out</a></li>
+            </ul>
+        </li>
+	  </ul>
 </div>
 
 <body>
