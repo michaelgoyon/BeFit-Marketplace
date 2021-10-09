@@ -30,6 +30,9 @@
 				foreach($users as $row){
 			?>
 			<div class="info-row">
+				<img class="fixed-img" src='<?php echo base_url().'uploads/'.$row->users_avatar; ?>'>
+			</div>
+			<div class="info-row">
 				<p class="name"><?php echo $row->users_name; ?></p>
 			</div>
 			<div class="info-row">
