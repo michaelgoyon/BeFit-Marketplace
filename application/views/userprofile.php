@@ -22,7 +22,7 @@
       </ul>
 	  <ul class="items2">
 	  	<li class="with-submenu">
-            My Profile &dtrif;
+		  	<img src='<?php echo base_url().'uploads/'.$row->users_avatar; ?>'> &dtrif;
             <ul class="submenu">
                 <li><a href="#">Profile</a></li>
                 <li><a href="<?php echo base_url();?>user/topup">Wallet</a></li>
