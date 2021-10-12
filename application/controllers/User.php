@@ -255,6 +255,8 @@ class User extends CI_Controller {
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         $data["ratings"] = $this->user_model->get_rating_by_id($serviceid);
+        $data["coach"] = $this->user_model->get_coach_by_service($serviceid);
+        //print_r($data);
         $this->load->view("service_details", $data);
     }
 

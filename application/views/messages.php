@@ -13,7 +13,6 @@
 </head>
 <body>
 
-    <div id="cometchat"></div>
     <script>
     window.addEventListener('DOMContentLoaded', (event) => {
         CometChatWidget.init({
@@ -22,13 +21,13 @@
             "authKey": "bd9d02296028b3c8ce6791864495cdee3f43007a"
         }).then(response => {
             console.log("Initialization completed successfully");
-            //You can now call login function.
             CometChatWidget.login({
                 "uid": "<?php echo $this->session->userdata('userusername'); ?>"
             }).then(response => {
                 CometChatWidget.launch({
                     "widgetID": "8116fe55-3361-44c1-bb27-c0e5e54d7954",
-                    "target": "#cometchat",
+                    "docked": "true",
+					"alignment": "right", //left or right
                     "roundedCorners": "true",
                     "height": "600px",
                     "width": "800px",

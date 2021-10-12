@@ -57,6 +57,15 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    public function get_coach_by_service($serviceid) {
+        $this->db->select('users_username');
+        $this->db->from('users');
+        $this->db->join('services', 'services.users_id = users.users_id');
+        $this->db->where('services_id', $serviceid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function get_rating_by_id($serviceid) {
         $query = $this->db->get_where('ratings', array('services_id' => $serviceid));
         $result = $query->result();
