@@ -32,7 +32,7 @@
 		 </div>
 		 <div class="sub-container">
 			 <div class="mem">
-				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/team.jpeg')?>">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/podcast-header.jpeg')?>">
 			 
 				 <div class="name">Team</div>
 				<div class="text">

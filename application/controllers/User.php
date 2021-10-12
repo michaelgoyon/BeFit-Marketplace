@@ -302,6 +302,17 @@ class User extends CI_Controller {
         $this->load->view("nutrition");
     }
 
+    public function podcast() {
+        $username = $this->uri->segment(3);
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data["services"] = $this->user_model->get_services($userid);
+        $data["trainees"] = $this->user_model->get_trainees($userid);
+        $this->load->view("podcast", $data);
+    }
+
     public function faq() {
         $this->load->view("faq");
     }

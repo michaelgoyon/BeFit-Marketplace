@@ -16,6 +16,7 @@
       <ul class="items">
         <li><a href="<?php echo base_url('user/marketplace/')?>"><img class="navlogo" src="<?php echo base_url('assets/images/befitlogo.png')?>"></a></li>
         <li class="navitems"><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
+		<li class="navitems"><a href="<?php echo base_url('user/podcast/')?>">Podcast</a></li>
 		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
@@ -239,9 +240,6 @@
 		<?php 
 			}
 		?>
-		<div class="btn-logout">
-			<a href="<?php echo base_url();?>user/logout">LOG OUT</a>
-		</div>
 	</div>
 </div>
 
