@@ -179,6 +179,7 @@ class User extends CI_Controller {
             $userid = $row->users_id;
         }
         $data["services"] = $this->user_model->get_services($userid);
+        $data["trainees"] = $this->user_model->get_trainees($userid);
         $this->load->view("userprofile", $data);
     }
 
@@ -254,6 +255,8 @@ class User extends CI_Controller {
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         $data["ratings"] = $this->user_model->get_rating_by_id($serviceid);
+        $data["coach"] = $this->user_model->get_coach_by_service($serviceid);
+        //print_r($data);
         $this->load->view("service_details", $data);
     }
 
@@ -290,15 +293,6 @@ class User extends CI_Controller {
         unset($_COOKIE['value']);
         redirect(base_url().'user/topup');
     }
-
-    public function avail_service() {
-        $from = $this->session->userdata('userid');
-        $temp = $this->user_model->get_service_by_id($this->uri->segment(3));
-        $to = $temp[0]->users_id;
-        $amount = floatval($temp[0]->services_price);
-        $this->user_model->insert_order($from, $to, $amount);
-        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
-    }
  
     public function aboutus() {
         $this->load->view("aboutus");
@@ -316,6 +310,34 @@ class User extends CI_Controller {
         if(isset($_GET['id'])) {
 			$id=$_GET['id'];
 			$this->user_model->delete_services($id);
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+    }
+
+    public function checkout() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->load->view("checkout_service", $data);
+    }
+
+    public function avail_service() {
+        $from = $this->session->userdata('userid');
+        $temp = $this->user_model->get_service_by_id($this->uri->segment(3));
+        $to = $temp[0]->users_id;
+        $amount = floatval($temp[0]->services_price);
+        $this->user_model->insert_order($from, $to, $amount);
+        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+    }
+
+    public function confirm() {
+        if(isset($_GET['id'])) {
+			$id=$_GET['id'];
+			$this->user_model->confirm_trainee($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
     }

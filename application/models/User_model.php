@@ -45,10 +45,25 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    public function get_trainees($userid) {
+        $query = $this->db->get_where('orders', array('orders_to' => $userid));
+        $result = $query->result();
+        return $result;
+    }
+
     public function get_service_by_id($serviceid) {
         $query = $this->db->get_where('services', array('services_id' => $serviceid));
         $result = $query->result();
         return $result;
+    }
+
+    public function get_coach_by_service($serviceid) {
+        $this->db->select('users_username');
+        $this->db->from('users');
+        $this->db->join('services', 'services.users_id = users.users_id');
+        $this->db->where('services_id', $serviceid);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function get_rating_by_id($serviceid) {
@@ -128,6 +143,12 @@ class User_model extends CI_Model {
     public function delete_services($id){
         $this->db->where('services_id', $id);
 	    $this->db->delete('services');
+    }
+
+    public function confirm_trainee($id){
+        $this->db->set('orders_status', 1);
+        $this->db->where('orders_id', $id);
+	    $this->db->update('orders');
     }
  
 }

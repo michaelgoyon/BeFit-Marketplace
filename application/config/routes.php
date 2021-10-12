@@ -53,5 +53,6 @@ $route['default_controller'] = 'user';
 $route['register'] = 'user';
 $route['user/profile'] = 'user/profile';
 $route['user/service'] = 'user/service';
+$route['user/checkout'] = 'user/checkout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
