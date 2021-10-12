@@ -41,7 +41,7 @@
 	?>
 	</p>	
 
-	<form action="<?php echo base_url().'user/avail_service/'.$this->uri->segment(3); ?>">
+	<form action="<?php echo base_url().'user/checkout/'.$this->uri->segment(3); ?>">
 		<div class="registerbtn">
 			<input type="submit" value="BUY">
 		</div>	

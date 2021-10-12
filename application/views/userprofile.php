@@ -196,6 +196,7 @@
 								echo "<td>".$row->services_time."</td>";
 								echo "<td>".$row->services_session."</td>";
 								echo "<td>".$row->services_duration."</td>";
+								echo "</tr>";
 							}
 						?>
 					</tbody>
@@ -211,6 +212,29 @@
 		<div class="info-row">
 			<h1 id="header">CONFIRM TRAINEES</h1>
 		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Option</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php 
+					foreach($trainees as $row) {
+						echo "<tr>";
+				?>
+				<?php 
+					if($row->orders_status == 0) {
+				?>
+				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
+				<td><?php echo $row->orders_from; ?></td>
+				<?php
+						}
+					}
+				?>
+			</tbody>
+		</table>
 		<?php 
 			}
 		?>
