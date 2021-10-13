@@ -29,6 +29,10 @@ class Admin_Model extends CI_Model {
 		return $query->result();
     }
 
+    public function count_users() {
+        return $this->db->count_all_results('users');
+    }
+
     public function log_in_correctly() {  
         $this->db->where('admins_username', $this->input->post('username'));  
         $this->db->where('admins_password', $this->input->post('password'));  
@@ -42,12 +46,32 @@ class Admin_Model extends CI_Model {
     }
 
     public function get_ratings() {
-        $query = $this->db->get('ratings');
-		return $query->result(); 
+        $this->db->select('services_id, round(avg(ratings_rate),2) as ratings');
+        $this->db->from('ratings');
+        $this->db->group_by('services_id');
+        //$this->db->order_by('ratings', 'DESC');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_names($array) {
+        $this->db->select('users.users_name as names');
+        $this->db->from('users');
+        $this->db->join('services', 'services.users_id = users.users_id');
+        $this->db->where_in('services_id', $array);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
 	public function get_count() {
         return $this->db->count_all('users');
+    }
+
+    public function get_orders() {
+        $this->db->select('*');
+        $this->db->from('orders');
+        $query = $this->db->get()->result();
+        return $query;
     }
 
 	public function did_delete_row($id)	{

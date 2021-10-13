@@ -12,17 +12,48 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
-    <div>
+
+    <div class="container">
+        <h2 style="color:white;">Number of Users: <?php print_r($users); ?></h2>
+    </div>
+
+    <div class="container">
         <canvas id="myChart"></canvas>
-        <?php print_r($ratings); ?>
+    </div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Amount</th>
+                    <th>To</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($orders as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->orders_id."</td>";
+						echo "<td>".$row->orders_from."</td>";
+						echo "<td>".$row->orders_amount."</td>";
+						echo "<td>".$row->orders_to."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
     </div>
 
     <script>
     // === include 'setup' then 'config' above ===
     <?php
         $php_array = array();
-        foreach($ratings as $rating){
-            array_push($php_array, $rating->services_id);
+        foreach($names as $row){
+            array_push($php_array, $row->names);
         }
         $js_array = json_encode($php_array);
         echo "const labels = ". $js_array . ";";
@@ -30,13 +61,20 @@
         const data = {
         labels: labels,
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            label: 'Ratings',
+            backgroundColor: ['rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)'
+            ],
+            borderColor: ['rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)'
+            ],
+            borderWidth: 1,
             <?php
                 $php_array = array();
                 foreach($ratings as $rating){
-                    array_push($php_array, $rating->ratings_rate);
+                    array_push($php_array, $rating->ratings);
                 }
                 $js_array = json_encode($php_array);
                 echo "data: ". $js_array . ",";

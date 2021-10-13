@@ -104,7 +104,17 @@ class Admin extends CI_Controller {
 	}
 
 	public function chart() {
+		$data['users'] = $this->admin_model->count_users();
 		$data['ratings'] = $this->admin_model->get_ratings();
+		$idArray = array();
+		$tempArray = json_decode(json_encode($data['ratings']), true);
+		for ($i = 0; $i < 3; $i++) {
+			array_push($idArray, $tempArray[$i]['services_id']);
+		}
+		//print_r($idArray);
+		$data['names'] = $this->admin_model->get_names($idArray);
+		//print_r($data['ratings']);
+		$data['orders'] = $this->admin_model->get_orders();
 		$this->load->view('admin_chart', $data);
 	}
 
