@@ -4,20 +4,17 @@
     padding:0;
     box-sizing: border-box;
 }
-html { 
-    background-color:#222222;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-  }
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    font-family: 'Poppins', 'sans-serif';
+}
 
  a {
     text-decoration:none;
  }
+
 .container{
     margin-top: 20vh;
     margin-left: auto;
@@ -62,12 +59,16 @@ html {
     color: black;
     font-weight: 500;
 }
+
 .nav {
     font-size: 15px;
     font-family: 'Poppins', 'sans-serif';
     padding: 30px;
     top: 0px;
     background-color: #181818;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
 .nav img{
@@ -75,11 +76,40 @@ html {
     display: block;
 }
 
+.info-row img{
+    border-radius: 50%;
+    width: 250px;
+    min-height: 120px;
+    max-height: auto;
+    margin-bottom: 2rem;
+}
+
 .items{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 35%;
+}
+
+.items2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 12%;
+    color: #ffffff
+}
+
+.items2 li{
+    cursor: pointer;
+    font-size: 16px;
+    width: 70%;
+}
+
+.items2 img {
+    width: 60px;
+    min-height: 50px;
+    max-height: auto;
+    border-radius: 50%;
 }
 
 .nav li {
@@ -110,6 +140,76 @@ html {
 .navitems a:hover{
     color: #FA632A;
     transition: 0.3s;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    list-style: none;
+    left: 0;
+    margin: 0.2rem 0 0 0 ;
+    padding: 0;
+    min-width: calc(3.5 * var(--menu-item-size) - 5%);
+}
+
+
+.with-submenu {
+    position: relative;
+    display: inline-block;
+}
+
+.with-submenu:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #FA632A;
+    color: #FFFFFF;
+    transition: 0.3s all ease;
+    display: block;
+    line-height: 0%;
+    padding: 1rem;
+}
+
+
+
+.submenu > a:hover{
+    transition: 0.3s all ease;
+    background: #FFFFFF;
+    color: #222222;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+    background-color: #6a6a6a38;
+    padding: 1rem;
+}
+
+td{
+    padding: 1rem;
+}
+
+td a{
+    background-color: #e5e5e5a2;
+    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+td a:hover{
+    background-color: red;
+    color: #FFFFFF;
+    transition: 0.4s ease;
 }
 
 .containbox{

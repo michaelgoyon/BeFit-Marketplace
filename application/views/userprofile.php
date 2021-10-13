@@ -20,7 +20,7 @@
 		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
+        
       </ul>
 	  <ul class="items2">
 	  	<li class="with-submenu">
@@ -32,7 +32,7 @@
 			}
 			?>
             <ul class="submenu">
-                <li><a href="#">Profile</a></li>
+				<li><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
                 <li><a href="<?php echo base_url();?>user/topup">Wallet</a></li>
                 <li><a href="#">Bookings</a></li>
                 <li><a href="<?php echo base_url();?>user/logout">Log Out</a></li>

@@ -224,6 +224,11 @@ class User extends CI_Controller {
     }
 
     public function marketplace() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
         $data['records'] = $this->user_model->fetch_all_service();
         $this->load->view("marketplace", $data);
     }
@@ -295,21 +300,29 @@ class User extends CI_Controller {
     }
  
     public function aboutus() {
-        $this->load->view("aboutus");
-    }
-
-    public function nutrition() {
-        $this->load->view("nutrition");
-    }
-
-    public function podcast() {
-        $username = $this->uri->segment(3);
+        $username = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
-        $data["services"] = $this->user_model->get_services($userid);
-        $data["trainees"] = $this->user_model->get_trainees($userid);
+        $this->load->view("aboutus", $data);
+    }
+
+    public function nutrition() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $this->load->view("nutrition", $data);
+    }
+
+    public function podcast() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
         $this->load->view("podcast", $data);
     }
 
