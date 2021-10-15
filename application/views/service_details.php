@@ -12,16 +12,7 @@
   <script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
     <title>BeFit Homepage</title>
 </head>
-<div class="nav">
-      <ul class="items">
-        <li><a href="<?php echo base_url('user/marketplace/')?>"><img class="navlogo" src="<?php echo base_url('assets/images/befitlogo.png')?>"></a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
-		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
-		<li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
-      </ul>
-</div>
+
 <body>
 <div class="infodiv">
     <img class="infoimg" src="<?php echo base_url('assets/images/cardio.jpg')?>">

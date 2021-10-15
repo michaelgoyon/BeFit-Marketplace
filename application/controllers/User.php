@@ -172,6 +172,7 @@ class User extends CI_Controller {
     }
     
     public function profile() {
+        
         //$check = $this->session->userdata('userusername');
         $username = $this->uri->segment(3);
         $data["users"] = $this->user_model->fetch_data($username);
@@ -180,6 +181,7 @@ class User extends CI_Controller {
         }
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($userid);
+        $this->navbar();
         $this->load->view("userprofile", $data);
     }
 
@@ -230,6 +232,7 @@ class User extends CI_Controller {
             $userid = $row->users_id;
         }
         $data['records'] = $this->user_model->fetch_all_service();
+        $this->navbar();
         $this->load->view("marketplace", $data);
     }
 
@@ -262,6 +265,7 @@ class User extends CI_Controller {
         $data["ratings"] = $this->user_model->get_rating_by_id($serviceid);
         $data["coach"] = $this->user_model->get_coach_by_service($serviceid);
         //print_r($data);
+        $this->navbar();
         $this->load->view("service_details", $data);
     }
 
@@ -277,16 +281,29 @@ class User extends CI_Controller {
         redirect(base_url().'user/service/'.$rating['services_id']);
     }
 
-    public function messages() {
-        $this->load->view("messages");
+    public function navbar() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data['records'] = $this->user_model->fetch_all_service();
+        $this->load->view("navbar", $data);
     }
 
     public function test() {
         $this->load->view("test");
-    }
+    }   
 
     public function topup() {
-        $this->load->view("topup");
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data['records'] = $this->user_model->fetch_all_service();
+        $this->navbar();
+        $this->load->view("topup", $data);
     }
 
     public function success() {
@@ -305,6 +322,7 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $this->navbar();
         $this->load->view("aboutus", $data);
     }
 
@@ -314,6 +332,7 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $this->navbar();
         $this->load->view("nutrition", $data);
     }
 
@@ -323,10 +342,17 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $this->navbar();
         $this->load->view("podcast", $data);
     }
 
     public function faq() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $this->navbar();
         $this->load->view("faq");
     }
 
@@ -346,6 +372,7 @@ class User extends CI_Controller {
         }
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->navbar();
         $this->load->view("checkout_service", $data);
     }
 
