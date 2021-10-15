@@ -74,6 +74,21 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
+    public function get_prices() {
+        $this->db->select('services_price');
+        $this->db->from('services');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_payments() {
+        $this->db->select('payments.payments_id, users.users_id as ids, users.users_username, payments.payments_amount');
+        $this->db->from('users');
+        $this->db->join('payments', 'payments.users_id = users.users_id');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
 	public function did_delete_row($id)	{
 	    $this->db->where('users_id', $id);
 	    $this->db->delete('users');
