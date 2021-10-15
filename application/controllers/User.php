@@ -350,9 +350,9 @@ class User extends CI_Controller {
     }
 
     public function avail_service() {
-        $from = $this->session->userdata('userid');
-        $temp = $this->user_model->get_service_by_id($this->uri->segment(3));
-        $to = $temp[0]->users_id;
+        $from = $this->session->userdata('userusername');
+        $temp = $this->user_model->get_coach_by_service($this->uri->segment(3));
+        $to = $temp[0]->users_username;
         $amount = floatval($temp[0]->services_price);
         $this->user_model->insert_order($from, $to, $amount);
         redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
