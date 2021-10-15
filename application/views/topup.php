@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/index_styles.css')?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/topup_styles.css')?>">
     <script src="https://unpkg.com/paymaya-js-sdk@2.0.0/dist/bundle.js"></script>
     <title>BeFit Topup</title>
 </head>

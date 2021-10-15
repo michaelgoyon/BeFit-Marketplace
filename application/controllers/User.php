@@ -25,6 +25,7 @@ class User extends CI_Controller {
 
     public function register() {
 		$this->load->view('register', $this->data);
+
 	}
  
 	public function register_data() {
@@ -45,6 +46,8 @@ class User extends CI_Controller {
             $config['encrypt_name'] = true;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('image')) {
+                $acc = $this->input->post('account');
+
                 $name = $this->input->post('fname')." ".$this->input->post('lname');
                 $user_avatar = $this->upload->data('file_name');
                 //generate simple random code
@@ -62,7 +65,38 @@ class User extends CI_Controller {
                     'users_active'=>false,
                     'users_wallet'=>0
                 );
+                
                 $id = $this->user_model->insert($user);
+
+                $traineedetails = array(
+                    'Age'=>$this->input->post('Age'),
+                    'Height'=>$this->input->post('Height'),
+                    'Weight'=>$this->input->post('Weight'),
+                    'Health'=>$this->input->post('Health'),
+                    'BMI'=>$this->input->post('BMI'),
+                    'ID'=>$id
+                );
+
+
+                //if trainee ung acc
+                if ($acc == "Trainee"){
+                    $this->user_model->trainee($traineedetails);
+                }
+                //if coach ung acc
+                else if ($acc == "Coach"){
+                    if ($this->upload->do_upload('req')){
+                        $coachdetails = array(
+                            'Age'=>$this->input->post('Age'),
+                            'Requirement'=>$this->upload->data('file_name'),
+                            'ID'=>$id
+                        );
+                        $this->user_model->coach($coachdetails);
+                    }
+                    
+                    
+                }
+                
+                
                 $message = 	"
                             <html>
                             <head>

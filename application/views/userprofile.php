@@ -121,7 +121,7 @@
 		<h2 id="border"></h2>
 		<h1>CREATE WORKOUT OFFERS</h1>
 			<div class="workout-container">
-		
+
 				<form method="post" action="<?php echo base_url();?>user/add_service">
 					<div class="input-form2">
 						<label>Workout Title</label>
@@ -140,12 +140,27 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Type</label>
-						<input type="text" name="workout_type">
+						<select class="select" name="workout_type">
+						    <option disabled selected>Select Workout Type</option>
+							<option value ="Cardio">Cardio</option>
+							<option value ="Strength">Strength</option>
+							<option value ="Endurance">Endurance</option>
+							<option value ="Flexibility">Flexibility</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">
 						<label>Workout Day</label>
-						<input type="text" name="workout_day">
+						<select class="select" name="workout_day">
+							<option disabled selected>Select Workout Day</option>
+							<option value ="Monday">Monday</option>
+							<option value ="Tuesday">Tuesday</option>
+							<option value ="Wednesday">Wedneday</option>
+							<option value ="Thursday">Thursday</option>
+							<option value ="Friday">Friday</option>
+							<option value ="Saturday">Saturday</option>
+							<option value ="Sunday">Sunday</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">
@@ -155,7 +170,11 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Session</label>
-						<input type="text" name="workout_session">
+						<select class="select" name="workout_session">
+							<option disabled selected>Select Type of Session</option>
+							<option value ="Solo">Solo</option>
+							<option value ="Group">Group</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">

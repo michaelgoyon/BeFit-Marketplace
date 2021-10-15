@@ -18,6 +18,15 @@ class User_model extends CI_Model {
 		return $this->db->insert_id(); 
 	}
 
+    public function trainee($traineedetails) {
+		$this->db->insert('traineeprofile', $traineedetails);
+	}
+
+    public function coach($coachdetails) {
+        $this->db->insert('coachprofile', $coachdetails);
+		
+	}
+
     public function insert_service($service) {
         $this->db->insert('services', $service);
         return $this->db->insert_id();
