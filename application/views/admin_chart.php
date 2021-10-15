@@ -22,13 +22,14 @@
     </div>
 
     <div class="container">
-        <table>
+        <h2 style="color:white;">Payment Transactions</h2>
+        <table style="color:white;">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Username</th>
+                    <th>Trainee</th>
                     <th>Amount</th>
-                    <th>To</th>
+                    <th>Coach</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +40,7 @@
                 <?php 
 						echo "<td>".$row->orders_id."</td>";
 						echo "<td>".$row->orders_from."</td>";
-						echo "<td>".$row->orders_amount."</td>";
+						echo "<td>".$row->orders_amount.".00 PhP</td>";
 						echo "<td>".$row->orders_to."</td>";
 						echo "</tr>";
 					}
@@ -62,13 +63,14 @@
         labels: labels,
         datasets: [{
             label: 'Ratings',
-            backgroundColor: ['rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)'
+            backgroundColor: ['rgba(255, 0, 0, 0.4)',
+            'rgba(0, 255, 0, 0.4)',
+            'rgba(0, 0, 255, 0.4)'
             ],
-            borderColor: ['rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)'
+            borderColor: [
+            'rgb(255, 0, 0)',
+            'rgb(0, 255, 0)',
+            'rgb(0, 0, 255)'
             ],
             borderWidth: 1,
             <?php
