@@ -213,7 +213,7 @@ class User extends CI_Controller {
             $userid = $row->users_id;
         }
         $data["services"] = $this->user_model->get_services($userid);
-        $data["trainees"] = $this->user_model->get_trainees($userid);
+        $data["trainees"] = $this->user_model->get_trainees($username);
         $this->load->view("userprofile", $data);
     }
 
@@ -388,7 +388,8 @@ class User extends CI_Controller {
         $temp = $this->user_model->get_coach_by_service($this->uri->segment(3));
         $to = $temp[0]->users_username;
         $amount = floatval($temp[0]->services_price);
-        $this->user_model->insert_order($from, $to, $amount);
+        $serviceid = $this->uri->segment(3);
+        $this->user_model->insert_order($from, $to, $amount, $serviceid);
         redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
 

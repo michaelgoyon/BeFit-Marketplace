@@ -238,6 +238,9 @@
 				<tr>
 					<th>Option</th>
 					<th>Name</th>
+					<th>Workout</th>
+					<th>Day</th>
+					<th>Time</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -250,6 +253,9 @@
 				?>
 				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
 				<td><?php echo $row->orders_from; ?></td>
+				<td><?php echo $row->services_type; ?></td>
+				<td><?php echo $row->services_day; ?></td>
+				<td><?php echo $row->services_time; ?></td>
 				<?php
 						}
 					}
