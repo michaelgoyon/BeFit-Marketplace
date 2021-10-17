@@ -79,6 +79,34 @@
 			<?php
 				}
 			?>
+			<?php
+				foreach($details as $row){	
+			?>
+				<div class="info-row2">
+					<p>Age:</p>
+					<p><?php echo $row->Age; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Height:</p>
+					<p><?php echo $row->Height; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Weight:</p>
+					<p><?php echo $row->Weight; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>BMI:</p>
+					<p><?php echo $row->BMI; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Health:</p>
+					<p><?php echo $row->Health; ?></p>
+				</div>
+
+			<?php
+				}
+			?>
+
 		</div>
 		<h2 id="border"></h2>
 		<div class="form-container">
@@ -252,7 +280,7 @@
 					if($row->orders_status == 0) {
 				?>
 				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
-				<td><?php echo $row->orders_from; ?></td>
+				<td><a href="<?php echo base_url().'user/profile/'.$row->orders_from;?>"><?php echo $row->orders_from; ?></a></td> 
 				<td><?php echo $row->services_type; ?></td>
 				<td><?php echo $row->services_day; ?></td>
 				<td><?php echo $row->services_time; ?></td>
