@@ -214,6 +214,7 @@ class User extends CI_Controller {
         }
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
+        $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->load->view("userprofile", $data);
     }
 
