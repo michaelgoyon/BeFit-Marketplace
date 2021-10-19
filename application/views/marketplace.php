@@ -24,6 +24,7 @@
 	  	<li class="with-submenu">
 		  	<?php
 				foreach($users as $row){
+
 			?>
 		  	<img src='<?php echo base_url().'uploads/'.$row->users_avatar; ?>'>
 			<?php
@@ -39,6 +40,13 @@
 	  </ul>
 </div>
 
+<?php
+  foreach($details as $row){
+    if ($row->Health == 'Heart Problems'){
+      echo "<p class='infohead'>"."may heart problem ako"."</p>";
+    }
+  }
+?>
 
 <body>
 <div class ="marketplacehead">
@@ -48,7 +56,47 @@
 
 <div class="head"><h1>Services</h1></div>
 		 
-			
+<div class="head"><h1>Recommended for you</h1></div>
+<div class="aboutdiv">
+	<div class="sub-container">
+        <?php 
+            foreach($records as $row) {
+              foreach($details as $traineerow){
+                if ($traineerow->Health == 'Heart Problems'){
+                  if($row->services_type == 'Cardio'){
+                    echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
+                    echo "<div class='mem'>";
+                    echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                    echo "<p class='infohead'>"."may heart problem ako"."</p>";
+                    echo "<p class='infohead'>".$row->services_title."</p>";
+                    echo "<p class='infotext'>".$row->users_name."</p>";
+                    echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                    echo "<div class='bookbutton'>Book Now</div>";     
+                    echo "</a>";       
+                    echo "</div>";
+                  }
+                }
+
+                else if ($traineerow->Health =='Diabetic'){
+                  if($row->services_type == 'Flexibility'){
+                    echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
+                    echo "<div class='mem'>";
+                    echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                    echo "<p class='infohead'>"."may diabetis ako"."</p>";
+                    echo "<p class='infohead'>".$row->services_title."</p>";
+                    echo "<p class='infotext'>".$row->users_name."</p>";
+                    echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                    echo "<div class='bookbutton'>Book Now</div>";     
+                    echo "</a>";       
+                    echo "</div>";
+                  }
+                }
+              }
+            }
+        ?>
+    </div>
+</div>	
+
 <div class="aboutdiv">
 	<div class="sub-container">
         <?php 
