@@ -446,6 +446,7 @@ class User extends CI_Controller {
 
     public function login_mobile() {
         $result='';
+        $name='';
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $data["users"] = $this->user_model->fetch_data($username);
@@ -458,6 +459,7 @@ class User extends CI_Controller {
                         $result = "notactive";
                     } else {
                         $result = "true";
+                        $name = $row->users_name;
                     }
                 }
             }
@@ -465,7 +467,7 @@ class User extends CI_Controller {
             $result = "false";
         }
         
-        echo $result;
+        echo $result.':'.$name;
     }
 
     public function createWorkout_mobile() {
