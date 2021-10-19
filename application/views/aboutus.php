@@ -10,21 +10,14 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/aboutus_styles.css')?>">
     <title>BeFit About Us</title>
 </head>
-<div class="nav">
-      <ul class="items">
-        <li><a href="<?php echo base_url('user/marketplace/')?>"><img class="navlogo" src="<?php echo base_url('assets/images/befitlogo.png')?>"></a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/marketplace/')?>">Marketplace</a></li>
-		<li class="navitems"><a href="<?php echo base_url('user/nutrition/')?>">Nutrition</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/faq/')?>">FAQ</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/aboutus/')?>">About</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/profile/'.$this->session->userdata('userusername'))?>">Profile</a></li>
-      </ul>
-</div>
 
 <body>
-<div class="aboutushead">
-    <p class="ptext">ABOUT US</p>
-</div>    
+<div class="header">
+    <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
+    <div class="centered">
+      <h1>About Us</h1>
+    </div>
+  </div>
 
 <div class="aboutdiv">
 	  	<div class="head">
@@ -32,7 +25,7 @@
 		 </div>
 		 <div class="sub-container">
 			 <div class="mem">
-				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/podcast-header.jpeg')?>">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/podcast-header.jpg')?>">
 			 
 				 <div class="name">Team</div>
 				<div class="text">

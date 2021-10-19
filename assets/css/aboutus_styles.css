@@ -12,6 +12,7 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    font-family: 'Poppins', 'sans-serif';
   }
 
 .container{
@@ -204,15 +205,28 @@ hr{
     font-size:20px;
 }
 
-.aboutushead{
-    background: url(../images/aboutusbg.png); 
-    background-repeat: no-repeat;
-    background-size: 100%;
-	position:relative;
-	width: 100%;
-	height: 500px;;
-    word-wrap: break-word;
+.header{
+    position: relative;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    width: 100%;
 }
+
+.header img{
+    width: 100%;
+    height: 80%;
+    object-fit: cover
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 .aboutdiv{
 	text-align: center;
@@ -245,14 +259,14 @@ hr{
 	padding: 20px;
 	width: 30%;
 	box-sizing: border-box;
-	cursor:pointer;
 	transition:0.3s;
 	
 }
-
+/* 
 .mem:hover{
 	background:#ddd;
-}
+    color: #000000;
+} */
 
 .mem img{
 	border: 1px solid #E1E0DE;
@@ -374,3 +388,5 @@ footer img {
   footer .infohead{
       font-size: 16px;
   }
+
+
