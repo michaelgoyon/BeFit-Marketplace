@@ -179,8 +179,10 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
-        $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($userid);
+        $this->navbar();
+        $data["trainees"] = $this->user_model->get_trainees($username);
+        $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->navbar();
         $this->load->view("userprofile", $data);
     }
@@ -233,6 +235,7 @@ class User extends CI_Controller {
         }
         $data['records'] = $this->user_model->fetch_all_service();
         $this->navbar();
+        $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->load->view("marketplace", $data);
     }
 
