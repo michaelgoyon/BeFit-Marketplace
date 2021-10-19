@@ -265,6 +265,7 @@ class User extends CI_Controller {
             $userid = $row->users_id;
         }
         $data['records'] = $this->user_model->fetch_all_service();
+        $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->load->view("marketplace", $data);
     }
 
