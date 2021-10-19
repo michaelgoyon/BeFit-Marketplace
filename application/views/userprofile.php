@@ -11,7 +11,12 @@
 	<script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
     <title>My Profile</title>
 </head>
+<<<<<<< HEAD
   
+=======
+
+	  
+>>>>>>> main
 <body>
 <div class="container">
 	<div class="body-container">
@@ -49,6 +54,34 @@
 			<?php
 				}
 			?>
+			<?php
+				foreach($details as $row){	
+			?>
+				<div class="info-row2">
+					<p>Age:</p>
+					<p><?php echo $row->Age; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Height:</p>
+					<p><?php echo $row->Height; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Weight:</p>
+					<p><?php echo $row->Weight; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>BMI:</p>
+					<p><?php echo $row->BMI; ?></p>
+				</div>
+				<div class="info-row2">
+					<p>Health:</p>
+					<p><?php echo $row->Health; ?></p>
+				</div>
+
+			<?php
+				}
+			?>
+
 		</div>
 		<h2 id="border"></h2>
 		<div class="form-container">
@@ -92,7 +125,7 @@
 		<h2 id="border"></h2>
 		<h1>CREATE WORKOUT OFFERS</h1>
 			<div class="workout-container">
-		
+
 				<form method="post" action="<?php echo base_url();?>user/add_service">
 					<div class="input-form2">
 						<label>Workout Title</label>
@@ -111,12 +144,27 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Type</label>
-						<input type="text" name="workout_type">
+						<select class="select" name="workout_type">
+						    <option disabled selected>Select Workout Type</option>
+							<option value ="Cardio">Cardio</option>
+							<option value ="Strength">Strength</option>
+							<option value ="Endurance">Endurance</option>
+							<option value ="Flexibility">Flexibility</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">
 						<label>Workout Day</label>
-						<input type="text" name="workout_day">
+						<select class="select" name="workout_day">
+							<option disabled selected>Select Workout Day</option>
+							<option value ="Monday">Monday</option>
+							<option value ="Tuesday">Tuesday</option>
+							<option value ="Wednesday">Wedneday</option>
+							<option value ="Thursday">Thursday</option>
+							<option value ="Friday">Friday</option>
+							<option value ="Saturday">Saturday</option>
+							<option value ="Sunday">Sunday</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">
@@ -126,7 +174,11 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Session</label>
-						<input type="text" name="workout_session">
+						<select class="select" name="workout_session">
+							<option disabled selected>Select Type of Session</option>
+							<option value ="Solo">Solo</option>
+							<option value ="Group">Group</option>
+						</select>
 						<div></div>
 					</div>
 					<div class="input-form2">
@@ -189,6 +241,9 @@
 				<tr>
 					<th>Option</th>
 					<th>Name</th>
+					<th>Workout</th>
+					<th>Day</th>
+					<th>Time</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -200,7 +255,10 @@
 					if($row->orders_status == 0) {
 				?>
 				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
-				<td><?php echo $row->orders_from; ?></td>
+				<td><a href="<?php echo base_url().'user/profile/'.$row->orders_from;?>"><?php echo $row->orders_from; ?></a></td> 
+				<td><?php echo $row->services_type; ?></td>
+				<td><?php echo $row->services_day; ?></td>
+				<td><?php echo $row->services_time; ?></td>
 				<?php
 						}
 					}

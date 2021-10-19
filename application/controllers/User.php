@@ -25,8 +25,20 @@ class User extends CI_Controller {
 
     public function register() {
 		$this->load->view('register', $this->data);
+
 	}
- 
+    
+    public function navbar() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data['records'] = $this->user_model->fetch_all_service();
+        $this->load->view("navbar", $data);
+    }
+
+
 	public function register_data() {
         $this->form_validation->set_message('is_unique', 'The %s is already taken.');
         $this->form_validation->set_rules('fname', 'First name', 'required');
@@ -45,6 +57,8 @@ class User extends CI_Controller {
             $config['encrypt_name'] = true;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload('image')) {
+                $acc = $this->input->post('account');
+
                 $name = $this->input->post('fname')." ".$this->input->post('lname');
                 $user_avatar = $this->upload->data('file_name');
                 //generate simple random code
@@ -62,7 +76,38 @@ class User extends CI_Controller {
                     'users_active'=>false,
                     'users_wallet'=>0
                 );
+                
                 $id = $this->user_model->insert($user);
+
+                $traineedetails = array(
+                    'Age'=>$this->input->post('Age'),
+                    'Height'=>$this->input->post('Height'),
+                    'Weight'=>$this->input->post('Weight'),
+                    'Health'=>$this->input->post('Health'),
+                    'BMI'=>$this->input->post('BMI'),
+                    'ID'=>$id
+                );
+
+
+                //if trainee ung acc
+                if ($acc == "Trainee"){
+                    $this->user_model->trainee($traineedetails);
+                }
+                //if coach ung acc
+                else if ($acc == "Coach"){
+                    if ($this->upload->do_upload('req')){
+                        $coachdetails = array(
+                            'Age'=>$this->input->post('Age'),
+                            'Requirement'=>$this->upload->data('file_name'),
+                            'ID'=>$id
+                        );
+                        $this->user_model->coach($coachdetails);
+                    }
+                    
+                    
+                }
+                
+                
                 $message = 	"
                             <html>
                             <head>
@@ -179,8 +224,12 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+<<<<<<< HEAD
         $data["trainees"] = $this->user_model->get_trainees($userid);
         $this->navbar();
+=======
+        $data["services"] = $this->user_model->get_services($userid);
+>>>>>>> main
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->navbar();
@@ -234,8 +283,13 @@ class User extends CI_Controller {
             $userid = $row->users_id;
         }
         $data['records'] = $this->user_model->fetch_all_service();
+<<<<<<< HEAD
         $this->navbar();
         $data["details"] = $this->user_model->get_traineedetails($userid);
+=======
+        $data["details"] = $this->user_model->get_traineedetails($userid);
+        $this->navbar();
+>>>>>>> main
         $this->load->view("marketplace", $data);
     }
 
@@ -294,6 +348,7 @@ class User extends CI_Controller {
         $this->load->view("navbar", $data);
     }
 
+<<<<<<< HEAD
     public function test() {
         $this->load->view("test");
     }   
@@ -307,6 +362,11 @@ class User extends CI_Controller {
         $data['records'] = $this->user_model->fetch_all_service();
         $this->navbar();
         $this->load->view("topup", $data);
+=======
+    public function topup() {
+        $this->navbar();
+        $this->load->view("topup");
+>>>>>>> main
     }
 
     public function success() {
@@ -350,11 +410,14 @@ class User extends CI_Controller {
     }
 
     public function faq() {
+<<<<<<< HEAD
         $username = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+=======
+>>>>>>> main
         $this->navbar();
         $this->load->view("faq");
     }
@@ -384,7 +447,8 @@ class User extends CI_Controller {
         $temp = $this->user_model->get_coach_by_service($this->uri->segment(3));
         $to = $temp[0]->users_username;
         $amount = floatval($temp[0]->services_price);
-        $this->user_model->insert_order($from, $to, $amount);
+        $serviceid = $this->uri->segment(3);
+        $this->user_model->insert_order($from, $to, $amount, $serviceid);
         redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
 

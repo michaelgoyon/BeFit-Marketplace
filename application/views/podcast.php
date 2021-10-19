@@ -11,7 +11,11 @@
 	<script defer src="https://widget-js.cometchat.io/v3/cometchatwidget.js"></script>
     <title>My Profile</title>
 </head>
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> main
 <body>
 <div class="header">
     <img src="<?php echo base_url('assets/images/podcast-header.jpg')?>">

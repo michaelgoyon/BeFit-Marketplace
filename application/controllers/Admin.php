@@ -115,6 +115,10 @@ class Admin extends CI_Controller {
 		$data['names'] = $this->admin_model->get_names($idArray);
 		//print_r($data['ratings']);
 		$data['orders'] = $this->admin_model->get_orders();
+		//print_r($tempPriceArray);
+		$data['prices'] = $this->admin_model->get_prices();
+		$data['payments'] = $this->admin_model->get_payments();
+		//print_r($data['payments']);
 		$this->load->view('admin_chart', $data);
 	}
 

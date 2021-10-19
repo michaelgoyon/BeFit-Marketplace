@@ -57,12 +57,12 @@
 		</div>
 			<form method="POST" action="<?php echo base_url().'user/register_data'; ?>" enctype="multipart/form-data">
                 <div class="wrapper">
-				<input type="radio" name="account" id="trainee" value="Trainee" checked>
+				<input type="radio" name="account" id="trainee" value="Trainee" onclick="traineereg()" checked>
 					<label for="trainee" class="option trainee">
 						<div class="dot"></div>
 						<span>Trainee</span>
 					</label>
-				<input type="radio" name="account" id="coach" value="Coach">
+				<input type="radio" name="account" id="coach" value="Coach" onclick="coachreg()">
 					<label for="coach" class="option coach">
 						<div class="dot"></div>
 						<span>Coach</span>
@@ -96,9 +96,33 @@
 					<label for="password_confirm">Confirm Password</label><br>
 					<input type="password" id="password_confirm" name="password_confirm">
 				</div>
-                <div>
+				<div>
+                    <label for="age">Age</label><br>
+					<input type="text" id="Age" name="Age" value="<?php echo set_value('Age'); ?>">
+				</div>
+                <div id ="height">
+                    <label for="height">Height</label><br>
+					<input type="text" id="height" name="Height" value="<?php echo set_value('Height'); ?>">
+				</div>
+				<div id ="weight">
+                    <label for="weight">Weight</label><br>
+					<input type="text" id="weight" name="Weight" value="<?php echo set_value('Weight'); ?>">
+				</div>
+				<div id ="bmi">
+                    <label for="bmi">BMI</label><br>
+					<input type="text" id="BMI" name="BMI" value="<?php echo set_value('BMI'); ?>">
+				</div>
+				<div>
+                    <label for="health">Health Condition</label><br>
+					<input type="text" id="Health" name="Health" value="<?php echo set_value('Health'); ?>">
+				</div>
+				<div id ="div1" class ="hide">
+                    <label for="requirement"><h1>Valid ID</h1></label><br>
+                    <input type="file" name="req" id="req">
+				</div>
+				<div>
                     <label for="image"><h1>User Avatar</h1></label><br>
-					<input type="file" name="image" id="image" required>
+                    <input type="file" name="image" id="image" required>
 				</div>
 				<div class="registerbtn">
 					<input type="submit" value="Register">
@@ -108,5 +132,19 @@
 		</div>
 	</div>
 </div>
+<script>
+	function traineereg(){
+		document.getElementById('div1').style.display ='none';
+		document.getElementById('height').style.display = 'block';
+		document.getElementById('weight').style.display = 'block';
+		document.getElementById('bmi').style.display = 'block';
+	}
+	function coachreg(){
+		document.getElementById('div1').style.display = 'block';
+		document.getElementById('height').style.display = 'none';
+		document.getElementById('weight').style.display = 'none';
+		document.getElementById('bmi').style.display = 'none';
+	}
+</script>
 </body>
 </html>

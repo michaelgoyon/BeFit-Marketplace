@@ -18,6 +18,15 @@ class User_model extends CI_Model {
 		return $this->db->insert_id(); 
 	}
 
+    public function trainee($traineedetails) {
+		$this->db->insert('traineeprofile', $traineedetails);
+	}
+
+    public function coach($coachdetails) {
+        $this->db->insert('coachprofile', $coachdetails);
+		
+	}
+
     public function insert_service($service) {
         $this->db->insert('services', $service);
         return $this->db->insert_id();
@@ -45,10 +54,22 @@ class User_model extends CI_Model {
         return $result;
     }
 
-    public function get_trainees($userid) {
-        $query = $this->db->get_where('orders', array('orders_to' => $userid));
-        $result = $query->result();
-        return $result;
+    public function get_trainees(/*$username*/) {
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->join('orders', 'orders.services_id = services.services_id');
+        //$this->db->where('services_id', $serviceid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_traineedetails($userid) {
+        $this->db->select('*');
+        $this->db->from('traineeprofile');
+        $this->db->join('users', 'users.users_id = traineeprofile.ID');
+        $this->db->where('users_id', $userid);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function get_service_by_id($serviceid) {
@@ -130,12 +151,13 @@ class User_model extends CI_Model {
         $this->db->insert('payments', $data);
     }
 
-    public function insert_order($from, $to, $amount) {
+    public function insert_order($from, $to, $amount, $serviceid) {
         $data = array(
             'orders_from' => $from,
             'orders_to' => $to,
             'orders_status' => 0,
-            'orders_amount' => $amount
+            'orders_amount' => $amount,
+            'services_id' => $serviceid
         );
         $this->db->insert('orders', $data);
     }

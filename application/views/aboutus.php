@@ -13,12 +13,17 @@
 </head>
 
 <body>
+<<<<<<< HEAD
   <div class="header">
+=======
+<div class="header">
+>>>>>>> main
     <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
     <div class="centered">
       <h1>About Us</h1>
     </div>
   </div>
+<<<<<<< HEAD
 
   <div class="aboutdiv">
     <div class="head">
@@ -45,6 +50,52 @@
 
       <div class="mem">
         <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/trainee.jpg') ?>">
+=======
+
+<div class="aboutdiv">
+	  	<div class="head">
+		 <h1>BeFit</h1>
+		 </div>
+		 <div class="sub-container">
+			 <div class="mem">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/podcast-header.jpg')?>">
+			 
+				 <div class="name">Team</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+				 </div>
+				 </div>
+			 
+			 <div class="mem">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/trainer.png')?>">
+			 
+				 <div class="name">Coaches</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+				 </div>
+				 </div>
+			 
+			 <div class="mem">
+				 <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/trainee.jpg')?>">
+			 
+				 <div class="name">Trainees</div>
+				<div class="text">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos!
+					</p>
+				 </div>
+				 </div>
+			 
+			 </div>
+		 </div>
+		 
+     <footer>
+      <ul>
+        <li><a href="<?php echo base_url('user/marketplace/')?>"><p class="infohead">Marketplace</p></a></li>
+        <li><a href="">Cardio</a></li>
+        <li><a href="">Yoga</a></li>
+        <li><a href="">Strength</a></li>
+      </ul>
+>>>>>>> main
 
         <div class="name">Trainees</div>
         <div class="text">

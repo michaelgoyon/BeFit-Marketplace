@@ -63,55 +63,6 @@ html {
     color: black;
     font-weight: 500;
 }
-.nav {
-    font-size: 15px;
-    font-family: 'Poppins', 'sans-serif';
-    padding: 30px;
-    top: 0px;
-    background-color: #181818;
-  }
-
-.nav img{
-    margin-top: 3px;
-    display: block;
-}
-
-.items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 35%;
-}
-
-.nav li {
-    display: inline-block;
-    padding: 0;
-    margin: auto;
-    
-}
-.navlogo{
-    width: 130px;
-    height: auto;
-    position: relative;
-    padding: 0;
-}
-
-.navitems a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: inline;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-.navitems a:hover{
-    color: #FA632A;
-    transition: 0.3s;
-}
 
 /*.box{
 	position:relative;

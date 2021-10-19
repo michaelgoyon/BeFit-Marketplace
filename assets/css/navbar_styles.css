@@ -97,11 +97,14 @@
     display: inline-block;
 }
 
+<<<<<<< HEAD
 .with-submenu img{
     margin-right: auto;
     margin-left: auto;
 }
 
+=======
+>>>>>>> main
 .with-submenu:hover .submenu {
     display: block;
 }
@@ -120,6 +123,11 @@
     padding: 1rem;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
 .submenu > a:hover{
     transition: 0.3s all ease;
     background: #FFFFFF;
