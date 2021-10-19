@@ -417,4 +417,77 @@ class User extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
     }
+
+    public function register_mobile() {
+        $result='';
+        $user = array(
+            'users_account'=>$this->input->post('account'),
+            'users_avatar'=>$this->input->post('avatar'),
+            'users_name'=>$this->input->post('name'),
+            'users_username'=>$this->input->post('username'),
+            'users_birthdate'=>$this->input->post('birthdate'),
+            'users_email'=>$this->input->post('email'),
+            'users_password'=>$this->input->post('password'),
+            'users_code'=>$this->input->post('code'),
+            'users_active'=>false,
+            'users_wallet'=>0
+        );
+        $id = $this->user_model->insert($user);
+        $base = $_POST["encoded"];
+        $filename = $_POST["avatar"];
+        $binary = base64_decode($base);
+        header('Content-Type: bitmap; charset=utf-8');
+        $file = fopen('./uploads/'.$filename, 'wb');
+        fwrite($file, $binary);
+        fclose($file);
+        $result = "true";
+        echo $id;
+    }
+
+    public function login_mobile() {
+        $result='';
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $data["users"] = $this->user_model->fetch_data($username);
+        if(!empty($data["users"])) {
+            foreach($data["users"] as $row) {
+                if ($password != $row->users_password) {
+                    $result = "false";
+                } else {
+                    if($row->users_active == 0) {
+                        $result = "notactive";
+                    } else {
+                        $result = "true";
+                    }
+                }
+            }
+        } else {
+            $result = "false";
+        }
+        
+        echo $result;
+    }
+
+    public function createWorkout_mobile() {
+        $result='';
+        $workout_availability_temp = 1;
+        $data["users"] = $this->user_model->fetch_data($this->input->post('username'));
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $service = array(
+            'services_title'=>$this->input->post('workout_title'),
+            'services_price'=>$this->input->post('workout_price'),
+            'services_description'=>$this->input->post('workout_description'),
+            'services_type'=>$this->input->post('workout_type'),
+            'services_availability'=>$workout_availability_temp,
+            'services_time'=>$this->input->post('workout_time'),
+            'services_day'=>$this->input->post('workout_day'),
+            'services_session'=>$this->input->post('workout_session'),
+            'services_duration'=>$this->input->post('workout_duration'),
+            'users_name'=>$this->input->post('name'),
+            'users_id'=>$userid
+        );
+        $this->user_model->insert_service($service);
+    }
 }
