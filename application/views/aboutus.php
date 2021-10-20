@@ -13,7 +13,7 @@
 
 <body>
 <div class="header">
-    <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
+    <img src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
     <div class="centered">
       <h1>About Us</h1>
     </div>
