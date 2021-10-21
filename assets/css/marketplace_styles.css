@@ -10,7 +10,6 @@ body{
  }
 
  .header{
-    margin-top: 5rem;
     position: relative;
     text-align: center;
     color: #FFFFFF;
@@ -22,7 +21,7 @@ body{
 
 .header img{
     width: 100%;
-    height: 60%;
+    height: 480px;
     object-fit: cover
 }
 
@@ -279,7 +278,7 @@ td a:hover{
     text-transform: uppercase;
     display: inline-block;
     font-size: 20px;
-    width: 100%;
+    width: 87%;
 }
 .infohead{
     font-family: 'Poppins';
@@ -358,7 +357,7 @@ td a:hover{
 
 .mem{
 	margin: 10px;
-	width: 25%;
+	width: 30%;
 	box-sizing: border-box;
 	cursor:pointer;
 	transition:0.3s;
