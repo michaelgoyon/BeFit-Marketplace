@@ -27,7 +27,7 @@
     </div>
 
     <div class="head">
-        <h1>Recommended for you</h1>
+        <h1>Recommended for You</h1>
     </div>
     <div class="aboutdiv">
         <div class="sub-container">

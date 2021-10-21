@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
 body{
     margin: 0;
     padding: 0;
@@ -16,7 +10,6 @@ body{
  }
 
  .header{
-    margin-top: 5rem;
     position: relative;
     text-align: center;
     color: #FFFFFF;
@@ -28,9 +21,16 @@ body{
 
 .header img{
     width: 100%;
-    height: 60%;
+    height: 480px;
     object-fit: cover
 }
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
 .container{
     margin-top: 20vh;
@@ -278,7 +278,7 @@ td a:hover{
     text-transform: uppercase;
     display: inline-block;
     font-size: 20px;
-    width: 100%;
+    width: 87%;
 }
 .infohead{
     font-family: 'Poppins';
@@ -337,7 +337,8 @@ td a:hover{
 	width: 70%;
 	margin: auto;
 	line-height: 80px;
-    font-family: "Quicksand", 'sans-serif';
+    font-family: "Poppins", 'sans-serif';
+    font-weight: 400;
     text-align: left;
 }
 
@@ -356,7 +357,7 @@ td a:hover{
 
 .mem{
 	margin: 10px;
-	width: 25%;
+	width: 30%;
 	box-sizing: border-box;
 	cursor:pointer;
 	transition:0.3s;
