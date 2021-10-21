@@ -1,28 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-
-*{
-    margin:0;
-}
-html { 
-    background-color:#222222;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
     font-family: 'Poppins', 'sans-serif';
   }
-
+  
 .container{
-    margin-top: 20vh;
+    max-width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+    margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    padding: 5rem;
-    font-family: 'Poppins', 'sans-serif';
-    filter:brightness(100%);
-}
+    background-color: #181818;
+    color: #FFFFFF;
+  }
+
 .container h1{
     font-size: 24px;
     line-height: 0;
@@ -60,55 +60,6 @@ html {
     font-weight: 500;
 }
 
-.nav {
-    font-size: 15px;
-    font-family: 'Poppins', 'sans-serif';
-    padding: 30px;
-    top: 0px;
-    background-color: #181818;
-  }
-
-.nav img{
-    margin-top: 3px;
-    display: block;
-}
-
-.items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 35%;
-}
-
-.nav li {
-    display: inline-block;
-    padding: 0;
-    margin: auto;
-    
-}
-.navlogo{
-    width: 130px;
-    height: auto;
-    position: relative;
-    padding: 0;
-}
-
-.navitems a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: inline;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-.navitems a:hover{
-    color: #FA632A;
-    transition: 0.3s;
-}
 
 /*.box{
 	position:relative;
