@@ -17,8 +17,12 @@
   <div class="header">
 =======
 <div class="header">
+<<<<<<< HEAD
 >>>>>>> main
     <img class="img-fluid" width="360" src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
+=======
+    <img src="<?php echo base_url('assets/images/aboutusbg.jpg') ?>">
+>>>>>>> main
     <div class="centered">
       <h1>About Us</h1>
     </div>
