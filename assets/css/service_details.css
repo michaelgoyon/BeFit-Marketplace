@@ -12,23 +12,24 @@ html {
     background-position: center;
   }
 
-.container{
-    margin-top: 20vh;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5rem;
-    font-family: 'Poppins', 'sans-serif';
-    filter:brightness(100%);
-}
-.container h1{
-    font-size: 24px;
-    line-height: 0;
+#header{
+    font-weight: 600;
+    font-size: 40px;
+    color: #FA632A;
+    padding-top: 4.5rem;
+    padding-bottom: 4rem;
 }
 
-.container h2{
-    font-size: 60px;
+.market-header{
+    font-family: 'Poppins';
     line-height: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
+
 
 .btn-container{
     margin-top: 5rem;
@@ -58,120 +59,12 @@ html {
     font-weight: 500;
 }
 
-.nav {
-    font-size: 15px;
-    font-family: 'Poppins', 'sans-serif';
-    padding: 30px;
-    top: 0px;
-    background-color: #181818;
-  }
-
-.nav img{
-    margin-top: 3px;
-    display: block;
-}
-
-.items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 35%;
-}
-
-.nav li {
-    display: inline-block;
-    padding: 0;
-    margin: auto;
-    
-}
-.navlogo{
-    width: 130px;
-    height: auto;
-    position: relative;
-    padding: 0;
-}
-
-.navitems a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: inline;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-.navitems a:hover{
-    color: #FA632A;
-    transition: 0.3s;
-}
-
-/*.box{
-	position:relative;
-	width: calc(400px - 30px);
-	height: calc(300px - 30px);
-	background: white;
-	float:left;
-	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
-	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-}*/
-
-.nutritionheader{
-	position:relative;
-	width: calc(400px - 30px);
-	height: 50px;
-	background: white;
-	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
-	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-}
-
-.nutritionheader a{
-    text-decoration: none;
-    color: #FA632A;
-    font-size: 18px;
-}
-.containbox{
-	position:relative;
-	width:1200px;
-	height:auto;
-	margin: 30px auto 0;
-	padding-bottom: 40px;
-	background-repeat: no-repeat;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-
-.ptext{
-    position:relative;
-    padding: 30px 0px 30px 0px;
-    width:100%;
-    text-align:center;
-    color:white;
-    font-family: 'Poppins';
-    font-size:48px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-  }
-
-hr{
-    border: 3px solid white;
-    width: 80%;
-    margin: auto;
-}
-
 .infodiv{
-	position:relative;
-	width:60%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	width:80%;
 	height:auto;
 	margin: 30px auto 0;
     word-wrap: break-word;
@@ -185,6 +78,26 @@ hr{
     display:block;
     margin:auto;
     padding: 50px;
+    align-items: center;
+}
+
+.info-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.subcontainer{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -194,18 +107,52 @@ hr{
     display: block;
     font-size:32px;
     font-weight: bold;
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-left: 4rem;
 }
-.infotext{
+
+.infodesc{
     font-family: 'Poppins';
     color:white;
-    display: block;
     font-size:20px;
-    height: auto;
-    margin:auto;
-    padding-left: 35px;
-    padding-right: 35px;
+    text-align: left;
+    margin-top: 1rem;
+    margin-left: 4rem;
+}
+
+.infodeets{
+    font-family: 'Poppins';
+    color:white;
+    padding: 1rem 2rem 1rem;
+}
+
+.service-head{
+	width: 100%;
+	margin: 0 auto 0 auto;
+}
+
+.service-info{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    background-color: #222222;
+}
+
+.info-row{
+    line-height: 1.5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 0 3rem 0 3rem;
+}
+
+.infotext{
+    font-family: 'Poppins';
+    color:#FFFFFF;
+    font-size: 20px;
 }
 
 .registerbtn {
@@ -216,6 +163,16 @@ hr{
     align-items: center;
     width: 20%;
 }
+
+.registerbtn2 {
+    padding-top: 1rem;
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
 .button {
     font-family: 'Poppins', 'sans-serif';
     border-radius: 2px;
@@ -228,6 +185,29 @@ hr{
     font-weight: 600;
     vertical-align: middle;
 }
+
+.chat{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#chat-coach{
+    text-decoration: none;
+    background-color: #1c8a00f8;
+    color: #FFFFFF;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-family: 'Poppins', 'sans-serif';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+
+
 
 input[type="submit"] {
     font-family: 'Poppins', 'sans-serif';
@@ -249,19 +229,15 @@ input[type="submit"]:hover {
     transition: all 0.3s;
 }
 
-.servicediv{
-	position:relative;
-	width:90%;
-	height:auto;
-	margin: 30px auto 0;
-    word-wrap: break-word;
-    background-color: #222222;
-    padding-bottom: 20px;
-}
+
 .orangebg{
+    font-family: 'Poppins';
+    color:white;
+    padding: 1rem 2rem 1rem;
     background-color: #FA632A;
     font-weight: bold;
     font-size: 24px;
+    padding: 1;
 }
 .orange{
     color:#FA632A;
@@ -286,9 +262,15 @@ input[type="submit"]:hover {
  
 }
 
+.ratings{
+    padding: 1rem 2rem 1rem;
+}
+
 .reviewdiv{
-	position:relative;
-	width:60%;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+	width:80%;
 	height:auto;
 	margin: 30px auto 0;
     word-wrap: break-word;
@@ -307,10 +289,41 @@ input[type="submit"]:hover {
     font-weight: normal;
 }
 
+.ratinghead{
+    font-family: 'Poppins';
+    color:#FA632A;
+    font-size: 20px;
+}
+
+.ratingtext{
+    font-family: 'Poppins';
+    color:#FFFFFF;
+    font-size: 20px;
+    margin-top: 1rem;
+}
+
+.stars{
+    color: #FA632A;
+    display: flex;
+    flex-direction: row;
+}
+
 .reviewdiv hr{
     border: 0.5px solid #8b8b8b;
     width: 100%;
     margin: auto;
+}
+
+.review-subcontain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.review-subcontain form{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 textarea[type="text"]{

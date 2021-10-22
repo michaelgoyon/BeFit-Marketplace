@@ -272,13 +272,12 @@ td a:hover{
     background-color: #FA632A;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 1rem;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    display: inline-block;
     font-size: 20px;
-    width: 87%;
+    width: 100%;
 }
 .infohead{
     font-family: 'Poppins';
@@ -357,12 +356,15 @@ td a:hover{
 
 .mem{
 	margin: 10px;
-	width: 30%;
+	max-width: 30%;
+    display: flex;
+    flex-direction: row;
 	box-sizing: border-box;
-	cursor:pointer;
+	cursor: pointer;
 	transition:0.3s;
     text-align: left;
     background-color: #181818;
+    overflow: hidden;
 	
 }
 
