@@ -73,8 +73,8 @@
         <div class="sub-container">
             <?php 
             foreach($records as $row) {
-                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                 echo "<div class='mem'>";
+                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                 echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
                 echo "<p class='infohead'>".$row->services_title."</p>";
                 echo "<p class='infotext'>".$row->users_name."</p>";

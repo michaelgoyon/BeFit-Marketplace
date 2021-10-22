@@ -107,7 +107,7 @@ html {
     display: block;
     font-size:32px;
     font-weight: bold;
-    margin-left: 4rem;
+    text-align: center;
 }
 
 .infodesc{
@@ -131,7 +131,7 @@ html {
 }
 
 .service-info{
-    width: 100%;
+    width: 80%;
     align-items: center;
     justify-content: center;
     margin-left: auto;
@@ -141,7 +141,7 @@ html {
 }
 
 .info-row{
-    line-height: 1.5;
+    line-height: 3.5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -252,98 +252,6 @@ input[type="submit"]:hover {
     padding-left: 10px;
 
 }
-.servicediv .infotext{
-    font-family: 'Poppins';
-    color:white;
-    display: block;
-    font-size:20px;
-    height: auto;
-    margin:auto;
- 
-}
-
-.ratings{
-    padding: 1rem 2rem 1rem;
-}
-
-.reviewdiv{
-	display: flex;
-    flex-direction: column;
-    justify-content: center;
-	width:80%;
-	height:auto;
-	margin: 30px auto 0;
-    word-wrap: break-word;
-    background-color: #181818;
-    padding-bottom: 50px;
-    margin-bottom: 30px;
-}
-
-.reviewdiv .infotext{
-    font-size: 16px;
-}
-
-.reviewdiv .infohead{
-    font-size: 20px;
-    padding: 5px;
-    font-weight: normal;
-}
-
-.ratinghead{
-    font-family: 'Poppins';
-    color:#FA632A;
-    font-size: 20px;
-}
-
-.ratingtext{
-    font-family: 'Poppins';
-    color:#FFFFFF;
-    font-size: 20px;
-    margin-top: 1rem;
-}
-
-.stars{
-    color: #FA632A;
-    display: flex;
-    flex-direction: row;
-}
-
-.reviewdiv hr{
-    border: 0.5px solid #8b8b8b;
-    width: 100%;
-    margin: auto;
-}
-
-.review-subcontain{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.review-subcontain form{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-textarea[type="text"]{
-    font-family: 'Poppins', 'sans-serif';
-    padding-right: 20px;;
-    max-width: 100%;
-    -webkit-box-sizing: border-box;
-    /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;
-    /* Firefox, other Gecko */
-    box-sizing: border-box;
-    /* Opera/IE 8+ */
-    padding: 12px;
-    display: inline-block;
-    border: none;
-    background: #c4c4c42f;
-    color: #FFFFFF;
-    font-size: 16px;
-    margin-left: 10px;
-  }
 
   footer img {
     max-height: 50px;
