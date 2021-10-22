@@ -87,6 +87,10 @@ class User_model extends CI_Model {
         return $query;
     }
 
+    public function fetch_orders_by(){
+        
+    }
+
     public function get_rating_by_id($serviceid) {
         $query = $this->db->get_where('ratings', array('services_id' => $serviceid));
         $result = $query->result();

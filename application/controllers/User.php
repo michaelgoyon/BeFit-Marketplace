@@ -336,6 +336,18 @@ class User extends CI_Controller {
         $this->load->view("topup");
     }
 
+    public function success_order() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->navbar();
+        $this->load->view("success_order", $data);
+    }
+
     public function success() {
         $data['value'] = $_COOKIE['value'];
         $temp = $this->user_model->get_wallet($this->session->userdata('userid'));
