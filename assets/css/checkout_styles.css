@@ -248,9 +248,35 @@ input[type="submit"]:hover {
     font-size: 24px;
 }
 
-.star-cb-group{
-    padding-left: 10px;
+.low-bal{
+    margin-top: 3rem;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Poppins';
+    font-size: 16px;
+}
 
+.topup{
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.topup a{
+    text-decoration: none;
+    background-color: #FFFFFF;
+    padding: 0.5rem 2rem;
+    color: #000000;
+    font-family: 'Poppins';
+    text-align: center;
+}
+
+.topup a:hover{
+    background-color: #047e00;
+    color: #FFFFFF;
+    transition: ease-in 0.2s;
 }
 
   footer img {
