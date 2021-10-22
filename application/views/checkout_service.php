@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/checkout_styles.css')?>">
-    <title>My Profile</title>
+    <title>BeFit | Checkout Summary</title>
 </head>
 
 
@@ -64,6 +64,8 @@
 				echo "<div class='registerbtn'>";
 					echo "<input type='submit' value='CHECKOUT' disabled>";
 				echo "</div>";
+				echo "<p class='low-bal'>"."Your balance is below the price required to checkout!"."</p>";
+				echo "<div class='topup'><a href='".base_url()."user/topup"."'>TOP UP NOW</a></div>";
 			}
 			else {
 				echo "<div class='registerbtn'>";
