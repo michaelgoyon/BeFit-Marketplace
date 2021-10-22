@@ -397,6 +397,7 @@ class User extends CI_Controller {
         }
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->navbar();
         $this->load->view("checkout_service", $data);
     }
 
