@@ -17,7 +17,7 @@ class User extends CI_Controller {
  
 	public function index() {
 		if($this->session->userdata('userusername')) {
-			redirect(base_url().'user/profile');
+			redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
 		} else {
             $this->load->view("index");
         }
@@ -168,7 +168,7 @@ class User extends CI_Controller {
 
     public function login() {
         if($this->session->userdata('userusername')) {
-			redirect(base_url().'user/profile');
+			redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
 		} else {
             $this->load->view("login");
         }
@@ -215,6 +215,9 @@ class User extends CI_Controller {
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
         $this->load->view("userprofile", $data);
+        if(!$this->session->userdata('userusername')) {
+            redirect(base_url());
+        }
     }
 
     public function validation() {  
@@ -405,7 +408,7 @@ class User extends CI_Controller {
         $result='';
         $user = array(
             'users_account'=>$this->input->post('account'),
-            'users_avatar'=>$this->input->post('avatar'),
+            'users_avatar'=>$this->input->post('shuffledfilename'),
             'users_name'=>$this->input->post('name'),
             'users_username'=>$this->input->post('username'),
             'users_birthdate'=>$this->input->post('birthdate'),
@@ -417,7 +420,7 @@ class User extends CI_Controller {
         );
         $id = $this->user_model->insert($user);
         $base = $_POST["encoded"];
-        $filename = $_POST["avatar"];
+        $filename = $_POST["shuffledfilename"];
         $binary = base64_decode($base);
         header('Content-Type: bitmap; charset=utf-8');
         $file = fopen('./uploads/'.$filename, 'wb');
@@ -474,5 +477,19 @@ class User extends CI_Controller {
             'users_id'=>$userid
         );
         $this->user_model->insert_service($service);
+    }
+
+    public function fetchdata_mobile() {
+        $result='';
+        $account='';
+        $image='';
+        $username = $this->input->post('dataUsername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $account = $row->users_account;
+            $image = $row->users_avatar;
+        }
+        $result="true";
+        echo $result.':'.$account.':'.$image;
     }
 }
