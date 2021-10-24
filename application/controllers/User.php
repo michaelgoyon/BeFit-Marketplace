@@ -240,10 +240,12 @@ class User extends CI_Controller {
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $acc = $this->session->userdata('account');
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["details"] = $this->user_model->get_traineedetails($userid);
         
+
         $this->navbar();
         $this->load->view("edit_profile",$data);
     }
@@ -277,6 +279,24 @@ class User extends CI_Controller {
             redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
             //$this->load->view("userprofile", $data);
         }
+    }
+
+    public function update_profile(){
+        //$acc = $this->session->userdata('userusername');
+        //$acc = $this->session->userdata('account');
+        $userid = $this->session->userdata('ID');
+ 
+            $newprofile = array(
+                'Age'=>$this->input->post('new_age'),
+                'Height'=>$this->input->post('new_height'),
+                'Weight'=>$this->input->post('new_weight'),
+                'BMI'=>$this->input->post('new_bmi'),
+                'ID'=>$this->session->userdata('userid'),
+                'Health'=>$this->input->post('new_health')
+            );
+            $this->user_model->update_traineeprofile($newprofile);    
+            $data["users"] = $this->user_model->fetch_data($check);
+            redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
 
     public function password_validation() {

@@ -30,7 +30,7 @@
 				<p><?php echo $row->users_account; ?></p>
 			</div>
 			<div class="btn-edit">
-				<a href="#">Edit Profile</a>
+				<a href="<?php echo base_url('user/editprofile/' . $this->session->userdata('userusername')) ?>">Edit Profile</a>
 			</div>
 			<div class="info-row">
 				<h1 id="header">ABOUT</h1>
@@ -86,7 +86,7 @@
 				if($_SESSION['userusername'] == $username) {
 					echo '<h1>UPDATE YOUR PASSWORD</h1>';
 			?>
-					<form method="post" action="<?php echo base_url();?>user/update_data">
+					<form method="post" action="<?php echo base_url();?>user/update_profile">
 					<div class="error-msg"><?php echo validation_errors();?></div>
 					<div class="input-form">
 					<label>Enter Current Password: </label>
