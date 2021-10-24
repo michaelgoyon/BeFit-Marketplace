@@ -226,8 +226,23 @@ class User extends CI_Controller {
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["details"] = $this->user_model->get_traineedetails($userid);
+        
         $this->navbar();
         $this->load->view("userprofile", $data);
+    }
+
+    public function editprofile(){
+        $username = $this->uri->segment(3);
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data["services"] = $this->user_model->get_services($userid);
+        $data["trainees"] = $this->user_model->get_trainees($username);
+        $data["details"] = $this->user_model->get_traineedetails($userid);
+        
+        $this->navbar();
+        $this->load->view("edit_profile",$data);
     }
 
     public function validation() {  
@@ -256,7 +271,7 @@ class User extends CI_Controller {
             $check = $this->session->userdata('userusername');
             $data["users"] = $this->user_model->fetch_data($check);
             $this->session->set_flashdata('message', 'Password has been changed.');
-            redirect(base_url().'user/profile');
+            redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
             //$this->load->view("userprofile", $data);
         }
     }
@@ -391,7 +406,6 @@ class User extends CI_Controller {
 
     public function checkout() {
         $username = $this->session->userdata('userusername');
-        $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
@@ -414,9 +428,15 @@ class User extends CI_Controller {
     public function confirm() {
         if(isset($_GET['id'])) {
 			$id=$_GET['id'];
+            $sale_id = $this->user_model->get_servicebyorder($id);
+            $sale2 = $this->user_model->get_servicesale($sale_id[0]->services_id);
+            $temp = intval($sale2[0]->services_sale)+1;
+            $this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
 			$this->user_model->confirm_trainee($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
+
+        //$this->user_model->update_services($id);
     }
 
     public function register_mobile() {
