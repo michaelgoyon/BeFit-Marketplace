@@ -87,8 +87,10 @@ class User_model extends CI_Model {
         return $query;
     }
 
-    public function fetch_orders_by(){
-        
+    public function update_wallet($value){
+        $this->db->set('users_wallet', $value);
+        $this->db->where('users_id', $this->session->userdata('userid'));
+        $this->db->update('users');
     }
 
     public function get_rating_by_id($serviceid) {
@@ -102,6 +104,20 @@ class User_model extends CI_Model {
 		return $query->result();
     }
 
+    public function fetch_all_orders(){
+        $query = $this->db->get('orders');
+		return $query->result();
+    }
+
+    public function fetch_service_by_userid($username){
+        $this->db->select('*');
+        $this->db->from('orders');
+        $this->db->join('services', 'services.services_id = orders.services_id');
+        $this->db->where('orders_from', $username);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+    
 	public function update_data($data){
         $this->db->update('users', $data, array('users_username' => $data['users_username']));
     }
@@ -155,12 +171,13 @@ class User_model extends CI_Model {
         $this->db->insert('payments', $data);
     }
 
-    public function insert_order($from, $to, $amount, $serviceid) {
+    public function insert_order($from, $to, $amount, $serviceid, $duration) {
         $data = array(
             'orders_from' => $from,
             'orders_to' => $to,
             'orders_status' => 0,
             'orders_amount' => $amount,
+            'orders_duration' => $duration,
             'services_id' => $serviceid
         );
         $this->db->insert('orders', $data);

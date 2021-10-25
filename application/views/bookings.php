@@ -25,7 +25,7 @@
             <table>
 					<thead>
 						<tr>
-							<th>Type of Workout</th>
+							<th>Service Name</th>
 							<th>Coach</th>
 							<th>Day</th>
 							<th>Time</th>
@@ -34,18 +34,22 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php 
-								
+						<?php
+                        
+							foreach($services as $row){
+                                if($row->orders_duration < 2) {                            
 						?>
-						<?php 
-                            echo "<tr>";
-							echo "<td>Cardio</td>";
-							echo "<td>Patrick Uy</td>";
-							echo "<td>Monday</td>";
-							echo "<td>10:00 AM - 11:00 AM</td>";
-                            echo "<td>Solo</td>";
-							echo "<td>Unperformed</td>";
-							echo "</tr>";
+                           <tr>
+							<td><?php echo $row->services_title;?></td>
+							<td><?php echo $row->users_name;?></td>
+							<td><?php echo $row->services_day;?></td>
+							<td><?php echo $row->services_time;?></td>
+                            <td><?php echo $row->services_session;?></td>
+							<td>Unperformed</td>
+							</tr>
+                            <?php 
+                            }
+                        }
 						?>
 					</tbody>
 				</table>
@@ -57,7 +61,7 @@
             <table>
 					<thead>
 						<tr>
-							<th>Type of Workout</th>
+							<th>Service Name</th>
 							<th>Coach</th>
 							<th>Day</th>
 							<th>Time</th>
@@ -66,18 +70,22 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php 
-								
+						<?php
+                        
+							foreach($services as $row){
+                                if($row->orders_duration >= 2) {                            
 						?>
-						<?php 
-                            echo "<tr>";
-							echo "<td>Cardio</td>";
-							echo "<td>Patrick Uy</td>";
-							echo "<td>Monday</td>";
-							echo "<td>11:00 AM - 12:00 PM</td>";
-                            echo "<td>Grouped</td>";
-							echo "<td>3 sessions left</td>";
-							echo "</tr>";
+                           <tr>
+							<td><?php echo $row->services_title;?></td>
+							<td><?php echo $row->users_name;?></td>
+							<td><?php echo $row->services_day;?></td>
+							<td><?php echo $row->services_time;?></td>
+                            <td><?php echo $row->services_session;?></td>
+							<td><?php echo $row->orders_duration. " sessions left";?></td>
+							</tr>
+                            <?php 
+                            }
+                        }
 						?>
 					</tbody>
 				</table>

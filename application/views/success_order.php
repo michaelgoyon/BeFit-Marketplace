@@ -29,12 +29,6 @@
             <p>An order receipt has been sent to your email!</p>
             <br>
             <?php 
-                foreach($services as $row){
-                    $amount = $row->services_price;
-                }
-                foreach($users as $row){
-                    $email = $row->users_email;
-                }
                 echo "<div class='service-info'>";
                     echo "<div class='info-row'>";
                     echo "<p>"."Payment Type "."</p>";
@@ -42,17 +36,15 @@
                     echo "</div>";
                     echo "<div class='info-row'>";
                     echo "<p>"."Email "."</p>";
-                    echo "<p>befitemail@gmail.com</p>";
-                    // echo "<p>".$email."</p>";
+                    echo "<p>".$users[0]->users_email."</p>";
                     echo "</div>";
                     echo "<div class='info-row'>";
                     echo "<p>"."Amount Paid "."</p>";
-                    echo "<p>5000.00 PHP</p>";
-                    // echo "<p>".$amount." PHP"."</p>";
+                    echo "<p>".$services[0]->services_price." PHP"."</p>";
                     echo "</div>";
                     echo "<div class='info-row'>";
                     echo "<p>"."Transaction ID "."</p>";
-                    echo "<p>BFTWRKT001</p>";
+                    echo "<p>BFTWRKT00".$orders->orders_id."</p>";
                     echo "</div>";
                 echo "</div>";
             ?>
