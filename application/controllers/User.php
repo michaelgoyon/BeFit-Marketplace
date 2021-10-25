@@ -104,10 +104,10 @@ class User extends CI_Controller {
                         $this->user_model->coach($coachdetails);
                     }
                     
-                    
+
                 }
                 
-                
+
                 $message = 	"
                             <html>
                             <head>
@@ -250,6 +250,17 @@ class User extends CI_Controller {
         $this->load->view("edit_profile",$data);
     }
 
+    public function bookings() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data["services"] = $this->user_model->fetch_service_by_userid($username);
+        $this->navbar();
+        $this->load->view("bookings", $data);
+    }
+
     public function validation() {  
         if ($this->user_model->log_in_correctly()) {  
             return true;  
@@ -374,6 +385,31 @@ class User extends CI_Controller {
         $this->load->view("topup");
     }
 
+    public function test() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->load->view("test", $data);
+    }
+
+    public function success_order() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $temp = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp);
+        $this->navbar();
+        $this->load->view("success_order", $data);
+    }
+
     public function success() {
         $data['value'] = $_COOKIE['value'];
         $temp = $this->user_model->get_wallet($this->session->userdata('userid'));
@@ -444,8 +480,12 @@ class User extends CI_Controller {
         $to = $temp[0]->users_username;
         $amount = floatval($temp[0]->services_price);
         $serviceid = $this->uri->segment(3);
-        $this->user_model->insert_order($from, $to, $amount, $serviceid);
-        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+        $duration = $temp[0]->services_duration;
+        $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
+        $wallet = $this->user_model->get_wallet($this->session->userdata("userid"));
+        $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
+        $this->user_model->update_wallet($new_wallet);
+        redirect(base_url().'user/success_order/'.$serviceid);
     }
 
     public function confirm() {
