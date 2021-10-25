@@ -104,10 +104,10 @@ class User extends CI_Controller {
                         $this->user_model->coach($coachdetails);
                     }
                     
-                    
+
                 }
                 
-                
+
                 $message = 	"
                             <html>
                             <head>
@@ -230,6 +230,19 @@ class User extends CI_Controller {
         $this->load->view("userprofile", $data);
     }
 
+    public function bookings() {
+        $username = $this->uri->segment(3);
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data["services"] = $this->user_model->get_services($userid);
+        $data["trainees"] = $this->user_model->get_trainees($username);
+        $data["details"] = $this->user_model->get_traineedetails($userid);
+        $this->navbar();
+        $this->load->view("bookings", $data);
+    }
+
     public function validation() {  
         if ($this->user_model->log_in_correctly()) {  
             return true;  
@@ -334,6 +347,17 @@ class User extends CI_Controller {
     public function topup() {
         $this->navbar();
         $this->load->view("topup");
+    }
+
+    public function test() {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $this->load->view("test", $data);
     }
 
     public function success_order() {

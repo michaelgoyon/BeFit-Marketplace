@@ -45,7 +45,7 @@
                         href="<?php echo base_url('user/profile/' . $this->session->userdata('userusername')) ?>">Profile</a>
                 </li>
                 <li><a href="<?php echo base_url(); ?>user/topup">Wallet</a></li>
-                <li><a href="#">Bookings</a></li>
+                <li><a href="<?php echo base_url(); ?>user/bookings">Bookings</a></li>
                 <li><a href="<?php echo base_url(); ?>user/logout">Log Out</a></li>
             </ul>
         </li>
