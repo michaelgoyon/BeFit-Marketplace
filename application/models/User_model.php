@@ -192,6 +192,33 @@ class User_model extends CI_Model {
         $this->db->set('orders_status', 1);
         $this->db->where('orders_id', $id);
 	    $this->db->update('orders');
+
     }
+
+    public function get_servicebyorder($id){
+        $this->db->select('services_id');
+        $this->db->from('orders');   
+        $this->db->where('orders_id', $id);
+        return $this->db->get()->result();
+    }
+
+    public function get_servicesale($id){
+        $this->db->select('services_sale');
+        $this->db->from('services');   
+        $this->db->where('services_id', $id);
+        return $this->db->get()->result();
+    }
+
+    public function update_servicesale($id, $sale_id){
+        $this->db->set('services_sale', $sale_id);
+        $this->db->where('services_id', $id);
+	    $this->db->update('services');
+    }
+
+    
+    public function update_traineeprofile($newprofile){
+        $this->db->update('traineeprofile', $newprofile, array('ID' => $newprofile['ID']));
+    }
+
  
 }

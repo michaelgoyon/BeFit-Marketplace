@@ -98,23 +98,29 @@
 				</div>
 				<div>
                     <label for="age">Age</label><br>
-					<input type="text" id="Age" name="Age" value="<?php echo set_value('Age'); ?>">
+					<input type="text" id="Age" name="Age" ?>
 				</div>
                 <div id ="height">
                     <label for="height">Height</label><br>
-					<input type="text" id="height" name="Height" value="<?php echo set_value('Height'); ?>">
+					<input type="text" id="height" name="Height">
 				</div>
 				<div id ="weight">
                     <label for="weight">Weight</label><br>
-					<input type="text" id="weight" name="Weight" value="<?php echo set_value('Weight'); ?>">
+					<input type="text" id="weight" name="Weight">
 				</div>
 				<div id ="bmi">
                     <label for="bmi">BMI</label><br>
-					<input type="text" id="BMI" name="BMI" value="<?php echo set_value('BMI'); ?>">
+					<input type="text" id="BMI" name="BMI">
 				</div>
-				<div>
-                    <label for="health">Health Condition</label><br>
-					<input type="text" id="Health" name="Health" value="<?php echo set_value('Health'); ?>">
+				<div id ="health" class="input-form">
+                    <label for="health">Health Condition</label>
+					<select class="select" name="Health">
+						    <option disabled selected>Select Health Condition</option>
+							<option value ="None">None</option>
+							<option value ="Heart Problem">Heart Problem</option>
+							<option value ="Asthma">Asthma</option>
+							<option value ="Diabetic">Diabetic</option>
+					</select>
 				</div>
 				<div id ="div1" class ="hide">
                     <label for="requirement"><h1>Valid ID</h1></label><br>

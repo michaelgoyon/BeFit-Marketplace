@@ -30,7 +30,7 @@
 				<p><?php echo $row->users_account; ?></p>
 			</div>
 			<div class="btn-edit">
-				<a href="#">Edit Profile</a>
+				<a href="<?php echo base_url('user/editprofile/' . $this->session->userdata('userusername')) ?>">Edit Profile</a>
 			</div>
 			<div class="info-row">
 				<h1 id="header">ABOUT</h1>
@@ -78,30 +78,32 @@
 				}
 			?>
 
-		</div>
+</div>
 		<h2 id="border"></h2>
 		<div class="form-container">
 			<?php 
 				$username = $this->uri->segment(3);
 				if($_SESSION['userusername'] == $username) {
 					echo '<h1>UPDATE YOUR PASSWORD</h1>';
-					echo '<form method="post" action="<?php echo base_url();?>user/update_data">';
-					echo '<div class="error-msg"><?php echo validation_errors();?></div>';
-					echo '<div class="input-form">';
-					echo '<label>Enter Current Password: </label>';
-					echo '<input type="password" name="c_pass">';
-					echo '</div>';
-					echo '<div class="input-form">';
-					echo '<label>Enter New Password: </label>';
-					echo '<input type="password" name="n_pass">';
-					echo '</div>';
-					echo '<div class="input-form">';
-					echo '<label>Re-Enter New Password: </label>';
-					echo '<input type="password" name="r_pass">';
-					echo '</div>';
-					echo '<div class="registerbtn">';
-					echo '<input type="submit" value="Submit"/>';
-					echo '</div>';
+			?>
+					<form method="post" action="<?php echo base_url();?>user/update_profile">
+					<div class="error-msg"><?php echo validation_errors();?></div>
+					<div class="input-form">
+					<label>Enter Current Password: </label>
+					<input type="password" name="c_pass">
+					</div>
+					<div class="input-form">
+					<label>Enter New Password: </label>
+					<input type="password" name="n_pass">
+					</div>
+					<div class="input-form">
+					<label>Re-Enter New Password: </label>
+					<input type="password" name="r_pass">
+					</div>
+					<div class="registerbtn">
+					<input type="submit" value="Submit"/>
+					</div>
+				<?php
 					if($this->session->flashdata('message')) {
 						?>
 						<div>
@@ -112,7 +114,7 @@
 					}
 					echo '</form>';
 				}
-			?>
+				?>
 		</div>
 		<?php
 		$username = $this->uri->segment(3);
@@ -252,7 +254,7 @@
 				?>
 				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
 				<td><a href="<?php echo base_url().'user/profile/'.$row->orders_from;?>"><?php echo $row->orders_from; ?></a></td> 
-				<td><?php echo $row->services_type; ?></td>
+				<td><?php echo $row->services_title; ?></td>
 				<td><?php echo $row->services_day; ?></td>
 				<td><?php echo $row->services_time; ?></td>
 				<?php
