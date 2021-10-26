@@ -483,13 +483,52 @@ class User extends CI_Controller {
         $result='';
         $account='';
         $image='';
+        $wallet='';
         $username = $this->input->post('dataUsername');
         $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $account = $row->users_account;
             $image = $row->users_avatar;
+            $wallet = $row->users_wallet;
         }
         $result="true";
-        echo $result.':'.$account.':'.$image;
+        echo $result.':'.$account.':'.$image.':'.$wallet;
+    }
+
+    public function fetchservices_mobile() {
+        $result='';
+        $title='';
+        $description='';
+        $price='';
+        $coach='';
+        $workout='';
+        $time='';
+        $day='';
+        $duration='';
+        $serviceid = $this->input->post('dataService');
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        foreach($data["services"] as $row) {
+            $title = $row->services_title;
+            $description = $row->services_description;
+            $price = $row->services_price;
+            $coach = $row->users_name;
+            $workout = $row->services_type;
+            $time = $row->services_time;
+            $day = $row->services_day;
+            $duration = $row->services_duration;
+        }
+        $result="true";
+        echo $result.'<>'.$title.'<>'.$description.'<>'.$price.'<>'.$coach.'<>'.$workout.'<>'.$time.'<>'.$day.'<>'.$duration;
+    }
+
+    public function topup_mobile() {
+        $result = '';
+        $amount = $this->input->post('amount');
+        $temp = $this->user_model->get_wallet_by_username($this->input->post('dataUsername'));
+        $newVal = floatval($amount) + floatval($temp[0]->users_wallet);
+        $this->user_model->success_topup_mobile(floatval($newVal), $this->input->post('dataUsername'));
+        $this->user_model->insert_topup($temp[0]->users_id, floatval($amount));
+        $result = "true";
+        echo $result;
     }
 }
