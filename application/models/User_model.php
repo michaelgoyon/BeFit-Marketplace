@@ -157,9 +157,22 @@ class User_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function get_wallet_by_username($username) {
+        $this->db->select('users_id, users_wallet');
+        $this->db->from('users');   
+        $this->db->where('users_username', $username);
+        return $this->db->get()->result();
+    }
+
     public function success_topup($value) {
         $this->db->set('users_wallet', $value);
         $this->db->where('users_id', $this->session->userdata('userid'));
+        $this->db->update('users');
+    }
+
+    public function success_topup_mobile($value, $username) {
+        $this->db->set('users_wallet', $value);
+        $this->db->where('users_username', $username);
         $this->db->update('users');
     }
 
