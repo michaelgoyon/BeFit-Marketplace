@@ -445,6 +445,44 @@ class User extends CI_Controller {
         echo $id;
     }
 
+    public function registertrainee_mobile() {
+        $result='';
+        $user = array(
+            'users_account'=>$this->input->post('taccount'),
+            'users_avatar'=>$this->input->post('tshuffledfilename'),
+            'users_name'=>$this->input->post('tname'),
+            'users_username'=>$this->input->post('tusername'),
+            'users_birthdate'=>$this->input->post('tbirthdate'),
+            'users_email'=>$this->input->post('temail'),
+            'users_password'=>$this->input->post('tpassword'),
+            'users_code'=>$this->input->post('tcode'),
+            'users_active'=>false,
+            'users_wallet'=>0
+        );
+        $id = $this->user_model->insert($user);
+
+        $tdetail = array(
+            'Age'=>$this->input->post('tage'),
+            'Height'=>floatval($this->input->post('theight')),
+            'Weight'=>floatval($this->input->post('tweight')),
+            'Health'=>$this->input->post('thealth'),
+            'ID'=>$id,
+            'BMI'=>floatval($this->input->post('tbmi'))
+        );
+
+        $this->user_model->trainee($tdetail);
+
+        $base = $_POST["tencoded"];
+        $filename = $_POST["tshuffledfilename"];
+        $binary = base64_decode($base);
+        header('Content-Type: bitmap; charset=utf-8');
+        $file = fopen('./uploads/'.$filename, 'wb');
+        fwrite($file, $binary);
+        fclose($file);
+        $result = "true";
+        echo $id;
+    }
+
     public function login_mobile() {
         $result='';
         $name='';
