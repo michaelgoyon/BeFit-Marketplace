@@ -72,6 +72,15 @@ class User_model extends CI_Model {
         return $query;
     }
 
+    public function get_coachdetails($userid) {
+        $this->db->select('*');
+        $this->db->from('coachprofile');
+        $this->db->join('users', 'users.users_id = coachprofile.ID');
+        $this->db->where('users_id', $userid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function get_service_by_id($serviceid) {
         $query = $this->db->get_where('services', array('services_id' => $serviceid));
         $result = $query->result();
@@ -228,9 +237,12 @@ class User_model extends CI_Model {
 	    $this->db->update('services');
     }
 
-    
     public function update_traineeprofile($newprofile){
         $this->db->update('traineeprofile', $newprofile, array('ID' => $newprofile['ID']));
+    }
+
+    public function update_coachprofile($newprofile){
+        $this->db->update('coachprofile', $newprofile, array('ID' => $newprofile['ID']));
     }
 
  
