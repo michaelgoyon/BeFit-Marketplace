@@ -241,8 +241,8 @@ class User_model extends CI_Model {
         $this->db->update('traineeprofile', $newprofile, array('ID' => $newprofile['ID']));
     }
 
-    public function update_coachprofile($newprofile){
-        $this->db->update('coachprofile', $newprofile, array('ID' => $newprofile['ID']));
+    public function update_coachprofile($newcoachdetails){
+        $this->db->update('coachprofile', $newcoachdetails, array('ID' => $newcoachdetails['ID']));
     }
 
  
