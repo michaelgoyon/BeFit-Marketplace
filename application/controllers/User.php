@@ -404,7 +404,7 @@ class User extends CI_Controller {
 		}
     }
 
-    public function register_mobile() {
+    public function registercoach_mobile() {
         $result='';
         $user = array(
             'users_account'=>$this->input->post('account'),
@@ -419,6 +419,14 @@ class User extends CI_Controller {
             'users_wallet'=>0
         );
         $id = $this->user_model->insert($user);
+
+        $detail = array(
+            'Age'=>$this->input->post('age'),
+            'requirement'=>$this->input->post('shuffledId'),
+            'ID'=>$id
+        );
+        $this->user_model->coach($detail);
+
         $base = $_POST["encoded"];
         $filename = $_POST["shuffledfilename"];
         $binary = base64_decode($base);
@@ -426,6 +434,13 @@ class User extends CI_Controller {
         $file = fopen('./uploads/'.$filename, 'wb');
         fwrite($file, $binary);
         fclose($file);
+        $baseId = $_POST["encodedId"];
+        $filenameId = $_POST["shuffledId"];
+        $binaryId = base64_decode($baseId);
+        header('Content-Type: bitmap; charset=utf-8');
+        $fileId = fopen('./uploads/'.$filenameId, 'wb');
+        fwrite($fileId, $binaryId);
+        fclose($fileId);
         $result = "true";
         echo $id;
     }
