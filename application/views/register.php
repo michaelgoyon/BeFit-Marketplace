@@ -112,7 +112,7 @@
                     <label for="bmi">BMI</label><br>
 					<input type="text" id="bmi" name="BMI" >
 				</div>
-				<button onclick="compute_bmi()">Compute</button>
+				<button id="computediv" onclick="compute_bmi()">Compute</button>
 				<div id ="healthdiv" class="input-form">
                     <label for="health">Health Condition</label>
 					<select class="select" name="Health">
@@ -145,12 +145,14 @@
 		document.getElementById('heightdiv').style.display = 'block';
 		document.getElementById('weightdiv').style.display = 'block';
 		document.getElementById('bmidiv').style.display = 'block';
+		document.getElementById('computediv').style.display = 'block';
 	}
 	function coachreg(){
 		document.getElementById('div1').style.display = 'block';
 		document.getElementById('heightdiv').style.display = 'none';
 		document.getElementById('weightdiv').style.display = 'none';
 		document.getElementById('bmidiv').style.display = 'none';
+		document.getElementById('computediv').style.display = 'none';
 	}
 	function compute_bmi(){
 		var h = parseInt(document.getElementById("height").value);

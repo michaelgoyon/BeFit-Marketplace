@@ -107,7 +107,6 @@ class User extends CI_Controller {
 
                 }
                 
-
                 $message = 	"
                             <html>
                             <head>
@@ -324,13 +323,17 @@ class User extends CI_Controller {
                     'requirement'=>$coach_req,
                     'ID'=>$this->session->userdata('userid')
                 );
-                $this->user_model->update_coachprofile($newprofile); 
+                $this->user_model->update_coachprofile($newcoachdetails); 
+
             }
-            
+            else {
+                print_r($acc);
+            }
         }
-        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+  
         $check = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($check);
+        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
 
     public function password_validation() {
