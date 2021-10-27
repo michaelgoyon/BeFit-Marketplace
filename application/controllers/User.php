@@ -204,6 +204,7 @@ class User extends CI_Controller {
                     $this->session->set_flashdata('message', 'Account is not activated. Please check your email.');
                     redirect('user/login');
                 } else {
+                    $this->session->set_userdata('account', $row->users_account);
                     $this->session->set_userdata('userusername', $row->users_username);
                     $this->session->set_userdata('userid', $row->users_id);
                     $this->session->set_userdata('username', $row->users_name);
@@ -226,6 +227,7 @@ class User extends CI_Controller {
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["details"] = $this->user_model->get_traineedetails($userid);
+        $data["coachdetails"] = $this->user_model->get_coachdetails($userid);
         
         $this->navbar();
         $this->load->view("userprofile", $data);
@@ -244,7 +246,7 @@ class User extends CI_Controller {
         $data["services"] = $this->user_model->get_services($userid);
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["details"] = $this->user_model->get_traineedetails($userid);
-        
+        $data["coachdetails"] = $this->user_model->get_coachdetails($userid);
 
         $this->navbar();
         $this->load->view("edit_profile",$data);
@@ -294,9 +296,15 @@ class User extends CI_Controller {
 
     public function update_profile(){
         //$acc = $this->session->userdata('userusername');
-        //$acc = $this->session->userdata('account');
-        $userid = $this->session->userdata('ID');
- 
+        $acc = $this->session->userdata('account');
+        $userid = $this->session->userdata('userid');
+
+        $config['allowed_types'] = 'jpg|png';
+        $config['upload_path'] = './uploads/';
+        $config['encrypt_name'] = true;
+        $this->load->library('upload', $config);
+
+        if($acc == 'Trainee'){
             $newprofile = array(
                 'Age'=>$this->input->post('new_age'),
                 'Height'=>$this->input->post('new_height'),
@@ -305,9 +313,24 @@ class User extends CI_Controller {
                 'ID'=>$this->session->userdata('userid'),
                 'Health'=>$this->input->post('new_health')
             );
-            $this->user_model->update_traineeprofile($newprofile);    
-            $data["users"] = $this->user_model->fetch_data($check);
-            redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+            $this->user_model->update_traineeprofile($newprofile); 
+        }
+
+        else if ($acc == 'Coach'){
+            if ($this->upload->do_upload('new_req')){
+                $coach_req = $this->upload->data('file_name');
+                $newcoachdetails = array(
+                    'Age'=>$this->input->post('new_age'),
+                    'requirement'=>$coach_req,
+                    'ID'=>$this->session->userdata('userid')
+                );
+                $this->user_model->update_coachprofile($newprofile); 
+            }
+            
+        }
+        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+        $check = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($check);
     }
 
     public function password_validation() {

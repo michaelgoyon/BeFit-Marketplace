@@ -100,19 +100,20 @@
                     <label for="age">Age</label><br>
 					<input type="text" id="Age" name="Age" ?>
 				</div>
-                <div id ="height">
+                <div id ="heightdiv">
                     <label for="height">Height</label><br>
-					<input type="text" id="height" name="Height">
+					<input type="text" id="height" name="Height" placeholder="Height in centimers...">
 				</div>
-				<div id ="weight">
+				<div id ="weightdiv">
                     <label for="weight">Weight</label><br>
-					<input type="text" id="weight" name="Weight">
+					<input type="text" id="weight" name="Weight" placeholder="Weight in kg...">
 				</div>
-				<div id ="bmi">
+				<div id ="bmidiv">
                     <label for="bmi">BMI</label><br>
-					<input type="text" id="BMI" name="BMI">
+					<input type="text" id="bmi" name="BMI" >
 				</div>
-				<div id ="health" class="input-form">
+				<button onclick="compute_bmi()">Compute</button>
+				<div id ="healthdiv" class="input-form">
                     <label for="health">Health Condition</label>
 					<select class="select" name="Health">
 						    <option disabled selected>Select Health Condition</option>
@@ -141,15 +142,22 @@
 <script>
 	function traineereg(){
 		document.getElementById('div1').style.display ='none';
-		document.getElementById('height').style.display = 'block';
-		document.getElementById('weight').style.display = 'block';
-		document.getElementById('bmi').style.display = 'block';
+		document.getElementById('heightdiv').style.display = 'block';
+		document.getElementById('weightdiv').style.display = 'block';
+		document.getElementById('bmidiv').style.display = 'block';
 	}
 	function coachreg(){
 		document.getElementById('div1').style.display = 'block';
-		document.getElementById('height').style.display = 'none';
-		document.getElementById('weight').style.display = 'none';
-		document.getElementById('bmi').style.display = 'none';
+		document.getElementById('heightdiv').style.display = 'none';
+		document.getElementById('weightdiv').style.display = 'none';
+		document.getElementById('bmidiv').style.display = 'none';
+	}
+	function compute_bmi(){
+		var h = parseInt(document.getElementById("height").value);
+		var w = parseInt(document.getElementById("weight").value);
+		var bmiresult = (w/((h/100)*(h/100)));
+		bmiresult = parseFloat(bmiresult).toFixed(2);
+		document.getElementById("bmi").value = bmiresult;
 	}
 </script>
 </body>
