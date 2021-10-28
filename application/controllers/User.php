@@ -708,4 +708,28 @@ class User extends CI_Controller {
         $result = "true";
         echo $result;
     }
+
+    public function submitreview_mobile() {
+        $result = '';
+        $serviceid = $this->input->post('serviceid');
+        $username = $this->input->post('username');
+        $rating = $this->input->post('rating');
+        $comment = $this->input->post('comment');
+
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+
+        $ratingArr = array(
+            'services_id'=>$serviceid,
+            'users_id'=>$userid,
+            'users_username'=>$username,
+            'ratings_rate'=>$rating,
+            'ratings_comment'=>$comment
+        );
+        $this->user_model->insert_rating($ratingArr);
+        $result = "true";
+        echo $result;
+    }
 }
