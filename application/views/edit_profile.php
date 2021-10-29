@@ -103,9 +103,9 @@
 		if($this->session->userdata('account') == 'Coach'){
 		echo '<h1>UPDATE YOUR PROFILE</h1>';
     ?>
-			<form method="post" action="<?php echo base_url();?>user/update_profile">
+			<form method="post" action="<?php echo base_url();?>user/update_profile" enctype="multipart/form-data">
 			<div class="input-form">
-			<label>Enter Age: </label>
+			<label>Enter Age:</label>
 			<input type="input" name="new_age">
 			</div>
 			<div class="input-form">
