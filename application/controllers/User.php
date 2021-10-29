@@ -331,6 +331,9 @@ class User extends CI_Controller {
             else {
                 print_r($acc);
             }
+            $check = $this->session->userdata('userusername');
+            $data["users"] = $this->user_model->fetch_data($check);
+            redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
         }
     }
     public function password_validation() {
