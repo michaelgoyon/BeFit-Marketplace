@@ -332,6 +332,7 @@ class User extends CI_Controller {
                 print_r($acc);
             }
         }
+    }
     public function password_validation() {
         if ($this->user_model->password_correct()) {
             return true;
