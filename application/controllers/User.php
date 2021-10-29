@@ -620,10 +620,6 @@ class User extends CI_Controller
         $this->load->view("success_order", $data);
     }
 
-
-
-
-
     public function success()
     {
         $data['value'] = $_COOKIE['value'];
