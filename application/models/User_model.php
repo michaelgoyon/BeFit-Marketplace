@@ -54,11 +54,11 @@ class User_model extends CI_Model {
         return $result;
     }
 
-    public function get_trainees(/*$username*/) {
+    public function get_trainees($username) {
         $this->db->select('*');
         $this->db->from('services');
         $this->db->join('orders', 'orders.services_id = services.services_id');
-        //$this->db->where('services_id', $serviceid);
+        $this->db->where('orders_to', $username);
         $query = $this->db->get()->result();
         return $query;
     }

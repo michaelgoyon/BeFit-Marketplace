@@ -610,6 +610,7 @@ class User extends CI_Controller {
     public function login_mobile() {
         $result='';
         $name='';
+        $id='';
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $data["users"] = $this->user_model->fetch_data($username);
@@ -623,6 +624,7 @@ class User extends CI_Controller {
                     } else {
                         $result = "true";
                         $name = $row->users_name;
+                        $id = $row->users_id;
                     }
                 }
             }
@@ -630,7 +632,7 @@ class User extends CI_Controller {
             $result = "false";
         }
         
-        echo $result.':'.$name;
+        echo $result.':'.$name.':'.$id;
     }
 
     public function createWorkout_mobile() {
@@ -731,5 +733,59 @@ class User extends CI_Controller {
         $this->user_model->insert_rating($ratingArr);
         $result = "true";
         echo $result;
+    }
+
+    public function removeservice_mobile() {
+        $result = '';
+        $id = $this->input->post('serviceid');
+        $this->user_model->delete_services($id);
+        $result = "true";
+        echo $result;
+    }
+
+    public function confirmtrainee_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $sale_id = $this->user_model->get_servicebyorder($id);
+        $sale2 = $this->user_model->get_servicesale($sale_id[0]->services_id);
+        $temp = intval($sale2[0]->services_sale)+1;
+        $this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
+		$this->user_model->confirm_trainee($id);
+
+        $result = "true";
+        echo $result;
+    }
+
+    public function fetchprofile_mobile() {
+        $result = '';
+        $name = '';
+        $account = '';
+        $age = '';
+        $height = '';
+        $weight = '';
+        $bmi = '';
+        $health = '';
+        $image = '';
+        $username = $this->input->post('dataUsername');
+
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach($data["users"] as $row) {
+            $userid = $row->users_id;
+            $name = $row->users_name;
+            $account = $row->users_account;
+            $image = $row->users_avatar;
+        }
+
+        $data["details"] = $this->user_model->get_traineedetails($userid);
+        foreach($data["details"] as $row1) {
+            $age = $row1->Age;
+            $height = $row1->Height;
+            $weight = $row1->Weight;
+            $bmi = $row1->BMI;
+            $health = $row1->Health;
+        }
+
+        $result="true";
+        echo $result.'<>'.$name.'<>'.$account.'<>'.$age.'<>'.$height.'<>'.$weight.'<>'.$bmi.'<>'.$health.'<>'.$image;
     }
 }
