@@ -331,10 +331,10 @@ class User extends CI_Controller {
             else {
                 print_r($acc);
             }
-            $check = $this->session->userdata('userusername');
-            $data["users"] = $this->user_model->fetch_data($check);
-            redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
         }
+        $check = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($check);
+        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
     }
     public function password_validation() {
         if ($this->user_model->password_correct()) {
@@ -557,15 +557,15 @@ class User extends CI_Controller {
                 <div class='infoheader'>
                     <div class='success-img'>
                         <img src='<?php echo base_url('assets/images/success.png') ?>'>
-                    </div>
-                    <div class='infohead'>
-                        <h1>SUCCESS!</h1>
-                    </div>
-                </div>
-                <div class='infotext'>
-                    <p>An order receipt has been sent to your email!</p>
-                    <br>
-                    <?php 
+</div>
+<div class='infohead'>
+    <h1>SUCCESS!</h1>
+</div>
+</div>
+<div class='infotext'>
+    <p>An order receipt has been sent to your email!</p>
+    <br>
+    <?php 
                         echo '<div class='service-info'>';
                             echo '<div class='info-row'>';
                             echo '<p>'.'Payment Type '.'</p>';
@@ -585,250 +585,251 @@ class User extends CI_Controller {
                             echo '</div>';
                         echo '</div>';
                     ?>
-                </div>
-            </div>
-        </body>
+</div>
+</div>
+</body>
 
-        </html>
-        ";
+</html>
+";
 
-        $this->load->config('email');
-        $this->load->library('email');
-        $this->email->set_newline("\r\n");
-        $this->email->from($this->config->item('smtp_user'));
-        $this->email->to($useremail);
-        $this->email->subject('Booking Receipt');
-        $this->email->message($message);
+$this->load->config('email');
+$this->load->library('email');
+$this->email->set_newline("\r\n");
+$this->email->from($this->config->item('smtp_user'));
+$this->email->to($useremail);
+$this->email->subject('Booking Receipt');
+$this->email->message($message);
 
-        if($this->email->send()) {
-            $this->session->set_flashdata('message','Nice one');
-        }
-        else {
-            $this->session->set_flashdata('message', $this->email->print_debugger());
-        }
-
-        $this->navbar();
-        $this->load->view("success_order", $data);
-    }
-
-    public function success() {
-        $data['value'] = $_COOKIE['value'];
-        $temp = $this->user_model->get_wallet($this->session->userdata('userid'));
-        $newVal = floatval($data['value']) + floatval($temp[0]->users_wallet);
-        $this->user_model->success_topup(floatval($newVal));
-        $this->user_model->insert_topup($this->session->userdata('userid'), floatval($data['value']));
-        unset($_COOKIE['value']);
-        redirect(base_url().'user/topup');
-    }
- 
-    public function aboutus() {
-        $username = $this->session->userdata('userusername');
-        $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
-            $userid = $row->users_id;
-        }
-        $this->navbar();
-        $this->load->view("aboutus", $data);
-    }
-
-    public function nutrition() {
-        $username = $this->session->userdata('userusername');
-        $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
-            $userid = $row->users_id;
-        }
-        $this->navbar();
-        $this->load->view("nutrition", $data);
-    }
-
-    public function podcast() {
-        $username = $this->session->userdata('userusername');
-        $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
-            $userid = $row->users_id;
-        }
-        $this->navbar();
-        $this->load->view("podcast", $data);
-    }
-
-    public function faq() {
-        $this->navbar();
-        $this->load->view("faq");
-    }
-
-    public function delete_services(){
-        if(isset($_GET['id'])) {
-			$id=$_GET['id'];
-			$this->user_model->delete_services($id);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-    }
-
-    public function checkout() {
-        $username = $this->session->userdata('userusername');
-        $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
-            $userid = $row->users_id;
-        }
-        $serviceid = $this->uri->segment(3);
-        $data["services"] = $this->user_model->get_service_by_id($serviceid);
-        $this->navbar();
-        $this->load->view("checkout_service", $data);
-    }
-
-    public function avail_service() {
-        $from = $this->session->userdata('userusername');
-        $temp = $this->user_model->get_coach_by_service($this->uri->segment(3));
-        $to = $temp[0]->users_username;
-        $amount = floatval($temp[0]->services_price);
-        $serviceid = $this->uri->segment(3);
-        $duration = $temp[0]->services_duration;
-        $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
-        $wallet = $this->user_model->get_wallet($this->session->userdata("userid"));
-        $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
-        $this->user_model->update_wallet($new_wallet);
-        redirect(base_url().'user/success_order/'.$serviceid);
-    }
-
-    public function confirm() {
-        if(isset($_GET['id'])) {
-			$id=$_GET['id'];
-            $sale_id = $this->user_model->get_servicebyorder($id);
-            $sale2 = $this->user_model->get_servicesale($sale_id[0]->services_id);
-            $temp = intval($sale2[0]->services_sale)+1;
-            $this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
-			$this->user_model->confirm_trainee($id);
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-
-        //$this->user_model->update_services($id);
-    }
-
-    public function register_mobile() {
-        $result='';
-        $user = array(
-            'users_account'=>$this->input->post('account'),
-            'users_avatar'=>$this->input->post('shuffledfilename'),
-            'users_name'=>$this->input->post('name'),
-            'users_username'=>$this->input->post('username'),
-            'users_birthdate'=>$this->input->post('birthdate'),
-            'users_email'=>$this->input->post('email'),
-            'users_password'=>$this->input->post('password'),
-            'users_code'=>$this->input->post('code'),
-            'users_active'=>false,
-            'users_wallet'=>0
-        );
-        $id = $this->user_model->insert($user);
-        $base = $_POST["encoded"];
-        $filename = $_POST["shuffledfilename"];
-        $binary = base64_decode($base);
-        header('Content-Type: bitmap; charset=utf-8');
-        $file = fopen('./uploads/'.$filename, 'wb');
-        fwrite($file, $binary);
-        fclose($file);
-        $result = "true";
-        echo $id;
-    }
-
-    public function login_mobile() {
-        $result='';
-        $name='';
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-        $data["users"] = $this->user_model->fetch_data($username);
-        if(!empty($data["users"])) {
-            foreach($data["users"] as $row) {
-                if ($password != $row->users_password) {
-                    $result = "false";
-                } else {
-                    if($row->users_active == 0) {
-                        $result = "notactive";
-                    } else {
-                        $result = "true";
-                        $name = $row->users_name;
-                    }
-                }
-            }
-        } else {
-            $result = "false";
-        }
-        
-        echo $result.':'.$name;
-    }
-
-    public function createWorkout_mobile() {
-        $result='';
-        $workout_availability_temp = 1;
-        $data["users"] = $this->user_model->fetch_data($this->input->post('username'));
-        foreach($data["users"] as $row) {
-            $userid = $row->users_id;
-        }
-        $service = array(
-            'services_title'=>$this->input->post('workout_title'),
-            'services_price'=>$this->input->post('workout_price'),
-            'services_description'=>$this->input->post('workout_description'),
-            'services_type'=>$this->input->post('workout_type'),
-            'services_availability'=>$workout_availability_temp,
-            'services_time'=>$this->input->post('workout_time'),
-            'services_day'=>$this->input->post('workout_day'),
-            'services_session'=>$this->input->post('workout_session'),
-            'services_duration'=>$this->input->post('workout_duration'),
-            'users_name'=>$this->input->post('name'),
-            'users_id'=>$userid
-        );
-        $this->user_model->insert_service($service);
-    }
-
-    public function fetchdata_mobile() {
-        $result='';
-        $account='';
-        $image='';
-        $wallet='';
-        $username = $this->input->post('dataUsername');
-        $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
-            $account = $row->users_account;
-            $image = $row->users_avatar;
-            $wallet = $row->users_wallet;
-        }
-        $result="true";
-        echo $result.':'.$account.':'.$image.':'.$wallet;
-    }
-
-    public function fetchservices_mobile() {
-        $result='';
-        $title='';
-        $description='';
-        $price='';
-        $coach='';
-        $workout='';
-        $time='';
-        $day='';
-        $duration='';
-        $serviceid = $this->input->post('dataService');
-        $data["services"] = $this->user_model->get_service_by_id($serviceid);
-        foreach($data["services"] as $row) {
-            $title = $row->services_title;
-            $description = $row->services_description;
-            $price = $row->services_price;
-            $coach = $row->users_name;
-            $workout = $row->services_type;
-            $time = $row->services_time;
-            $day = $row->services_day;
-            $duration = $row->services_duration;
-        }
-        $result="true";
-        echo $result.'<>'.$title.'<>'.$description.'<>'.$price.'<>'.$coach.'<>'.$workout.'<>'.$time.'<>'.$day.'<>'.$duration;
-    }
-
-    public function topup_mobile() {
-        $result = '';
-        $amount = $this->input->post('amount');
-        $temp = $this->user_model->get_wallet_by_username($this->input->post('dataUsername'));
-        $newVal = floatval($amount) + floatval($temp[0]->users_wallet);
-        $this->user_model->success_topup_mobile(floatval($newVal), $this->input->post('dataUsername'));
-        $this->user_model->insert_topup($temp[0]->users_id, floatval($amount));
-        $result = "true";
-        echo $result;
-    }
+if($this->email->send()) {
+$this->session->set_flashdata('message','Nice one');
 }
+else {
+$this->session->set_flashdata('message', $this->email->print_debugger());
+}
+
+$this->navbar();
+$this->load->view("success_order", $data);
+}
+
+public function success() {
+$data['value'] = $_COOKIE['value'];
+$temp = $this->user_model->get_wallet($this->session->userdata('userid'));
+$newVal = floatval($data['value']) + floatval($temp[0]->users_wallet);
+$this->user_model->success_topup(floatval($newVal));
+$this->user_model->insert_topup($this->session->userdata('userid'), floatval($data['value']));
+unset($_COOKIE['value']);
+redirect(base_url().'user/topup');
+}
+
+public function aboutus() {
+$username = $this->session->userdata('userusername');
+$data["users"] = $this->user_model->fetch_data($username);
+foreach($data["users"] as $row) {
+$userid = $row->users_id;
+}
+$this->navbar();
+$this->load->view("aboutus", $data);
+}
+
+public function nutrition() {
+$username = $this->session->userdata('userusername');
+$data["users"] = $this->user_model->fetch_data($username);
+foreach($data["users"] as $row) {
+$userid = $row->users_id;
+}
+$this->navbar();
+$this->load->view("nutrition", $data);
+}
+
+public function podcast() {
+$username = $this->session->userdata('userusername');
+$data["users"] = $this->user_model->fetch_data($username);
+foreach($data["users"] as $row) {
+$userid = $row->users_id;
+}
+$this->navbar();
+$this->load->view("podcast", $data);
+}
+
+public function faq() {
+$this->navbar();
+$this->load->view("faq");
+}
+
+public function delete_services(){
+if(isset($_GET['id'])) {
+$id=$_GET['id'];
+$this->user_model->delete_services($id);
+redirect($_SERVER['HTTP_REFERER']);
+}
+}
+
+public function checkout() {
+$username = $this->session->userdata('userusername');
+$data["users"] = $this->user_model->fetch_data($username);
+foreach($data["users"] as $row) {
+$userid = $row->users_id;
+}
+$serviceid = $this->uri->segment(3);
+$data["services"] = $this->user_model->get_service_by_id($serviceid);
+$this->navbar();
+$this->load->view("checkout_service", $data);
+}
+
+public function avail_service() {
+$from = $this->session->userdata('userusername');
+$temp = $this->user_model->get_coach_by_service($this->uri->segment(3));
+$to = $temp[0]->users_username;
+$amount = floatval($temp[0]->services_price);
+$serviceid = $this->uri->segment(3);
+$duration = $temp[0]->services_duration;
+$this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
+$wallet = $this->user_model->get_wallet($this->session->userdata("userid"));
+$new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
+$this->user_model->update_wallet($new_wallet);
+redirect(base_url().'user/success_order/'.$serviceid);
+}
+
+public function confirm() {
+if(isset($_GET['id'])) {
+$id=$_GET['id'];
+$sale_id = $this->user_model->get_servicebyorder($id);
+$sale2 = $this->user_model->get_servicesale($sale_id[0]->services_id);
+$temp = intval($sale2[0]->services_sale)+1;
+$this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
+$this->user_model->confirm_trainee($id);
+redirect($_SERVER['HTTP_REFERER']);
+}
+
+//$this->user_model->update_services($id);
+}
+
+public function register_mobile() {
+$result='';
+$user = array(
+'users_account'=>$this->input->post('account'),
+'users_avatar'=>$this->input->post('shuffledfilename'),
+'users_name'=>$this->input->post('name'),
+'users_username'=>$this->input->post('username'),
+'users_birthdate'=>$this->input->post('birthdate'),
+'users_email'=>$this->input->post('email'),
+'users_password'=>$this->input->post('password'),
+'users_code'=>$this->input->post('code'),
+'users_active'=>false,
+'users_wallet'=>0
+);
+$id = $this->user_model->insert($user);
+$base = $_POST["encoded"];
+$filename = $_POST["shuffledfilename"];
+$binary = base64_decode($base);
+header('Content-Type: bitmap; charset=utf-8');
+$file = fopen('./uploads/'.$filename, 'wb');
+fwrite($file, $binary);
+fclose($file);
+$result = "true";
+echo $id;
+}
+
+public function login_mobile() {
+$result='';
+$name='';
+$username = $this->input->post('username');
+$password = $this->input->post('password');
+$data["users"] = $this->user_model->fetch_data($username);
+if(!empty($data["users"])) {
+foreach($data["users"] as $row) {
+if ($password != $row->users_password) {
+$result = "false";
+} else {
+if($row->users_active == 0) {
+$result = "notactive";
+} else {
+$result = "true";
+$name = $row->users_name;
+}
+}
+}
+} else {
+$result = "false";
+}
+
+echo $result.':'.$name;
+}
+
+public function createWorkout_mobile() {
+$result='';
+$workout_availability_temp = 1;
+$data["users"] = $this->user_model->fetch_data($this->input->post('username'));
+foreach($data["users"] as $row) {
+$userid = $row->users_id;
+}
+$service = array(
+'services_title'=>$this->input->post('workout_title'),
+'services_price'=>$this->input->post('workout_price'),
+'services_description'=>$this->input->post('workout_description'),
+'services_type'=>$this->input->post('workout_type'),
+'services_availability'=>$workout_availability_temp,
+'services_time'=>$this->input->post('workout_time'),
+'services_day'=>$this->input->post('workout_day'),
+'services_session'=>$this->input->post('workout_session'),
+'services_duration'=>$this->input->post('workout_duration'),
+'users_name'=>$this->input->post('name'),
+'users_id'=>$userid
+);
+$this->user_model->insert_service($service);
+}
+
+public function fetchdata_mobile() {
+$result='';
+$account='';
+$image='';
+$wallet='';
+$username = $this->input->post('dataUsername');
+$data["users"] = $this->user_model->fetch_data($username);
+foreach($data["users"] as $row) {
+$account = $row->users_account;
+$image = $row->users_avatar;
+$wallet = $row->users_wallet;
+}
+$result="true";
+echo $result.':'.$account.':'.$image.':'.$wallet;
+}
+
+public function fetchservices_mobile() {
+$result='';
+$title='';
+$description='';
+$price='';
+$coach='';
+$workout='';
+$time='';
+$day='';
+$duration='';
+$serviceid = $this->input->post('dataService');
+$data["services"] = $this->user_model->get_service_by_id($serviceid);
+foreach($data["services"] as $row) {
+$title = $row->services_title;
+$description = $row->services_description;
+$price = $row->services_price;
+$coach = $row->users_name;
+$workout = $row->services_type;
+$time = $row->services_time;
+$day = $row->services_day;
+$duration = $row->services_duration;
+}
+$result="true";
+echo $result.'<>'.$title.'<>'.$description.'<>'.$price.'<>'.$coach.'<>'.$workout.'<>'.$time.'<>'.$day.'<>'.$duration;
+                                }
+
+                                public function topup_mobile() {
+                                $result = '';
+                                $amount = $this->input->post('amount');
+                                $temp = $this->user_model->get_wallet_by_username($this->input->post('dataUsername'));
+                                $newVal = floatval($amount) + floatval($temp[0]->users_wallet);
+                                $this->user_model->success_topup_mobile(floatval($newVal),
+                                $this->input->post('dataUsername'));
+                                $this->user_model->insert_topup($temp[0]->users_id, floatval($amount));
+                                $result = "true";
+                                echo $result;
+                                }
+                                }
