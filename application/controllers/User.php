@@ -122,6 +122,7 @@ class User extends CI_Controller {
                             </body>
                             </html>
                             ";
+
     
                 $this->load->config('email');
                 $this->load->library('email');
@@ -324,7 +325,7 @@ class User extends CI_Controller {
                     'requirement'=>$coach_req,
                     'ID'=>$this->session->userdata('userid')
                 );
-                $this->user_model->update_coachprofile($newprofile); 
+                $this->user_model->update_coachprofile($newcoachdetails); 
             }
             
         }
@@ -416,7 +417,10 @@ class User extends CI_Controller {
         }
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
-        $this->load->view("test", $data);
+        $temp = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp);
+        $this->navbar();
+        $this->load->view("success_order", $data);
     }
 
     public function success_order() {
@@ -424,11 +428,183 @@ class User extends CI_Controller {
         $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
+            $useremail = $row->users_email;
         }
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        foreach($data["services"] as $row) {
+            $serviceprice = $row->services_price;
+        }
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
+        $orderid = $data["orders"]->orders_id;
+        $message = "
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+            <meta charset='UTF-8'>
+            <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <link rel='preconnect' href='https://fonts.googleapis.com'>
+            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+            <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap'
+                rel='stylesheet'>
+        </head>
+
+        <style>
+        * {
+            margin: 0;
+        }
+
+        html {
+            background-color: #222222;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        #header {
+            font-weight: 600;
+            font-size: 40px;
+            color: #FA632A;
+            padding-top: 4.5rem;
+            padding-bottom: 4rem;
+        }
+
+
+        .infodiv {
+            margin: 3rem auto 3rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        .market-header {
+            font-family: 'Poppins';
+            line-height: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .success-img {
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .success-img img {
+            max-width: 250px;
+        }
+
+        .infoheader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #FA632A;
+            align-items: center;
+            padding: 3rem 0 3rem;
+            width: 100%;
+        }
+
+        .infohead {
+            font-family: 'Poppins';
+            color: #ffffff;
+            margin-top: 1rem;
+        }
+
+        .infotext {
+            font-family: 'Poppins';
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #383838;
+            padding: 3rem;
+            font-size: 20px;
+        }
+
+        .service-info {
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem;
+        }
+
+        .info-row {
+            line-height: 2.5;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 3rem 0 3rem;
+        }
+        </style>
+
+        <body>
+            <div class='market-header'>
+                <h1 id='header'>BOOKING SUCCESSFUL</h1>
+            </div>
+            <div class='infodiv'>
+                <div class='infoheader'>
+                    <div class='success-img'>
+                        <img src='<?php echo base_url('assets/images/success.png') ?>'>
+                    </div>
+                    <div class='infohead'>
+                        <h1>SUCCESS!</h1>
+                    </div>
+                </div>
+                <div class='infotext'>
+                    <p>An order receipt has been sent to your email!</p>
+                    <br>
+                    <?php 
+                        echo '<div class='service-info'>';
+                            echo '<div class='info-row'>';
+                            echo '<p>'.'Payment Type '.'</p>';
+                            echo '<p>BeFit Wallet</p>';
+                            echo '</div>';
+                            echo '<div class='info-row'>';
+                            echo '<p>'.'Email '.'</p>';
+                            echo '<p>'.$useremail.'</p>';
+                            echo '</div>';
+                            echo '<div class='info-row'>';
+                            echo '<p>'.'Amount Paid '.'</p>';
+                            echo '<p>'.$serviceprice.' PHP'.'</p>';
+                            echo '</div>';
+                            echo '<div class='info-row'>';
+                            echo '<p>'.'Transaction ID '.'</p>';
+                            echo '<p>BFTWRKT00'.$orderid.'</p>';
+                            echo '</div>';
+                        echo '</div>';
+                    ?>
+                </div>
+            </div>
+        </body>
+
+        </html>
+        ";
+
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Booking Receipt');
+        $this->email->message($message);
+
+        if($this->email->send()) {
+            $this->session->set_flashdata('message','Nice one');
+        }
+        else {
+            $this->session->set_flashdata('message', $this->email->print_debugger());
+        }
+
         $this->navbar();
         $this->load->view("success_order", $data);
     }
@@ -488,6 +664,7 @@ class User extends CI_Controller {
 
     public function checkout() {
         $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
         foreach($data["users"] as $row) {
             $userid = $row->users_id;
         }
