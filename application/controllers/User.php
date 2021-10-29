@@ -265,6 +265,18 @@ class User extends CI_Controller
         $this->load->view("bookings", $data);
     }
 
+    public function cashout()
+    {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data["services"] = $this->user_model->fetch_service_by_userid($username);
+        $this->navbar();
+        $this->load->view("cashout", $data);
+    }
+
     public function validation()
     {
         if ($this->user_model->log_in_correctly()) {
