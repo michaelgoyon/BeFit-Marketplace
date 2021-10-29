@@ -108,8 +108,8 @@ class User extends CI_Controller
                         $this->user_model->coach($coachdetails);
                     }
                 }
-                
-                $message = 	"
+
+                $message =     "
                             <html>
                             <head>
                                 <title>Verification Code</title>
@@ -327,17 +327,15 @@ class User extends CI_Controller
                     'requirement' => $coach_req,
                     'ID' => $this->session->userdata('userid')
                 );
-                $this->user_model->update_coachprofile($newcoachdetails); 
-
-            }
-            else {
+                $this->user_model->update_coachprofile($newcoachdetails);
+            } else {
                 print_r($acc);
             }
         }
-  
+
         $check = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($check);
-        redirect(base_url().'user/profile/'.$this->session->userdata('userusername'));
+        redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
     }
     public function password_validation()
     {
@@ -728,8 +726,9 @@ class User extends CI_Controller
         //$this->user_model->update_services($id);
     }
 
-    public function registercoach_mobile() {
-        $result='';
+    public function registercoach_mobile()
+    {
+        $result = '';
         $user = array(
             'users_account' => $this->input->post('taccount'),
             'users_avatar' => $this->input->post('tshuffledfilename'),
@@ -784,9 +783,9 @@ class User extends CI_Controller
         $id = $this->user_model->insert($user);
 
         $detail = array(
-            'Age'=>$this->input->post('age'),
-            'requirement'=>$this->input->post('shuffledId'),
-            'ID'=>$id
+            'Age' => $this->input->post('age'),
+            'requirement' => $this->input->post('shuffledId'),
+            'ID' => $id
         );
         $this->user_model->coach($detail);
 
@@ -801,36 +800,37 @@ class User extends CI_Controller
         $filenameId = $_POST["shuffledId"];
         $binaryId = base64_decode($baseId);
         header('Content-Type: bitmap; charset=utf-8');
-        $fileId = fopen('./uploads/'.$filenameId, 'wb');
+        $fileId = fopen('./uploads/' . $filenameId, 'wb');
         fwrite($fileId, $binaryId);
         fclose($fileId);
         $result = "true";
         echo $id;
     }
 
-    public function registertrainee_mobile() {
-        $result='';
+    public function registertrainee_mobile()
+    {
+        $result = '';
         $user = array(
-            'users_account'=>$this->input->post('taccount'),
-            'users_avatar'=>$this->input->post('tshuffledfilename'),
-            'users_name'=>$this->input->post('tname'),
-            'users_username'=>$this->input->post('tusername'),
-            'users_birthdate'=>$this->input->post('tbirthdate'),
-            'users_email'=>$this->input->post('temail'),
-            'users_password'=>$this->input->post('tpassword'),
-            'users_code'=>$this->input->post('tcode'),
-            'users_active'=>false,
-            'users_wallet'=>0
+            'users_account' => $this->input->post('taccount'),
+            'users_avatar' => $this->input->post('tshuffledfilename'),
+            'users_name' => $this->input->post('tname'),
+            'users_username' => $this->input->post('tusername'),
+            'users_birthdate' => $this->input->post('tbirthdate'),
+            'users_email' => $this->input->post('temail'),
+            'users_password' => $this->input->post('tpassword'),
+            'users_code' => $this->input->post('tcode'),
+            'users_active' => false,
+            'users_wallet' => 0
         );
         $id = $this->user_model->insert($user);
 
         $tdetail = array(
-            'Age'=>$this->input->post('tage'),
-            'Height'=>floatval($this->input->post('theight')),
-            'Weight'=>floatval($this->input->post('tweight')),
-            'Health'=>$this->input->post('thealth'),
-            'ID'=>$id,
-            'BMI'=>floatval($this->input->post('tbmi'))
+            'Age' => $this->input->post('tage'),
+            'Height' => floatval($this->input->post('theight')),
+            'Weight' => floatval($this->input->post('tweight')),
+            'Health' => $this->input->post('thealth'),
+            'ID' => $id,
+            'BMI' => floatval($this->input->post('tbmi'))
         );
 
         $this->user_model->trainee($tdetail);
@@ -839,17 +839,18 @@ class User extends CI_Controller
         $filename = $_POST["tshuffledfilename"];
         $binary = base64_decode($base);
         header('Content-Type: bitmap; charset=utf-8');
-        $file = fopen('./uploads/'.$filename, 'wb');
+        $file = fopen('./uploads/' . $filename, 'wb');
         fwrite($file, $binary);
         fclose($file);
         $result = "true";
         echo $id;
     }
 
-    public function login_mobile() {
-        $result='';
-        $name='';
-        $id='';
+    public function login_mobile()
+    {
+        $result = '';
+        $name = '';
+        $id = '';
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $data["users"] = $this->user_model->fetch_data($username);
@@ -870,8 +871,8 @@ class User extends CI_Controller
         } else {
             $result = "false";
         }
-        
-        echo $result.':'.$name.':'.$id;
+
+        echo $result . ':' . $name . ':' . $id;
     }
 
     public function createWorkout_mobile()
@@ -957,7 +958,8 @@ class User extends CI_Controller
         echo $result;
     }
 
-    public function submitreview_mobile() {
+    public function submitreview_mobile()
+    {
         $result = '';
         $serviceid = $this->input->post('serviceid');
         $username = $this->input->post('username');
@@ -965,23 +967,24 @@ class User extends CI_Controller
         $comment = $this->input->post('comment');
 
         $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
+        foreach ($data["users"] as $row) {
             $userid = $row->users_id;
         }
 
         $ratingArr = array(
-            'services_id'=>$serviceid,
-            'users_id'=>$userid,
-            'users_username'=>$username,
-            'ratings_rate'=>$rating,
-            'ratings_comment'=>$comment
+            'services_id' => $serviceid,
+            'users_id' => $userid,
+            'users_username' => $username,
+            'ratings_rate' => $rating,
+            'ratings_comment' => $comment
         );
         $this->user_model->insert_rating($ratingArr);
         $result = "true";
         echo $result;
     }
 
-    public function removeservice_mobile() {
+    public function removeservice_mobile()
+    {
         $result = '';
         $id = $this->input->post('serviceid');
         $this->user_model->delete_services($id);
@@ -989,20 +992,22 @@ class User extends CI_Controller
         echo $result;
     }
 
-    public function confirmtrainee_mobile() {
+    public function confirmtrainee_mobile()
+    {
         $result = '';
         $id = $this->input->post('orderid');
         $sale_id = $this->user_model->get_servicebyorder($id);
         $sale2 = $this->user_model->get_servicesale($sale_id[0]->services_id);
-        $temp = intval($sale2[0]->services_sale)+1;
-        $this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
-		$this->user_model->confirm_trainee($id);
+        $temp = intval($sale2[0]->services_sale) + 1;
+        $this->user_model->update_servicesale($sale_id[0]->services_id, $temp);
+        $this->user_model->confirm_trainee($id);
 
         $result = "true";
         echo $result;
     }
 
-    public function fetchprofile_mobile() {
+    public function fetchprofile_mobile()
+    {
         $result = '';
         $name = '';
         $account = '';
@@ -1015,7 +1020,7 @@ class User extends CI_Controller
         $username = $this->input->post('dataUsername');
 
         $data["users"] = $this->user_model->fetch_data($username);
-        foreach($data["users"] as $row) {
+        foreach ($data["users"] as $row) {
             $userid = $row->users_id;
             $name = $row->users_name;
             $account = $row->users_account;
@@ -1023,7 +1028,7 @@ class User extends CI_Controller
         }
 
         $data["details"] = $this->user_model->get_traineedetails($userid);
-        foreach($data["details"] as $row1) {
+        foreach ($data["details"] as $row1) {
             $age = $row1->Age;
             $height = $row1->Height;
             $weight = $row1->Weight;
@@ -1031,7 +1036,7 @@ class User extends CI_Controller
             $health = $row1->Health;
         }
 
-        $result="true";
-        echo $result.'<>'.$name.'<>'.$account.'<>'.$age.'<>'.$height.'<>'.$weight.'<>'.$bmi.'<>'.$health.'<>'.$image;
+        $result = "true";
+        echo $result . '<>' . $name . '<>' . $account . '<>' . $age . '<>' . $height . '<>' . $weight . '<>' . $bmi . '<>' . $health . '<>' . $image;
     }
 }
