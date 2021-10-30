@@ -41,13 +41,12 @@
             ?>
             <ul class="submenu">
                 <?php
-                $username = $this->uri->segment(3);
-                if ($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
+                if ($_SESSION['account'] == "Coach" && $_SESSION['userusername'] == $users[0]->users_username) {
                 ?>
                     <li><a href="<?php echo base_url('user/profile/' . $this->session->userdata('userusername')) ?>">Profile</a>
                     </li>
                     <li><a href="<?php echo base_url(); ?>user/topup">Wallet</a></li>
-                    <li><a href="<?php echo base_url(); ?>user/bookings">Bookings</a></li>
+                    <li><a href="<?php echo base_url(); ?>user/bookings">Trainees</a></li>
                     <li><a href="<?php echo base_url(); ?>user/cashout">Cashout</a></li>
                     <li><a href="<?php echo base_url(); ?>user/logout">Log Out</a></li>
                 <?php

@@ -64,3 +64,26 @@ table{
 td, th{
     padding: 2rem 3rem;
 }
+
+td a{
+    background-color: #e5e5e5a2;
+    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+td a:hover{
+    background-color: red;
+    color: #FFFFFF;
+    transition: 0.4s ease;
+}
+
+.options-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem
+}

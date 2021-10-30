@@ -260,6 +260,7 @@ class User extends CI_Controller
         foreach ($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $data["trainees"] = $this->user_model->get_trainees($username);
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
         $this->navbar();
         $this->load->view("bookings", $data);
@@ -713,9 +714,6 @@ class User extends CI_Controller
         $serviceid = $this->uri->segment(3);
         $duration = $temp[0]->services_duration;
         $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
-        $wallet = $this->user_model->get_wallet($this->session->userdata("userid"));
-        $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
-        $this->user_model->update_wallet($new_wallet);
         redirect(base_url() . 'user/success_order/' . $serviceid);
     }
 
@@ -728,6 +726,12 @@ class User extends CI_Controller
             $temp = intval($sale2[0]->services_sale) + 1;
             $this->user_model->update_servicesale($sale_id[0]->services_id, $temp);
             $this->user_model->confirm_trainee($id);
+            $temp2 = $this->user_model->fetch_all_orders_by_id($id);
+            
+            $amount = floatval($temp2[0]->orders_amount);
+            $wallet = $this->user_model->get_wallet($temp2[0]->orders_from);
+            $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
+            $this->user_model->update_wallet($new_wallet);
             redirect($_SERVER['HTTP_REFERER']);
         }
 
