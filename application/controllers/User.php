@@ -788,4 +788,23 @@ class User extends CI_Controller {
         $result="true";
         echo $result.'<>'.$name.'<>'.$account.'<>'.$age.'<>'.$height.'<>'.$weight.'<>'.$bmi.'<>'.$health.'<>'.$image;
     }
+
+    public function availservice_mobile() {
+        $result='';
+        $from = $this->input->post('dataUsername');
+        $temp = $this->user_model->get_coach_by_service($this->input->post('service'));
+        $to = $temp[0]->users_username;
+        $amount = floatval($temp[0]->services_price);
+        $duration = $temp[0]->services_duration;
+        $serviceid = $this->input->post('service');
+
+        $wallet = $this->user_model->get_wallet($this->input->post('dataUserid'));
+        if(intval($wallet[0]->users_wallet) < intval($amount)) {
+            $result = "false";
+        } else {
+            $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
+            $result = "true";
+        }
+        echo $result;
+    }
 }
