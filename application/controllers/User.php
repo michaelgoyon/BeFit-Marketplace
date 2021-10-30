@@ -798,11 +798,14 @@ class User extends CI_Controller {
         $duration = $temp[0]->services_duration;
         $serviceid = $this->input->post('service');
 
+        date_default_timezone_set('Asia/Manila');
+        $date = date('Y-m-d H:i:s');
+
         $wallet = $this->user_model->get_wallet($this->input->post('dataUserid'));
         if(intval($wallet[0]->users_wallet) < intval($amount)) {
             $result = "false";
         } else {
-            $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
+            $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration, $date);
             $result = "true";
         }
         echo $result;
