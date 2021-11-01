@@ -64,8 +64,7 @@ class User_model extends CI_Model
         return $result;
     }
 
-    public function get_trainees($username)
-    {
+    public function get_trainees($username) {
         $this->db->select('*');
         $this->db->from('services');
         $this->db->join('orders', 'orders.services_id = services.services_id');
@@ -321,8 +320,7 @@ class User_model extends CI_Model
         $this->db->update('traineeprofile', $newprofile, array('ID' => $newprofile['ID']));
     }
 
-    public function update_coachprofile($newcoachdetails)
-    {
+    public function update_coachprofile($newcoachdetails){
         $this->db->update('coachprofile', $newcoachdetails, array('ID' => $newcoachdetails['ID']));
     }
 }
