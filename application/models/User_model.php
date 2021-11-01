@@ -154,9 +154,26 @@ class User_model extends CI_Model
         return $query;
     }
 
+    public function fetch_service_by_userid_2($username)
+    {
+        $this->db->select('*');
+        $this->db->from('orders');
+        $this->db->join('services', 'services.services_id = orders.services_id');
+        $this->db->where('orders_to', $username);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function update_data($data)
     {
         $this->db->update('users', $data, array('users_username' => $data['users_username']));
+    }
+
+    public function update_trainee_wallet($value, $username)
+    {
+        $this->db->set('users_wallet', $value);
+        $this->db->where('users_username', $username);
+        $this->db->update('users');
     }
 
     public function log_in_correctly()
@@ -206,6 +223,20 @@ class User_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function update_orders_duration($new_session, $id)
+    {
+        $this->db->set('orders_duration', $new_session);
+        $this->db->where('orders_id', $id);
+        $this->db->update('orders');
+    }
+    
+    public function update_orders_remarks($new_session, $id)
+    {
+        $this->db->set('orders_remarks', $new_session);
+        $this->db->where('orders_id', $id);
+        $this->db->update('orders');
+    }
+
     public function success_topup($value)
     {
         $this->db->set('users_wallet', $value);
@@ -229,7 +260,7 @@ class User_model extends CI_Model
         $this->db->insert('payments', $data);
     }
 
-    public function insert_order($from, $to, $amount, $serviceid, $duration)
+    public function insert_order($from, $to, $amount, $serviceid, $duration, $datetime)
     {
         $data = array(
             'orders_from' => $from,
@@ -237,6 +268,7 @@ class User_model extends CI_Model
             'orders_status' => 0,
             'orders_amount' => $amount,
             'orders_duration' => $duration,
+            'orders_datetime' => $datetime,
             'services_id' => $serviceid
         );
         $this->db->insert('orders', $data);
@@ -246,6 +278,12 @@ class User_model extends CI_Model
     {
         $this->db->where('services_id', $id);
         $this->db->delete('services');
+    }
+
+    public function delete_orders_by_id($id)
+    {
+        $this->db->where('orders_id', $id);
+        $this->db->delete('orders');
     }
 
     public function confirm_trainee($id)

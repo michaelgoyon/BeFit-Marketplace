@@ -25,21 +25,26 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Time</th>
+                                <th>Date and Time</th>
                                 <th>Paid By</th>
                                 <th>Amount</th>
                                 <th>Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>October 24, 2021</td>
-                                <td>8:30 PM</td>
-                                <td>elijah18</td>
-                                <td>1000 PHP</td>
-                                <td><a href="#">REQUEST CASHOUT</a></td>
-                            </tr>
+                            <?php
+                            foreach ($services_coach as $row) {
+                            ?>
+                                <tr>
+
+                                    <td><?php echo $row->orders_datetime; ?></td>
+                                    <td><?php echo $row->orders_from; ?></td>
+                                    <td><?php echo $row->services_price; ?> PHP</td>
+                                    <td><a href="#">REQUEST CASHOUT</a></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

@@ -262,6 +262,7 @@ class User extends CI_Controller
         }
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
+        $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
         $this->navbar();
         $this->load->view("bookings", $data);
     }
@@ -273,7 +274,9 @@ class User extends CI_Controller
         foreach ($data["users"] as $row) {
             $userid = $row->users_id;
         }
+        $data["trainees"] = $this->user_model->get_trainees($username);
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
+        $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
         $this->navbar();
         $this->load->view("cashout", $data);
     }
@@ -688,6 +691,7 @@ class User extends CI_Controller
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $this->user_model->delete_services($id);
+
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
@@ -713,7 +717,9 @@ class User extends CI_Controller
         $amount = floatval($temp[0]->services_price);
         $serviceid = $this->uri->segment(3);
         $duration = $temp[0]->services_duration;
-        $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration);
+        date_default_timezone_set('Asia/Manila');
+        $datetime = date('Y/m/d H:i:s');
+        $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration, $datetime);
         redirect(base_url() . 'user/success_order/' . $serviceid);
     }
 
@@ -727,15 +733,86 @@ class User extends CI_Controller
             $this->user_model->update_servicesale($sale_id[0]->services_id, $temp);
             $this->user_model->confirm_trainee($id);
             $temp2 = $this->user_model->fetch_all_orders_by_id($id);
-            
             $amount = floatval($temp2[0]->orders_amount);
-            $wallet = $this->user_model->get_wallet($temp2[0]->orders_from);
+            $wallet = $this->user_model->get_wallet_by_username($temp2[0]->orders_from);
             $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
-            $this->user_model->update_wallet($new_wallet);
+            $this->user_model->update_trainee_wallet($new_wallet, $temp2[0]->orders_from);
             redirect($_SERVER['HTTP_REFERER']);
         }
 
         //$this->user_model->update_services($id);
+    }
+
+    public function decline()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $temp = $this->user_model->fetch_all_orders_by_id($id);
+            $temp2 = $this->user_model->fetch_data($temp[0]->orders_from);
+            $useremail = $temp2[0]->users_email;
+            $message = "
+                        <html>
+                            <head>
+                                <title>Order Declined</title>
+                            </head>
+                            <body>
+                                <h2>Order Declined.</h2>
+                                <p>Your order BFTWRKOUT00'.$id.' has been declined by the coach due to maximum capacity of trainees in the said workout. </p>.
+                            </body>
+                        </html>
+            ";
+            $this->load->config('email');
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $this->email->from($this->config->item('smtp_user'));
+            $this->email->to($useremail);
+            $this->email->subject('Order Number '.'BFTWRKOUT00'.$id.' has been declined');
+            $this->email->message($message);
+
+            if ($this->email->send()) {
+                $this->session->set_flashdata('msg', '');
+            } else {
+                $this->session->set_flashdata('msg', $this->email->print_debugger());
+            }
+            $this->user_model->delete_orders_by_id($id);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function add_session()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $temp = $this->user_model->fetch_all_orders_by_id($id);
+            $session = intval($temp[0]->orders_duration);
+            $new_session = $session + 1;
+            $this->user_model->update_orders_duration($new_session, $id);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function minus_session()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $temp = $this->user_model->fetch_all_orders_by_id($id);
+            $session = intval($temp[0]->orders_duration);
+            $new_session = $session - 1;
+            $this->user_model->update_orders_duration($new_session, $id);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function complete_orders()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $temp = $this->user_model->fetch_all_orders_by_id($id);
+            $session = intval($temp[0]->orders_remarks);
+            $new_session = $session + 1;
+            $this->user_model->update_orders_remarks($new_session, $id);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     public function registercoach_mobile()
