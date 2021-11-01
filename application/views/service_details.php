@@ -61,7 +61,7 @@
         ?>
             <form action="<?php echo base_url().'user/checkout/'.$this->uri->segment(3); ?>">
                 <div class="registerbtn">
-                    <input type="submit" value="BUY">
+                    <input type="submit" value="BOOK NOW">
                 </div>
             </form>
             <div class="chat">

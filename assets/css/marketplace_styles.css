@@ -331,9 +331,9 @@ td a:hover{
 
 .head{
 	padding-top:80px;
-	color: white;
+	color: #FA632A;
 	font-size: 30px;
-	width: 70%;
+	width: 85%;
 	margin: auto;
 	line-height: 80px;
     font-family: "Poppins", 'sans-serif';
@@ -342,7 +342,7 @@ td a:hover{
 }
 
 .head h1{
-    border-bottom: 1px solid #FA632A;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 .sub-container{

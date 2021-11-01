@@ -227,45 +227,6 @@
 		<?php 
 			}
 		?>
-		<?php
-		$username = $this->uri->segment(3);
-		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
-		?>
-		<div class="info-row">
-			<h1 id="header">CONFIRM TRAINEES</h1>
-		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Option</th>
-					<th>Name</th>
-					<th>Workout</th>
-					<th>Day</th>
-					<th>Time</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-					foreach($trainees as $row) {
-						echo "<tr>";
-				?>
-				<?php 
-					if($row->orders_status == 0) {
-				?>
-				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
-				<td><a href="<?php echo base_url().'user/profile/'.$row->orders_from;?>"><?php echo $row->orders_from; ?></a></td> 
-				<td><?php echo $row->services_title; ?></td>
-				<td><?php echo $row->services_day; ?></td>
-				<td><?php echo $row->services_time; ?></td>
-				<?php
-						}
-					}
-				?>
-			</tbody>
-		</table>
-		<?php 
-			}
-		?>
 	</div>
 </div>
 

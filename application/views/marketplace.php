@@ -23,12 +23,27 @@
 
 
     <div class="head">
-        <h1>Services</h1>
+        <h1>SERVICES</h1>
     </div>
 
-    <div class="head">
-        <h1>Recommended for You</h1>
+    <div class="aboutdiv">
+        <div class="sub-container">
+            <?php 
+            foreach($records as $row) {
+                echo "<div class='mem'>";
+                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
+                echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                echo "<p class='infohead'>".$row->services_title."</p>";
+                echo "<p class='infotext'>".$row->users_name."</p>";
+                echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                echo "<div class='bookbutton'>Book Now</div>";     
+                echo "</a>";       
+                echo "</div>";
+            }
+        ?>
+        </div>
     </div>
+
     <div class="aboutdiv">
         <div class="sub-container">
             <?php 
@@ -68,25 +83,6 @@
         ?>
         </div>
     </div>
-
-    <div class="aboutdiv">
-        <div class="sub-container">
-            <?php 
-            foreach($records as $row) {
-                echo "<div class='mem'>";
-                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
-                echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
-                echo "<p class='infohead'>".$row->services_title."</p>";
-                echo "<p class='infotext'>".$row->users_name."</p>";
-                echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
-                echo "<div class='bookbutton'>Book Now</div>";     
-                echo "</a>";       
-                echo "</div>";
-            }
-        ?>
-        </div>
-    </div>
-
     <footer>
         <ul>
             <li><a href="<?php echo base_url('user/marketplace/')?>">
