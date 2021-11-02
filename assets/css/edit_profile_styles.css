@@ -76,7 +76,7 @@ html {
     gap: 0.7rem;
 }
 
-input[type="text"]{
+input[type="text"], input[type="input"]{
     font-family: 'Poppins', 'sans-serif';
     padding-right: 20px;
     max-width: 100%;

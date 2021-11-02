@@ -79,43 +79,6 @@
 			?>
 
 </div>
-		<h2 id="border"></h2>
-		<div class="form-container">
-			<?php 
-				$username = $this->uri->segment(3);
-				if($_SESSION['userusername'] == $username) {
-					echo '<h1>UPDATE YOUR PASSWORD</h1>';
-			?>
-					<form method="post" action="<?php echo base_url();?>user/update_profile">
-					<div class="error-msg"><?php echo validation_errors();?></div>
-					<div class="input-form">
-					<label>Enter Current Password: </label>
-					<input type="password" name="c_pass">
-					</div>
-					<div class="input-form">
-					<label>Enter New Password: </label>
-					<input type="password" name="n_pass">
-					</div>
-					<div class="input-form">
-					<label>Re-Enter New Password: </label>
-					<input type="password" name="r_pass">
-					</div>
-					<div class="registerbtn">
-					<input type="submit" value="Submit"/>
-					</div>
-				<?php
-					if($this->session->flashdata('message')) {
-						?>
-						<div>
-							<?php echo $this->session->flashdata('message'); ?>
-						</div>
-						<?php
-						unset($_SESSION['message']);
-					}
-					echo '</form>';
-				}
-				?>
-		</div>
 		<?php
 		$username = $this->uri->segment(3);
 		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
@@ -180,7 +143,7 @@
 						<div></div>
 					</div>
 					<div class="input-form2">
-						<label>Workout Duration</label>
+						<label>Workout Duration (Number of sessions)</label>
 						<input type="text" name="workout_duration" onkeypress="isInputNumber(event)">
 						<div></div>
 					</div>
