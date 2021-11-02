@@ -600,7 +600,7 @@ class User extends CI_Controller
             <div class='infodiv'>
                 <div class='infoheader'>
                     <div class='success-img'>
-                        <img src='<?php echo base_url('assets/images/success.png') ?>'>
+                        <img src='". base_url('assets/images/success.png')."'>
 </div>
 <div class='infohead'>
     <h1>SUCCESS!</h1>
@@ -609,26 +609,24 @@ class User extends CI_Controller
 <div class='infotext'>
     <p>An order receipt has been sent to your email!</p>
     <br>
-    <?php 
-                        echo '<div class='service-info'>';
-                            echo '<div class='info-row'>';
-                            echo '<p>'.'Payment Type '.'</p>';
-                            echo '<p>BeFit Wallet</p>';
-                            echo '</div>';
-                            echo '<div class='info-row'>';
-                            echo '<p>'.'Email '.'</p>';
-                            echo '<p>'.$useremail.'</p>';
-                            echo '</div>';
-                            echo '<div class='info-row'>';
-                            echo '<p>'.'Amount Paid '.'</p>';
-                            echo '<p>'.$serviceprice.' PHP'.'</p>';
-                            echo '</div>';
-                            echo '<div class='info-row'>';
-                            echo '<p>'.'Transaction ID '.'</p>';
-                            echo '<p>BFTWRKT00'.$orderid.'</p>';
-                            echo '</div>';
-                        echo '</div>';
-                    ?>
+                        <div class='service-info'>
+                            <div class='info-row'>
+                            <p>Payment Type</p>
+                            <p>BeFit Wallet</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Email</p>
+                            <p>".$useremail."</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Amount Paid</p>
+                            <p>".$serviceprice." PHP</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Transaction ID</p>
+                            <p>BFTWRKT00".$orderid."
+                            </div>
+                        </div>
 </div>
 </div>
 </body>
@@ -1110,6 +1108,41 @@ class User extends CI_Controller
         $this->user_model->update_servicesale($sale_id[0]->services_id, $temp);
         $this->user_model->confirm_trainee($id);
 
+        $result = "true";
+        echo $result;
+    }
+
+    public function declinetrainee_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $temp = $this->user_model->fetch_all_orders_by_id($id);
+        $temp2 = $this->user_model->fetch_data($temp[0]->orders_from);
+        $useremail = $temp2[0]->users_email;
+        $message = "
+                    <html>
+                        <head>
+                            <title>Order Declined</title>
+                        </head>
+                        <body>
+                            <h2>Order Declined.</h2>
+                            <p>Your order BFTWRKOUT00'.$id.' has been declined by the coach due to maximum capacity of trainees in the said workout. </p>.
+                        </body>
+                    </html>
+        ";
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Order Number '.'BFTWRKOUT00'.$id.' has been declined');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', '');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+        $this->user_model->delete_orders_by_id($id);
         $result = "true";
         echo $result;
     }
