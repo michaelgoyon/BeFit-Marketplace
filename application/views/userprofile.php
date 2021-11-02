@@ -181,7 +181,7 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Duration</label>
-						<input type="text" name="workout_duration">
+						<input type="text" name="workout_duration" onkeypress="isInputNumber(event)">
 						<div></div>
 					</div>
 					<div class="registerbtn2">
@@ -217,7 +217,7 @@
 								echo "<td>".$row->services_day."</td>";
 								echo "<td>".$row->services_time."</td>";
 								echo "<td>".$row->services_session."</td>";
-								echo "<td>".$row->services_duration."</td>";
+								echo "<td>".$row->services_duration." sessions</td>";
 								echo "</tr>";
 							}
 						?>
@@ -231,6 +231,12 @@
 </div>
 
 <script>
+	function isInputNumber(evt) {
+      var ch = String.fromCharCode(evt.which);
+      if (!(/[0-9]/.test(ch))) {
+        evt.preventDefault();
+      }
+    }
     window.addEventListener('DOMContentLoaded', (event) => {
         CometChatWidget.init({
             "appID": "192441c86ab4e6a7",
