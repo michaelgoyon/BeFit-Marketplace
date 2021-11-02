@@ -79,6 +79,36 @@
         </table>
     </div>
 
+    <div class="container">
+        <h2 style="color:white;">Top Services</h2>
+        <table style="color:white;">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Sale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($services as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+						echo "<td>".$row->services_price."</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_sale."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
     <script>
     // === include 'setup' then 'config' above ===
     <?php
