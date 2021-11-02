@@ -387,6 +387,7 @@ class User extends CI_Controller
         }
         $data['records'] = $this->user_model->fetch_all_service();
         $data["details"] = $this->user_model->get_traineedetails($userid);
+        $data['top_services'] = $this->user_model->get_services_by_sales();
         $this->navbar();
         $this->load->view("marketplace", $data);
         $this->footer();

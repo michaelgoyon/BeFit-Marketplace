@@ -300,8 +300,15 @@ class User_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function get_servicesale($id)
-    {
+    public function get_services_by_sales(){
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->order_by('services_sale', 'desc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_servicesale($id){
         $this->db->select('services_sale');
         $this->db->from('services');
         $this->db->where('services_id', $id);
