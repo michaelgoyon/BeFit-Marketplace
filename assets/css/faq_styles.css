@@ -5,10 +5,18 @@ body{
   font-family: 'Poppins', 'sans-serif';
 }
 
+#header{
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 60px;
+  color: #FA632A;
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
 .container{
   max-width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   box-shadow:
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
   0 6.7px 5.3px rgba(0, 0, 0, 0.048),
@@ -16,7 +24,9 @@ body{
   0 22.3px 17.9px rgba(0, 0, 0, 0.072),
   0 41.8px 33.4px rgba(0, 0, 0, 0.086),
   0 100px 80px rgba(0, 0, 0, 0.12);
+  padding: 15vh 0;
   margin-top: 5vh;
+  margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
   font-family: 'Poppins', 'sans-serif';
@@ -64,57 +74,6 @@ a{
     color: black;
     font-weight: 500;
 }
-
-.nav {
-    font-size: 15px;
-    font-family: 'Poppins', 'sans-serif';
-    padding: 30px;
-    top: 0px;
-    background-color: #181818;
-  }
-
-.nav img{
-    margin-top: 3px;
-    display: block;
-}
-
-.items{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 35%;
-}
-
-.nav li {
-    display: inline-block;
-    padding: 0;
-    margin: auto;
-    
-}
-.navlogo{
-    width: 130px;
-    height: auto;
-    position: relative;
-    padding: 0;
-}
-
-.navitems a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    display: inline;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
-.navitems a:hover{
-    color: #FA632A;
-    transition: 0.3s;
-}
-
 .box{
 	position:relative;
 	width: calc(400px - 30px);
@@ -149,16 +108,16 @@ a{
   }
 
 .faqdiv{
-      min-height: 100vh;
-      width: 80%;
-      margin:0 auto;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 0 25vh 0;
       display:flex;
       flex-direction: column;
       align-items: center;
 }
       
 .accordion {
-    background-color: #222222;
+    background-color: #181818;
     color: white;
     cursor: pointer;
     padding-top: 20px;
@@ -168,21 +127,17 @@ a{
     text-align: left;
     outline: none;
     font-size: 30px;
-    font-weight: bold;
-    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
     letter-spacing: 1px; 
     transition: 0.4s;
     justify-content: space-between;
 
   }
   
-  /*.active, .accordion:hover {
-    background-color: #ccc;
-  }*/
-  
   .panel {
     padding: 0 18px;
-    background-color: #222222;
+    background-color: #181818;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
@@ -191,7 +146,8 @@ a{
     color:#FFFFFF;
     font-size: 20px;
     letter-spacing: 1px; 
-    font-family: "Quicksand", sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
   }
   .panel p{
       padding-bottom: 20px;
@@ -212,85 +168,4 @@ a{
   .up {
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
-  }
-  
-  footer img {
-    max-height: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
-  }
-  
-  footer ul li {
-    text-decoration: none;
-    color: aliceblue;
-  }
-  
-  footer ul li a {
-    list-style-type: none;
-    color: aliceblue;
-  }
-  footer ul li a:hover {
-    text-decoration: none;
-    color: aliceblue;
-  }
-  
-  footer {
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background-color: #181818;
-    color: aliceblue;
-    z-index: 200;
-    padding-bottom: 10px;
-  }
-  
-  footer p {
-    text-align: center;
-    padding: 0% 20% 0% 20%;
-  }
-  
-  footer ul {
-    display: inline-block;
-    list-style-type: none;
-    padding-top: 3%;
-    margin-left: 12%;
-    margin-right: 8%;
-    margin-bottom: 0px;
-    text-align: center;
-  }
-  
-  footer hr {
-    background-color: aliceblue;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 1px;
-  }
-
-  footer ol {
-    display: block;
-    margin: auto;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-  }
-  
-  footer ol li {
-    display: inline-block;
-    margin: auto;
-  }
-
-  .infohead{
-    font-family: 'Poppins';
-    color:#FA632A;
-    display: block;
-    align-items: left;
-    font-size:20px;
-    font-weight: bold;
-    padding-left: 10px;
-}
-
-  footer .infohead{
-      font-size: 16px;
   }

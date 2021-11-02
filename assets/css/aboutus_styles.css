@@ -60,19 +60,6 @@ body{
     font-weight: 500;
 }
 
-
-/*.box{
-	position:relative;
-	width: calc(400px - 30px);
-	height: calc(300px - 30px);
-	background: white;
-	float:left;
-	margin: 15px;
-	box-sizing: border-box;
-	overflow:hidden;
-	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-}*/
-
 .nutritionheader{
 	position:relative;
 	width: calc(400px - 30px);
@@ -188,10 +175,10 @@ hr{
 .head{
 	padding-top:80px;
 	color: white;
-	font-size: 20px;
+	font-size: 40px;
 	text-transform:uppercase;
 	border-bottom: 2px solid #f47720;
-	width: 280px;
+	width: 50%;
 	margin: auto;
 	line-height: 80px;
   font-family: 'Poppins', 'sans-serif';
@@ -222,8 +209,13 @@ hr{
 } */
 
 .mem img{
-	border: 1px solid #E1E0DE;
-	border-radius:50%px
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
 .img-fluid {
@@ -268,75 +260,3 @@ hr{
 	}
 	
 }
-
-footer img {
-    max-height: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 10px;
-  }
-  
-  footer ul li {
-    text-decoration: none;
-    color: aliceblue;
-  }
-  
-  footer ul li a {
-    list-style-type: none;
-    color: aliceblue;
-  }
-  footer ul li a:hover {
-    text-decoration: none;
-    color: aliceblue;
-  }
-  
-  footer {
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background-color: #181818;
-    color: aliceblue;
-    z-index: 200;
-    padding-bottom: 10px;
-  }
-  
-  footer p {
-    text-align: center;
-    padding: 0% 20% 0% 20%;
-  }
-  
-  footer ul {
-    display: inline-block;
-    list-style-type: none;
-    padding-top: 3%;
-    margin-left: 12%;
-    margin-right: 8%;
-    margin-bottom: 0px;
-    text-align: center;
-  }
-  
-  footer hr {
-    background-color: aliceblue;
-    margin-left: 10%;
-    margin-right: 10%;
-    height: 1px;
-  }
-
-  footer ol {
-    display: block;
-    margin: auto;
-    padding-top: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-  }
-  
-  footer ol li {
-    display: inline-block;
-    margin: auto;
-  }
-  footer .infohead{
-      font-size: 16px;
-  }
-
-
