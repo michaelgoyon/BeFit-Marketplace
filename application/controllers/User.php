@@ -432,6 +432,174 @@ class User extends CI_Controller {
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
+<<<<<<< Updated upstream
+=======
+        $orderid = $data["orders"]->orders_id;
+        $message = "
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+            <meta charset='UTF-8'>
+            <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <link rel='preconnect' href='https://fonts.googleapis.com'>
+            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+            <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap'
+                rel='stylesheet'>
+        </head>
+
+        <style>
+        * {
+            margin: 0;
+        }
+
+        html {
+            background-color: #222222;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        #header {
+            font-weight: 600;
+            font-size: 40px;
+            color: #FA632A;
+            padding-top: 4.5rem;
+            padding-bottom: 4rem;
+        }
+
+
+        .infodiv {
+            margin: 3rem auto 3rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            overflow: hidden;
+            width: 50%;
+        }
+
+        .market-header {
+            font-family: 'Poppins';
+            line-height: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .success-img {
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .success-img img {
+            max-width: 250px;
+        }
+
+        .infoheader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #FA632A;
+            align-items: center;
+            padding: 3rem 0 3rem;
+            width: 100%;
+        }
+
+        .infohead {
+            font-family: 'Poppins';
+            color: #ffffff;
+            margin-top: 1rem;
+        }
+
+        .infotext {
+            font-family: 'Poppins';
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #383838;
+            padding: 3rem;
+            font-size: 20px;
+        }
+
+        .service-info {
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1rem;
+        }
+
+        .info-row {
+            line-height: 2.5;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 3rem 0 3rem;
+        }
+        </style>
+
+        <body>
+            <div class='market-header'>
+                <h1 id='header'>BOOKING SUCCESSFUL</h1>
+            </div>
+            <div class='infodiv'>
+                <div class='infoheader'>
+                    <div class='success-img'>
+                        <img src='". base_url('assets/images/success.png')."'>
+</div>
+<div class='infohead'>
+    <h1>SUCCESS!</h1>
+</div>
+</div>
+<div class='infotext'>
+    <p>An order receipt has been sent to your email!</p>
+    <br>
+                        <div class='service-info'>
+                            <div class='info-row'>
+                            <p>Payment Type</p>
+                            <p>BeFit Wallet</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Email</p>
+                            <p>".$useremail."</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Amount Paid</p>
+                            <p>".$serviceprice." PHP</p>
+                            </div>
+                            <div class='info-row'>
+                            <p>Transaction ID</p>
+                            <p>BFTWRKT00".$orderid."
+                            </div>
+                        </div>
+</div>
+</div>
+</body>
+
+</html>
+";
+
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Booking Receipt');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('message', 'Nice one');
+        } else {
+            $this->session->set_flashdata('message', $this->email->print_debugger());
+        }
+
+>>>>>>> Stashed changes
         $this->navbar();
         $this->load->view("success_order", $data);
     }
@@ -752,6 +920,41 @@ class User extends CI_Controller {
         $this->user_model->update_servicesale($sale_id[0]->services_id,$temp);
 		$this->user_model->confirm_trainee($id);
 
+        $result = "true";
+        echo $result;
+    }
+
+    public function declinetrainee_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $temp = $this->user_model->fetch_all_orders_by_id($id);
+        $temp2 = $this->user_model->fetch_data($temp[0]->orders_from);
+        $useremail = $temp2[0]->users_email;
+        $message = "
+                    <html>
+                        <head>
+                            <title>Order Declined</title>
+                        </head>
+                        <body>
+                            <h2>Order Declined.</h2>
+                            <p>Your order BFTWRKOUT00'.$id.' has been declined by the coach due to maximum capacity of trainees in the said workout. </p>.
+                        </body>
+                    </html>
+        ";
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Order Number '.'BFTWRKOUT00'.$id.' has been declined');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', '');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+        $this->user_model->delete_orders_by_id($id);
         $result = "true";
         echo $result;
     }
