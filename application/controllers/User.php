@@ -960,6 +960,7 @@ class User extends CI_Controller
         $result = '';
         $name = '';
         $id = '';
+        $acc = '';
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $data["users"] = $this->user_model->fetch_data($username);
@@ -974,6 +975,7 @@ class User extends CI_Controller
                         $result = "true";
                         $name = $row->users_name;
                         $id = $row->users_id;
+                        $acc = $row->users_account;
                     }
                 }
             }
@@ -981,7 +983,7 @@ class User extends CI_Controller
             $result = "false";
         }
         
-        echo $result.':'.$name.':'.$id;
+        echo $result.':'.$name.':'.$id.':'.$acc;
     }
 
     public function createWorkout_mobile()
@@ -1199,6 +1201,39 @@ class User extends CI_Controller
             $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration, $date);
             $result = "true";
         }
+        echo $result;
+    }
+
+    public function complete_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $temp = $this->user_model->fetch_all_orders_by_id($id);
+        $session = intval($temp[0]->orders_remarks);
+        $new_session = $session + 1;
+        $this->user_model->update_orders_remarks($new_session, $id);
+        $result = "true";
+        echo $result;
+    }
+
+    public function decrease_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $temp = $this->user_model->fetch_all_orders_by_id($id);
+        $session = intval($temp[0]->orders_duration);
+        $new_session = $session - 1;
+        $this->user_model->update_orders_duration($new_session, $id);
+        $result = "true";
+        echo $result;
+    }
+
+    public function increase_mobile() {
+        $result = '';
+        $id = $this->input->post('orderid');
+        $temp = $this->user_model->fetch_all_orders_by_id($id);
+        $session = intval($temp[0]->orders_duration);
+        $new_session = $session + 1;
+        $this->user_model->update_orders_duration($new_session, $id);
+        $result = "true";
         echo $result;
     }
 }
