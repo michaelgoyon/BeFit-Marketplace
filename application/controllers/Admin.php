@@ -65,6 +65,7 @@ class Admin extends CI_Controller {
     }
 
 	public function dashboard() {
+		//pagination & users
 		$this->load->library('pagination');
 		$config = array();
 		$config["base_url"] = base_url().'admin/dashboard/';
@@ -100,7 +101,32 @@ class Admin extends CI_Controller {
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data['trainees'] = $this->admin_model->get_trainee_users($config["per_page"], $page);
 		$data['coaches'] = $this->admin_model->get_coach_users($config["per_page"], $page);
-		$this->load->view('admin_dashboard', $data);
+		//$this->load->view('admin_dashboard', $data);
+		$data['numusers'] = $this->admin_model->get_num_users();
+		$data['numservices'] = $this->admin_model->get_num_services();
+		$data['numorders'] = $this->admin_model->get_num_orders();
+
+		//charts & transactions
+		$data['users'] = $this->admin_model->count_users();
+		$data['ratings'] = $this->admin_model->get_ratings();
+		$idArray = array();
+		$tempArray = json_decode(json_encode($data['ratings']), true);
+		for ($i = 0; $i < 3; $i++) {
+			array_push($idArray, $tempArray[$i]['services_id']);
+		}
+		//print_r($idArray);
+		$data['names'] = $this->admin_model->get_names($idArray);
+		//print_r($data['ratings']);
+		$data['orders'] = $this->admin_model->get_orders();
+		//print_r($tempPriceArray);
+		$data['prices'] = $this->admin_model->get_prices();
+		$data['payments'] = $this->admin_model->get_payments();
+		$data['services'] = $this->admin_model->get_services_by_sales();
+		//print_r($data['payments']);
+
+		
+		//view page
+		$this->load->view('admin_home', $data);
 	}
 
 	public function chart() {
@@ -118,6 +144,7 @@ class Admin extends CI_Controller {
 		//print_r($tempPriceArray);
 		$data['prices'] = $this->admin_model->get_prices();
 		$data['payments'] = $this->admin_model->get_payments();
+		$data['services'] = $this->admin_model->get_services_by_sales();
 		//print_r($data['payments']);
 		$this->load->view('admin_chart', $data);
 	}

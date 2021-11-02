@@ -93,4 +93,28 @@ class Admin_Model extends CI_Model {
 	    $this->db->where('users_id', $id);
 	    $this->db->delete('users');
 	}
+
+    public function get_services_by_sales(){
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->order_by('services_sale', 'desc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_num_users(){
+        $query = $this->db->query('SELECT * FROM users');
+        return $query->num_rows();
+    }
+    
+    public function get_num_services(){
+        $query = $this->db->query('SELECT * FROM services');
+        return $query->num_rows();
+    }
+
+    public function get_num_orders(){
+        $query = $this->db->query('SELECT * FROM orders');
+        return $query->num_rows();
+    }
+
 }

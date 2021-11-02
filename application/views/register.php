@@ -102,17 +102,17 @@
 				</div>
                 <div id ="heightdiv">
                     <label for="height">Height</label><br>
-					<input type="text" id="height" name="Height" placeholder="Height in centimers...">
+					<input type="text" id="height" name="Height" placeholder="Height in centimers">
 				</div>
 				<div id ="weightdiv">
                     <label for="weight">Weight</label><br>
-					<input type="text" id="weight" name="Weight" placeholder="Weight in kg...">
+					<input type="text" id="weight" name="Weight" placeholder="Weight in kg">
 				</div>
 				<div id ="bmidiv">
                     <label for="bmi">BMI</label><br>
-					<input type="text" id="bmi" name="BMI" >
+					<input type="text" id="bmi" name="BMI" disabled>
 				</div>
-				<button id="computediv" onclick="compute_bmi()">Compute</button>
+				<button type="button" id="computediv" onclick="compute_bmi()">Compute</button>
 				<div id ="healthdiv" class="input-form">
                     <label for="health">Health Condition</label>
 					<select class="select" name="Health">
@@ -121,6 +121,7 @@
 							<option value ="Heart Problem">Heart Problem</option>
 							<option value ="Asthma">Asthma</option>
 							<option value ="Diabetic">Diabetic</option>
+							<option value ="Diabetic">Obesity</option>
 					</select>
 				</div>
 				<div id ="div1" class ="hide">
