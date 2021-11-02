@@ -110,7 +110,7 @@
 				</div>
 				<div id ="bmidiv">
                     <label for="bmi">BMI</label><br>
-					<input type="text" id="bmi" name="BMI" disabled>
+					<input type="text" id="bmi" name="BMI" readonly>
 				</div>
 				<button type="button" id="computediv" onclick="compute_bmi()">Compute</button>
 				<div id ="healthdiv" class="input-form">

@@ -24,25 +24,6 @@
 
     <div class="head">
         <h1>Recommended for You</h1>
-        <h1>SERVICES</h1>
-    </div>
-
-    <div class="aboutdiv">
-        <div class="sub-container">
-            <?php 
-            foreach($records as $row) {
-                echo "<div class='mem'>";
-                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
-                echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
-                echo "<p class='infohead'>".$row->services_title."</p>";
-                echo "<p class='infotext'>".$row->users_name."</p>";
-                echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
-                echo "<div class='bookbutton'>Book Now</div>";     
-                echo "</a>";       
-                echo "</div>";
-            }
-        ?>
-        </div>
     </div>
 
     <div class="aboutdiv">
@@ -146,46 +127,6 @@
         ?>
         </div>
     </div>
-
-    <footer>
-        <ul>
-            <li><a href="<?php echo base_url('user/marketplace/')?>">
-                    <p class="infohead">Marketplace</p>
-                </a></li>
-            <li><a href="">Cardio</a></li>
-            <li><a href="">Yoga</a></li>
-            <li><a href="">Strength</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="<?php echo base_url('user/nutrition/')?>">
-                    <p class="infohead">Nutrition</p>
-                </a></li>
-            <li><a href="">Foods</a></li>
-            <li><a href="">Macros</a></li>
-            <li><a href="">Exercise</a></li>
-        </ul>
-
-        <ul>
-            <li><a href="<?php echo base_url('user/faq/')?>">
-                    <p class="infohead">FAQ</p>
-                </a></li>
-            <li><a href="">Services</a></li>
-            <li><a href="">Payment</a></li>
-            <li><a href="">Refund</a></li>
-        </ul>
-        <ul>
-            <li><a href="<?php echo base_url('user/aboutus/')?>">
-                    <p class="infohead">About</p>
-                </a></li>
-            <li><a href="">Team</a></li>
-            <li><a href="">Coaches</a></li>
-            <li><a href="">Trainees</a></li>
-        </ul>
-
-        <hr>
-        <a href=""><img src="<?php echo base_url('assets/images/befitlogo.png')?>" /></a>
-    </footer>
 </body>
 
 </html>
