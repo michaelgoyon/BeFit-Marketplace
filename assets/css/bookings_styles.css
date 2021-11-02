@@ -13,13 +13,29 @@ html {
     background-position: center;
 }
 
-#header, h2 {
+#header{
     font-family: 'Poppins';
     font-weight: 600;
     font-size: 40px;
     color: #FA632A;
     padding-top: 4.5rem;
     padding-bottom: 4rem;
+}
+
+#border {
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #ffffff;
+  }
+
+h2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 40px;
+    color: #FA632A;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
 }
 
 .container {
@@ -97,8 +113,9 @@ td a:hover {
 
 .accordion {
     font-family: 'Poppins';
-    background-color: #FA632A;
-    color: #FFFFFF;
+    font-size: 20px;
+    background-color: #e5e5e5a2;
+    color: #000000;
     cursor: pointer;
     padding: 18px;
     width: 100%;
@@ -123,8 +140,8 @@ td a:hover {
 }
 
 .active, .accordion:hover {
-    background-color: #ccc;
-    color: #000;
+    background-color: #FA632A;
+    color: #FFFFFF;
 }
 
 .panel {

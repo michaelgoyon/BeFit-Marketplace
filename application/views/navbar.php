@@ -17,9 +17,8 @@
         <li class="navitems"><a href="<?php echo base_url('user/marketplace/') ?>">Marketplace</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/podcast/') ?>">Podcast</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/nutrition/') ?>">Nutrition</a></li>
-        <li class="navitems"><a href="<?php echo base_url('user/faq/') ?>">FAQ</a></li>
         <li class="navitems"><a href="<?php echo base_url('user/aboutus/') ?>">About</a></li>
-
+        <li class="navitems"><a href="<?php echo base_url('user/faq/') ?>">FAQ</a></li>
     </ul>
     <ul class="items2">
         <div class="wallet">

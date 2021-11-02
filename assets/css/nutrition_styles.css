@@ -5,6 +5,22 @@ body{
   font-family: 'Poppins', 'sans-serif';
 }
 
+#header{
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 60px;
+  color: #FA632A;
+  padding-top: 4.5rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+#border {
+  margin: 3rem auto;
+  border-top: 1px solid #b1b1b1ab;
+  width: 80%;
+}
+
 .container{
   max-width: 100%;
   margin-top: 2rem;
@@ -70,12 +86,13 @@ a{
 	position:relative;
 	width: calc(400px - 30px);
 	height: 50px;
-	background: white;
+	background: #181818;
 	margin: 15px;
 	box-sizing: border-box;
 	overflow:hidden;
 	box-shadow: 0 5px 10px  rgba(0,0,0,.8);
-    display: table;
+  display: table;
+  text-align: center;
 }
 
 .nutritionheader a{
@@ -123,7 +140,7 @@ hr{
 	width:60%;
 	height:auto;
 	margin: 30px auto 0;
-    word-wrap: break-word
+  word-wrap: break-word
 }
 
 .infoimg{

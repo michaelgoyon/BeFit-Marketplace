@@ -61,8 +61,10 @@
                         </tbody>
                     </table>
                 </div>
+
                 <div class="solo">
-                    <h2>MY WORKOUTS</h2>
+                    <h2 id="border"></h2>
+                    <h1 id="header">MY WORKOUTS</h1>
                     <h2>Single Session</h2>
                     <?php
                     foreach ($services_coach as $row) {
@@ -290,10 +292,11 @@
                                                 <td><?php echo $row->services_session; ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->orders_remarks == 0){ 
+                                                    if ($row->orders_remarks == 0) {
                                                         echo $row->orders_duration . " sessions left";
+                                                    } else {
+                                                        echo "Completed";
                                                     }
-                                                    else {echo "Completed";}
                                                     ?>
                                                 </td>
                                             </tr>

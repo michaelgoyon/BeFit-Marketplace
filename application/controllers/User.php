@@ -42,6 +42,16 @@ class User extends CI_Controller
         $this->load->view("navbar", $data);
     }
 
+    public function footer()
+    {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $data['records'] = $this->user_model->fetch_all_service();
+        $this->load->view("footer", $data);
+    }
 
     public function register_data()
     {
@@ -230,10 +240,12 @@ class User extends CI_Controller
         $data["coachdetails"] = $this->user_model->get_coachdetails($userid);
 
         $this->navbar();
+        
         $this->load->view("userprofile", $data);
         if (!$this->session->userdata('userusername')) {
             redirect(base_url());
         }
+        $this->footer();
     }
 
     public function editprofile()
@@ -251,6 +263,7 @@ class User extends CI_Controller
 
         $this->navbar();
         $this->load->view("edit_profile", $data);
+        $this->footer();
     }
 
     public function bookings()
@@ -279,6 +292,7 @@ class User extends CI_Controller
         $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
         $this->navbar();
         $this->load->view("cashout", $data);
+        $this->footer();
     }
 
     public function validation()
@@ -375,6 +389,7 @@ class User extends CI_Controller
         $data["details"] = $this->user_model->get_traineedetails($userid);
         $this->navbar();
         $this->load->view("marketplace", $data);
+        $this->footer();
     }
 
     public function add_service()
@@ -410,6 +425,7 @@ class User extends CI_Controller
         //print_r($data);
         $this->navbar();
         $this->load->view("service_details", $data);
+        $this->footer();
     }
 
     public function submit_review()
@@ -448,6 +464,7 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
         $this->navbar();
+        $this->footer();
         $this->load->view("success_order", $data);
     }
 
@@ -657,6 +674,7 @@ class User extends CI_Controller
         }
         $this->navbar();
         $this->load->view("aboutus", $data);
+        $this->footer();
     }
 
     public function nutrition()
@@ -668,6 +686,7 @@ class User extends CI_Controller
         }
         $this->navbar();
         $this->load->view("nutrition", $data);
+        $this->footer();
     }
 
     public function podcast()
@@ -679,12 +698,14 @@ class User extends CI_Controller
         }
         $this->navbar();
         $this->load->view("podcast", $data);
+        $this->footer();
     }
 
     public function faq()
     {
         $this->navbar();
         $this->load->view("faq");
+        $this->footer();
     }
 
     public function delete_services()
