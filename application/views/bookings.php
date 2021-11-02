@@ -67,7 +67,7 @@
                     <h1 id="header">MY WORKOUTS</h1>
                     <h2>Single Session</h2>
                     <?php
-                    foreach ($services_coach as $row) {
+                    foreach ($services_of_coach as $row) {
                         $title = $row->services_title;
                     ?>
                         <?php
@@ -123,7 +123,7 @@
                     ?>
                     <h2>Multi Session</h2>
                     <?php
-                    foreach ($services_coach as $row) {
+                    foreach ($services_of_coach as $row) {
                         $title = $row->services_title;
                     ?>
                         <?php
