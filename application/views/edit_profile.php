@@ -63,7 +63,7 @@
 				<form method="post" action="<?php echo base_url();?>user/update_profile">
 				<div class="input-form">
 				<label>Enter Age: </label>
-				<input type="text" name="new_age">
+				<input type="text" name="new_age" onkeypress="isInputNumber(event)">
 				</div>
 				<div class="input-form">
 				<label>Enter Height: </label>
@@ -117,7 +117,7 @@
 				<form method="post" action="<?php echo base_url();?>user/update_profile" enctype="multipart/form-data">
 				<div class="input-form">
 				<label>Enter Age:</label>
-				<input type="text" name="new_age">
+				<input type="text" name="new_age" onkeypress="isInputNumber(event)">
 				</div>
 				<div class="input-form">
 				<label><h1>Valid ID</h1></label><br>
