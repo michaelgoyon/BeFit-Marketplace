@@ -19,7 +19,7 @@
 		<?php 
 			$username = $this->uri->segment(3);
 			if($_SESSION['userusername'] == $username) {
-			echo '<h1>UPDATE YOUR PASSWORD</h1>';
+			echo '<h1 id="header">UPDATE YOUR PASSWORD</h1>';
 		?>
 			<form method="post" action="<?php echo base_url();?>user/update_data">
 			<div class="error-msg"><?php echo validation_errors();?></div>
@@ -57,7 +57,7 @@
 		<?php 
 			if($_SESSION['userusername'] == $username) {
 			if($this->session->userdata('account') == 'Trainee'){
-			echo '<h1>UPDATE YOUR PROFILE</h1>';
+			echo '<h1 id="header"	>UPDATE YOUR PROFILE</h1>';
 
 		?>
 				<form method="post" action="<?php echo base_url();?>user/update_profile">
