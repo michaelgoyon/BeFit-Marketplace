@@ -394,6 +394,14 @@ class User extends CI_Controller
         $this->footer();
     }
 
+    public function create_cashout()
+    {
+        $data["users"] = $this->user_model->fetch_data($this->session->userdata('userusername'));
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+    }
+
     public function add_service()
     {
         $workout_availability_temp = 1;
