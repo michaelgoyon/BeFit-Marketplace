@@ -181,7 +181,7 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Duration</label>
-						<input type="text" name="workout_duration">
+						<input type="text" name="workout_duration" onkeypress="isInputNumber(event)">
 						<div></div>
 					</div>
 					<div class="registerbtn2">
@@ -217,7 +217,7 @@
 								echo "<td>".$row->services_day."</td>";
 								echo "<td>".$row->services_time."</td>";
 								echo "<td>".$row->services_session."</td>";
-								echo "<td>".$row->services_duration."</td>";
+								echo "<td>".$row->services_duration." sessions</td>";
 								echo "</tr>";
 							}
 						?>
@@ -227,49 +227,16 @@
 		<?php 
 			}
 		?>
-		<?php
-		$username = $this->uri->segment(3);
-		if($users[0]->users_account == "Coach" && $_SESSION['userusername'] == $username) {
-		?>
-		<div class="info-row">
-			<h1 id="header">CONFIRM TRAINEES</h1>
-		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Option</th>
-					<th>Name</th>
-					<th>Workout</th>
-					<th>Day</th>
-					<th>Time</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php 
-					foreach($trainees as $row) {
-						echo "<tr>";
-				?>
-				<?php 
-					if($row->orders_status == 0) {
-				?>
-				<td><a href="<?php echo base_url().'user/confirm?id='.$row->orders_id;?>">CONFIRM</a></td>
-				<td><a href="<?php echo base_url().'user/profile/'.$row->orders_from;?>"><?php echo $row->orders_from; ?></a></td> 
-				<td><?php echo $row->services_title; ?></td>
-				<td><?php echo $row->services_day; ?></td>
-				<td><?php echo $row->services_time; ?></td>
-				<?php
-						}
-					}
-				?>
-			</tbody>
-		</table>
-		<?php 
-			}
-		?>
 	</div>
 </div>
 
 <script>
+	function isInputNumber(evt) {
+      var ch = String.fromCharCode(evt.which);
+      if (!(/[0-9]/.test(ch))) {
+        evt.preventDefault();
+      }
+    }
     window.addEventListener('DOMContentLoaded', (event) => {
         CometChatWidget.init({
             "appID": "192441c86ab4e6a7",
