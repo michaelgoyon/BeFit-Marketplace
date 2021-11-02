@@ -1,7 +1,7 @@
 .nav {
     font-size: 15px;
     font-family: 'Poppins', 'sans-serif';
-    padding: 30px;
+    padding: 2rem 3rem;
     top: 0px;
     background-color: #181818;
     display: flex;
@@ -9,6 +9,8 @@
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
+    width: auto;
+    
   }
 
 .nav img{
@@ -35,14 +37,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 12%;
-    color: #ffffff
+    width: 13%;
+    color: #ffffff;
+    margin: 0 1rem;
 }
 
 .items2 li{
     cursor: pointer;
     font-size: 16px;
-    width: 70%;
+    width: 100%;
 }
 
 .items2 img {
@@ -90,7 +93,7 @@
     left: 0;
     margin: 0.2rem 0 0 0 ;
     padding: 0;
-    min-width: calc(3.5 * var(--menu-item-size) - 5%);
+    min-width: calc(1.5 * var(--menu-item-size) - 5%);
 }
 
 

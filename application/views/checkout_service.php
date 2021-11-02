@@ -46,7 +46,7 @@
                 echo "</div>";
                 echo "<div class='info-row'>";
                 echo "<p class='infotext'>"."Duration: "."</p>";
-                echo "<p class='infotext'>".$row->services_duration."</p>";
+                echo "<p class='infotext'>".$row->services_duration." sessions</p>";
                 echo "</div>";
             echo "</div>";
 		}

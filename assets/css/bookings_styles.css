@@ -1,8 +1,9 @@
-*{
-    margin:0;
+* {
+    margin: 0;
 }
-html { 
-    background-color:#222222;
+
+html {
+    background-color: #222222;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -10,9 +11,9 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-  }
+}
 
-#header, h2{
+#header{
     font-family: 'Poppins';
     font-weight: 600;
     font-size: 40px;
@@ -21,12 +22,27 @@ html {
     padding-bottom: 4rem;
 }
 
-.container{
-    margin: 3rem auto;
+#border {
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 1px solid #ffffff;
+  }
 
+h2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 40px;
+    color: #FA632A;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
 }
 
-.market-header{
+.container {
+    margin: 3rem auto;
+}
+
+.market-header {
     font-family: 'Poppins';
     line-height: 0;
     display: flex;
@@ -36,7 +52,7 @@ html {
     padding-right: 3rem;
 }
 
-.sub-container{
+.sub-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,14 +61,15 @@ html {
     width: 100%;
 }
 
-.solo, .group{
+.solo, .group {
     text-align: center;
 }
-.table-container{
+
+.table-container {
     width: 100%;
 }
 
-table{
+table {
     width: 100%;
     text-align: center;
     background-color: #6a6a6a38;
@@ -61,6 +78,74 @@ table{
     color: #FFFFFF;
 }
 
-td, th{
+td, th {
     padding: 2rem 3rem;
+}
+
+td a {
+    background-color: #e5e5e5a2;
+    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.4s ease;
+}
+
+td a:hover {
+    background-color: red;
+    color: #FFFFFF;
+    transition: 0.4s ease;
+}
+
+.options-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem
+}
+
+#round-btn{
+    border-radius: 50%;
+    padding: 5px 11px;
+    color: #FFFFFF;
+}
+
+.accordion {
+    font-family: 'Poppins';
+    font-size: 20px;
+    background-color: #e5e5e5a2;
+    color: #000000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s ease;
+}
+
+.accordion:after {
+    content: '\02795';
+    /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #FFFFFF;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796";
+    /* Unicode character for "minus" sign (-) */
+}
+
+.active, .accordion:hover {
+    background-color: #FA632A;
+    color: #FFFFFF;
+}
+
+.panel {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
 }
