@@ -339,33 +339,34 @@ class User extends CI_Controller
         $config['encrypt_name'] = true;
         $this->load->library('upload', $config);
 
-        if ($acc == 'Trainee') {
-            $newprofile = array(
-                'Age' => $this->input->post('new_age'),
-                'Height' => $this->input->post('new_height'),
-                'Weight' => $this->input->post('new_weight'),
-                'BMI' => $this->input->post('new_bmi'),
-                'ID' => $this->session->userdata('userid'),
-                'Health' => $this->input->post('new_health')
-            );
-            $this->user_model->update_traineeprofile($newprofile);
-        } else if ($acc == 'Coach') {
-            if ($this->upload->do_upload('new_req')) {
-                $coach_req = $this->upload->data('file_name');
-                $newcoachdetails = array(
-                    'Age' => $this->input->post('new_age'),
-                    'requirement' => $coach_req,
-                    'ID' => $this->session->userdata('userid')
-                );
-                $this->user_model->update_coachprofile($newcoachdetails);
-            } else {
-                print_r($acc);
-            }
-        }
+        echo $this->input->post('new_bmi');
+        // if ($acc == 'Trainee') {
+        //     $newprofile = array(
+        //         'Age' => $this->input->post('new_age'),
+        //         'Height' => $this->input->post('new_height'),
+        //         'Weight' => $this->input->post('new_weight'),
+        //         'BMI' => $this->input->post('new_bmi'),
+        //         'ID' => $this->session->userdata('userid'),
+        //         'Health' => $this->input->post('new_health')
+        //     );
+        //     $this->user_model->update_traineeprofile($newprofile);
+        // } else if ($acc == 'Coach') {
+        //     if ($this->upload->do_upload('new_req')) {
+        //         $coach_req = $this->upload->data('file_name');
+        //         $newcoachdetails = array(
+        //             'Age' => $this->input->post('new_age'),
+        //             'requirement' => $coach_req,
+        //             'ID' => $this->session->userdata('userid')
+        //         );
+        //         $this->user_model->update_coachprofile($newcoachdetails);
+        //     } else {
+        //         print_r($acc);
+        //     }
+        // }
 
         $check = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($check);
-        redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+        // redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
     }
   
     public function password_validation()

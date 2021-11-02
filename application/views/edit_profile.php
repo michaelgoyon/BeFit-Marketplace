@@ -51,8 +51,7 @@
 			}
 					?>
 	</div>
-
-
+	<h2 id="border"></h2>		
 	<div class="form-container">
 		<?php 
 			if($_SESSION['userusername'] == $username) {
@@ -75,7 +74,7 @@
 				</div>
 				<div id ="bmidiv">
                 <label for="bmi">BMI</label><br>
-				<input type="text" id="new_bmi" name="new_bmi" disabled >
+				<input type="text" id="new_bmi" name="new_bmi" readonly>
 				</div>
 				<button class="computebutton" type="button" id="computediv" onclick="compute_bmi()">Compute</button>
 				<div class="input-form">
