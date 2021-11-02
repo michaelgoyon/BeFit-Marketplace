@@ -163,6 +163,14 @@ class User_model extends CI_Model
         return $query;
     }
 
+    public function fetch_all_services_of_coach($userid) {
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->where('users_id', $userid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function update_data($data)
     {
         $this->db->update('users', $data, array('users_username' => $data['users_username']));

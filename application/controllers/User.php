@@ -276,6 +276,8 @@ class User extends CI_Controller
         $data["trainees"] = $this->user_model->get_trainees($username);
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
         $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
+        $data["services_of_coach"] = $this->user_model->fetch_all_services_of_coach($userid);
+        //print_r($data["services_coach"][0]->services_duration);
         $this->navbar();
         $this->load->view("bookings", $data);
     }
