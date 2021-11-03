@@ -290,6 +290,7 @@ class User extends CI_Controller
             $userid = $row->users_id;
         }
         $data["trainees"] = $this->user_model->get_trainees($username);
+        $data["cashout"] = $this->user_model->get_cashout($username);
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
         $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
         $this->navbar();
@@ -303,6 +304,17 @@ class User extends CI_Controller
             return true;
         } else {
             $this->form_validation->set_message('validation', 'Incorrect username/password.');
+            return false;
+        }
+    }
+
+    public function validation_wallet()
+    {
+        if ($this->user_model->correct_amount_wallet()){
+            return true;
+        }
+        else {
+            $this->form_validation->set_message('validation', 'Error! Amount entered is more than your wallet balance. Try again.');
             return false;
         }
     }
@@ -396,6 +408,24 @@ class User extends CI_Controller
         $this->footer();
     }
 
+    public function create_cashout()
+    {
+        $data["users"] = $this->user_model->fetch_data($this->session->userdata('userusername'));
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        date_default_timezone_set('Asia/Manila');
+        $datetime = date('Y/m/d H:i:s');
+        $cashout = array(
+            'cashout_from' => $this->session->userdata('userusername'),
+            'cashout_amount' => $this->input->post("cashout"),
+            'cashout_datetime' => $datetime,
+            'users_id' => $row->users_id
+        );
+        $this->user_model->insert_cashout($cashout);
+        redirect(base_url() . 'user/cashout/');
+    }
+
     public function add_service()
     {
         $workout_availability_temp = 1;
@@ -456,7 +486,7 @@ class User extends CI_Controller
         $this->load->view("topup");
     }
 
-    public function test()
+    public function email_confirm_booking()
     {
         $username = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($username);
@@ -467,9 +497,7 @@ class User extends CI_Controller
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
-        $this->navbar();
-        $this->footer();
-        $this->load->view("success_order", $data);
+        $this->load->view("email_confirm_booking", $data);
     }
 
     public function success_order()
@@ -488,156 +516,8 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
         $orderid = $data["orders"]->orders_id;
-        $message = "
-        <!DOCTYPE html>
-        <html lang='en'>
-        <head>
-            <meta charset='UTF-8'>
-            <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <link rel='preconnect' href='https://fonts.googleapis.com'>
-            <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
-            <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap'
-                rel='stylesheet'>
-        </head>
 
-        <style>
-        * {
-            margin: 0;
-        }
-
-        html {
-            background-color: #222222;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center;
-        }
-
-        #header {
-            font-weight: 600;
-            font-size: 40px;
-            color: #FA632A;
-            padding-top: 4.5rem;
-            padding-bottom: 4rem;
-        }
-
-
-        .infodiv {
-            margin: 3rem auto 3rem;
-            padding-left: 3rem;
-            padding-right: 3rem;
-            overflow: hidden;
-            width: 50%;
-        }
-
-        .market-header {
-            font-family: 'Poppins';
-            line-height: 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding-left: 3rem;
-            padding-right: 3rem;
-        }
-
-        .success-img {
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .success-img img {
-            max-width: 250px;
-        }
-
-        .infoheader {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #FA632A;
-            align-items: center;
-            padding: 3rem 0 3rem;
-            width: 100%;
-        }
-
-        .infohead {
-            font-family: 'Poppins';
-            color: #ffffff;
-            margin-top: 1rem;
-        }
-
-        .infotext {
-            font-family: 'Poppins';
-            color: #FFFFFF;
-            text-align: center;
-            background-color: #383838;
-            padding: 3rem;
-            font-size: 20px;
-        }
-
-        .service-info {
-            align-items: center;
-            justify-content: center;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 1rem;
-        }
-
-        .info-row {
-            line-height: 2.5;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 0 3rem 0 3rem;
-        }
-        </style>
-
-        <body>
-            <div class='market-header'>
-                <h1 id='header'>BOOKING SUCCESSFUL</h1>
-            </div>
-            <div class='infodiv'>
-                <div class='infoheader'>
-                    <div class='success-img'>
-                        <img src='". base_url('assets/images/success.png')."'>
-</div>
-<div class='infohead'>
-    <h1>SUCCESS!</h1>
-</div>
-</div>
-<div class='infotext'>
-    <p>An order receipt has been sent to your email!</p>
-    <br>
-                        <div class='service-info'>
-                            <div class='info-row'>
-                            <p>Payment Type</p>
-                            <p>BeFit Wallet</p>
-                            </div>
-                            <div class='info-row'>
-                            <p>Email</p>
-                            <p>".$useremail."</p>
-                            </div>
-                            <div class='info-row'>
-                            <p>Amount Paid</p>
-                            <p>".$serviceprice." PHP</p>
-                            </div>
-                            <div class='info-row'>
-                            <p>Transaction ID</p>
-                            <p>BFTWRKT00".$orderid."
-                            </div>
-                        </div>
-</div>
-</div>
-</body>
-
-</html>
-";
-
+        $message = $this->load->view('email_confirm_booking', $data, true);
         $this->load->config('email');
         $this->load->library('email');
         $this->email->set_newline("\r\n");
@@ -760,7 +640,10 @@ class User extends CI_Controller
             $amount = floatval($temp2[0]->orders_amount);
             $wallet = $this->user_model->get_wallet_by_username($temp2[0]->orders_from);
             $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
+            $wallet_coach = $this->user_model->get_wallet_by_username($temp2[0]->orders_to);
+            $new_wallet_coach = intval($wallet_coach[0]->users_wallet) + intval($amount);
             $this->user_model->update_trainee_wallet($new_wallet, $temp2[0]->orders_from);
+            $this->user_model->update_coach_wallet($new_wallet_coach, $temp2[0]->orders_to);
             redirect($_SERVER['HTTP_REFERER']);
         }
 
