@@ -38,6 +38,11 @@ class User_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function insert_cashout($cashout)
+    {
+        $this->db->insert('cashout', $cashout);
+        return $this->db->insert_id();
+    }
     public function insert_rating($rating)
     {
         $this->db->insert('ratings', $rating);
@@ -62,6 +67,16 @@ class User_model extends CI_Model
         $query = $this->db->get_where('services', array('users_id' => $userid));
         $result = $query->result();
         return $result;
+    }
+
+    public function get_cashout($username)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('cashout', 'cashout.users_id = users.users_id');
+        $this->db->where('cashout_from', $username);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function get_trainees($username) {
@@ -183,6 +198,13 @@ class User_model extends CI_Model
         $this->db->update('users');
     }
 
+    public function update_coach_wallet($value, $username)
+    {
+        $this->db->set('users_wallet', $value);
+        $this->db->where('users_username', $username);
+        $this->db->update('users');
+    }
+
     public function log_in_correctly()
     {
         $this->db->where('users_username', $this->input->post('username'));
@@ -195,7 +217,6 @@ class User_model extends CI_Model
             return false;
         }
     }
-
     public function password_correct()
     {
         $this->db->where('users_username', $this->session->userdata('userusername'));

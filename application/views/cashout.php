@@ -28,7 +28,7 @@
                                 <th>Date and Time</th>
                                 <th>Paid By</th>
                                 <th>Amount</th>
-                                <th>Option</th>
+                                <th>Workout</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,11 +36,10 @@
                             foreach ($services_coach as $row) {
                             ?>
                                 <tr>
-
                                     <td><?php echo $row->orders_datetime; ?></td>
                                     <td><?php echo $row->orders_from; ?></td>
                                     <td><?php echo $row->services_price; ?> PHP</td>
-                                    <td><a href="#">REQUEST CASHOUT</a></td>
+                                    <td><?php echo $row->services_title; ?></td>
                                 </tr>
                             <?php
                             }
@@ -50,8 +49,26 @@
                 </div>
             </div>
         </div>
-
+        <form method="post" action="<?php echo base_url();?>user/create_cashout">
+            <div>
+                <h2 id="header">Enter Amount</h2>
+                <div class="amount">
+                    <p>PHP</p>
+                    <input type="text" id="cashout" name="cashout" onkeypress="isInputNumber(event)">
+                </div>
+            </div>
+            <div class="registerbtn">
+                <input type="submit" value="Cashout">
+            </div>
+        </form>
         <script>
+            function isInputNumber(evt) {
+                var ch = String.fromCharCode(evt.which);
+                if (!(/[0-9]/.test(ch))) {
+                    evt.preventDefault();
+                }
+
+            }
             window.addEventListener('DOMContentLoaded', (event) => {
                 CometChatWidget.init({
                     "appID": "192441c86ab4e6a7",
