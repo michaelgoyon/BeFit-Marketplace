@@ -105,6 +105,7 @@ class Admin extends CI_Controller {
 		$data['numusers'] = $this->admin_model->get_num_users();
 		$data['numservices'] = $this->admin_model->get_num_services();
 		$data['numorders'] = $this->admin_model->get_num_orders();
+		$data['numcashout'] = $this->admin_model->get_pending_cashout();
 
 		//charts & transactions
 		$data['users'] = $this->admin_model->count_users();
@@ -124,7 +125,8 @@ class Admin extends CI_Controller {
 		$data['services'] = $this->admin_model->get_services_by_sales();
 		//print_r($data['payments']);
 
-		
+		//cashout
+		$data['cashout'] = $this->admin_model->get_cashout();
 		//view page
 		$this->load->view('admin_home', $data);
 	}
@@ -161,4 +163,12 @@ class Admin extends CI_Controller {
         $this->session->sess_destroy();
         redirect(base_url().'admin/');
     }
+
+	public function confirm_cashout(){
+		if(isset($_GET['cashout_id'])) {
+			$cashoutid=$_GET['cashout_id'];
+			$this->admin_model->update_cashout($cashoutid);
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
 }
