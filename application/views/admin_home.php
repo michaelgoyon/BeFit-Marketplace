@@ -422,6 +422,7 @@ function sidedash(){
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('sidecashout').style.display ='none';
+    document.getElementById("addadminshow").style.display = "none";
     document.getElementById("location").innerHTML = "Dashboard";
 
 }
@@ -442,8 +443,8 @@ function sidechart(){
     document.getElementById('chartshow').style.display ='block';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
-    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("cashoutshow").style.display = "none";
+    document.getElementById("addadminshow").style.display = "none";
     document.getElementById("location").innerHTML = "Charts";
 
 }
@@ -453,8 +454,8 @@ function sideservice(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='block';
-    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("cashoutshow").style.display = "none";
+    document.getElementById("addadminshow").style.display = "none";
     document.getElementById("location").innerHTML = "Services";
 }
 
