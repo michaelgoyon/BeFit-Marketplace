@@ -46,19 +46,31 @@ class Admin_Model extends CI_Model {
     }
 
     public function get_ratings() {
-        $this->db->select('services_id, round(avg(ratings_rate),2) as ratings');
+        /*$this->db->select('services_id, round(avg(ratings_rate),2) as ratings');
         $this->db->from('ratings');
         $this->db->group_by('services_id');
-        //$this->db->order_by('ratings', 'DESC');
-        $query = $this->db->get()->result();
+        $this->db->order_by('ratings', 'DESC');*/
+        $sql = $this->db->query("SELECT services.users_name, round(avg(avg_),2) as superavg
+        FROM (
+            SELECT round(avg(ratings_rate),2) as avg_, services_id
+            FROM ratings
+            GROUP BY services_id
+            ORDER BY avg_ DESC
+            ) as avgs
+            JOIN services
+            ON services.services_id = avgs.services_id
+            GROUP BY services.users_name
+        ");
+        $query = $sql->result();
         return $query;
     }
 
     public function get_names($array) {
-        $this->db->select('users.users_name as names');
+        $this->db->select('services.services_title as names');
         $this->db->from('users');
         $this->db->join('services', 'services.users_id = users.users_id');
         $this->db->where_in('services_id', $array);
+        $this->db->order_by('names', 'DESC');
         $query = $this->db->get()->result();
         return $query;
     }

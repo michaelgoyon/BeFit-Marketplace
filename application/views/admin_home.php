@@ -396,11 +396,13 @@ function sideservice(){
     //chart js
     // === include 'setup' then 'config' above ===
     <?php
-        $php_array = array();
-        foreach($names as $row){
-            array_push($php_array, $row->names);
-        }
-        $js_array = json_encode($php_array);
+        $php_array1 = array();
+        $i = 0;
+        /*for($i = 0; $i < $names as $row){
+            array_push($php_array1, $row[$i]);
+            $i++;
+        }*/
+        $js_array = json_encode($names);
         echo "const labels1 = ". $js_array . ";";
     ?>
         const data = {
@@ -418,11 +420,12 @@ function sideservice(){
                 ],
                 borderWidth: 1,
                 <?php
-                    $php_array = array();
-                    foreach($ratings as $rating){
-                        array_push($php_array, $rating->ratings);
-                    }
-                    $js_array = json_encode($php_array);
+                    //$php_array2 = array();
+                    //$j = 0;
+                    /*foreach($ratings as $rating){
+                        array_push($php_array2, $rating[$j]);
+                    }*/
+                    $js_array = json_encode($ratings);
                     echo "data: ". $js_array . ",";
                 ?>
             }]
@@ -447,9 +450,9 @@ function sideservice(){
             foreach($prices as $row) {
                 if(floatval($row->services_price) >= 0 and floatval($row->services_price) <= 500) {
                     array_push($array1, $row->services_price);
-                } elseif(floatval($row->services_price) >= 501 and floatval($row->services_price) <= 1000) {
+                } elseif(floatval($row->services_price) >= 501 and floatval($row->services_price) <= 2000) {
                     array_push($array2, $row->services_price);
-                } elseif(floatval($row->services_price) >= 1001 and floatval($row->services_price) <= 1500) {
+                } elseif(floatval($row->services_price) > 2001) {
                     array_push($array3, $row->services_price);
                 }
             }
@@ -460,8 +463,8 @@ function sideservice(){
         const dataPrice = {
         labels: [
             '₱0.00 - ₱500.00',
-            '₱501.00 - ₱1000.00',
-            '₱1001.00 - ₱1500.00'
+            '₱501.00 - ₱2000.00',
+            '₱2001.00 and above'
         ],
         datasets: [{
             label: 'My First Dataset',
