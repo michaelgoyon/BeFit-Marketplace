@@ -500,7 +500,7 @@ ul {
 }
 
 .deletebutton {
-    background-color: red;
+    background-color: green;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -534,7 +534,11 @@ ul {
     text-align:left
 }
 
-.serviceshow .transactionshow .chartshow h1{
+.cashoutshow{
+    display: none;
+}
+
+.serviceshow .transactionshow {
     margin-left: 1em;
     margin-right: 4em;
 }

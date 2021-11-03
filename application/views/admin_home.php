@@ -27,20 +27,25 @@
 </div>
 </div>
 <div class='admin-sidebar'>
-    <li>
-        <a onclick="sidedash()">Dashboard</a>
+    <li onclick="sidedash()">
+        <a>Dashboard</a>
     </li>
-    <li>
-        <a onclick="sidetransaction()">Transactions</a>
-    </li>
-
-    <li>
-        <a onclick="sidechart()">Charts</a>
+    <li onclick="sidetransaction()">
+        <a>Transactions</a>
     </li>
 
-    <li>
-        <a onclick="sideservice()">Services</a>
+    <li onclick="sidechart()">
+        <a>Charts</a>
     </li>
+
+    <li onclick="sideservice()">
+        <a>Services</a>
+    </li>
+
+    <li onclick="sidecashout()">
+        <a >Cashouts</a>
+    </li>
+    
 
     <!---
     <li class="accordion">
@@ -107,7 +112,7 @@
   <div class="column">
     <div class="card greenbg">
       <p class="carduptext">PENDING CASHOUTS</p>
-      <p class="cardmidtext"><?php echo $numorders; ?></p>
+      <p class="cardmidtext"><?php echo $numcashout; ?></p>
       <p class="cardbottomtext">Befit</p>
     </div>
   </div>
@@ -319,6 +324,39 @@
 
 </div>
 
+
+<div id ="cashoutshow" class="container cashoutshow">
+        <table class="table-view">
+            <thead>
+                <tr>
+                    <th>Cashout ID</th>
+                    <th>User ID</th>
+                    <th>Coach</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+           <tbody>
+                <?php
+                    foreach($cashout as $row) {
+                        if ($row->cashout_remarks == "0"){
+                            echo "<tr>";
+                            echo "<td>".$row->cashout_id."</td>";
+                            echo "<td>".$row->users_id."</td>";
+                            echo "<td>".$row->cashout_from."</td>";
+                            echo "<td>".$row->cashout_amount." PHP"."</td>"; 
+                            echo "<td>".$row->cashout_datetime."</td>";?>
+                            <td><a class="deletebutton greenbg" href="<?php echo base_url().'admin/confirm_cashout?cashout_id='.$row->cashout_id;?>">Confirm</a></td>
+                            <?php
+                            echo "</tr>";
+                        }
+                    }
+                ?>
+           </tbody>
+        </table>
+                </div>
+
     <div class="btn-logout">
         <a href="<?php echo base_url();?>admin/logout">LOG OUT</a>
     </div>
@@ -357,6 +395,7 @@ function sidedash(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("location").innerHTML = "Dashboard";
 
 }
@@ -366,6 +405,7 @@ function sidetransaction(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='block';
     document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("location").innerHTML = "Transactions";
 
 }
@@ -375,6 +415,7 @@ function sidechart(){
     document.getElementById('chartshow').style.display ='block';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("location").innerHTML = "Charts";
 
 }
@@ -384,8 +425,17 @@ function sideservice(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='block';
+    document.getElementById('sidecashout').style.display ='none';
     document.getElementById("location").innerHTML = "Services";
+}
 
+function sidecashout(){
+    document.getElementById('dashboardshow').style.display ='none';
+    document.getElementById('chartshow').style.display ='none';
+    document.getElementById('transactionshow').style.display ='none';
+    document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='block';
+    document.getElementById("location").innerHTML = "Cashouts";
 }
 
 

@@ -380,7 +380,7 @@ class User extends CI_Controller
 
         $check = $this->session->userdata('userusername');
         $data["users"] = $this->user_model->fetch_data($check);
-        // redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+        redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
     }
   
     public function password_validation()

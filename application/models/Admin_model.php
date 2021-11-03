@@ -129,4 +129,22 @@ class Admin_Model extends CI_Model {
         return $query->num_rows();
     }
 
+    public function get_cashout(){
+        $this->db->select('*');
+        $this->db->from('cashout');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function update_cashout($cashoutid){
+        $this->db->set('cashout_remarks', '1');
+        $this->db->where('cashout_id', $cashoutid);
+        $this->db->update('cashout');
+    }
+
+    public function get_pending_cashout(){
+        $query = $this->db->query('SELECT * FROM cashout WHERE cashout_remarks = 0');
+        return $query->num_rows();
+    }
+
 }
