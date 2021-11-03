@@ -171,6 +171,14 @@ class User_model extends CI_Model
         return $query;
     }
 
+    public function get_health($userid) {
+        $this->db->select('Health');
+        $this->db->from('traineeprofile');
+        $this->db->where('ID', $userid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function update_data($data)
     {
         $this->db->update('users', $data, array('users_username' => $data['users_username']));

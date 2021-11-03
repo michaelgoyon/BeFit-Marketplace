@@ -1240,4 +1240,14 @@ class User extends CI_Controller
         $result = "true";
         echo $result;
     }
+
+    public function gethealth_mobile() {
+        $result = '';
+        $health = '';
+        $id = $this->input->post('dataUserid');
+        $temp = $this->user_model->get_health($id);
+        $health = $temp[0]->Health;
+        $result = "true";
+        echo $result.':'.$health;
+    }
 }
