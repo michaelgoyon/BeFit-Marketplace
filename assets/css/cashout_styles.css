@@ -120,7 +120,8 @@ input[type="submit"] {
     font-family: 'Poppins', 'sans-serif';
     font-size: 20px;
     border-radius: 2px;
-    background-color: #1f257c;
+    background-color: #cacaca;
+    color: #000000;
     text-decoration: none;
     border: none;
     align-items: center;
@@ -130,10 +131,18 @@ input[type="submit"] {
     vertical-align: middle;
     margin: 1rem;
     cursor: pointer;
-    color: #FFFFFF;
+    transition: 0.2s ease-in;
 }
 
 input[type="submit"]:hover{
-    background-color: #373e9c;
+    background-color: #FA632A;
     color: #FFFFFF;
+}
+
+.registerbtn {
+    display: flex;
+    margin: 2rem auto;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }

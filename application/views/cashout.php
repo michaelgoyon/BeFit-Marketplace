@@ -49,18 +49,9 @@
                 </div>
             </div>
         </div>
-        <form method="post" action="<?php echo base_url();?>user/create_cashout">
-            <div>
-                <h2 id="header">Enter Amount</h2>
-                <div class="amount">
-                    <p>PHP</p>
-                    <input type="text" id="cashout" name="cashout" onkeypress="isInputNumber(event)">
-                </div>
-            </div>
             <div class="registerbtn">
-                <input type="submit" value="Cashout">
+                <input type="submit" value="Request Cashout">
             </div>
-        </form>
         <script>
             function isInputNumber(evt) {
                 var ch = String.fromCharCode(evt.which);
