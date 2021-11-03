@@ -108,15 +108,20 @@ class Admin extends CI_Controller {
 
 		//charts & transactions
 		$data['users'] = $this->admin_model->count_users();
-		$data['ratings'] = $this->admin_model->get_ratings();
+		$data['avgs'] = $this->admin_model->get_ratings();
+		//print_r($data['ratings']);
 		$idArray = array();
-		$tempArray = json_decode(json_encode($data['ratings']), true);
-		for ($i = 0; $i < 3; $i++) {
-			array_push($idArray, $tempArray[$i]['services_id']);
+		$nameArray = array();
+		$tempArray = json_decode(json_encode($data['avgs']), true);
+		//print_r($tempArray);
+		for ($i = 0; $i < 2; $i++) {
+			array_push($idArray, $tempArray[$i]['superavg']);
+			array_push($nameArray, $tempArray[$i]['users_name']);
 		}
 		//print_r($idArray);
-		$data['names'] = $this->admin_model->get_names($idArray);
-		//print_r($data['ratings']);
+		$data['ratings'] = $idArray;
+		$data['names'] = $nameArray;
+		print_r($data['names']);
 		$data['orders'] = $this->admin_model->get_orders();
 		//print_r($tempPriceArray);
 		$data['prices'] = $this->admin_model->get_prices();
