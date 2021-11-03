@@ -147,4 +147,7 @@ class Admin_Model extends CI_Model {
         return $query->num_rows();
     }
 
+    public function add_new_admin($admin){
+        $this->db->insert('admins', $admin);
+    }
 }

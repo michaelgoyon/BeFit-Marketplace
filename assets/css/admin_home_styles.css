@@ -500,7 +500,7 @@ ul {
 }
 
 .deletebutton {
-    background-color: green;
+    background-color: red;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -525,8 +525,11 @@ ul {
     text-align:left
 }
 
-
 .serviceshow{
+    display:none;
+}
+
+.addadminshow{
     display:none;
 }
 
@@ -567,4 +570,70 @@ ul {
     padding-bottom: 4px;
     padding-top:4px;
     background-color: #FA632A;
+}
+
+.form-container h1{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.form-container form{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.0rem;
+}
+
+.error-msg{
+    color: #ff2a2a;
+    text-align: center;
+    line-height: 0.3;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+input[type="text"], input[type="password"] {
+    padding-right: 20px;
+    width: 450px;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
+    padding: 8px;
+    display: inline-block;
+    border: none;
+    background: #c4c4c42f;
+    color: #FFFFFF;
+  }
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+    outline: none;
+}
+
+input[type="submit"] {
+    font-family: 'Poppins', 'sans-serif';
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: #FA632A;
+    border: none;
+    align-items: center;
+    padding: 0.5rem;
+    width: 450px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+    color: white;
+    background-color:  #e5e5e5a2;
+    transition: all 0.3s;
 }

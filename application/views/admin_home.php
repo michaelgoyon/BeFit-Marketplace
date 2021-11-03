@@ -43,7 +43,11 @@
     </li>
 
     <li onclick="sidecashout()">
-        <a >Cashouts</a>
+        <a>Cashouts</a>
+    </li>
+
+    <li onclick="sideadmin()">
+        <a>Add Admin</a>
     </li>
     
 
@@ -357,14 +361,36 @@
         </table>
                 </div>
 
-    <div class="btn-logout">
+</div>
+</div>
+
+<div class ="container addadminshow" id ="addadminshow">
+    <div class="form-container">
+            <form method="POST" action="<?php echo base_url().'Admin/add_admin'; ?>" >
+                <div>
+					<label for="username">Username</label><br>
+					<input type="text" id="username" name="username" value="<?php echo set_value('username'); ?>">
+				</div>
+				<div>
+					<label for="password">Password</label><br>
+					<input type="password" id="password" name="password">
+				</div>
+				<div>
+					<label for="password_confirm">Confirm Password</label><br>
+					<input type="password" id="password_confirm" name="password_confirm">
+				</div>
+				<div class="registerbtn">
+					<input type="submit" value="Submit">
+				</div>
+				<br><br><br>
+			</form>
+    </div>
+</div>
+
+
+<div class="btn-logout">
         <a href="<?php echo base_url();?>admin/logout">LOG OUT</a>
     </div>
-
-</div>
-</div>
-
-
 
 </body>
 
@@ -405,7 +431,8 @@ function sidetransaction(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='block';
     document.getElementById('serviceshow').style.display ='none';
-    document.getElementById('sidecashout').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='none';
+    document.getElementById("addadminshow").style.display = "none";
     document.getElementById("location").innerHTML = "Transactions";
 
 }
@@ -416,6 +443,7 @@ function sidechart(){
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('sidecashout').style.display ='none';
+    document.getElementById("cashoutshow").style.display = "none";
     document.getElementById("location").innerHTML = "Charts";
 
 }
@@ -426,6 +454,7 @@ function sideservice(){
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='block';
     document.getElementById('sidecashout').style.display ='none';
+    document.getElementById("cashoutshow").style.display = "none";
     document.getElementById("location").innerHTML = "Services";
 }
 
@@ -435,9 +464,19 @@ function sidecashout(){
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='block';
+    document.getElementById("addadminshow").style.display = "none";
     document.getElementById("location").innerHTML = "Cashouts";
 }
 
+function sideadmin(){
+    document.getElementById('dashboardshow').style.display ='none';
+    document.getElementById('chartshow').style.display ='none';
+    document.getElementById('transactionshow').style.display ='none';
+    document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='none';
+    document.getElementById("addadminshow").style.display = "block";
+    document.getElementById("location").innerHTML = "Add Admin";
+}
 
 </script>
 
