@@ -176,4 +176,17 @@ class Admin extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
+
+	public function add_admin(){
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[30]');
+        $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
+
+		$admin = array(
+			'admins_username' => $this->input->post('username'),
+			'admins_password' => $this->input->post('password'),
+		);
+		$this->admin_model->add_new_admin($admin);
+		redirect($_SERVER['HTTP_REFERER']);
+
+	}
 }
