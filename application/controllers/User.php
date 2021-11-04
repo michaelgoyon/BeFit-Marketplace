@@ -761,36 +761,34 @@ class User extends CI_Controller
         }
     }
 
-    public function registercoach_mobile()
+    /*public function registercoach_mobile()
     {
         $result = '';
         $user = array(
-            'users_account' => $this->input->post('taccount'),
-            'users_avatar' => $this->input->post('tshuffledfilename'),
-            'users_name' => $this->input->post('tname'),
-            'users_username' => $this->input->post('tusername'),
-            'users_birthdate' => $this->input->post('tbirthdate'),
-            'users_email' => $this->input->post('temail'),
-            'users_password' => $this->input->post('tpassword'),
-            'users_code' => $this->input->post('tcode'),
+            'users_account' => $this->input->post('account'),
+            'users_avatar' => $this->input->post('shuffledfilename'),
+            'users_name' => $this->input->post('name'),
+            'users_username' => $this->input->post('username'),
+            'users_birthdate' => $this->input->post('birthdate'),
+            'users_email' => $this->input->post('email'),
+            'users_password' => $this->input->post('password'),
+            'users_code' => $this->input->post('code'),
             'users_active' => false,
             'users_wallet' => 0
         );
         $id = $this->user_model->insert($user);
 
-        $tdetail = array(
-            'Age' => $this->input->post('tage'),
+        $detail = array(
+            'Age' => $this->input->post('age'),
             'Height' => floatval($this->input->post('theight')),
-            'Weight' => floatval($this->input->post('tweight')),
-            'Health' => $this->input->post('thealth'),
             'ID' => $id,
             'BMI' => floatval($this->input->post('tbmi'))
         );
 
-        $this->user_model->trainee($tdetail);
+        $this->user_model->coach($detail);
 
-        $base = $_POST["tencoded"];
-        $filename = $_POST["tshuffledfilename"];
+        $base = $_POST["encoded"];
+        $filename = $_POST["shuffledfilename"];
         $binary = base64_decode($base);
         header('Content-Type: bitmap; charset=utf-8');
         $file = fopen('./uploads/' . $filename, 'wb');
@@ -798,7 +796,7 @@ class User extends CI_Controller
         fclose($file);
         $result = "true";
         echo $id;
-    }
+    }*/
 
     public function register_mobile()
     {
