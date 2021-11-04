@@ -147,6 +147,7 @@
 		document.getElementById('weightdiv').style.display = 'block';
 		document.getElementById('bmidiv').style.display = 'block';
 		document.getElementById('computediv').style.display = 'block';
+		document.getElementById('healthdiv').style.display = 'block';
 	}
 	function coachreg(){
 		document.getElementById('div1').style.display = 'block';
@@ -154,6 +155,7 @@
 		document.getElementById('weightdiv').style.display = 'none';
 		document.getElementById('bmidiv').style.display = 'none';
 		document.getElementById('computediv').style.display = 'none';
+		document.getElementById('healthdiv').style.display = 'none';
 	}
 	function compute_bmi(){
 		var h = parseInt(document.getElementById("height").value);
