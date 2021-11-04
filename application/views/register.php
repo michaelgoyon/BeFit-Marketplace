@@ -135,6 +135,9 @@
 				<div class="registerbtn">
 					<input type="submit" value="Register">
 				</div>
+				<div class="sign-in">
+					<p>Already have an account? </p><a href="<?php echo base_url().'user/login'?>">Sign In</a>
+				</div>
 				<br><br><br>
 			</form>
 		</div>
