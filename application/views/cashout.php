@@ -48,10 +48,52 @@
                     </table>
                 </div>
             </div>
+            <div class="solo">
+                <h2>Cashout History</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date and Time</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($cashout as $row) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $row->cashout_datetime; ?></td>
+                                    <td><?php echo $row->cashout_amount; ?></td>
+                                    <td>
+                                        <?php
+                                        if ($row->cashout_remarks == 0) {
+                                            echo "Pending";
+                                        } else {
+                                            echo "Completed";
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        <form action="<?php echo base_url() . 'user/create_cashout' ?>" method="post">
+            <div class="input-form">
+                <label>Enter Phone Number: </label>
+                <input type="text" name="phone">
+            </div>
             <div class="registerbtn">
                 <input type="submit" value="Request Cashout">
             </div>
+        </form>
+
         <script>
             function isInputNumber(evt) {
                 var ch = String.fromCharCode(evt.which);

@@ -69,12 +69,11 @@ class User_model extends CI_Model
         return $result;
     }
 
-    public function get_cashout($username)
+    public function get_cashout($userid)
     {
         $this->db->select('*');
-        $this->db->from('users');
-        $this->db->join('cashout', 'cashout.users_id = users.users_id');
-        $this->db->where('cashout_from', $username);
+        $this->db->from('cashout');
+        $this->db->where('users_id', $userid);
         $query = $this->db->get()->result();
         return $query;
     }
