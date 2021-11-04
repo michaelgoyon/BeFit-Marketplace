@@ -47,7 +47,7 @@
                         </li>
                         <li><a href="<?php echo base_url(); ?>user/topup">Wallet</a></li>
                         <li><a href="<?php echo base_url(); ?>user/bookings">Trainees</a></li>
-                        <li><a href="<?php echo base_url(); ?>user/cashout">Cashout</a></li>
+                        <li><a href="<?php echo base_url(). 'user/cashout?userid='.$row->users_id; ?>">Cashout</a></li>
                         <li><a href="<?php echo base_url(); ?>user/logout">Log Out</a></li>
                     <?php
                     } else {

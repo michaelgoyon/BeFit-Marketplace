@@ -290,7 +290,10 @@ class User extends CI_Controller
             $userid = $row->users_id;
         }
         $data["trainees"] = $this->user_model->get_trainees($username);
-        $data["cashout"] = $this->user_model->get_cashout($username);
+        if(isset($_GET['userid'])) {
+			$userid=$_GET['userid'];
+            $data["cashout"] = $this->user_model->get_cashout($userid);
+		}
         $data["services"] = $this->user_model->fetch_service_by_userid($username);
         $data["services_coach"] = $this->user_model->fetch_service_by_userid_2($username);
         $this->navbar();
@@ -412,18 +415,40 @@ class User extends CI_Controller
     {
         $data["users"] = $this->user_model->fetch_data($this->session->userdata('userusername'));
         foreach ($data["users"] as $row) {
+            $wallet = $row->users_wallet;
+            $email = $row->users_email;
             $userid = $row->users_id;
         }
+        $data["cashout"] = $this->user_model->get_cashout($userid);
         date_default_timezone_set('Asia/Manila');
         $datetime = date('Y/m/d H:i:s');
         $cashout = array(
             'cashout_from' => $this->session->userdata('userusername'),
-            'cashout_amount' => $this->input->post("cashout"),
+            'cashout_amount' => $wallet,
+            'cashout_phone' => $this->input->post("phone"),
+            'cashout_email' => $email,
             'cashout_datetime' => $datetime,
             'users_id' => $row->users_id
         );
+
+
         $this->user_model->insert_cashout($cashout);
-        redirect(base_url() . 'user/cashout/');
+        $message = $this->load->view('email_confirm_cashout', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($email);
+        $this->email->subject('Booking Receipt');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('message', 'Nice one');
+        } else {
+            $this->session->set_flashdata('message', $this->email->print_debugger());
+        }
+
+        redirect(base_url() . 'user/cashout?userid='.$row->users_id);
     }
 
     public function add_service()
@@ -498,6 +523,20 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
         $this->load->view("email_confirm_booking", $data);
+    }
+
+    public function email_confirm_cashout()
+    {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $temp = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp);
+        $this->load->view("email_confirm_cashout", $data);
     }
 
     public function success_order()
