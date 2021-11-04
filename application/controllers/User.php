@@ -62,6 +62,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'valid_email|is_unique[users.users_email]|required');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[30]');
         $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
+        $this->form_validation->set_rules('Age', 'Age', 'required|less_than[18]');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('register', $this->data);
