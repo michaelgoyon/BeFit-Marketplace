@@ -111,7 +111,7 @@
 							<option value ="Strength">Strength</option>
 							<option value ="Endurance">Endurance</option>
 							<option value ="Flexibility">Flexibility</option>
-							<option value ="Yoga/Pilates">Yoga/Pilates</option>
+							<option value ="Aerobics">Aerobics</option>
 						</select>
 						<div></div>
 					</div>

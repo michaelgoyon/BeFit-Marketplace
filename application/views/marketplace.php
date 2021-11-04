@@ -62,7 +62,7 @@
                 }
 
                 else if ($traineerow->Health =='Asthma'){
-                    if($row->services_type == 'Pilates/Yoga'){
+                    if($row->services_type == 'Aerobics'){
                       echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                       echo "<div class='mem'>";
                       echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";

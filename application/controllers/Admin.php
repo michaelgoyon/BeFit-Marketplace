@@ -115,7 +115,7 @@ class Admin extends CI_Controller {
 		$nameArray = array();
 		$tempArray = json_decode(json_encode($data['avgs']), true);
 		//print_r($tempArray);
-		for ($i = 0; $i < 2; $i++) {
+		for ($i = 0; $i < 3; $i++) {
 			array_push($idArray, $tempArray[$i]['superavg']);
 			array_push($nameArray, $tempArray[$i]['users_name']);
 		}
