@@ -527,9 +527,9 @@ class User extends CI_Controller
         $this->email->message($message);
 
         if ($this->email->send()) {
-            $this->session->set_flashdata('message', 'Nice one');
+            $this->session->set_flashdata('msg', 'Nice one');
         } else {
-            $this->session->set_flashdata('message', $this->email->print_debugger());
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
         }
 
         $this->navbar();
@@ -996,6 +996,14 @@ class User extends CI_Controller
         $temp = intval($sale2[0]->services_sale) + 1;
         $this->user_model->update_servicesale($sale_id[0]->services_id, $temp);
         $this->user_model->confirm_trainee($id);
+        $temp2 = $this->user_model->fetch_all_orders_by_id($id);
+        $amount = floatval($temp2[0]->orders_amount);
+        $wallet = $this->user_model->get_wallet_by_username($temp2[0]->orders_from);
+        $new_wallet = intval($wallet[0]->users_wallet) - intval($amount);
+        $wallet_coach = $this->user_model->get_wallet_by_username($temp2[0]->orders_to);
+        $new_wallet_coach = intval($wallet_coach[0]->users_wallet) + intval($amount);
+        $this->user_model->update_trainee_wallet($new_wallet, $temp2[0]->orders_from);
+        $this->user_model->update_coach_wallet($new_wallet_coach, $temp2[0]->orders_to);
 
         $result = "true";
         echo $result;
@@ -1072,11 +1080,24 @@ class User extends CI_Controller
     public function availservice_mobile() {
         $result='';
         $from = $this->input->post('dataUsername');
+        $data["users"] = $this->user_model->fetch_data($from);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+            $useremail = $row->users_email;
+        }
         $temp = $this->user_model->get_coach_by_service($this->input->post('service'));
         $to = $temp[0]->users_username;
         $amount = floatval($temp[0]->services_price);
         $duration = $temp[0]->services_duration;
         $serviceid = $this->input->post('service');
+
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        foreach ($data["services"] as $row) {
+            $serviceprice = $row->services_price;
+        }
+
+        $temp = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp);
 
         date_default_timezone_set('Asia/Manila');
         $date = date('Y-m-d H:i:s');
@@ -1088,6 +1109,21 @@ class User extends CI_Controller
             $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration, $date);
             $result = "true";
         }
+        $message = $this->load->view('email_confirm_booking', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Booking Receipt');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', 'Nice one');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+
         echo $result;
     }
 
