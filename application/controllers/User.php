@@ -53,6 +53,21 @@ class User extends CI_Controller
         $this->load->view("footer", $data);
     }
 
+    public function dob_check($str) {
+        $tz  = new DateTimeZone('Asia/Manila');
+        //echo $str;
+        $age = DateTime::createFromFormat('Y-m-d', $str, $tz)
+            ->diff(new DateTime('now', $tz))
+            ->y;
+
+        if ($age < 18) { //yes it's YYYY-MM-DD
+            $this->form_validation->set_message('dob_check', '{field} must be 18 and above.');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+
     public function register_data()
     {
         $this->form_validation->set_message('is_unique', 'The %s is already taken.');
@@ -62,7 +77,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'valid_email|is_unique[users.users_email]|required');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[30]');
         $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
-        $this->form_validation->set_rules('Age', 'Age', 'required|greater_than[18]');
+        $this->form_validation->set_rules('birthdate', 'Age', 'required|callback_dob_check');
 
         if ($this->form_validation->run() == FALSE) {
             $this->load->view('register', $this->data);
@@ -94,8 +109,13 @@ class User extends CI_Controller
 
                 $id = $this->user_model->insert($user);
 
+                $tz  = new DateTimeZone('Asia/Manila');
+                $age = DateTime::createFromFormat('Y-m-d', $this->input->post('birthdate'), $tz)
+                    ->diff(new DateTime('now', $tz))
+                    ->y;
+
                 $traineedetails = array(
-                    'Age' => $this->input->post('Age'),
+                    'Age' => $age,
                     'Height' => $this->input->post('Height'),
                     'Weight' => $this->input->post('Weight'),
                     'Health' => $this->input->post('Health'),
@@ -149,6 +169,11 @@ class User extends CI_Controller
                     $this->session->set_flashdata('message', 'Activation code sent to email');
                     $this->session->set_flashdata('username', $user['users_username']);
                     $this->session->set_flashdata('name', $user['users_name']);
+                    if($acc == "Trainee") {
+                        $this->session->set_flashdata('account', 'traineerole');
+                    } else {
+                        $this->session->set_flashdata('account', 'coachrole');
+                    }
                 } else {
                     $this->session->set_flashdata('message', $this->email->print_debugger());
                 }
@@ -482,7 +507,10 @@ class User extends CI_Controller
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         $data["ratings"] = $this->user_model->get_rating_by_id($serviceid);
         $data["coach"] = $this->user_model->get_coach_by_service($serviceid);
-        //print_r($data);
+        if($this->uri->segment(4)) {
+            $data["rated"] = $this->user_model->if_rated($this->uri->segment(4), $this->session->userdata('userusername'));
+        }
+        //print_r($data["rated"]);
         $this->navbar();
         $this->load->view("service_details", $data);
         $this->footer();
@@ -498,6 +526,7 @@ class User extends CI_Controller
             'ratings_comment' => $this->input->post('review_comment')
         );
         $this->user_model->insert_rating($rating);
+        $this->user_model->update_rate($this->uri->segment(4));
         redirect(base_url() . 'user/service/' . $rating['services_id']);
     }
 
@@ -630,11 +659,21 @@ class User extends CI_Controller
         $this->footer();
     }
 
-    public function delete_services()
+    public function deactivate_services()
     {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $this->user_model->delete_services($id);
+            $this->user_model->deactivate_services($id);
+
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    public function activate_services()
+    {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->user_model->activate_services($id);
 
             redirect($_SERVER['HTTP_REFERER']);
         }

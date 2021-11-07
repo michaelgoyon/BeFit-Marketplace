@@ -174,9 +174,18 @@
 							foreach($services as $row) {
 								echo "<tr>";
 						?>
-								<td><a href="<?php echo base_url().'user/delete_services?id='.$row->services_id;?>">REMOVE</a></td>
+							<?php 
+								if($row->services_availability == 1) {
+							?>
+								<td><a href="<?php echo base_url().'user/deactivate_services?id='.$row->services_id;?>">DEACTIVATE</a></td>
+							<?php 
+								}
+								else {
+							?>
+								<td><a href="<?php echo base_url().'user/activate_services?id='.$row->services_id;?>">ACTIVATE</a></td>
 						<?php 
-								echo "<td>".$row->services_type."</td>";
+								}
+								echo "<td>".$row->services_title."</td>";
 								echo "<td>".($row->services_availability == 1 ? "Available" : "Unavailable")."</td>";
 								echo "<td>".$row->services_day."</td>";
 								echo "<td>".$row->services_time."</td>";

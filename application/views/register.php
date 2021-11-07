@@ -42,9 +42,11 @@
 							}).then((response) => {
 								const UID = '<?php echo $this->session->flashdata('username'); ?>';
 								const USERNAME = '<?php echo $this->session->flashdata('name'); ?>';
+								const ROLE = '<?php echo $this->session->flashdata('account'); ?>';
 								CometChatWidget.createOrUpdateUser({
 									uid: UID,
 									name: USERNAME,
+									role: ROLE
 								});
 							});
 						});
@@ -52,6 +54,7 @@
 					</div>
 					<?php
 					unset($_SESSION['message']);
+					unset($_SESSION['account']);
 				}
 		    ?>
 		</div>
@@ -82,7 +85,7 @@
 				</div>
                 <div>
 					<label for="birthdate">Birthdate</label><br>
-					<input type="text" id="birthdate" name="birthdate" value="<?php echo set_value('birthdate'); ?>">
+					<input type="date" id="birthdate" name="birthdate" value="<?php echo set_value('birthdate'); ?>">
 				</div>
 				<div>
 					<label for="email">Email</label><br>
@@ -95,10 +98,6 @@
 				<div>
 					<label for="password_confirm">Confirm Password</label><br>
 					<input type="password" id="password_confirm" name="password_confirm">
-				</div>
-				<div>
-                    <label for="age">Age</label><br>
-					<input type="text" id="Age" name="Age" ?>
 				</div>
                 <div id ="heightdiv">
                     <label for="height">Height</label><br>

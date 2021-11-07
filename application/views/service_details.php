@@ -86,8 +86,8 @@
             echo "<hr>";
         }
     ?>
-        <div class="review-subcontain">
-            <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3); ?>">
+        <div class="review-subcontain" style='<?php echo ($this->uri->segment(4)) ? 'display:flex;' : '';?>'>
+            <form method="POST" action="<?php echo base_url().'user/submit_review/'.$this->uri->segment(3).'/'.$this->uri->segment(4); ?>">
             <label><p class="infotext">WRITE A REVIEW:</p></label>
                 <span class="star-cb-group">
                     <input type="radio" id="rating-5" name="rating" value="5" />
