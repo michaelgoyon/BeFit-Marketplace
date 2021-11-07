@@ -246,11 +246,11 @@
                                                 </td>
                                                 <td>
                                                 <?php 
-                                                    if ($row->orders_rated == 0) {
+                                                    if ($row->orders_rated == 0 && $row->orders_status == 1) {
                                                 ?>
                                                 <a href="<?php echo base_url().'user/service/'.$row->services_id.'/'.$row->orders_id;?>">REVIEW</a>
                                                 <?php 
-                                                    } else {
+                                                    } elseif($row->orders_rated == 1 && $row->orders_status == 1) {
                                                         echo "DONE";
                                                     }
                                                 ?>
