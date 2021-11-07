@@ -309,10 +309,25 @@ class User_model extends CI_Model
         $this->db->insert('orders', $data);
     }
 
-    public function delete_services($id)
+    public function deactivate_services($id)
     {
+        $this->db->set('services_availability', 0);
         $this->db->where('services_id', $id);
-        $this->db->delete('services');
+        $this->db->update('services');
+    }
+
+    public function activate_services($id)
+    {
+        $this->db->set('services_availability', 1);
+        $this->db->where('services_id', $id);
+        $this->db->update('services');
+    }
+
+    public function update_rate($orderid)
+    {
+        $this->db->set('orders_rated', 1);
+        $this->db->where('orders_id', $orderid);
+        $this->db->update('orders');
     }
 
     public function delete_orders_by_id($id)
@@ -333,6 +348,15 @@ class User_model extends CI_Model
         $this->db->select('services_id');
         $this->db->from('orders');
         $this->db->where('orders_id', $id);
+        return $this->db->get()->result();
+    }
+
+    public function if_rated($id, $username)
+    {
+        $this->db->select('orders_rated');
+        $this->db->from('orders');
+        $this->db->where('orders_id', $id);
+        $this->db->where('orders_from', $username);
         return $this->db->get()->result();
     }
 
