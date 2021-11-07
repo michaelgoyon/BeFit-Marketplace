@@ -469,9 +469,9 @@ class User extends CI_Controller
         $this->email->message($message);
 
         if ($this->email->send()) {
-            $this->session->set_flashdata('message', 'Nice one');
+            $this->session->set_flashdata('msg', 'Nice one');
         } else {
-            $this->session->set_flashdata('message', $this->email->print_debugger());
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
         }
 
         redirect(base_url() . 'user/cashout?userid='.$row->users_id);
@@ -841,82 +841,106 @@ class User extends CI_Controller
     public function register_mobile()
     {
         $result = '';
-        $user = array(
-            'users_account' => $this->input->post('account'),
-            'users_avatar' => $this->input->post('shuffledfilename'),
-            'users_name' => $this->input->post('name'),
-            'users_username' => $this->input->post('username'),
-            'users_birthdate' => $this->input->post('birthdate'),
-            'users_email' => $this->input->post('email'),
-            'users_password' => $this->input->post('password'),
-            'users_code' => $this->input->post('code'),
-            'users_active' => false,
-            'users_wallet' => 0
-        );
-        $id = $this->user_model->insert($user);
 
-        $detail = array(
-            'Age' => $this->input->post('age'),
-            'requirement' => $this->input->post('shuffledId'),
-            'ID' => $id
-        );
-        $this->user_model->coach($detail);
-
-        $base = $_POST["encoded"];
-        $filename = $_POST["shuffledfilename"];
-        $binary = base64_decode($base);
-        header('Content-Type: bitmap; charset=utf-8');
-        $file = fopen('./uploads/' . $filename, 'wb');
-        fwrite($file, $binary);
-        fclose($file);
-        $baseId = $_POST["encodedId"];
-        $filenameId = $_POST["shuffledId"];
-        $binaryId = base64_decode($baseId);
-        header('Content-Type: bitmap; charset=utf-8');
-        $fileId = fopen('./uploads/'.$filenameId, 'wb');
-        fwrite($fileId, $binaryId);
-        fclose($fileId);
-        $result = "true";
-        echo $id;
+        $tz  = new DateTimeZone('Asia/Manila');
+        $age = DateTime::createFromFormat('Y-m-d', $this->input->post('birthdate'), $tz)
+                ->diff(new DateTime('now', $tz))
+                ->y;
+            
+        if($age < 18) {
+            $id = 0;
+            $result = "false";
+            echo $id.':'.$result;
+        } else {
+            $user = array(
+                'users_account' => $this->input->post('account'),
+                'users_avatar' => $this->input->post('shuffledfilename'),
+                'users_name' => $this->input->post('name'),
+                'users_username' => $this->input->post('username'),
+                'users_birthdate' => $this->input->post('birthdate'),
+                'users_email' => $this->input->post('email'),
+                'users_password' => $this->input->post('password'),
+                'users_code' => $this->input->post('code'),
+                'users_active' => false,
+                'users_wallet' => 0
+            );
+            $id = $this->user_model->insert($user);
+    
+            $detail = array(
+                'Age' => $age,
+                'requirement' => $this->input->post('shuffledId'),
+                'ID' => $id
+            );
+            $this->user_model->coach($detail);
+    
+            $base = $_POST["encoded"];
+            $filename = $_POST["shuffledfilename"];
+            $binary = base64_decode($base);
+            header('Content-Type: bitmap; charset=utf-8');
+            $file = fopen('./uploads/' . $filename, 'wb');
+            fwrite($file, $binary);
+            fclose($file);
+            $baseId = $_POST["encodedId"];
+            $filenameId = $_POST["shuffledId"];
+            $binaryId = base64_decode($baseId);
+            header('Content-Type: bitmap; charset=utf-8');
+            $fileId = fopen('./uploads/'.$filenameId, 'wb');
+            fwrite($fileId, $binaryId);
+            fclose($fileId);
+            $result = "true";
+            echo $id.':'.$result;
+        }
     }
 
     public function registertrainee_mobile()
     {
         $result = '';
-        $user = array(
-            'users_account' => $this->input->post('taccount'),
-            'users_avatar' => $this->input->post('tshuffledfilename'),
-            'users_name' => $this->input->post('tname'),
-            'users_username' => $this->input->post('tusername'),
-            'users_birthdate' => $this->input->post('tbirthdate'),
-            'users_email' => $this->input->post('temail'),
-            'users_password' => $this->input->post('tpassword'),
-            'users_code' => $this->input->post('tcode'),
-            'users_active' => false,
-            'users_wallet' => 0
-        );
-        $id = $this->user_model->insert($user);
+        $tz  = new DateTimeZone('Asia/Manila');
+        $age = DateTime::createFromFormat('Y-m-d', $this->input->post('tbirthdate'), $tz)
+                ->diff(new DateTime('now', $tz))
+                ->y;
+            
+        if($age < 18) {
+            $id = 0;
+            $result = "false";
+            echo $id.':'.$result;
+        } else {
+            $user = array(
+                'users_account' => $this->input->post('taccount'),
+                'users_avatar' => $this->input->post('tshuffledfilename'),
+                'users_name' => $this->input->post('tname'),
+                'users_username' => $this->input->post('tusername'),
+                'users_birthdate' => $this->input->post('tbirthdate'),
+                'users_email' => $this->input->post('temail'),
+                'users_password' => $this->input->post('tpassword'),
+                'users_code' => $this->input->post('tcode'),
+                'users_active' => false,
+                'users_wallet' => 0
+            );
+            $id = $this->user_model->insert($user);
+    
+            $tdetail = array(
+                'Age' => $age,
+                'Height' => floatval($this->input->post('theight')),
+                'Weight' => floatval($this->input->post('tweight')),
+                'Health' => $this->input->post('thealth'),
+                'ID' => $id,
+                'BMI' => floatval($this->input->post('tbmi'))
+            );
+    
+            $this->user_model->trainee($tdetail);
+    
+            $base = $_POST["tencoded"];
+            $filename = $_POST["tshuffledfilename"];
+            $binary = base64_decode($base);
+            header('Content-Type: bitmap; charset=utf-8');
+            $file = fopen('./uploads/' . $filename, 'wb');
+            fwrite($file, $binary);
+            fclose($file);
+            $result = "true";
+            echo $id.':'.$result;
+        }
 
-        $tdetail = array(
-            'Age' => $this->input->post('tage'),
-            'Height' => floatval($this->input->post('theight')),
-            'Weight' => floatval($this->input->post('tweight')),
-            'Health' => $this->input->post('thealth'),
-            'ID' => $id,
-            'BMI' => floatval($this->input->post('tbmi'))
-        );
-
-        $this->user_model->trainee($tdetail);
-
-        $base = $_POST["tencoded"];
-        $filename = $_POST["tshuffledfilename"];
-        $binary = base64_decode($base);
-        header('Content-Type: bitmap; charset=utf-8');
-        $file = fopen('./uploads/' . $filename, 'wb');
-        fwrite($file, $binary);
-        fclose($file);
-        $result = "true";
-        echo $id;
     }
 
     public function login_mobile()
@@ -1057,10 +1081,18 @@ class User extends CI_Controller
         echo $result;
     }
 
-    public function removeservice_mobile() {
+    public function deactivateservice_mobile() {
         $result = '';
         $id = $this->input->post('serviceid');
-        $this->user_model->delete_services($id);
+        $this->user_model->deactivate_services($id);
+        $result = "true";
+        echo $result;
+    }
+
+    public function activateservice_mobile() {
+        $result = '';
+        $id = $this->input->post('serviceid');
+        $this->user_model->activate_services($id);
         $result = "true";
         echo $result;
     }
@@ -1245,5 +1277,62 @@ class User extends CI_Controller
         $health = $temp[0]->Health;
         $result = "true";
         echo $result.':'.$health;
+    }
+
+    public function cashout_mobile() {
+        $result = '';
+        $data["users"] = $this->user_model->fetch_user($this->input->post('userid'));
+        foreach ($data["users"] as $row) {
+            $wallet = $row->users_wallet;
+            $email = $row->users_email;
+            $username = $row->users_username;
+        }
+
+        date_default_timezone_set('Asia/Manila');
+        $datetime = date('Y/m/d H:i:s');
+        $cashout = array(
+            'cashout_from' => $username,
+            'cashout_amount' => $wallet,
+            'cashout_phone' => $this->input->post("mobilenum"),
+            'cashout_email' => $email,
+            'cashout_datetime' => $datetime,
+            'users_id' => $this->input->post('userid')
+        );
+        $this->user_model->insert_cashout($cashout);
+
+        $temp = $this->user_model->get_cashout($this->input->post('userid'));
+        $data["id"] = end($temp);
+        $cashoutid = $data["id"]->cashout_id;
+
+        $message = "
+                        <html>
+                            <head>
+                                <title>Cashout Request</title>
+                            </head>
+                            <body>
+                                <h2>You have requested a cashout.</h2>
+                                <p>Cashout Details:</p>
+                                <p>Email: " . $email . "</p>
+                                <p>Amount: " . $wallet . "</p>
+                                <p>Transaction ID: BFTCSHOT00" . $cashoutid . "</p>
+                            </body>
+                        </html>
+        ";
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($email);
+        $this->email->subject('Cashout Request');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', 'Nice one');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+
+        $result = "true";
+        echo $result;
     }
 }
