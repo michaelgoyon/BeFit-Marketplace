@@ -42,7 +42,7 @@
                                 echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
                             }
                             else{
-                                echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpeg"."'>";
+                                echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpg"."'>";
                             }
                             echo "<p class='infohead'>".$row->services_title."</p>";
                             echo "<p class='infotext'>".$row->users_name."</p>";
