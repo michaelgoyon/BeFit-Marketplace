@@ -38,19 +38,19 @@
             <div style="align-items: center;justify-content: center;margin-left: auto;margin-right: auto;padding: 1rem;" class='service-info'>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
                     <p>Payment Type: </p>
-                    <p>BeFit Wallet</p>
+                    <p> BeFit Wallet</p>
                 </div>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
                     <p>Email: </p>
-                    <p><?php echo $users[0]->users_email ?></p>
+                    <p> <?php echo $users[0]->users_email ?></p>
                 </div>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
                     <p>Amount: </p>
-                    <p><?php echo $services[0]->services_price ?></p>
+                    <p> <?php echo $services[0]->services_price ?></p>
                 </div>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
                     <p>Transaction ID: </p>
-                    <p>BFTWRKT00<?php echo $orders->orders_id ?></p>
+                    <p> BFTWRKT00<?php echo $orders->orders_id ?></p>
                 </div>
             </div>
         </div>

@@ -302,6 +302,12 @@ class User_model extends CI_Model
         $this->db->insert('payments', $data);
     }
 
+    public function fetch_all_payments()
+    {
+        $query = $this->db->get('payments');
+        return $query->result();
+    }
+
     public function insert_order($from, $to, $amount, $serviceid, $duration, $datetime)
     {
         $data = array(

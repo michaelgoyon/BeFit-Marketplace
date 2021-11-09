@@ -27,33 +27,26 @@
         }
     </style>
 </head>
-
 <body>   
     <div style=" font-family: 'Poppins';line-height: 0;display: flex;flex-direction: row;justify-content: center;padding: 0 3rem;text-align: center;" class="market-header">
-        <h1 style="font-weight: 600;font-size: 40px;color: #FA632A;padding-top: 4.5rem;padding-bottom: 4rem;text-align: center;" id="header">YOU HAVE CREATED A CASHOUT REQUEST</h1>
+        <h1 style="font-weight: 600;font-size: 40px;color: #FA632A;padding-top: 4.5rem;padding-bottom: 4rem;text-align: center;" id="header">YOUR WORKOUT HAS BEEN COMPLETED</h1>
     </div>
     <div style="font-family: 'Poppins';margin: 3rem auto 3rem;padding-left: 3rem;padding-right: 3rem;overflow: hidden;width: 50%;" class="infodiv">
         <div style="font-family: 'Poppins';color: #FFFFFF;text-align: center;background-color: #383838;padding: 3remfont-size: 20px;" class="infotext">
             <br>
             <div style="align-items: center;justify-content: center;margin-left: auto;margin-right: auto;padding: 1rem;" class='service-info'>
-            <?php
-                foreach ($cashout as $row){
-            ?>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
-                    <p>Email: </p>
-                    <p> <?php echo $users[0]->users_email; ?></p>
+                    <p>Payment Type: </p>
+                    <p> BeFit Wallet</p>
                 </div>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
-                    <p>Amount: </p>
-                    <p> <?php echo $row->cashout_amount ?></p>
+                    <p>Email: </p>
+                    <p> <?php echo $users[0]->users_email ?></p>
                 </div>
                 <div style="line-height: 2.5;display: flex;flex-direction: row;justify-content: space-between;padding: 0 3rem 0 3rem;" class="info-row">
                     <p>Transaction ID: </p>
-                    <p> BFTCSHOT00<?php echo $row->cashout_id ?></p>
+                    <p> BFTWRKT00<?php echo $orders->orders_id ?></p>
                 </div>
-                <?php
-                }
-            ?>
             </div>
         </div>
 </body>
