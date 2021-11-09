@@ -21,11 +21,11 @@
         </div>
     </div>
 
-
-    <div class="head">
-        <h1>Recommended for You</h1>
-    </div>
-
+    <?php
+    foreach($details as $traineerow){
+        echo "<div class='head'><h1>Recommended for You</h1></div>;";
+    }
+    ?>
     <div class="aboutdiv">
         <div class="sub-container">
             <?php 
@@ -33,11 +33,17 @@
             foreach($records as $row) {
                 if($row->services_availability == 1) {
                     foreach($details as $traineerow){
+
                         if ($traineerow->Health == 'Heart Problem'){
                           if($row->services_type == 'Aerobics'){
                             echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                             echo "<div class='mem'>";
-                            echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                            if ($row->services_image == !NULL){
+                                echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                            }
+                            else{
+                                echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpeg"."'>";
+                            }
                             echo "<p class='infohead'>".$row->services_title."</p>";
                             echo "<p class='infotext'>".$row->users_name."</p>";
                             echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
@@ -52,7 +58,12 @@
                           if($row->services_type == 'Cardio'){
                             echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                             echo "<div class='mem'>";
-                            echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                            if ($row->services_image == !NULL){
+                                echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                            }
+                            else{
+                                echo "<img class='img-fluid' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                            }
                             echo "<p class='infohead'>".$row->services_title."</p>";
                             echo "<p class='infotext'>".$row->users_name."</p>";
                             echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
@@ -66,7 +77,12 @@
                             if($row->services_type == 'Aerobics'){
                               echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                               echo "<div class='mem'>";
-                              echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                              if ($row->services_image == !NULL){
+                                echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                              }
+                              else{
+                                echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpg"."'>";
+                              }
                               echo "<p class='infohead'>".$row->services_title."</p>";
                               echo "<p class='infotext'>".$row->users_name."</p>";
                               echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
@@ -74,20 +90,67 @@
                               echo "</a>";       
                               echo "</div>";
                             }
-                        
-                        else if ($traineerow->Health =='None'){
-                                echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
-                                echo "<div class='mem'>";
-                                echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
-                                echo "<p class='infohead'>".$row->services_title."</p>";
-                                echo "<p class='infotext'>".$row->users_name."</p>";
-                                echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
-                                echo "<div class='bookbutton'>Book Now</div>";     
-                                echo "</a>";       
-                                echo "</div>";
                         }
-        
-                      }
+                        
+                        else if ($traineerow->Health =='Obesity'){
+                            if(($row->services_type == 'Strength') || ($row->services_type == 'Endurance')) {
+                               echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
+                               echo "<div class='mem'>";
+                               if ($row->services_image == !NULL){
+                                 echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                               }
+                               else{
+                                if($row->services_type == 'Strength'){
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockstrength.jpeg"."'>";
+                                }
+                                else if ($row->services_type == 'Endurance'){
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockendurance.jpeg"."'>";
+                                }
+                               }
+                               echo "<p class='infohead'>".$row->services_title."</p>";
+                               echo "<p class='infotext'>".$row->users_name."</p>";
+                               echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                               echo "<div class='bookbutton'>Book Now</div>";     
+                               echo "</a>";       
+                               echo "</div>";
+                            }
+                        
+                        }
+
+                        else if ($traineerow->Health =='None'){
+                            
+                               echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
+                               echo "<div class='mem'>";
+                               if ($row->services_image == !NULL){
+                                 echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                               }
+                               else{
+                                if ($row->services_type == 'Aerobics'){
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpg"."'>";
+                                }
+                                else if ($row->services_type == 'Cardio'){
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                                }
+                                else if ($row->services_type == 'Strength') {
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockstrength.jpeg"."'>";
+                                }
+                                else if ($row->services_type == 'Endurance'){
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockendurance.jpeg"."'>";
+                                }
+                                else{
+                                    echo "<img class='img-fluid' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                                }
+                               }
+                               echo "<p class='infohead'>".$row->services_title."</p>";
+                               echo "<p class='infotext'>".$row->users_name."</p>";
+                               echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                               echo "<div class='bookbutton'>Book Now</div>";     
+                               echo "</a>";       
+                               echo "</div>";
+                            
+                        
+                        }
+            
         
                       /*else if ($traineerow->Health =='None'){
                           foreach($top_services as $top){
@@ -119,7 +182,27 @@
                 if($row->services_availability == 1) {
                     echo "<div class='mem'>";
                     echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
-                    echo "<img class='img-fluid' src='".base_url()."assets/images/cardio.jpg"."'>";
+                    if ($row->services_image == !NULL){
+                        echo "<img class='img-fluid' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                    }
+                    else{
+                        if ($row->services_type == 'Aerobics'){
+                            echo "<img class='img-fluid' src='".base_url()."assets/images/stockaerobics.jpg"."'>";
+                        }
+                        else if ($row->services_type == 'Cardio'){
+                            echo "<img class='img-fluid' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                        }
+                        else if ($row->services_type == 'Strength') {
+                            echo "<img class='img-fluid' src='".base_url()."assets/images/stockstrength.jpeg"."'>";
+                        }
+                        else if ($row->services_type == 'Endurance'){
+                            echo "<img class='img-fluid' src='".base_url()."assets/images/stockendurance.jpeg"."'>";
+                        }
+                        else{
+                            echo "<img class='img-fluid' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                        }
+                        
+                    }
                     echo "<p class='infohead'>".$row->services_title."</p>";
                     echo "<p class='infotext'>".$row->users_name."</p>";
                     echo "<p class='infotext'>".$row->services_price."PHP"."</p>";

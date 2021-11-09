@@ -101,6 +101,7 @@ td a:hover{
     background-color: red;
     color: #FFFFFF;
     transition: 0.4s ease;
+
 }
 
 .containbox{
@@ -247,9 +248,8 @@ td a:hover{
     color:black;
 }
 
-.mem img{
-	border: 1px solid #E1E0DE;
-}
+
+
 
 .img-fluid {
     max-width: 100%;
