@@ -39,7 +39,7 @@
                     echo "<p>".$users[0]->users_email."</p>";
                     echo "</div>";
                     echo "<div class='info-row'>";
-                    echo "<p>"."Amount Paid "."</p>";
+                    echo "<p>"."Amount "."</p>";
                     echo "<p>".$services[0]->services_price." PHP"."</p>";
                     echo "</div>";
                     echo "<div class='info-row'>";
@@ -54,7 +54,7 @@
                     <div class='topup'><a href="<?php echo base_url()."user/bookings"?>">CHECK MY BOOKINGS</a></div>
                 </div>
                 <div class="btn-2">
-                    <div class='topup'><a href="<?php echo base_url()."user/bookings"?>">BACK TO MARKETPLACE</a></div>
+                    <div class='topup'><a href="<?php echo base_url()."user/marketplace"?>">BACK TO MARKETPLACE</a></div>
                 </div>
             </div>
         </div>
