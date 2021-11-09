@@ -87,7 +87,7 @@
 		<h1>CREATE WORKOUT OFFERS</h1>
 			<div class="workout-container">
 
-				<form method="post" action="<?php echo base_url();?>user/add_service">
+				<form method="post" action="<?php echo base_url();?>user/add_service" enctype="multipart/form-data">
 					<div class="input-form2">
 						<label>Workout Title</label>
 						<input type="text" name="workout_title">
@@ -121,7 +121,7 @@
 							<option disabled selected>Select Workout Day</option>
 							<option value ="Monday">Monday</option>
 							<option value ="Tuesday">Tuesday</option>
-							<option value ="Wednesday">Wedneday</option>
+							<option value ="Wednesday">Wednesday</option>
 							<option value ="Thursday">Thursday</option>
 							<option value ="Friday">Friday</option>
 							<option value ="Saturday">Saturday</option>
@@ -131,7 +131,7 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Time</label>
-						<input type="text" name="workout_time">
+						<input type="text" name="workout_time" placeholder="eg. 10:00 AM - 11:00 AM">
 						<div></div>
 					</div>
 					<div class="input-form2">
@@ -145,8 +145,12 @@
 					</div>
 					<div class="input-form2">
 						<label>Workout Duration (Number of sessions)</label>
-						<input type="text" name="workout_duration" onkeypress="isInputNumber(event)">
+						<input type="text" name="workout_duration" onkeypress="isInputNumber(event)" placeholder="eg. 5">
 						<div></div>
+					</div>
+					<div class="input-form2">
+						<label>Workout Image</label><br>
+						<input type="file" name="workout_image">
 					</div>
 					<div class="registerbtn2">
 						<input type="submit" value="Add"/>

@@ -85,7 +85,7 @@
 					<option value ="Heart Problem">Heart Problem</option>
 					<option value ="Asthma">Asthma</option>
 					<option value ="Diabetic">Diabetic</option>
-					<option value ="Diabetic">Obesity</option>
+					<option value ="Obesity">Obesity</option>
 				</select>
 				<br><br><br>
 				</div>

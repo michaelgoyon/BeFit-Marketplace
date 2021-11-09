@@ -20,10 +20,31 @@
         <div class="market-header">
 			<h1 id="header">MARKETPLACE</h1>
 		</div>
-        <img class="infoimg" src="<?php echo base_url('assets/images/cardio.jpg')?>">
-        <div class="info-container">
-            <?php 
+        <?php 
             foreach($services as $row) {
+
+               if ($row->services_image == !NULL){
+                        echo "<img class='infoimg' src='".base_url().'uploads/'.$row->services_image."'>"; 
+                    }
+                    else{
+                        if ($row->services_type == 'Aerobics'){
+                            echo "<img class='infoimg' src='".base_url()."assets/images/stockaerobics.jpg"."'>";
+                        }
+                        else if ($row->services_type == 'Cardio'){
+                            echo "<img class='infoimg' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                        }
+                        else if ($row->services_type == 'Strength') {
+                            echo "<img class='infoimg' src='".base_url()."assets/images/stockstrength.jpeg"."'>";
+                        }
+                        else if ($row->services_type == 'Endurance'){
+                            echo "<img class='infoimg' src='".base_url()."assets/images/stockendurance.jpeg"."'>";
+                        }
+                        else{
+                            echo "<img class='infoimg' src='".base_url()."assets/images/stockcardio.jpeg"."'>";
+                        }
+                        
+                    }
+                echo "<div class='info-container'>";
                 echo "<p class='infohead'>".$row->services_title."</p>";
                 echo "<p class='infodesc'>".$row->services_description."</p>";;
                 echo "<div class='subcontainer'>";
