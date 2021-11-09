@@ -1004,15 +1004,17 @@ class User extends CI_Controller
         $account = '';
         $image = '';
         $wallet = '';
+        $email = '';
         $username = $this->input->post('dataUsername');
         $data["users"] = $this->user_model->fetch_data($username);
         foreach ($data["users"] as $row) {
             $account = $row->users_account;
             $image = $row->users_avatar;
             $wallet = $row->users_wallet;
+            $email = $row->users_email;
         }
         $result = "true";
-        echo $result . ':' . $account . ':' . $image . ':' . $wallet;
+        echo $result . ':' . $account . ':' . $image . ':' . $wallet . ':' . $email;
     }
 
     public function fetchservices_mobile()
