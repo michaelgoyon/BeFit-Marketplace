@@ -904,7 +904,7 @@ class User extends CI_Controller
                 $userid = $row->users_id;
                 $useremail = $row->users_email;
             }
-            $temp = $this->user_model->fetch_all_orders();
+            $temp = $this->user_model->fetch_all_orders();//fg
             $data["orders"] = end($temp);
             $message = $this->load->view('email_complete_workout', $data, true);
             $this->load->config('email');
@@ -1171,6 +1171,7 @@ class User extends CI_Controller
     {
         $result = '';
         $amount = $this->input->post('amount');
+        $data['value'] = $amount;
         $temp = $this->user_model->get_wallet_by_username($this->input->post('dataUsername'));
         $newVal = floatval($amount) + floatval($temp[0]->users_wallet);
         $this->user_model->success_topup_mobile(
@@ -1178,6 +1179,32 @@ class User extends CI_Controller
             $this->input->post('dataUsername')
         );
         $this->user_model->insert_topup($temp[0]->users_id, floatval($amount));
+
+        $username = $this->input->post('dataUsername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $useremail = $row->users_email;
+        }
+
+        $temp = $this->user_model->fetch_all_payments();
+        $data["payments"] = end($temp);
+
+        $message = $this->load->view('email_topup_success', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Topup Success');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', 'Nice one');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+
+
         $result = "true";
         echo $result;
     }
@@ -1238,6 +1265,32 @@ class User extends CI_Controller
         $new_wallet_coach = intval($wallet_coach[0]->users_wallet) + intval($amount);
         $this->user_model->update_trainee_wallet($new_wallet, $temp2[0]->orders_from);
         $this->user_model->update_coach_wallet($new_wallet_coach, $temp2[0]->orders_to);
+
+        $username = $temp2[0]->orders_from;
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+            $useremail = $row->users_email;
+        }
+
+        $temp3 = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp3);
+        $orderid = $data["orders"]->orders_id;
+
+        $message = $this->load->view('email_booking_accepted', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Booking Accepted');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', 'Nice one');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
 
         $result = "true";
         echo $result;
@@ -1368,6 +1421,33 @@ class User extends CI_Controller
         $session = intval($temp[0]->orders_remarks);
         $new_session = $session + 1;
         $this->user_model->update_orders_remarks($new_session, $id);
+
+        $username = $temp[0]->orders_from;
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+            $useremail = $row->users_email;
+        }
+
+        $temp = $this->user_model->fetch_all_orders();//fg
+        $data["orders"] = end($temp);
+
+
+        $message = $this->load->view('email_complete_workout', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Order Number '.'BFTWRKOUT00'.$id.' has been completed');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', '');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+
         $result = "true";
         echo $result;
     }
