@@ -18,46 +18,26 @@
         <div class="faqdiv">
             <button class="accordion">How do I avail a service?<i class="arrow down"></i></p></button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Users of the application will need a trainee account in order to avail a service. They can go to the marketplace link in the upper left corner of the website and view the services being offered at the moment.</p>
             </div>
             <button class="accordion">What payment methods do you accept?<i class="arrow down"></i></button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>BeFit accepts Paymaya, Paypal, Credit & Debit cards as topup options in order to get currency that can be used to avail services.</p>
             </div>
 
             <button class="accordion">Im new to exercise, what should I do?<i class="arrow down"></i></button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>BeFit has a nutrional health page where users of the application can view related health article about food, exercise, and health information that can give users a better understanding of exercise. They can also send a private message to their coaches to guide them through the program.</p>
             </div>
 
             <button class="accordion">Is the service refundable?<i class="arrow down"></i></button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Once the service has been availed, the said service won't be refundable.</p>
             </div>
 
-            <button class="accordion">When do I start?<i class="arrow down"></i></button>
+            <button class="accordion">How do I cashout my currency as a coach?<i class="arrow down"></i></button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Coaches who have currency that they receive as payment for their services can request a cashout to the admins of the application.</p>
             </div>
 
         </div>

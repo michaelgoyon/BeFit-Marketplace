@@ -31,24 +31,42 @@
             <img class="infoimg" src="<?php echo base_url('assets/images/weightlossfood.jpg') ?>">
             <p class="infohead">Foods for Weight Loss</p>
             <p class="infotext">
-                Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            A healthy weight is an important element of good health. How much you eat—and what you eat—play central roles in maintaining a healthy weight or losing weight. Exercise is the other key actor.
+            For years, low-fat diets were thought to be the best way to lose weight. A growing body of evidence shows that low-fat diets often don't work, in part because these diets often replace fat with easily digested carbohydrates.
+            Hundreds of diets have been created, many promising fast and permanent weight loss. Remember the cabbage soup diet? The grapefruit diet? How about the Hollywood 48 Hour Miracle diet, the caveman diet, the Subway diet, the apple cider vinegar diet, and a host of forgettable celebrity diets?
+            The best diet for losing weight is one that is good for all parts of your body, from your brain to your toes, and not just for your waistline. It is also one you can live with for a long time. In other words, a diet that offers plenty of good tasting and healthy choices, banishes few foods, and doesn't require an extensive and expensive list of groceries or supplements.
+            Several servings of fruits and vegetables a day,
+            whole-grain breads and cereals,
+            healthy fats from nuts, seeds, and olive oil.
+            Source of lean protein from poultry, fish, and beans
+            and limited amounts of red meat,
+            moderate wine consumption with meals.
             </p>
         </div>
         <div class="infodiv" id="macros">
             <img class="infoimg" src="<?php echo base_url('assets/images/macrosfood.jpg') ?>">
             <p class="infohead">Count your Macros</p>
             <p class="infotext">
-                Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Macronutrients, or “macros,” are proteins, fats, and carbohydrates. They are essential nutrients that provide energy and help keep people healthy. It is necessary to combine these nutrients in a diet to maintain a person’s health and normal bodily function.
+            Counting macros can appear overwhelming or complicated. However, there are several steps that people can follow to start counting the macros they need. Each person’s daily calorie needs depends on several factors, including
+            the age of the individual, the weight of the individual,a person’s sex assigned at birth and how active an individual is. After determining how many calories they require per day, people may wish to tailor their diets to include the correct amount of macronutrients.
+            A 2020 study suggests that typical macronutrient percentages are as follows:10–30% as protein, 25–35% as fat, and 45–65% as carbohydrates. A person may find that certain ratios of macronutrients are more beneficial than others, depending on their caloric needs, body composition goals, and any health conditions they may have.
+           
             </p>
         </div>
         <div class="infodiv" id="exercise">
             <img class="infoimg" src="<?php echo base_url('assets/images/exercise.jpg') ?>">
             <p class="infohead">Benefits of Daily Exercise</p>
             <p class="infotext">
-                Even if you’re cutting calories, that doesn’t necessarily mean you have to eat less food. High-fiber foods such as fruit, vegetables, beans, and whole grains are higher in volume and take longer to digest, making them filling—and great for weight-loss. It’s generally okay to eat as much fresh fruit and non-starchy vegetables as you want—you’ll feel full before you’ve overdone it on the calories. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            Exercise is defined as any movement that makes your muscles work and requires your body to burn calories. There are many types of physical activity, including swimming, running, jogging, walking, and dancing, to name a few.
+            Being active has been shown to have many health benefits, both physically and mentally. It may even help you live longer. Exercise has been shown to improve your mood and decrease feelings of depression, anxiety, and stress
+            It produces changes in the parts of the brain that regulate stress and anxiety. It can also increase brain sensitivity for the hormones serotonin and norepinephrine, which relieve feelings of depression.
+            Additionally, exercise can increase the production of endorphins, which are known to help produce positive feelings and reduce the perception of pain. Some studies have shown that inactivity is a major factor in weight gain and obesity (6Trusted Source, 7Trusted Source).
+            To understand the effect of exercise on weight reduction, it is important to understand the relationship between exercise and energy expenditure. Exercise plays a vital role in building and maintaining strong muscles and bones.
+            Activities like weightlifting can stimulate muscle building when paired with adequate protein intake.
+            This is because exercise helps release hormones that promote the ability of your muscles to absorb amino acids. This helps them grow and reduces their breakdown.
         </div>
     </div>
 </body>
 
-</html>
+</html>     

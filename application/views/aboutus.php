@@ -29,7 +29,8 @@
 			 
 				 <div class="name">Team</div>
 				<div class="text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+					<p>The team behind BeFit is commited to develop a platform where fitness coaches / trainers can market and sell the services they offer whether it be virtual exercise sessions, personalized fitness coaching, and more. It also provides users with varying workout options for beginners to athletes. This includes live and on-demand classes in yoga, Zumba, HIIT, strength training, cardio, and other disciplines.</p>
+
 				 </div>
 				 </div>
 			 
@@ -38,7 +39,7 @@
 			 
 				 <div class="name">Coaches</div>
 				<div class="text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos! </p>
+					<p>Coaches who are registered on the application can create and add their services that will be displayed on the marketplace. Coaches can view trainees who has applied to their service and has an option to accept or decline their application based on the capacity they can handle. Once the payment has been settled, coaches can now start their service to their trainees for how long the indicated service duration is. Coaches can cashout their currency to the admins upon request. </p>
 				 </div>
 				 </div>
 			 
@@ -47,7 +48,7 @@
 			 
 				 <div class="name">Trainees</div>
 				<div class="text">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, laudantium, quibusdam? Nobis, delectus, commodi, fugit amet tempora facere dolores nisi facilis consequatur, odio hic minima nostrum. Perferendis eos earum praesentium, blanditiis sapiente labore aliquam ipsa architecto vitae. Minima soluta temporibus voluptates inventore commodi cumque esse suscipit optio aliquam et, dolorem a cupiditate nihil fuga laboriosam fugiat placeat dignissimos!
+					<p>Users who registered as trainees will be asked for their health information in order to help set up their profile. These information will be important on what services will be recommended to them, as well as give their future coaches a better idea on what their health is. They can apply for services they are interested in, BeFit will also recommended services based on their profile.
 					</p>
 				 </div>
 				 </div>

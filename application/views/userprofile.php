@@ -112,6 +112,7 @@
 							<option value ="Endurance">Endurance</option>
 							<option value ="Flexibility">Flexibility</option>
 							<option value ="Aerobics">Aerobics</option>
+							<option value ="Mixed Martial Arts">Mixed Martial Arts</option>
 						</select>
 						<div></div>
 					</div>
