@@ -29,80 +29,89 @@
 
     <ul class="footer__nav">
         <li class="nav__item">
-            <a href="<?php echo base_url('user/marketplace/') ?>"><p class="nav__title">Marketplace</p></a>
-            <ul class="nav__ul">
+            <a href="<?php echo base_url('user/marketplace/') ?>">
+                <p class="nav__title">Marketplace</p>
+            </a>
+            <ul class="nav__ul sublink">
                 <li>
-                    <a href="#">Cardio</a>
+                    Cardio
                 </li>
                 <li>
-                    <a href="#">Yoga</a>
+                    Yoga
                 </li>
                 <li>
-                    <a href="#">Strength Training</a>
+                    Strength Training
                 </li>
             </ul>
         </li>
 
         <li class="nav__item">
-        <a href="<?php echo base_url('user/nutrition/') ?>"><p class="nav__title">Nutrition</p></a>
-            <ul class="nav__ul">
+            <a href="<?php echo base_url('user/nutrition/') ?>">
+                <p class="nav__title">Nutrition</p>
+            </a>
+            <ul class="nav__ul sublink">
                 <li>
-                    <a href="#">Foods</a>
+                    Foods
                 </li>
                 <li>
-                    <a href="#">Macros</a>
+                    Macros
                 </li>
                 <li>
-                    <a href="#">Exercise</a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav__item">
-            <a href="<?php echo base_url('user/faq/') ?>"><p class="nav__title">FAQ</p></a>
-            <ul class="nav__ul">
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Payment</a>
-                </li>
-                <li>
-                    <a href="#">Refund</a>
+                    Exercise
                 </li>
             </ul>
         </li>
         <li class="nav__item">
-            <a href="<?php echo base_url('user/aboutus/') ?>"><p class="nav__title">About</p></a>
-            <ul class="nav__ul">
+            <a href="<?php echo base_url('user/faq/') ?>">
+                <p class="nav__title">FAQ</p>
+            </a>
+            <ul class="nav__ul sublink">
                 <li>
-                    <a href="#">Team</a>
+                    Services
                 </li>
                 <li>
-                    <a href="#">Coaches</a>
+                    Payment
                 </li>
                 <li>
-                    <a href="#">Trainees</a>
+                    Refund
                 </li>
             </ul>
         </li>
         <li class="nav__item">
-            <a href="<?php echo base_url('user/aboutus/') ?>"><p class="nav__title">Payment</p></a>
-            <ul class="nav__ul">
+            <a href="<?php echo base_url('user/aboutus/') ?>">
+                <p class="nav__title">About</p>
+            </a>
+            <ul class="nav__ul sublink">
                 <li>
-                    <a href="#">PayMaya</a>
+                    Team
                 </li>
                 <li>
-                    <a href="#">PayPal</a>
+                    Coaches
                 </li>
                 <li>
-                    <a href="#">Visa | Mastercard</a>
+                    Trainees</a>
                 </li>
             </ul>
         </li>
-        
+        <li class="nav__item">
+                <p class="nav__ul">Payment</p>
+            <ul class="nav__ul sublink">
+                <li>
+                    PayMaya
+                </li>
+                <li>
+                    PayPal
+                </li>
+                <li>
+                    Visa | Mastercard
+                </li>
+            </ul>
+        </li>
+
     </ul>
     <div class="legal">
         <p>&copy; 2021 BeFit Marketplace Corporation. All rights reserved.</p>
     </div>
 </footer>
+
 </html>

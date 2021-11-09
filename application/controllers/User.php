@@ -465,7 +465,7 @@ class User extends CI_Controller
         $this->email->set_newline("\r\n");
         $this->email->from($this->config->item('smtp_user'));
         $this->email->to($email);
-        $this->email->subject('Booking Receipt');
+        $this->email->subject('Cashout Receipt');
         $this->email->message($message);
 
         if ($this->email->send()) {
@@ -569,6 +569,20 @@ class User extends CI_Controller
         $this->load->view("email_confirm_cashout", $data);
     }
 
+    public function email_complete_workout()
+    {
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $userid = $row->users_id;
+        }
+        $serviceid = $this->uri->segment(3);
+        $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $temp = $this->user_model->fetch_all_orders();
+        $data["orders"] = end($temp);
+        $this->load->view("email_complete_workout", $data);
+    }
+
     public function success_order()
     {
         $username = $this->session->userdata('userusername');
@@ -585,13 +599,18 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders();
         $data["orders"] = end($temp);
         $orderid = $data["orders"]->orders_id;
-
+        $temp2 = $this->user_model->fetch_all_orders_by_id($orderid);
+        $username2 = $temp2[0]->orders_to;
+        $data["users2"] = $this->user_model->fetch_data($username2);
+            foreach ($data["users2"] as $row) {
+            $useremail2 = $row->users_email;
+        }
         $message = $this->load->view('email_confirm_booking', $data, true);
         $this->load->config('email');
         $this->load->library('email');
         $this->email->set_newline("\r\n");
         $this->email->from($this->config->item('smtp_user'));
-        $this->email->to($useremail);
+        $this->email->to(array($useremail, $useremail2));
         $this->email->subject('Booking Receipt');
         $this->email->message($message);
 
@@ -612,6 +631,32 @@ class User extends CI_Controller
         $newVal = floatval($data['value']) + floatval($temp[0]->users_wallet);
         $this->user_model->success_topup(floatval($newVal));
         $this->user_model->insert_topup($this->session->userdata('userid'), floatval($data['value']));
+
+        $username = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($username);
+        foreach ($data["users"] as $row) {
+            $useremail = $row->users_email;
+        }
+        
+        $temp = $this->user_model->fetch_all_payments();
+        $data["payments"] = end($temp);
+
+        $message = $this->load->view('email_topup_success', $data, true);
+        $this->load->config('email');
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+        $this->email->from($this->config->item('smtp_user'));
+        $this->email->to($useremail);
+        $this->email->subject('Topup Success');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            $this->session->set_flashdata('msg', 'Nice one');
+        } else {
+            $this->session->set_flashdata('msg', $this->email->print_debugger());
+        }
+
+
         unset($_COOKIE['value']);
         redirect(base_url() . 'user/topup');
     }
@@ -723,6 +768,36 @@ class User extends CI_Controller
             $new_wallet_coach = intval($wallet_coach[0]->users_wallet) + intval($amount);
             $this->user_model->update_trainee_wallet($new_wallet, $temp2[0]->orders_from);
             $this->user_model->update_coach_wallet($new_wallet_coach, $temp2[0]->orders_to);
+
+            $username = $temp2[0]->orders_from;
+            $data["users"] = $this->user_model->fetch_data($username);
+            foreach ($data["users"] as $row) {
+                $userid = $row->users_id;
+                $useremail = $row->users_email;
+            }
+            $serviceid = $this->uri->segment(3);
+            $data["services"] = $this->user_model->get_service_by_id($serviceid);
+            foreach ($data["services"] as $row) {
+                $serviceprice = $row->services_price;
+            }
+            $temp = $this->user_model->fetch_all_orders();
+            $data["orders"] = end($temp);
+            $orderid = $data["orders"]->orders_id;
+
+            $message = $this->load->view('email_booking_accepted', $data, true);
+            $this->load->config('email');
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $this->email->from($this->config->item('smtp_user'));
+            $this->email->to($useremail);
+            $this->email->subject('Booking Accepted');
+            $this->email->message($message);
+
+            if ($this->email->send()) {
+                $this->session->set_flashdata('msg', 'Nice one');
+            } else {
+                $this->session->set_flashdata('msg', $this->email->print_debugger());
+            }
             redirect($_SERVER['HTTP_REFERER']);
         }
 
@@ -797,6 +872,28 @@ class User extends CI_Controller
             $session = intval($temp[0]->orders_remarks);
             $new_session = $session + 1;
             $this->user_model->update_orders_remarks($new_session, $id);
+            $username = $temp[0]->orders_from;
+            $data["users"] = $this->user_model->fetch_data($username);
+            foreach ($data["users"] as $row) {
+                $userid = $row->users_id;
+                $useremail = $row->users_email;
+            }
+            $temp = $this->user_model->fetch_all_orders();
+            $data["orders"] = end($temp);
+            $message = $this->load->view('email_complete_workout', $data, true);
+            $this->load->config('email');
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $this->email->from($this->config->item('smtp_user'));
+            $this->email->to($useremail);
+            $this->email->subject('Order Number '.'BFTWRKOUT00'.$id.' has been completed');
+            $this->email->message($message);
+
+            if ($this->email->send()) {
+                $this->session->set_flashdata('msg', '');
+            } else {
+                $this->session->set_flashdata('msg', $this->email->print_debugger());
+            }
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
