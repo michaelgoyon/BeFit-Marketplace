@@ -175,7 +175,7 @@ class User extends CI_Controller
                         $this->session->set_flashdata('account', 'coachrole');
                     }
                 } else {
-                    $this->session->set_flashdata('message', $this->email->print_debugger());
+                    $this->session->set_flashdata('message', 'Something went wrong. Please try again');
                 }
 
                 redirect(base_url() . 'user/register');
