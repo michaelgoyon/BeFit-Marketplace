@@ -73,7 +73,7 @@ class User extends CI_Controller
         $this->form_validation->set_message('is_unique', 'The %s is already taken.');
         $this->form_validation->set_rules('fname', 'First name', 'required');
         $this->form_validation->set_rules('lname', 'Last name', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|max_length[30]|is_unique[users.users_username]');
+        $this->form_validation->set_rules('username', 'Username', 'required|min_length[4]|max_length[30]|is_unique[users.users_username]');
         $this->form_validation->set_rules('email', 'Email', 'valid_email|is_unique[users.users_email]|required');
         $this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_length[30]');
         $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'required|matches[password]');
