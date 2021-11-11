@@ -85,7 +85,7 @@
 				</div>
                 <div>
 					<label for="birthdate">Birthdate</label><br>
-					<input type="date" id="birthdate" name="birthdate" value="<?php echo set_value('birthdate'); ?>">
+					<input type="date" id="birthdate" name="birthdate" value="<?php echo set_value('birthdate'); ?>"required>
 				</div>
 				<div>
 					<label for="email">Email</label><br>
