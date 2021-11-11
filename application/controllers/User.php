@@ -132,7 +132,7 @@ class User extends CI_Controller
                 else if ($acc == "Coach") {
                     if ($this->upload->do_upload('req')) {
                         $coachdetails = array(
-                            'Age' => $this->input->post('Age'),
+                            'Age' => $age,
                             'Requirement' => $this->upload->data('file_name'),
                             'ID' => $id
                         );
