@@ -278,6 +278,7 @@
                                         <th>Payment</th>
                                         <th>Type of Session</th>
                                         <th>Remarks</th>
+                                        <th>Review</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -310,6 +311,17 @@
                                                         echo "Completed";
                                                     }
                                                     ?>
+                                                </td>
+                                                <td>
+                                                <?php 
+                                                    if ($row->orders_rated == 0 && $row->orders_status == 1) {
+                                                ?>
+                                                <a href="<?php echo base_url().'user/service/'.$row->services_id.'/'.$row->orders_id;?>">REVIEW</a>
+                                                <?php 
+                                                    } elseif($row->orders_rated == 1 && $row->orders_status == 1) {
+                                                        echo "DONE";
+                                                    }
+                                                ?>
                                                 </td>
                                             </tr>
                                     <?php
