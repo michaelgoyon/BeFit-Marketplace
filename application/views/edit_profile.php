@@ -56,7 +56,7 @@
 		<?php 
 			if($_SESSION['userusername'] == $username) {
 			if($this->session->userdata('account') == 'Trainee'){
-			echo '<h1 id="header"	>UPDATE YOUR PROFILE</h1>';
+			echo '<h1 id="header">UPDATE YOUR PROFILE</h1>';
 
 		?>
 				<form method="post" action="<?php echo base_url();?>user/update_profile">
@@ -111,7 +111,7 @@
 		<?php 
 			if($_SESSION['userusername'] == $username) {
 			if($this->session->userdata('account') == 'Coach'){
-			echo '<h1>UPDATE YOUR PROFILE</h1>';
+			echo '<h1 id="header">UPDATE PROFILE</h1>';
 		?>
 				<form method="post" action="<?php echo base_url();?>user/update_profile" enctype="multipart/form-data">
 				<div class="input-form">
@@ -139,6 +139,7 @@
 			}
 					?>	
 	</div>
+
 </div>
     <script>
 		function isInputNumber(evt) {

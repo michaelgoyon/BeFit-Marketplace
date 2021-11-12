@@ -172,8 +172,12 @@ class Admin extends CI_Controller {
 	public function confirm_cashout(){
 		if(isset($_GET['cashout_id'])) {
 			$cashoutid=$_GET['cashout_id'];
-			$this->admin_model->update_cashout($cashoutid);
-			redirect($_SERVER['HTTP_REFERER']);
+			if(isset($_GET['user_id'])){
+				$userid=$_GET['user_id'];
+				//print_r($userid);
+				$this->admin_model->update_cashout($cashoutid,$userid);
+				redirect($_SERVER['HTTP_REFERER']);
+			}
 		}
 	}
 

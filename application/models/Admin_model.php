@@ -136,10 +136,20 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
-    public function update_cashout($cashoutid){
+    public function get_userid_bycashout($cashoutid){
+        $this->db->select('users_id');
+        $this->db->from('cashout');
+        $this->db->where('cashout_id', $cashoutid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+    public function update_cashout($cashoutid,$userid){
         $this->db->set('cashout_remarks', '1');
         $this->db->where('cashout_id', $cashoutid);
         $this->db->update('cashout');
+        $this->db->set('users_wallet', '0');
+        $this->db->where('users_id', $userid);
+        $this->db->update('users');
     }
 
     public function get_pending_cashout(){
