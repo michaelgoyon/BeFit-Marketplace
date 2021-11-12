@@ -403,4 +403,10 @@ class User_model extends CI_Model
     public function update_coachprofile($newcoachdetails){
         $this->db->update('coachprofile', $newcoachdetails, array('ID' => $newcoachdetails['ID']));
     }
+
+    /*public function update_coach_description($new_coach_description,$userid){
+        $this->db->set('profile_description', $new_coach_description);
+        $this->db->where('ID', $userid);
+        $this->db->update('coachprofile');
+    }*/
 }

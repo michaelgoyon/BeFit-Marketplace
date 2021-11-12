@@ -351,7 +351,7 @@
                             echo "<td>".$row->cashout_from."</td>";
                             echo "<td>".$row->cashout_amount." PHP"."</td>"; 
                             echo "<td>".$row->cashout_datetime."</td>";?>
-                            <td><a class="deletebutton greenbg" href="<?php echo base_url().'admin/confirm_cashout?cashout_id='.$row->cashout_id;?>">Confirm</a></td>
+                            <td><a class="deletebutton greenbg" href="<?php echo base_url().'admin/confirm_cashout?cashout_id='.$row->cashout_id . "&user_id=" . $row->users_id?>">Confirm</a></td>
                             <?php
                             echo "</tr>";
                         }

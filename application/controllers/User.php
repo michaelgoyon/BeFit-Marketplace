@@ -411,6 +411,30 @@ class User extends CI_Controller
         $data["users"] = $this->user_model->fetch_data($check);
         redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
     }
+
+    /*public function update_description()
+    {
+        $acc = $this->session->userdata('account');
+        $userid = $this->session->userdata('userid');
+
+        $config['allowed_types'] = 'jpg|png';
+        $config['upload_path'] = './uploads/';
+        $config['encrypt_name'] = true;
+        $this->load->library('upload', $config);
+
+        if ($acc == 'Trainee') {
+            $new_trainee_profile = $this->input->post('new_profile');
+            $this->user_model->update_trainee_description($new_trainee_profile,$userid);
+        }  
+        else if ($acc == 'Coach') {
+            $new_coach_profile = $this->input->post('new_profile');
+            $this->user_model->update_coach_description($new_coach_profile,$userid);
+        }
+
+        $check = $this->session->userdata('userusername');
+        $data["users"] = $this->user_model->fetch_data($check);
+        redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+    }*/
   
     public function password_validation()
     {
