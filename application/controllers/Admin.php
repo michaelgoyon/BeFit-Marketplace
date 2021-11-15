@@ -176,6 +176,33 @@ class Admin extends CI_Controller {
 				$userid=$_GET['user_id'];
 				//print_r($userid);
 				$this->admin_model->update_cashout($cashoutid,$userid);
+				$serviceid = $this->uri->segment(3);
+				$data["services"] = $this->user_model->get_service_by_id($serviceid);
+				$temp = $this->user_model->fetch_all_orders();
+				$data["orders"] = end($temp);
+
+				$data["users"] = $this->user_model->fetch_data($this->session->userdata('userusername'));
+				foreach ($data["users"] as $row) {
+					$wallet = $row->users_wallet;
+					$email = $row->users_email;
+					$userid = $row->users_id;
+				}
+
+				$message = $this->load->view('email_confirm_cashout', $data, true);
+				$this->load->config('email');
+				$this->load->library('email');
+				$this->email->set_newline("\r\n");
+				$this->email->from($this->config->item('smtp_user'));
+				$this->email->to($email);
+				$this->email->subject('Cashout Completed');
+				$this->email->message($message);
+
+				if ($this->email->send()) {
+					$this->session->set_flashdata('msg', 'Nice one');
+				} else {
+					$this->session->set_flashdata('msg', $this->email->print_debugger());
+				}
+
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 		}
