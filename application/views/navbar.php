@@ -25,11 +25,13 @@
             <div class="wallet">
                 <?php
                 foreach ($users as $row) {
-                ?>
-                    <p><?php echo $row->users_wallet; ?> PHP</p>
-                <?php
+                    $wallet = $row->users_wallet;
+                    $username = $row->users_username;
                 }
                 ?>
+                    <p class="white">Hi, <?php echo $username?>!</p>
+                    <p class="orange">Your current BeFit balance is</p>
+                    <p class="orange2"><?php echo $row->users_wallet; ?> PHP</p>
             </div>
             <li class="with-submenu">
                 <?php

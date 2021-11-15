@@ -149,6 +149,11 @@ class User extends CI_Controller
                                 <h2>Thank you for Registering.</h2>
                                 <p>Your Account:</p>
                                 <p>Email: " . $user['users_email'] . "</p>
+                                <p>Username: ". $user['users_username'] . " </p>
+                                <p>Password: ". $user['users_password'] . " </p>
+                                <br>
+                                <p>Note: When you forget your password, kindly visit this email message. Do not share any information displayed in this message.</p>
+                                <br>
                                 <p>Please click the link below to activate your account.</p>
                                 <h4><a href='" . base_url() . "user/activate/" . $id . "/" . $user['users_code'] . "'>Activate My Account</a></h4>
                             </body>
