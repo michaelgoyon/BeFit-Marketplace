@@ -1,6 +1,25 @@
 *{
     margin:0;
 }
+
+.namelinks {
+    text-decoration: underline;
+    color:inherit;
+}
+.namelinks:hover {
+    color:#FA632A;
+    transition: 0.5s;
+}
+
+.reviewname{
+    text-decoration: none;
+    color:inherit;
+}
+
+.reviewname:hover {
+    color:#Fc9e2b;
+    transition: 0.5s;
+}
 html { 
     background-color:#222222;
     -webkit-background-size: cover;

@@ -788,6 +788,7 @@ class User extends CI_Controller
         }
         $serviceid = $this->uri->segment(3);
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
+        $data["coach"] = $this->user_model->get_coach_by_service($serviceid);
         $this->navbar();
         $this->load->view("checkout_service", $data);
     }
@@ -1568,5 +1569,30 @@ class User extends CI_Controller
 
         $result = "true";
         echo $result;
+    }
+
+    public function view_profile(){
+ 
+
+
+        if (!$this->session->userdata('userusername')) {
+            redirect(base_url());
+        }
+
+        $this->navbar();
+        $profile_username = $this->uri->segment(3);
+        $users_name = $this->user_model->fetch_user_by_username($profile_username);
+
+        //fetch nang coach profile
+        $data["coachdata"] = $this->user_model->get_user_by_username($profile_username);
+
+        //$userid = ($users_name[0]->users_id);
+
+        //fetch nang service
+        $users_name = ($users_name[0]->users_name);
+        $data["coachservices"] = $this->user_model->fetch_service_by_name($users_name);
+        $this->load->view('view_profile',$data);
+        $this->footer();
+
     }
 }

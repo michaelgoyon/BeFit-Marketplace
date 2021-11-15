@@ -406,7 +406,44 @@ class User_model extends CI_Model
 
     /*public function update_coach_description($new_coach_description,$userid){
         $this->db->set('profile_description', $new_coach_description);
-        $this->db->where('ID', $userid);
+        $this->db->where('ID', $userid);$username = $this->uri->segment(3)
         $this->db->update('coachprofile');
     }*/
+
+    public function get_user_by_username($profile_username)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('users_username', $profile_username);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_coachdetails_by_username($profile_username)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('users_username', $profile_username);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function fetch_user_by_username($users_username)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('users_username', $users_username);
+        $query = $this->db->get()->result();
+        
+       return $query;
+    }
+
+    public function fetch_service_by_name($users_name)
+    {
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->where('users_name', $users_name);
+        $query = $this->db->get()->result();
+        return $query;
+    }
 }

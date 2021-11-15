@@ -30,7 +30,9 @@
                 echo "</div>";
                 echo "<div class='info-row'>";
                 echo "<p class='infotext'>"."Coach: "."</p>";
-                echo "<p class='infotext'>".$row->users_name."</p>";
+                foreach($coach as $coachusername){
+                echo "<p class='infotext'><a class='namelinks' href='".base_url().'user/view_profile/'.$coachusername->users_username."'>".$row->users_name."</a></p>";
+                }
                 echo "</div>";
                 echo "<div class='info-row'>";
                 echo "<p class='infotext'>"."Workout: "."</p>";

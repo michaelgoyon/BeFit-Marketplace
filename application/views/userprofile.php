@@ -157,7 +157,7 @@
 					<thead>
 						<tr>
 							<th>Option</th>
-							<th>Type of Workout</th>
+							<th>Name of Workout</th>
 							<th>Availability</th>
 							<th>Day</th>
 							<th>Time</th>
@@ -181,7 +181,7 @@
 								<td><a href="<?php echo base_url().'user/activate_services?id='.$row->services_id;?>">ACTIVATE</a></td>
 						<?php 
 								}
-								echo "<td>".$row->services_title."</td>";
+								echo "<td class='workoutname'><a href='".base_url().'user/service/'.$row->services_id."'>".$row->services_title."</a></td>";
 								echo "<td>".($row->services_availability == 1 ? "Available" : "Unavailable")."</td>";
 								echo "<td>".$row->services_day."</td>";
 								echo "<td>".$row->services_time."</td>";

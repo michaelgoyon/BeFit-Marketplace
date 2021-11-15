@@ -349,19 +349,10 @@ td a{
 }
 
 td a:hover{
-    background-color: red;
+    background-color: #FA632A;
     color: #FFFFFF;
     transition: 0.4s ease;
 }
 
-.workoutname a{
-    background-color:transparent;
-    color: #FFFFFF;
-}
-
-.workoutname a:hover{
-    background-color:transparent;
-    color: #FA632A;
-}
 
 
