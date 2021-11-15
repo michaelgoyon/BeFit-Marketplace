@@ -58,7 +58,9 @@
                         echo "</div>";
                         echo "<div class='info-row'>";
                         echo "<p class='infotext'>"."Coach: "."</p>";
-                        echo "<p class='infotext'>".$row->users_name."</p>";
+                        foreach($coach as $coachusername){
+                        echo "<p class='infotext'><a class='namelinks' href='".base_url().'user/view_profile/'.$coachusername->users_username."'>".$row->users_name."</a></p>";
+                        }
                         echo "</div>";
                         echo "<div class='info-row'>";
                         echo "<p class='infotext'>"."Workout: "."</p>";
@@ -81,6 +83,9 @@
             }
         ?>
             <form action="<?php echo base_url().'user/checkout/'.$this->uri->segment(3); ?>">
+            <?php
+            if($users[0]->users_account == "Trainee"){
+            ?>
                 <div class="registerbtn">
                     <input type="submit" value="BOOK NOW">
                 </div>
@@ -88,6 +93,9 @@
             <div class="chat">
                 <button id="chat-coach" onclick="chatCoach()">Inquire</button>
             </div>
+            <?php
+            }
+            ?>
         </div>
     </div>
     </div>
@@ -96,7 +104,7 @@
         <?php 
         foreach($ratings as $row) {
             echo "<div class='ratings'>";
-                echo "<p class='ratinghead'>".$row->users_username."</p>";
+                echo "<p class='ratinghead'><a class='reviewname'href='".base_url().'user/profile/'.$row->users_username."'>".$row->users_username."</a></p>";
                 echo "<div class='stars'>";
                     for ($i = 0; $i < $row->ratings_rate; $i++){
                         echo "<p>★</p>";
