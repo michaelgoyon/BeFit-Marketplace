@@ -25,8 +25,11 @@ class Admin_Model extends CI_Model {
 
     public function get_coach_users($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get_where('users', array('users_account'=>"Coach"));
-		return $query->result();
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->join('coachprofile', 'users.users_id = coachprofile.ID');
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function count_users() {

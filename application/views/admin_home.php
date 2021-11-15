@@ -175,6 +175,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Requirement</th>
                     <th>User Account</th>
                     <th>User Avatar</th>
                     <th>Name</th>
@@ -190,6 +191,7 @@
                     foreach($coaches as $row) {
                         echo "<tr>";
                         echo "<td>".$row->users_id."</td>";
+                        echo "<td><a href='".base_url().'uploads/'.$row->requirement."'>Valid ID</a></td>";
                         echo "<td>".$row->users_account."</td>";
                         echo "<td>"."<img src='".base_url().'uploads/'.$row->users_avatar."' width='80' height='80'>"."</td>";
                         echo "<td>".$row->users_name."</td>";
