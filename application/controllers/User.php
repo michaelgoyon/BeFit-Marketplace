@@ -1338,7 +1338,7 @@ class User extends CI_Controller
         $data["orders"] = end($temp3);
         $orderid = $data["orders"]->orders_id;
 
-        ate_default_timezone_set('Asia/Manila');
+        date_default_timezone_set('Asia/Manila');
         $time = date("g:ia");
         $msgTrainee = "Your order BFTWRKOUT00".$id." has been confirmed! Please check your bookings.";
 

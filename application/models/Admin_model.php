@@ -32,6 +32,54 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
+    public function get_workouts() {
+        $this->db->select("*");
+        $this->db->from("services");
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_workout_by_id($id) {
+        $this->db->select("*");
+        $this->db->from("services");
+        $this->db->where("services_id", $id);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_trainees_per_workout($id) {
+        $this->db->select("orders_from");
+        $this->db->from("orders");
+        $this->db->where("services_id", $id);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_coaches_per_workout($id) {
+        $this->db->select("orders_to");
+        $this->db->from("orders");
+        $this->db->where("services_id", $id);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_id($username) {
+        $this->db->select("*");
+        $this->db->from("users");
+        $this->db->where("users_username", $username);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function insert_notif($id, $time, $msg) {
+        $data = array(
+            'users_id' => $id,
+            'notifications_time' => $time,
+            'notifications_message' => $msg
+        );
+        $this->db->insert('notifications', $data);
+    }
+
     public function count_users() {
         return $this->db->count_all_results('users');
     }
