@@ -459,11 +459,10 @@ function sidedash(){
     document.getElementById('chartshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
-    document.getElementById('sidecashout').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='none';
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Dashboard";
-
 }
 
 function sidetransaction(){
@@ -475,7 +474,6 @@ function sidetransaction(){
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Transactions";
-
 }
 
 function sidechart(){
