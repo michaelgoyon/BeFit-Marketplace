@@ -513,6 +513,9 @@ ul {
     border-radius: 12px;
   }
 
+.notifshow{
+    display:none;
+}
 .chartshow{
     display: none;
 }
