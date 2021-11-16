@@ -132,6 +132,36 @@
 
 </div>
 
+<!--- workouts --->
+<div class="container">
+    <table class="table-view">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                foreach($workout as $row) {
+            ?>
+            <tr>
+                <td><?php echo $row->services_id;?></td>
+                <td><?php echo $row->services_title;?></td>
+                <td><?php echo $row->services_day;?></td>
+                <td><?php echo $row->services_time;?></td>
+                <td><a class="deletebutton" href="<?php echo base_url().'admin/send_notification?id='.$row->services_id; ?>">Send Notification</td>
+            </tr>
+            <?php 
+                }
+            ?>
+        </tbody>
+    </table>
+</div>
+
 <!--- users --->
 <div id ="dashboardshow" class="container">
         <table class="table-view">

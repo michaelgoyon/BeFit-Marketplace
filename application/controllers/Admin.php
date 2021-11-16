@@ -132,6 +132,10 @@ class Admin extends CI_Controller {
 
 		//cashout
 		$data['cashout'] = $this->admin_model->get_cashout();
+
+		//workouts notif
+		$data['workout'] = $this->admin_model->get_workouts();
+
 		//view page
 		$this->load->view('admin_home', $data);
 	}
@@ -160,6 +164,50 @@ class Admin extends CI_Controller {
 		if(isset($_GET['id'])) {
 			$id=$_GET['id'];
 			$this->admin_model->did_delete_row($id);
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function send_notification() {
+		if(isset($_GET['id'])) {
+			$id = $_GET['id'];
+			$temp = $this->admin_model->get_workout_by_id($id);
+			$title = $temp[0]->services_title;
+			
+			$trainees = $this->admin_model->get_trainees_per_workout($id);
+			$coaches = $this->admin_model->get_coaches_per_workout($id);
+
+			$temp1 = array();
+			$temp2 = array();
+			for($i = 0; $i < count((array)$trainees); $i++) {
+				$x = $this->admin_model->get_id($trainees[$i]->orders_from);
+				foreach($x as $trainee) {
+					array_push($temp1, $trainee->users_id);
+				}
+			}
+
+			for($i = 0; $i < count((array)$coaches); $i++) {
+				$x = $this->admin_model->get_id($coaches[$i]->orders_to);
+				foreach($x as $coach) {
+					array_push($temp2, $coach->users_id);
+				}
+			}
+			//print_r(array_unique($temp2));
+
+			$msg = "REMINDER: Workout \"".$title."\" is starting!";
+			date_default_timezone_set('Asia/Manila');
+        	$time = date("g:ia");
+
+			//print_r(count($temp1));
+			for($i = 0; $i < count($temp1); $i++) {
+				$this->admin_model->insert_notif($temp1[$i], $time, $msg);
+			}
+
+			for($i = 0; $i < count(array_unique($temp2)); $i++) {
+				$this->admin_model->insert_notif($temp2[$i], $time, $msg);
+			}
+
+
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
