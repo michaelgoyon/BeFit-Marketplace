@@ -657,9 +657,18 @@ class User extends CI_Controller
         $temp2 = $this->user_model->fetch_all_orders_by_id($orderid);
         $username2 = $temp2[0]->orders_to;
         $data["users2"] = $this->user_model->fetch_data($username2);
-            foreach ($data["users2"] as $row) {
+        foreach ($data["users2"] as $row) {
+            $userid2 = $row->users_id;
             $useremail2 = $row->users_email;
         }
+        date_default_timezone_set('Asia/Manila');
+        $time = date("g:ia");
+        $msgTrainee = "You successfully bought a service! Please check your bookings.";
+        $msgCoach = "A trainee has bought your service! Please check your pending list.";
+
+        $this->user_model->insert_notif($userid, $time, $msgTrainee);
+        $this->user_model->insert_notif($userid2, $time, $msgCoach);
+
         $message = $this->load->view('email_confirm_booking', $data, true);
         $this->load->config('email');
         $this->load->library('email');
@@ -840,6 +849,12 @@ class User extends CI_Controller
             $data["orders"] = end($temp);
             $orderid = $data["orders"]->orders_id;
 
+            date_default_timezone_set('Asia/Manila');
+            $time = date("g:ia");
+            $msgTrainee = "Your order BFTWRKOUT00".$id." has been confirmed! Please check your bookings.";
+
+            $this->user_model->insert_notif($userid, $time, $msgTrainee);
+
             $message = $this->load->view('email_booking_accepted', $data, true);
             $this->load->config('email');
             $this->load->library('email');
@@ -867,6 +882,14 @@ class User extends CI_Controller
             $temp = $this->user_model->fetch_all_orders_by_id($id);
             $temp2 = $this->user_model->fetch_data($temp[0]->orders_from);
             $useremail = $temp2[0]->users_email;
+            $userid = $temp2[0]->users_id;
+
+            date_default_timezone_set('Asia/Manila');
+            $time = date("g:ia");
+            $msgTrainee = "Your order BFTWRKOUT00".$id." has been declined!";
+
+            $this->user_model->insert_notif($userid, $time, $msgTrainee);
+
             $message = "
                         <html>
                             <head>
@@ -936,6 +959,13 @@ class User extends CI_Controller
             }
             $temp = $this->user_model->fetch_all_orders();//fg
             $data["orders"] = end($temp);
+
+            date_default_timezone_set('Asia/Manila');
+            $time = date("g:ia");
+            $msgTrainee = "Your order BFTWRKOUT00".$id." has been completed!";
+
+            $this->user_model->insert_notif($userid, $time, $msgTrainee);
+
             $message = $this->load->view('email_complete_workout', $data, true);
             $this->load->config('email');
             $this->load->library('email');
@@ -1259,6 +1289,7 @@ class User extends CI_Controller
             'ratings_comment'=>$comment
         );
         $this->user_model->insert_rating($ratingArr);
+        $this->user_model->update_rate($this->input->post('orderid'));
         $result = "true";
         echo $result;
     }
@@ -1307,6 +1338,12 @@ class User extends CI_Controller
         $data["orders"] = end($temp3);
         $orderid = $data["orders"]->orders_id;
 
+        ate_default_timezone_set('Asia/Manila');
+        $time = date("g:ia");
+        $msgTrainee = "Your order BFTWRKOUT00".$id." has been confirmed! Please check your bookings.";
+
+        $this->user_model->insert_notif($userid, $time, $msgTrainee);
+
         $message = $this->load->view('email_booking_accepted', $data, true);
         $this->load->config('email');
         $this->load->library('email');
@@ -1332,6 +1369,14 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders_by_id($id);
         $temp2 = $this->user_model->fetch_data($temp[0]->orders_from);
         $useremail = $temp2[0]->users_email;
+        $userid = $temp2[0]->users_id;
+
+        date_default_timezone_set('Asia/Manila');
+        $time = date("g:ia");
+        $msgTrainee = "Your order BFTWRKOUT00".$id." has been declined!";
+
+        $this->user_model->insert_notif($userid, $time, $msgTrainee);
+
         $message = "
                     <html>
                         <head>
@@ -1404,6 +1449,7 @@ class User extends CI_Controller
         }
         $temp = $this->user_model->get_coach_by_service($this->input->post('service'));
         $to = $temp[0]->users_username;
+        $userid2 = $temp[0]->users_id;
         $amount = floatval($temp[0]->services_price);
         $duration = $temp[0]->services_duration;
         $serviceid = $this->input->post('service');
@@ -1426,6 +1472,15 @@ class User extends CI_Controller
             $this->user_model->insert_order($from, $to, $amount, $serviceid, $duration, $date);
             $result = "true";
         }
+
+        date_default_timezone_set('Asia/Manila');
+        $time = date("g:ia");
+        $msgTrainee = "You successfully bought a service! Please check your bookings.";
+        $msgCoach = "A trainee has bought your service! Please check your pending list.";
+
+        $this->user_model->insert_notif($userid, $time, $msgTrainee);
+        $this->user_model->insert_notif($userid2, $time, $msgCoach);
+
         $message = $this->load->view('email_confirm_booking', $data, true);
         $this->load->config('email');
         $this->load->library('email');
@@ -1462,6 +1517,11 @@ class User extends CI_Controller
         $temp = $this->user_model->fetch_all_orders();//fg
         $data["orders"] = end($temp);
 
+        date_default_timezone_set('Asia/Manila');
+        $time = date("g:ia");
+        $msgTrainee = "Your order BFTWRKOUT00".$id." has been completed!";
+
+        $this->user_model->insert_notif($userid, $time, $msgTrainee);
 
         $message = $this->load->view('email_complete_workout', $data, true);
         $this->load->config('email');
