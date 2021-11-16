@@ -30,6 +30,9 @@
     <li onclick="sidedash()">
         <a>Dashboard</a>
     </li>
+    <li onclick="sidenotif()">
+        <a>Send Notification</a>
+    </li>
     <li onclick="sidetransaction()">
         <a>Transactions</a>
     </li>
@@ -133,7 +136,8 @@
 </div>
 
 <!--- workouts --->
-<div class="container">
+<div id ="notifshow" class="notifshow">
+    <div class="container">
     <table class="table-view">
         <thead>
             <tr>
@@ -160,10 +164,11 @@
             ?>
         </tbody>
     </table>
+    </div>
 </div>
 
 <!--- users --->
-<div id ="dashboardshow" class="container">
+    <div id="dashboardshow" class="container">
         <table class="table-view">
             <thead>
                 <tr>
@@ -241,6 +246,7 @@
         </div>
         
     </div>
+
 
 
     <!---charts--->
@@ -455,6 +461,7 @@ function sidedash(){
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('sidecashout').style.display ='none';
     document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Dashboard";
 
 }
@@ -466,6 +473,7 @@ function sidetransaction(){
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='none';
     document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Transactions";
 
 }
@@ -477,6 +485,7 @@ function sidechart(){
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById("cashoutshow").style.display = "none";
     document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Charts";
 
 }
@@ -488,6 +497,7 @@ function sideservice(){
     document.getElementById('serviceshow').style.display ='block';
     document.getElementById("cashoutshow").style.display = "none";
     document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Services";
 }
 
@@ -498,7 +508,19 @@ function sidecashout(){
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='block';
     document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Cashouts";
+}
+
+function sidenotif(){
+    document.getElementById('dashboardshow').style.display ='none';
+    document.getElementById('chartshow').style.display ='none';
+    document.getElementById('transactionshow').style.display ='none';
+    document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='none';
+    document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "block";
+    document.getElementById("location").innerHTML = "Send Notifications";
 }
 
 function sideadmin(){
@@ -508,6 +530,7 @@ function sideadmin(){
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='none';
     document.getElementById("addadminshow").style.display = "block";
+    document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Add Admin";
 }
 
