@@ -35,6 +35,7 @@ html {
 }
 
 .contentParagraph{
+  font-family: 'Poppins', 'sans-serif';
   text-align: justify;
   padding: 0 2rem;
 }
@@ -58,16 +59,41 @@ html {
   margin-left: auto;
   margin-right: auto;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .acceptBtn{
   text-decoration: none;
   font-family: 'Poppins', 'sans-serif';
-  background-color: #fa632a;
+  background-color: #222222;
   color: #FFFFFF;
   padding: 1rem 3rem;
   cursor: pointer;
   border: none;
+  font-size: 16px;
+  transition: 0.5s ease;
+}
+
+.popupBtn button:hover{
+  background-color: #fa632a;
+  color: #FFFFFF;
+  transition: 0.5s ease;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.required{
+  font-family: 'Poppins', 'sans-serif';
+  font-size: 9px;
+  font-style: italic;
+  color: red;
 }
 
 .container {

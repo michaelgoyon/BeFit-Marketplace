@@ -66,6 +66,8 @@ h2 {
 }
 
 .table-container {
+    height:500px;
+    overflow:auto;  
     width: 100%;
 }
 
@@ -73,14 +75,21 @@ table {
     width: 100%;
     text-align: center;
     background-color: #6a6a6a38;
-    padding: 1rem;
     font-family: 'Poppins';
     color: #FFFFFF;
+    border: none;
 }
 
 td, th {
     padding: 2rem 3rem;
+    border: none;
 }
+
+tr {
+    border: none;
+}
+
+tr:nth-child(even) {background-color: #2c2c2c;}
 
 td a {
     background-color: #e5e5e5a2;
@@ -148,4 +157,9 @@ td a:hover {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.2s ease-out;
+}
+
+.scrollit{
+    overflow-y: scroll;
+    height: 100px;
 }

@@ -24,42 +24,44 @@
             ?>
                 <div class="solo">
                     <h2>Confirm Trainees</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Option</th>
-                                <th>Date Ordered</th>
-                                <th>Name</th>
-                                <th>Workout</th>
-                                <th>Day</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($trainees as $row) {
-                                echo "<tr>";
-                            ?>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Option</th>
+                                    <th>Date Ordered</th>
+                                    <th>Name</th>
+                                    <th>Workout</th>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                                if ($row->orders_status == 0) {
+                                foreach ($trainees as $row) {
+                                    echo "<tr>";
                                 ?>
-                                    <td>
-                                        <div class="options-btn">
-                                            <a href="<?php echo base_url() . 'user/confirm?id=' . $row->orders_id; ?>">CONFIRM</a>
-                                            <a href="<?php echo base_url() . 'user/decline?id=' . $row->orders_id; ?>">DECLINE</a>
-                                        </div>
-                                    </td>
-                                    <td><?php echo $row->orders_datetime; ?></td>
-                                    <td><a href="<?php echo base_url() . 'user/profile/' . $row->orders_from; ?>"><?php echo $row->orders_from; ?></a></td>
-                                    <td><?php echo $row->services_title; ?></td>
-                                    <td><?php echo $row->services_day; ?></td>
-                                    <td><?php echo $row->services_time; ?></td>
-                            <?php
+                                    <?php
+                                    if ($row->orders_status == 0) {
+                                    ?>
+                                        <td>
+                                            <div class="options-btn">
+                                                <a href="<?php echo base_url() . 'user/confirm?id=' . $row->orders_id; ?>">CONFIRM</a>
+                                                <a href="<?php echo base_url() . 'user/decline?id=' . $row->orders_id; ?>">DECLINE</a>
+                                            </div>
+                                        </td>
+                                        <td><?php echo $row->orders_datetime; ?></td>
+                                        <td><a href="<?php echo base_url() . 'user/profile/' . $row->orders_from; ?>"><?php echo $row->orders_from; ?></a></td>
+                                        <td><?php echo $row->services_title; ?></td>
+                                        <td><?php echo $row->services_day; ?></td>
+                                        <td><?php echo $row->services_time; ?></td>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div class="solo">
@@ -75,47 +77,49 @@
                         ?>
                             <button class="accordion"><?php echo $row->services_title ?> | <?php echo $row->services_type ?></button>
                             <div class="panel">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Date Ordered</th>
-                                            <th>Service Name</th>
-                                            <th>Trainee</th>
-                                            <th>Day</th>
-                                            <th>Time</th>
-                                            <th>Type of Session</th>
-                                            <th>Remarks</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        foreach ($services_coach as $row) {
-                                            if ($row->orders_status == 1 && $title == $row->services_title) {
-                                        ?>
-                                                <tr>
-                                                    <td><?php echo $row->orders_datetime; ?></td>
-                                                    <td><?php echo $row->services_title; ?></td>
-                                                    <td><?php echo $row->orders_from; ?></td>
-                                                    <td><?php echo $row->services_day; ?></td>
-                                                    <td><?php echo $row->services_time ?></td>
-                                                    <td><?php echo $row->services_session; ?></td>
-                                                    <?php
-                                                    if ($row->orders_remarks == 0) {
-                                                    ?>
-                                                        <td><a href="<?php echo base_url() . 'user/complete_orders?id=' . $row->orders_id; ?>">MARK AS COMPLETE</a></td>
-                                                    <?php
-                                                    } else {
-                                                        echo '<td>Completed</td>';
-                                                    }
-                                                    ?>
-                                                </tr>
-                                        <?php
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date Ordered</th>
+                                                <th>Service Name</th>
+                                                <th>Trainee</th>
+                                                <th>Day</th>
+                                                <th>Time</th>
+                                                <th>Type of Session</th>
+                                                <th>Remarks</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($services_coach as $row) {
+                                                if ($row->orders_status == 1 && $title == $row->services_title) {
+                                            ?>
+                                                    <tr>
+                                                        <td><?php echo $row->orders_datetime; ?></td>
+                                                        <td><?php echo $row->services_title; ?></td>
+                                                        <td><?php echo $row->orders_from; ?></td>
+                                                        <td><?php echo $row->services_day; ?></td>
+                                                        <td><?php echo $row->services_time ?></td>
+                                                        <td><?php echo $row->services_session; ?></td>
+                                                        <?php
+                                                        if ($row->orders_remarks == 0) {
+                                                        ?>
+                                                            <td><a href="<?php echo base_url() . 'user/complete_orders?id=' . $row->orders_id; ?>">MARK AS COMPLETE</a></td>
+                                                        <?php
+                                                        } else {
+                                                            echo '<td>Completed</td>';
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                            <?php
 
+                                                }
                                             }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                     <?php
                         }
@@ -131,63 +135,65 @@
                         ?>
                             <button class="accordion"><?php echo $row->services_title ?> | <?php echo $row->services_type ?></button>
                             <div class="panel">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Date Ordered</th>
-                                            <th>Service Name</th>
-                                            <th>Trainee</th>
-                                            <th>Day</th>
-                                            <th>Time</th>
-                                            <th>Type of Session</th>
-                                            <th>Remarks</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        foreach ($services_coach as $row) {
-                                            if ($row->orders_status == 1 && $title == $row->services_title) {
-                                        ?>
-                                                <tr>
-                                                    <td><?php echo $row->orders_datetime; ?></td>
-                                                    <td><?php echo $row->services_title; ?></td>
-                                                    <td><?php echo $row->orders_from; ?></td>
-                                                    <td><?php echo $row->services_day; ?></td>
-                                                    <td><?php echo $row->services_time ?></td>
-                                                    <td><?php echo $row->services_session; ?></td>
-                                                    <?php
-                                                    if ($row->orders_remarks == 0 && $row->orders_duration > 1) {
-                                                    ?>
-                                                        <td>
-                                                            <div class="options-btn">
-                                                                <a id="round-btn" href="<?php echo base_url() . 'user/minus_session?id=' . $row->orders_id; ?>">-</a>
-                                                                <?php echo $row->orders_duration; ?>
-                                                                <a id="round-btn" href="<?php echo base_url() . 'user/add_session?id=' . $row->orders_id; ?>">+</a>
-                                                            </div>
-                                                        </td>
-                                                    <?php
-                                                    } else if ($row->orders_remarks == 0 && $row->orders_duration == 1) {
-                                                    ?>
-                                                        <td>
-                                                            <div class="options-btn">
-                                                                <a id="round-btn" href="<?php echo base_url() . 'user/complete_orders?id=' . $row->orders_id; ?>">-</a>
-                                                                <?php echo $row->orders_duration; ?>
-                                                                <a id="round-btn" href="<?php echo base_url() . 'user/add_session?id=' . $row->orders_id; ?>">+</a>
-                                                            </div>
-                                                        </td>
-                                                    <?php
-                                                    } else {
-                                                        echo '<td>Completed</td>';
-                                                    }
-                                                    ?>
-                                                </tr>
-                                        <?php
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Date Ordered</th>
+                                                <th>Service Name</th>
+                                                <th>Trainee</th>
+                                                <th>Day</th>
+                                                <th>Time</th>
+                                                <th>Type of Session</th>
+                                                <th>Remarks</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($services_coach as $row) {
+                                                if ($row->orders_status == 1 && $title == $row->services_title) {
+                                            ?>
+                                                    <tr>
+                                                        <td><?php echo $row->orders_datetime; ?></td>
+                                                        <td><?php echo $row->services_title; ?></td>
+                                                        <td><?php echo $row->orders_from; ?></td>
+                                                        <td><?php echo $row->services_day; ?></td>
+                                                        <td><?php echo $row->services_time ?></td>
+                                                        <td><?php echo $row->services_session; ?></td>
+                                                        <?php
+                                                        if ($row->orders_remarks == 0 && $row->orders_duration > 1) {
+                                                        ?>
+                                                            <td>
+                                                                <div class="options-btn">
+                                                                    <a id="round-btn" href="<?php echo base_url() . 'user/minus_session?id=' . $row->orders_id; ?>">-</a>
+                                                                    <?php echo $row->orders_duration; ?>
+                                                                    <a id="round-btn" href="<?php echo base_url() . 'user/add_session?id=' . $row->orders_id; ?>">+</a>
+                                                                </div>
+                                                            </td>
+                                                        <?php
+                                                        } else if ($row->orders_remarks == 0 && $row->orders_duration == 1) {
+                                                        ?>
+                                                            <td>
+                                                                <div class="options-btn">
+                                                                    <a id="round-btn" href="<?php echo base_url() . 'user/complete_orders?id=' . $row->orders_id; ?>">-</a>
+                                                                    <?php echo $row->orders_duration; ?>
+                                                                    <a id="round-btn" href="<?php echo base_url() . 'user/add_session?id=' . $row->orders_id; ?>">+</a>
+                                                                </div>
+                                                            </td>
+                                                        <?php
+                                                        } else {
+                                                            echo '<td>Completed</td>';
+                                                        }
+                                                        ?>
+                                                    </tr>
+                                            <?php
 
+                                                }
                                             }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                     <?php
                         }
@@ -245,15 +251,15 @@
                                                     ?>
                                                 </td>
                                                 <td>
-                                                <?php 
+                                                    <?php
                                                     if ($row->orders_rated == 0 && $row->orders_status == 1) {
-                                                ?>
-                                                <a href="<?php echo base_url().'user/service/'.$row->services_id.'/'.$row->orders_id;?>">REVIEW</a>
-                                                <?php 
-                                                    } elseif($row->orders_rated == 1 && $row->orders_status == 1) {
+                                                    ?>
+                                                        <a href="<?php echo base_url() . 'user/service/' . $row->services_id . '/' . $row->orders_id; ?>">REVIEW</a>
+                                                    <?php
+                                                    } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
                                                         echo "DONE";
                                                     }
-                                                ?>
+                                                    ?>
                                                 </td>
                                             </tr>
                                     <?php
@@ -313,15 +319,15 @@
                                                     ?>
                                                 </td>
                                                 <td>
-                                                <?php 
+                                                    <?php
                                                     if ($row->orders_rated == 0 && $row->orders_status == 1) {
-                                                ?>
-                                                <a href="<?php echo base_url().'user/service/'.$row->services_id.'/'.$row->orders_id;?>">REVIEW</a>
-                                                <?php 
-                                                    } elseif($row->orders_rated == 1 && $row->orders_status == 1) {
+                                                    ?>
+                                                        <a href="<?php echo base_url() . 'user/service/' . $row->services_id . '/' . $row->orders_id; ?>">REVIEW</a>
+                                                    <?php
+                                                    } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
                                                         echo "DONE";
                                                     }
-                                                ?>
+                                                    ?>
                                                 </td>
                                             </tr>
                                     <?php

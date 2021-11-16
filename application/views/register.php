@@ -17,52 +17,46 @@
 	<div class="overlay">
 		<div class="popup">
 			<div class="contentHead">
-					<h1>Data Privacy Policy</h1>
+				<h1>Data Privacy Policy</h1>
 			</div>
 			<div class="contentBox">
 				<div class="content">
 					<div class="contentParagraph">
-						<p>1. DEFINITIONS
-
-							Undefined terms in this Privacy Policy have the same definition as in our Terms of Service (“Terms”).
-
-							2. PERSONAL INFORMATION WE COLLECT
-
-							2.1 Information needed to use the Airbnb Platform.
-
-							We collect personal information about you when you use the Airbnb Platform. Without it, we may not be able to provide you with all services requested. This information includes:
-
-							Contact Information, Account, Profile Information. Such as your first name, last name, phone number, postal address, email address, date of birth, and profile photo, some of which will depend on the features you use.
-							Identity Verification and Payment Information. Such as images of your government issued ID (as permitted by applicable laws), your ID number or other verification information, bank account or payment account information.
-							2.2 Information you choose to give us.
-
-							You can choose to provide us with additional personal information. This information may include:
-
-							Additional Profile Information. Such as gender, preferred language(s), city, and personal description. Some of this information as indicated in your account settings is part of your public profile page and will be publicly visible.
-							Address Book Contact Information. Address book contacts you import or enter manually.
-							Other Information. Such as when you fill in a form, add information to your account, respond to surveys, post to community forums, participate in promotions, communicate with our customer care team and other Members, or share your experience with us. This may include health information if you choose to share it with us.
-							2.3 Information Automatically Collected by Using the Airbnb Platform and our Payment Services.
-
-							When you use the Airbnb Platform and Payment Services, we automatically collect personal information. This information may include:
-
-							Geo-location Information. Such as precise or approximate location determined from your IP address or mobile device’s GPS depending on your device settings. We may also collect this information when you’re not using the app if you enable this through your settings or device permissions.
-							Usage Information. Such as the pages or content you view, searches for Listings, bookings you have made, and other actions on the Airbnb Platform.
-							Log Data and Device Information. Such as details about how you’ve used the Airbnb Platform (including if you clicked on links to third party applications), IP address, access dates and times, hardware and software information, device information, device event information, unique identifiers, crash data, cookie data, and the pages you’ve viewed or engaged with before or after using the Airbnb Platform. We may collect this information even if you haven’t created an Airbnb account or logged in.
-							Cookies and Similar Technologies as described in our Cookie Policy.
-							Payment Transaction Information. Such as payment instrument used, date and time, payment amount, payment instrument expiration date and billing postcode, PayPal email address, IBAN information, your address and other related transaction details.
-							2.4 Personal Information We Collect from Third Parties.
-
-							We collect personal information from other sources, such as:.
-
-							Third-Party Services. If you link, connect, or login to the Airbnb Platform with a third party service (e.g. Google, Facebook, WeChat), you direct the service to send us information such as your registration, friends list, and profile information as controlled by that service or as authorized by you via your privacy settings at that service.
-							Background Information. For Members in the United States, to the extent permitted by applicable laws, we may obtain reports from public records of criminal convictions or sex offender registrations. For Members outside of the United States, to the extent permitted by applicable laws and with your consent where required, we may obtain the local version of police, background or registered sex offender checks. We may use your information, including your full name and date of birth, to obtain such reports.
-							Enterprise Product Invitations and Account Management. Organizations that use our Enterprise products may submit personal information to facilitate account management and invitations to use enterprise products.
-							Referrals and co-travelers. If you are invited to the Airbnb Platform such as a co-traveler on a trip, the person who invited you can submit personal information about you such as your email address or other contact information.
-							Other Sources. To the extent permitted by applicable law, we may receive additional information about you, such as references, demographic data or information to help detect fraud and safety issues from third party service providers and/or partners, and combine it with information we have about you. For example, we may receive background check results or fraud warnings from identity verification service providers for use in our fraud prevention and risk assessment efforts. We may receive information about you and your activities on and off the Airbnb Platform, or about your experiences and interactions from our partners. We may receive health information, including but not limited to health information related to contagious diseases.</p>
-
-						<p>Click Accept if you wish to continue.</p>
+						<h2>BeFit Marketplace Data Privacy Policy</h2>
+						<p>Effective Date: November 10, 2021</p>
+						<br>
+						<p>This policy explains what information we collect when you use BeFit's
+							sites, services, mobile applications, products, and content ("Services). It also
+							has information about how we store, use, transfer, and delete that
+							information. Our aim is not just to comply with privacy law. It's to earn your
+							trust.</p>
+						<br>
+						<h2>Information We Collect & How We Use It</h2>
+						<p>BeFit doesn't make money from ads. So we don't collect data in order to
+							advertise to you. The tracking we do at BeFit is to make our product work
+							as well as possible.
+						</p>
+						<p>In order to give you the best possible experience using BeFit, we collect
+							information from your interactions with our network. Some of this
+							information, you actively tell us (such as your email address, which we use to
+							track your account or communicate with you). </p>
+						<p>Other information, we collect based on actions you take while using BeFit Marketplace, such as what pages you access
+							and your interactions with our product features (like highlights, follows, and
+							applause). </p>
+						<p>This information includes records of those interactions, your
+							Internet Protocol address, information about your device (such as device or
+							browser type), and referral information.</p>
+						<br>
+						<h2>We use this information to:</h2>
+						<ul>
+							<li>provide, test, improve, promote and personalize BeFit Marketplace App</li>
+							<li>fight spam and other forms of abuse</li>
+							<li>generate aggregate, non-identifying information about how people use</li>
+						</ul>
+						<br>
 						<div class="popupBtn">
-							<button class="acceptBtn">Accept</button>
+							<p>Click <b>Accept</b> if you wish to continue.</p>
+							<button class="acceptBtn"><b>Accept</b></button>
 						</div>
 					</div>
 				</div>
@@ -131,27 +125,45 @@
 						</label>
 					</div>
 					<div>
-						<label for="fname">First Name</label><br>
+						<div class="label">
+							<label for="fname">First Name</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="fname" name="fname" value="<?php echo set_value('fname'); ?>">
 					</div>
 					<div>
-						<label for="lname">Last Name</label><br>
+						<div class="label">
+							<label for="fname">Last Name</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="lname" name="lname" value="<?php echo set_value('lname'); ?>">
 					</div>
 					<div>
-						<label for="username">Username</label><br>
+						<div class="label">
+							<label for="fname">Username</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="username" name="username" value="<?php echo set_value('username'); ?>">
 					</div>
 					<div>
-						<label for="birthdate">Birthdate</label><br>
+						<div class="label">
+							<label for="fname">Birthdate</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="date" id="birthdate" name="birthdate" value="<?php echo set_value('birthdate'); ?>" required>
 					</div>
 					<div>
-						<label for="email">Email</label><br>
+						<div class="label">
+							<label for="fname">Email</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="email" name="email" value="<?php echo set_value('email'); ?>">
 					</div>
 					<div>
-						<label for="password">Password</label><br>
+						<div class="label">
+							<label for="fname">Password</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="password" id="password" name="password">
 					</div>
 					<div>
@@ -159,11 +171,17 @@
 						<input type="password" id="password_confirm" name="password_confirm">
 					</div>
 					<div id="heightdiv">
-						<label for="height">Height</label><br>
+						<div class="label">
+							<label for="fname">Height</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="height" name="Height" placeholder="Height in cm">
 					</div>
 					<div id="weightdiv">
-						<label for="weight">Weight</label><br>
+						<div class="label">
+							<label for="fname">Weight</label>
+							<p class="required">Required</p>
+						</div>
 						<input type="text" id="weight" name="Weight" placeholder="Weight in kg">
 					</div>
 					<div id="bmidiv">
@@ -206,7 +224,7 @@
 		</div>
 	</div>
 	<script>
-		const overlay = document.querySelector ('.overlay')
+		const overlay = document.querySelector('.overlay')
 		const popup = document.querySelector('.popup');
 		const close = document.querySelector('.popupBtn');
 
