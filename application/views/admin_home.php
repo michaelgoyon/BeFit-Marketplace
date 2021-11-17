@@ -226,7 +226,11 @@
                     foreach($coaches as $row) {
                         echo "<tr>";
                         echo "<td>".$row->users_id."</td>";
-                        echo "<td><a href='".base_url().'uploads/'.$row->requirement."'>Valid ID</a></td>";
+                        if($row->requirement != "null") {
+                            echo "<td><a href='".base_url().'uploads/'.$row->requirement."'target='_blank'>Valid ID</a></td>";
+                        } else {
+                            echo "<td><a href='".base_url().'uploads/validid.jpg'."'target='_blank'>Valid ID</a></td>";
+                        }
                         echo "<td>".$row->users_account."</td>";
                         echo "<td>"."<img src='".base_url().'uploads/'.$row->users_avatar."' width='80' height='80'>"."</td>";
                         echo "<td>".$row->users_name."</td>";
