@@ -29,9 +29,15 @@
 			<div class="info-row">
 				<p><?php echo $row->users_account; ?></p>
 			</div>
+			<?php 
+				if($this->session->userdata('userusername') == $this->uri->segment(3)) {
+			?>
 			<div class="btn-edit">
 				<a href="<?php echo base_url('user/editprofile/' . $this->session->userdata('userusername')) ?>">Edit Profile</a>
 			</div>
+			<?php 
+				}
+			?>
 			<div class="info-row">
 				<h1 id="header">ABOUT</h1>
 			</div>
