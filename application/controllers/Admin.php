@@ -236,6 +236,11 @@ class Admin extends CI_Controller {
 					$userid = $row->users_id;
 				}
 
+				$msg = "Your cashout request has been confirmed!";
+				date_default_timezone_set('Asia/Manila');
+				$time = date("g:ia");
+				$this->admin_model->insert_notif($userid, $time, $msg);
+
 				$message = $this->load->view('email_confirm_cashout', $data, true);
 				$this->load->config('email');
 				$this->load->library('email');
