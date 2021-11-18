@@ -1211,6 +1211,7 @@ class User extends CI_Controller
         $time = '';
         $day = '';
         $duration = '';
+        $userid = '';
         $serviceid = $this->input->post('dataService');
         $data["services"] = $this->user_model->get_service_by_id($serviceid);
         foreach ($data["services"] as $row) {
@@ -1222,9 +1223,10 @@ class User extends CI_Controller
             $time = $row->services_time;
             $day = $row->services_day;
             $duration = $row->services_duration;
+            $userid = $row->users_id;
         }
         $result = "true";
-        echo $result . '<>' . $title . '<>' . $description . '<>' . $price . '<>' . $coach . '<>' . $workout . '<>' . $time . '<>' . $day . '<>' . $duration;
+        echo $result . '<>' . $title . '<>' . $description . '<>' . $price . '<>' . $coach . '<>' . $workout . '<>' . $time . '<>' . $day . '<>' . $duration . '<>' . $userid;
     }
 
     public function topup_mobile()
