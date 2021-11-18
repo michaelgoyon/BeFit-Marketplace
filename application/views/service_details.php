@@ -75,6 +75,10 @@
                         echo "<p class='infotext'>".$row->services_day."</p>";
                         echo "</div>";
                         echo "<div class='info-row'>";
+                        echo "<p class='infotext'>"."Session: "."</p>";
+                        echo "<p class='infotext'>".$row->services_session."</p>";
+                        echo "</div>";
+                        echo "<div class='info-row'>";
                         echo "<p class='infotext'>"."Duration: "."</p>";
                         echo "<p class='infotext'>".$row->services_duration."</p>";
                         echo "</div>";
