@@ -230,7 +230,7 @@ class Admin extends CI_Controller {
 				//$temp = $this->user_model->fetch_all_orders();
 				//$data["orders"] = end($temp);
 
-				$data["users"] = $this->user_model->fetch_user_by_id($userid);
+				$data["users"] = $this->admin_model->fetch_user_by_id($userid);
 				foreach ($data["users"] as $row) {
 					$email = $row->users_email;
 				}
