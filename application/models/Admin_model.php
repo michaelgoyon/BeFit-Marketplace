@@ -17,6 +17,12 @@ class Admin_Model extends CI_Model {
         return $result;
     }
 
+    public function fetch_user_by_id($id) {
+        $query = $this->db->get_where('users', array('users_id' => $id));
+        $result = $query->result();
+        return $result;
+    }
+
     public function get_trainee_users($limit, $start) {
         $this->db->limit($limit, $start);
         $query = $this->db->get_where('users', array('users_account'=>"Trainee"));
@@ -183,6 +189,15 @@ class Admin_Model extends CI_Model {
     public function get_cashout(){
         $this->db->select('*');
         $this->db->from('cashout');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_cashout_by_id($cashoutid)
+    {
+        $this->db->select('*');
+        $this->db->from('cashout');
+        $this->db->where('cashout_id', $cashoutid);
         $query = $this->db->get()->result();
         return $query;
     }

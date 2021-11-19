@@ -224,16 +224,15 @@ class Admin extends CI_Controller {
 				$userid=$_GET['user_id'];
 				//print_r($userid);
 				$this->admin_model->update_cashout($cashoutid,$userid);
-				$serviceid = $this->uri->segment(3);
-				$data["services"] = $this->user_model->get_service_by_id($serviceid);
-				$temp = $this->user_model->fetch_all_orders();
-				$data["orders"] = end($temp);
+				//$serviceid = $this->uri->segment(3);
+				//$data["services"] = $this->user_model->get_service_by_id($serviceid);
+				$data["cashout"] = $this->admin_model->get_cashout_by_id($cashoutid);
+				//$temp = $this->user_model->fetch_all_orders();
+				//$data["orders"] = end($temp);
 
-				$data["users"] = $this->user_model->fetch_data($this->session->userdata('userusername'));
+				$data["users"] = $this->user_model->fetch_user_by_id($userid);
 				foreach ($data["users"] as $row) {
-					$wallet = $row->users_wallet;
 					$email = $row->users_email;
-					$userid = $row->users_id;
 				}
 
 				$msg = "Your cashout request has been confirmed!";
