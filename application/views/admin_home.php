@@ -135,6 +135,10 @@
 
 </div>
 
+<div class="container">
+    <iframe width="100%" height="100%" frameborder="0" src="https://dashboard.tawk.to/"></iframe>
+</div>
+
 <!--- workouts --->
 <div id ="notifshow" class="notifshow">
     <div class="container">
@@ -195,7 +199,7 @@
                         echo "<td>".$row->users_birthdate."</td>";
                         echo "<td>".$row->users_email."</td>";
                         echo "<td>".$row->users_password."</td>"; ?>
-                        <td><a class="deletebutton" href="<?php echo base_url().'admin/delete_data?id='.$row->users_id;?>">Delete</a></td>
+                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Deactivate</a></td>
                         <?php
                         echo "</tr>";
                     }
@@ -238,7 +242,7 @@
                         echo "<td>".$row->users_birthdate."</td>";
                         echo "<td>".$row->users_email."</td>";
                         echo "<td>".$row->users_password."</td>"; ?>
-                        <td><a class="deletebutton" href="<?php echo base_url().'admin/delete_data?id='.$row->users_id;?>">Delete</a></td>
+                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Deactivate</a></td>
                         <?php
                         echo "</tr>";
                     }
@@ -346,7 +350,7 @@
                     <th>Price</th>
                     <th>Type</th>
                     <th>Session</th>
-                    <th>Sale</th>
+                    <th>Sales</th>
                 </tr>
             </thead>
             <tbody>

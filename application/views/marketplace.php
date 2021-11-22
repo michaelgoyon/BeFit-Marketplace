@@ -32,7 +32,7 @@
             <?php 
 
             foreach($records as $row) {
-                if($row->services_availability == 1) {
+                if($row->services_availability == 1 && $row->users_active == 1) {
                     foreach($details as $traineerow){
 
                         if ($traineerow->Health == 'Heart Problem'){
@@ -180,7 +180,7 @@
         <div class="sub-container">
             <?php 
             foreach($records as $row) {
-                if($row->services_availability == 1) {
+                if($row->services_availability == 1 && $row->users_active == 1) {
                     echo "<div class='mem'>";
                     echo "<a href='".base_url().'user/service/'.$row->services_id."'>"; 
                     if ($row->services_image == !NULL){
