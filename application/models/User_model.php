@@ -147,8 +147,11 @@ class User_model extends CI_Model
 
     public function fetch_all_service()
     {
-        $query = $this->db->get('services');
-        return $query->result();
+        $this->db->select('*');
+        $this->db->from('services');
+        $this->db->join('users', 'services.users_id = users.users_id');
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     public function fetch_all_orders_by_id($id)

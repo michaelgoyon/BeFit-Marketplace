@@ -163,7 +163,7 @@ class Admin extends CI_Controller {
 	public function delete_data() {
 		if(isset($_GET['id'])) {
 			$id=$_GET['id'];
-			$this->admin_model->did_delete_row($id);
+			$this->admin_model->did_deactivate_row($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
