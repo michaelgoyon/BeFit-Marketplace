@@ -170,19 +170,26 @@ class User extends CI_Controller
                 $this->email->message($message);
 
                 //sending email
-                if ($this->email->send()) {
-                    $this->session->set_flashdata('message', 'Activation code sent to email');
-                    $this->session->set_flashdata('username', $user['users_username']);
-                    $this->session->set_flashdata('name', $user['users_name']);
-                    if($acc == "Trainee") {
-                        $this->session->set_flashdata('account', 'traineerole');
+                if($acc == "Trainee") {
+                    if ($this->email->send()) {
+                        $this->session->set_flashdata('message', 'Activation code sent to email');
+                        $this->session->set_flashdata('username', $user['users_username']);
+                        $this->session->set_flashdata('name', $user['users_name']);
+                        if($acc == "Trainee") {
+                            $this->session->set_flashdata('account', 'traineerole');
+                        }
                     } else {
-                        $this->session->set_flashdata('account', 'coachrole');
+                        $this->session->set_flashdata('message', 'Something went wrong. Please try again');
                     }
                 } else {
-                    $this->session->set_flashdata('message', 'Something went wrong. Please try again');
+                    $this->session->set_flashdata('message', 'Account created! Please wait for the admin to verify your requirements.');
+                    $this->session->set_flashdata('username', $user['users_username']);
+                    $this->session->set_flashdata('name', $user['users_name']);
+                    if($acc == "Coach") {
+                        $this->session->set_flashdata('account', 'coachrole');
+                    }
                 }
-
+                
                 redirect(base_url() . 'user/register');
             }
         }

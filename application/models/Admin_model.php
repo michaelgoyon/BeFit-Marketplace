@@ -164,6 +164,12 @@ class Admin_Model extends CI_Model {
 	    $this->db->update('users');
 	}
 
+    public function did_activate_row($id)	{
+        $this->db->set('users_active', 1);
+	    $this->db->where('users_id', $id);
+	    $this->db->update('users');
+	}
+
     public function get_services_by_sales(){
         $this->db->select('*');
         $this->db->from('services');

@@ -160,10 +160,53 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_chart', $data);
 	}
 
-	public function delete_data() {
+	public function deactivate_data() {
 		if(isset($_GET['id'])) {
 			$id=$_GET['id'];
 			$this->admin_model->did_deactivate_row($id);
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function activate_data() {
+		if(isset($_GET['id'])) {
+			$id=$_GET['id'];
+			$this->admin_model->did_activate_row($id);
+			$user = $this->admin_model->fetch_user_by_id($id);
+
+
+			$message =     "
+                            <html>
+                            <head>
+                                <title>Account Verification</title>
+                            </head>
+                            <body>
+                                <h2>Your account has been verified!</h2>
+                                <p>Your Account:</p>
+                                <p>Email: " . $user[0]->users_email . "</p>
+                                <p>Username: ". $user[0]->users_username . " </p>
+                                <p>Password: ". $user[0]->users_password . " </p>
+                                <br>
+                                <p>Note: When you forget your password, kindly visit this email message. Do not share any information displayed in this message.</p>
+                            </body>
+                            </html>
+                            ";
+
+
+			$this->load->config('email');
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            $this->email->from($config['smtp_user']);
+            $this->email->to($user[0]->users_email);
+            $this->email->subject('Account Verification');
+            $this->email->message($message);
+
+			if ($this->email->send()) {
+				$this->session->set_flashdata('msg', 'Account has been verified!');
+			} else {
+				$this->session->set_flashdata('msg', 'Something went wrong. Please try again');
+			}
+
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
