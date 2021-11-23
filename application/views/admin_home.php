@@ -242,8 +242,16 @@
                         echo "<td>".$row->users_birthdate."</td>";
                         echo "<td>".$row->users_email."</td>";
                         echo "<td>".$row->users_password."</td>"; ?>
+                        <?php 
+                            if($row->users_active == 1) {
+                        ?>
                         <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Deactivate</a></td>
+                        <?php 
+                           } else {
+                        ?>
+                        <td><a class="activatebutton" href="<?php echo base_url().'admin/activate_data?id='.$row->users_id;?>">Activate</a></td>
                         <?php
+                            }
                         echo "</tr>";
                     }
                 ?>
