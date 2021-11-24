@@ -216,7 +216,7 @@
                                         <th>Payment</th>
                                         <th>Type of Session</th>
                                         <th>Remarks</th>
-                                        <th>Review</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -251,13 +251,19 @@
                                                     ?>
                                                 </td>
                                                 <td>
+                                                    <?php 
+                                                        if($row->orders_status == 0) {
+                                                    ?>
+                                                        <a href="<?php echo base_url() . 'user/cancel_order?id='. $row->orders_id; ?>">CANCEL</a>
                                                     <?php
-                                                    if ($row->orders_rated == 0 && $row->orders_status == 1) {
+                                                        } else {
+                                                            if ($row->orders_rated == 0 && $row->orders_status == 1) {
                                                     ?>
                                                         <a href="<?php echo base_url() . 'user/service/' . $row->services_id . '/' . $row->orders_id; ?>">REVIEW</a>
                                                     <?php
-                                                    } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
-                                                        echo "DONE";
+                                                        } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
+                                                            echo "DONE";
+                                                        }
                                                     }
                                                     ?>
                                                 </td>
@@ -284,7 +290,7 @@
                                         <th>Payment</th>
                                         <th>Type of Session</th>
                                         <th>Remarks</th>
-                                        <th>Review</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -319,13 +325,19 @@
                                                     ?>
                                                 </td>
                                                 <td>
+                                                    <?php 
+                                                        if($row->orders_status == 0) {
+                                                    ?>
+                                                        <a href="<?php echo base_url() . 'user/cancel_order?id='. $row->orders_id; ?>">CANCEL</a>
                                                     <?php
-                                                    if ($row->orders_rated == 0 && $row->orders_status == 1) {
+                                                        } else {
+                                                            if ($row->orders_rated == 0 && $row->orders_status == 1) {
                                                     ?>
                                                         <a href="<?php echo base_url() . 'user/service/' . $row->services_id . '/' . $row->orders_id; ?>">REVIEW</a>
                                                     <?php
-                                                    } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
-                                                        echo "DONE";
+                                                        } elseif ($row->orders_rated == 1 && $row->orders_status == 1) {
+                                                            echo "DONE";
+                                                        }
                                                     }
                                                     ?>
                                                 </td>

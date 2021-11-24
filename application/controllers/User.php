@@ -320,6 +320,14 @@ class User extends CI_Controller
         $this->load->view("bookings", $data);
     }
 
+    public function cancel_order() {
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->user_model->delete_orders_by_id($id);
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
     public function cashout()
     {
         $username = $this->session->userdata('userusername');
