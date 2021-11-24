@@ -47,7 +47,7 @@
                             }
                             echo "<p class='infohead'>".$row->services_title."</p>";
                             echo "<p class='infotext'>".$row->users_name."</p>";
-                            echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                            echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                             echo "<div class='bookbutton'>Book Now</div>";     
                             echo "</a>";       
                             echo "</div>";
@@ -67,7 +67,7 @@
                             }
                             echo "<p class='infohead'>".$row->services_title."</p>";
                             echo "<p class='infotext'>".$row->users_name."</p>";
-                            echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                            echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                             echo "<div class='bookbutton'>Book Now</div>";     
                             echo "</a>";       
                             echo "</div>";
@@ -86,7 +86,7 @@
                               }
                               echo "<p class='infohead'>".$row->services_title."</p>";
                               echo "<p class='infotext'>".$row->users_name."</p>";
-                              echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                              echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                               echo "<div class='bookbutton'>Book Now</div>";     
                               echo "</a>";       
                               echo "</div>";
@@ -110,7 +110,7 @@
                                }
                                echo "<p class='infohead'>".$row->services_title."</p>";
                                echo "<p class='infotext'>".$row->users_name."</p>";
-                               echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                               echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                                echo "<div class='bookbutton'>Book Now</div>";     
                                echo "</a>";       
                                echo "</div>";
@@ -144,7 +144,7 @@
                                }
                                echo "<p class='infohead'>".$row->services_title."</p>";
                                echo "<p class='infotext'>".$row->users_name."</p>";
-                               echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                               echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')."PHP"."</p>";
                                echo "<div class='bookbutton'>Book Now</div>";     
                                echo "</a>";       
                                echo "</div>";
@@ -206,7 +206,7 @@
                     }
                     echo "<p class='infohead'>".$row->services_title."</p>";
                     echo "<p class='infotext'>".$row->users_name."</p>";
-                    echo "<p class='infotext'>".$row->services_price."PHP"."</p>";
+                    echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                     echo "<div class='bookbutton'>Book Now</div>";     
                     echo "</a>";       
                     echo "</div>";

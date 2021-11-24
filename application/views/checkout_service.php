@@ -26,7 +26,7 @@
 			echo "<div class='service-info'>";
                 echo "<div class='info-row'>";
                 echo "<p class='infotext'>"."Price: "."</p>";
-                echo "<p class='infotext'>".$row->services_price." PHP"."</p>";
+                echo "<p class='infotext'>".number_format($row->services_price, 2, '.', ',')." PHP"."</p>";
                 echo "</div>";
                 echo "<div class='info-row'>";
                 echo "<p class='infotext'>"."Coach: "."</p>";

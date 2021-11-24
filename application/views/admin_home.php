@@ -308,7 +308,7 @@
                 <?php 
 						echo "<td>".$row->orders_id."</td>";
 						echo "<td>".$row->orders_from."</td>";
-						echo "<td>".$row->orders_amount.".00 PhP</td>";
+						echo "<td>".number_format($row->orders_amount, 2, '.', ',')." PHP</td>";
 						echo "<td>".$row->orders_to."</td>";
 						echo "</tr>";
 					}
@@ -337,7 +337,7 @@
                 <?php 
 						echo "<td>".$row->payments_id."</td>";
 						echo "<td>".$row->users_username."</td>";
-						echo "<td>".$row->payments_amount." PhP</td>";
+						echo "<td>".number_format($row->payments_amount, 2, '.', ',')." PHP</td>";
 						echo "</tr>";
 					}
 				?>
@@ -369,7 +369,7 @@
 				?>
                 <?php 
 						echo "<td>".$row->services_title."</td>";
-						echo "<td>".$row->services_price."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
                         echo "<td>".$row->services_type."</td>";
                         echo "<td>".$row->services_session."</td>";
 						echo "<td>".$row->services_sale."</td>";
@@ -404,7 +404,7 @@
                             echo "<td>".$row->cashout_id."</td>";
                             echo "<td>".$row->users_id."</td>";
                             echo "<td>".$row->cashout_from."</td>";
-                            echo "<td>".$row->cashout_amount." PHP"."</td>"; 
+                            echo "<td>".number_format($row->cashout_amount, 2, '.', ',')." PHP"."</td>"; 
                             echo "<td>".$row->cashout_datetime."</td>";?>
                             <td><a class="deletebutton greenbg" href="<?php echo base_url().'admin/confirm_cashout?cashout_id='.$row->cashout_id . "&user_id=" . $row->users_id?>">Confirm</a></td>
                             <?php
