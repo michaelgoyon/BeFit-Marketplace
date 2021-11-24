@@ -1,20 +1,20 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #222222;
 }
 
-.container{
+.container {
     max-width: 100%;
     margin-top: 2rem;
     margin-bottom: 2rem;
     box-shadow:
-    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-    0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-    0 100px 80px rgba(0, 0, 0, 0.12);
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+        0 100px 80px rgba(0, 0, 0, 0.12);
     margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
@@ -23,7 +23,7 @@ body{
     color: #FFFFFF;
 }
 
-.header{
+.header {
     background-color: #FA632A;
     text-align: center;
     color: #FFFFFF;
@@ -33,25 +33,25 @@ body{
     letter-spacing: 4px;
 }
 
-.header h1{
+.header h1 {
     text-transform: uppercase;
     text-align: center;
 }
 
-.body-container{
+.body-container {
     padding: 5rem;
     align-items: center;
     justify-content: center;
 }
 
-.dtls-container{
+.dtls-container {
     width: 100%;
     align-items: center;
     justify-content: center;
-    
+
 }
 
-.info-row{
+.info-row {
     line-height: 0;
     display: flex;
     flex-direction: row;
@@ -61,7 +61,7 @@ body{
     padding-right: 3rem;
 }
 
-.info-row img{
+.info-row img {
     border-radius: 50%;
     overflow: hidden;
     height: 10vw;
@@ -69,7 +69,7 @@ body{
     margin-bottom: 2rem;
 }
 
-.info-row2{
+.info-row2 {
     line-height: 0;
     display: flex;
     flex-direction: row;
@@ -80,14 +80,14 @@ body{
     margin-right: auto;
 }
 
-.btn-edit{
+.btn-edit {
     display: flex;
     margin-top: 1rem;
     align-items: center;
     justify-content: center;
 }
 
-.btn-edit a{
+.btn-edit a {
     text-align: center;
     text-decoration: none;
     background: none;
@@ -101,19 +101,19 @@ body{
     transition: 0.4s ease;
 }
 
-.btn-edit a:hover{
+.btn-edit a:hover {
     color: #000000;
     border: solid 2px #FFFFFF;
     background-color: #FFFFFF;
     transition: 0.4s ease;
 }
 
-.name{
+.name {
     font-weight: 600;
     font-size: 24px;
 }
 
-#header{
+#header {
     font-weight: 600;
     font-size: 32px;
     color: #FA632A;
@@ -127,16 +127,16 @@ body{
     margin-right: auto;
     margin-bottom: 3rem;
     border-top: 1px solid #b1b1b1ab;
-  }
+}
 
 
-.form-container h1{
+.form-container h1 {
     text-align: center;
     font-size: 20px;
     font-weight: 600;
 }
 
-.form-container form{
+.form-container form {
     margin-top: 3rem;
     display: flex;
     flex-direction: column;
@@ -144,13 +144,13 @@ body{
     gap: 1.0rem;
 }
 
-.error-msg{
+.error-msg {
     color: #ff2a2a;
     text-align: center;
     line-height: 0.3;
 }
 
-.workout-container{
+.workout-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -158,24 +158,24 @@ body{
     width: 100%;
 }
 
-.workout-container form{
+.workout-container form {
     width: 100%;
     justify-content: center;
 }
 
-.input-form{
+.input-form {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
 }
 
-.input-form2{
+.input-form2 {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
 }
 
-input[type="text"]{
+input[type="text"] {
     font-family: 'Poppins', 'sans-serif';
     padding-right: 20px;
     max-width: 100%;
@@ -192,9 +192,9 @@ input[type="text"]{
     background: #c4c4c42f;
     color: #FFFFFF;
     font-size: 22px;
-  }
+}
 
-  .select{
+.select {
     font-family: 'Poppins', 'sans-serif';
     padding-right: 20px;
     max-width: 100%;
@@ -211,19 +211,19 @@ input[type="text"]{
     background: #c4c4c42f;
     color: #FFFFFF;
     font-size: 22px;
-  }
+}
 
-  select option{
-      color: white;
-      background-color: #363535;
-  }
+select option {
+    color: white;
+    background-color: #363535;
+}
 
-  select option:disabled {
+select option:disabled {
     color: gray;
     font-weight: bold;
 }
- 
-  textarea[type="text"]{
+
+textarea[type="text"] {
     font-family: 'Poppins', 'sans-serif';
     padding-right: 20px;
     max-width: 100%;
@@ -239,9 +239,39 @@ input[type="text"]{
     background: #c4c4c42f;
     color: #FFFFFF;
     font-size: 22px;
-  }
+}
 
-input[type="password"]{
+.w-day{
+    padding: 1rem;
+}
+
+.chkbox {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0 0 0.4rem 0;
+}
+
+.chkbox label {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+    font-size: 22px;
+}
+
+input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -10px;
+    left: -8px;
+    *overflow: hidden;
+}
+
+input[type="password"] {
     padding-right: 20px;
     width: 650px;
     -webkit-box-sizing: border-box;
@@ -298,14 +328,14 @@ input[type="submit"]:hover {
     transition: all 0.3s;
 }
 
-.btn-logout{
+.btn-logout {
     display: flex;
     margin-top: 5rem;
     align-items: center;
     justify-content: center;
 }
 
-.btn-logout a{
+.btn-logout a {
     text-align: center;
     text-decoration: none;
     background-color: #FA632A;
@@ -318,7 +348,7 @@ input[type="submit"]:hover {
     font-weight: 500;
 }
 
-.btn-logout a:hover{
+.btn-logout a:hover {
     transition: 0.2s ease-in;
     background-color: transparent;
     border: solid 2px #FA632A;
@@ -326,7 +356,7 @@ input[type="submit"]:hover {
     font-weight: 500;
 }
 
-table{
+table {
     width: 100%;
     text-align: center;
     background-color: #6a6a6a38;
@@ -334,11 +364,11 @@ table{
     color: #FFFFFF;
 }
 
-td{
+td {
     padding: 1rem;
 }
 
-td a{
+td a {
     background-color: #e5e5e5a2;
     padding: 0.4rem 0.7rem 0.4rem 0.7rem;
     font-size: 14px;
@@ -348,20 +378,18 @@ td a{
     transition: 0.4s ease;
 }
 
-td a:hover{
+td a:hover {
     background-color: red;
     color: #FFFFFF;
     transition: 0.4s ease;
 }
 
-.workoutname a{
-    background-color:transparent;
+.workoutname a {
+    background-color: transparent;
     color: #FFFFFF;
 }
 
-.workoutname a:hover{
-    background-color:transparent;
+.workoutname a:hover {
+    background-color: transparent;
     color: #FA632A;
 }
-
-
