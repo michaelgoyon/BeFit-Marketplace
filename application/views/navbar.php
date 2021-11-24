@@ -31,7 +31,7 @@
                 ?>
                     <p class="white">Hi, <?php echo $username?>!</p>
                     <p class="orange">Your current BeFit balance is</p>
-                    <p class="orange2"><?php echo $row->users_wallet; ?> PHP</p>
+                    <p class="orange2"><?php echo number_format($row->users_wallet, 2, '.', ','); ?> PHP</p>
             </div>
             <li class="with-submenu">
                 <?php
