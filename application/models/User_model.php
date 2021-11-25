@@ -458,4 +458,25 @@ class User_model extends CI_Model
         $query = $this->db->get()->result();
         return $query;
     }
+
+    public function fetch_workout_times($id)
+    {
+        $this->db->select('services_time');
+        $this->db->from('services');
+        $this->db->join('users', 'services.users_id = users.users_id');
+        $this->db->where('services.users_id', $id);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    /*public function fetch_workout_times($id, $day)
+    {
+        $this->db->select('services_time');
+        $this->db->from('services');
+        $this->db->join('users', 'services.users_id = users.users_id');
+        $this->db->where('services.users_id', $id);
+        $this->db->like('services.services_day', $day);
+        $query = $this->db->get()->result();
+        return $query;
+    }*/
 }
