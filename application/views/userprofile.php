@@ -127,18 +127,18 @@
 						<div class="input-form2">
 						<label>Workout Day</label>
 							<div class="w-day">
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Monday">Monday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Tuesday">Tuesday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Wednesday">Wednesday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Thursday">Thursday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Friday">Friday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Saturday">Saturday</label></div>
-								<div class="chkbox"><label><input type="checkbox" name="workout_day" value="Sunday">Sunday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Monday">Monday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Tuesday">Tuesday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Wednesday">Wednesday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Thursday">Thursday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Friday">Friday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Saturday">Saturday</label></div>
+								<div class="chkbox"><label><input type="checkbox" name="workout_day[]" value="Sunday">Sunday</label></div>
 							</div>
 						</div>
 						<div class="input-form2">
 							<label>Workout Time</label>
-							<input type="text" name="workout_time" placeholder="eg. 10:00 AM - 11:00 AM">
+							<input type="time" name="workout_time_start"><input type="time" name="workout_time_end">
 							<div></div>
 						</div>
 						<div class="input-form2">
@@ -166,6 +166,16 @@
 						<div class="input-form2">
 							<label>Workout Image</label><br>
 							<input type="file" name="workout_image">
+						</div>
+						<div>
+							<?php 
+								if($this->session->flashdata('valid')) {
+							?>
+							<div><?php echo $this->session->flashdata('valid'); ?></div>
+							<?php 
+								unset($_SESSION['valid']);
+								}
+							?>
 						</div>
 						<div class="registerbtn2">
 							<input type="submit" value="Add" />

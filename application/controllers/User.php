@@ -529,46 +529,85 @@ class User extends CI_Controller
             $userid = $row->users_id;
         }
 
-        $config['allowed_types'] = 'jpg|png';
-        $config['upload_path'] = './uploads/';
-        $config['encrypt_name'] = true;
-        $this->load->library('upload', $config);
-        if ($this->upload->do_upload('workout_image')) {
-            $workout_image = $this->upload->data('file_name');
-            $service = array(
-                'services_title' => $this->input->post('workout_title'),
-                'services_price' => $this->input->post('workout_price'),
-                'services_description' => $this->input->post('workout_description'),
-                'services_type' => $this->input->post('workout_type'),
-                'services_availability' => $workout_availability_temp,
-                'services_time' => $this->input->post('workout_time'),
-                'services_day' => $this->input->post('workout_day'),
-                'services_session' => $this->input->post('workout_session'),
-                'services_duration' => $this->input->post('workout_duration'),
-                'services_image' => $workout_image,
-                'users_name' => $this->session->userdata('username'),
-                'users_id' => $userid
-            );
+        $tempTimes = array();
+        $temp["times"] = $this->user_model->fetch_workout_times($userid);
+        //print_r($temp);
+
+        foreach($temp["times"] as $time) {
+            array_push($tempTimes, explode(" - ", $time->services_time));
         }
 
-        else{
-            $service = array(
-                'services_title' => $this->input->post('workout_title'),
-                'services_price' => $this->input->post('workout_price'),
-                'services_description' => $this->input->post('workout_description'),
-                'services_type' => $this->input->post('workout_type'),
-                'services_availability' => $workout_availability_temp,
-                'services_time' => $this->input->post('workout_time'),
-                'services_day' => $this->input->post('workout_day'),
-                'services_session' => $this->input->post('workout_session'),
-                'services_duration' => $this->input->post('workout_duration'),
-                'users_name' => $this->session->userdata('username'),
-                'users_id' => $userid
-            );
+        //print_r($tempTimes);
+
+        $arrDay = $this->input->post('workout_day');
+        //print_r($arrDay);
+        //echo implode(', ', $arrDay);
+
+        //echo $this->input->post('workout_time_start');
+
+        $timeStart = date('g:i A', strtotime($this->input->post('workout_time_start')));
+        $timeEnd = date('g:i A', strtotime($this->input->post('workout_time_end')));
+
+        $timeCheck = false;
+
+        for($i = 0; $i < count($tempTimes); $i++) {
+            if(strtotime($timeStart) >= strtotime($tempTimes[$i][0]) && strtotime($timeStart) <= strtotime($tempTimes[$i][1])) {
+                $timeCheck = false;
+                break;
+            } else {
+                $timeCheck = true;
+            }
         }
- 
-        $this->user_model->insert_service($service);
-        redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+
+        $workoutTime = $timeStart."-".$timeEnd;
+
+        if($timeCheck) {
+            $config['allowed_types'] = 'jpg|png';
+            $config['upload_path'] = './uploads/';
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('workout_image')) {
+                $workout_image = $this->upload->data('file_name');
+                $service = array(
+                    'services_title' => $this->input->post('workout_title'),
+                    'services_price' => $this->input->post('workout_price'),
+                    'services_description' => $this->input->post('workout_description'),
+                    'services_type' => $this->input->post('workout_type'),
+                    'services_availability' => $workout_availability_temp,
+                    'services_time' => $workoutTime,
+                    'services_day' => implode(' ', $arrDay),
+                    'services_session' => $this->input->post('workout_session'),
+                    'services_duration' => $this->input->post('workout_duration'),
+                    'services_image' => $workout_image,
+                    'users_name' => $this->session->userdata('username'),
+                    'users_id' => $userid
+                );
+            }
+
+            else{
+                $service = array(
+                    'services_title' => $this->input->post('workout_title'),
+                    'services_price' => $this->input->post('workout_price'),
+                    'services_description' => $this->input->post('workout_description'),
+                    'services_type' => $this->input->post('workout_type'),
+                    'services_availability' => $workout_availability_temp,
+                    'services_time' => $workoutTime,
+                    'services_day' => implode(' ', $arrDay),
+                    'services_session' => $this->input->post('workout_session'),
+                    'services_duration' => $this->input->post('workout_duration'),
+                    'users_name' => $this->session->userdata('username'),
+                    'users_id' => $userid
+                );
+            }
+    
+            $this->user_model->insert_service($service);
+            redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+        } else {
+            $this->session->set_flashdata('valid', 'There is a conflict in your schedule!');
+            redirect(base_url() . 'user/profile/' . $this->session->userdata('userusername'));
+        }
+
+        //echo $workoutTime;
     }
 
     public function service()
