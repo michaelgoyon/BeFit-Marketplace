@@ -287,11 +287,11 @@
     <!---transactions--->
 <div class ="transactionshow" id="transactionshow">
 <div class ="containerhead">
-    <h1 style="color:white;">PAYMENTS</h2>
+    <h1>PAYMENTS</h2>
  </div>
     <div class="container">
-        <h2 style="color:white;">Payment Transactions</h2>
-        <table style="color:white;">
+        <h2>Payment Transactions</h2>
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -317,11 +317,11 @@
         </table>
     </div>
     <div class ="containerhead">
-    <h1 style="color:white;">TOPUPS</h2>
+    <h1>TOPUPS</h2>
     </div>
     <div class="container">
-        <h2 style="color:white;">Wallet Topups</h2>
-        <table style="color:white;">
+        <h2>Wallet Topups</h2>
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -348,11 +348,11 @@
 
  <div id="serviceshow" class="serviceshow">
  <div class ="containerhead">
-    <h1 style="color:white;">SERVICES</h2>
+    <h1>SERVICES</h2>
  </div>
     <div class="container">
-        <h2 style="color:white;">Top Services</h2>
-        <table style="color:white;">
+        <h2>Top Services</h2>
+        <table>
             <thead>
                 <tr>
                     <th>Title</th>
@@ -443,6 +443,18 @@
 </div>
 
 
+<div style="display: none;" class="btn-logout" id="printTransac">
+    <input type = "button" value = "Print" onclick="PrintDivTransac();" />
+</div>
+
+<div style="display: none;" class="btn-logout" id="printService">
+    <input type = "button" value = "Print" onclick="PrintDivService();" />
+</div>
+
+<div style="display: none;" class="btn-logout" id="printCashout">
+    <input type = "button" value = "Print" onclick="PrintDivCashout();" />
+</div>
+
 <div class="btn-logout">
         <a href="<?php echo base_url();?>admin/logout">LOG OUT</a>
     </div>
@@ -479,6 +491,9 @@ function sidedash(){
     document.getElementById('cashoutshow').style.display ='none';
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
+    document.getElementById("printTransac").style.display = "none";
+    document.getElementById("printService").style.display = "none";
+    document.getElementById("printCashout").style.display = "none";
     document.getElementById("location").innerHTML = "Dashboard";
 }
 
@@ -490,6 +505,9 @@ function sidetransaction(){
     document.getElementById('cashoutshow').style.display ='none';
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
+    document.getElementById("printTransac").style.display = "flex";
+    document.getElementById("printService").style.display = "none";
+    document.getElementById("printCashout").style.display = "none";
     document.getElementById("location").innerHTML = "Transactions";
 }
 
@@ -513,6 +531,9 @@ function sideservice(){
     document.getElementById("cashoutshow").style.display = "none";
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
+    document.getElementById("printTransac").style.display = "none";
+    document.getElementById("printService").style.display = "flex";
+    document.getElementById("printCashout").style.display = "none";
     document.getElementById("location").innerHTML = "Services";
 }
 
@@ -524,6 +545,9 @@ function sidecashout(){
     document.getElementById('cashoutshow').style.display ='block';
     document.getElementById("addadminshow").style.display = "none";
     document.getElementById("notifshow").style.display = "none";
+    document.getElementById("printTransac").style.display = "none";
+    document.getElementById("printService").style.display = "none";
+    document.getElementById("printCashout").style.display = "flex";
     document.getElementById("location").innerHTML = "Cashouts";
 }
 
@@ -548,6 +572,31 @@ function sideadmin(){
     document.getElementById("notifshow").style.display = "none";
     document.getElementById("location").innerHTML = "Add Admin";
 }
+
+function PrintDivTransac() {    
+    var divToPrint = document.getElementById('transactionshow');
+    var popupWin = window.open('', '_blank', 'width=1280,height=720');
+    popupWin.document.open();
+    popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+}
+
+function PrintDivService() {    
+    var divToPrint = document.getElementById('serviceshow');
+    var popupWin = window.open('', '_blank', 'width=1280,height=720');
+    popupWin.document.open();
+    popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+}
+
+function PrintDivCashout() {    
+    var divToPrint = document.getElementById('cashoutshow');
+    var popupWin = window.open('', '_blank', 'width=1280,height=720');
+    popupWin.document.open();
+    popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+    popupWin.document.close();
+}
+
 
 </script>
 
