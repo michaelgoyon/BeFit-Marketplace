@@ -113,7 +113,7 @@
 						</div>
 						<div class="input-form2">
 							<label>Workout Type</label>
-							<select class="select" name="workout_type">
+							<select class="select" name="workout_type" onchange="showfield(this.options[this.selectedIndex].value)">
 								<option disabled selected>Select Workout Type</option>
 								<option value="Cardio">Cardio</option>
 								<option value="Strength">Strength</option>
@@ -121,9 +121,11 @@
 								<option value="Flexibility">Flexibility</option>
 								<option value="Aerobics">Aerobics</option>
 								<option value="Mixed Martial Arts">Mixed Martial Arts</option>
+								<option value="Other">Others</option>
 							</select>
 							<div></div>
 						</div>
+						<div class="input-form2" id="other_div"></div>
 						<div class="input-form2">
 						<label>Workout Day</label>
 							<div class="w-day">
@@ -267,6 +269,12 @@
 				//Check the reason for error and take appropriate action.
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		function showfield(name){
+			if(name=='Other')document.getElementById('other_div').innerHTML='Other: <input type="text" name="workout_type" />';
+			else document.getElementById('other_div').innerHTML='';
+		}
 	</script>
 </body>
 
