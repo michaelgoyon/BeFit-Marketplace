@@ -280,6 +280,7 @@ a {
     margin-right: auto;
     font-family: 'Poppins', 'sans-serif';
     padding: 4rem;
+    -webkit-print-color-adjust: exact;
 }
 
 .container h1{
