@@ -136,8 +136,8 @@
 </div>
 
 <!--- Tawk.to --->
-<div id="feedbackshow" class="container feedbackshow">
-    <iframe width="100%" height="100%" frameborder="0" src="https://dashboard.tawk.to/"></iframe>
+<div id="feedbackshow" class="container-iframe feedbackshow">
+    <iframe class="responsive-iframe" frameborder="0" src="https://dashboard.tawk.to/"></iframe>
 </div>
 
 <!--- workouts --->
