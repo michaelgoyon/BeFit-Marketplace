@@ -535,6 +535,9 @@ ul {
     display: none;
 }
 
+.feedbackshow{
+    display:none;
+}
 .transactionshow{
     display: none;
 }

@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
         } else {
             $check = $this->input->post('username');
             $data["admins"] = $this->admin_model->fetch_data($check);
-			print_r($data['admins']);
+			//print_r($data['admins']);
             foreach($data["admins"] as $row) {
 				$this->session->set_userdata('adminusername', $row->admins_username);
                 redirect(base_url().'admin/dashboard');
@@ -104,6 +104,14 @@ class Admin extends CI_Controller {
 		//$this->load->view('admin_dashboard', $data);
 		$data['numusers'] = $this->admin_model->get_num_users();
 		$data['numservices'] = $this->admin_model->get_num_services();
+		$data['monday'] = $this->admin_model->monday_services();
+		$data['tuesday'] = $this->admin_model->tuesday_services();
+		$data['wednesday'] = $this->admin_model->wednesday_services();
+		$data['thursday'] = $this->admin_model->thursday_services();
+		$data['friday'] = $this->admin_model->friday_services();
+		$data['saturday'] = $this->admin_model->saturday_services();
+		$data['sunday'] = $this->admin_model->sunday_services();
+		//print_r($data['monday']);
 		$data['numorders'] = $this->admin_model->get_num_orders();
 		$data['numcashout'] = $this->admin_model->get_pending_cashout();
 
@@ -122,7 +130,7 @@ class Admin extends CI_Controller {
 		//print_r($idArray);
 		$data['ratings'] = $idArray;
 		$data['names'] = $nameArray;
-		print_r($data['names']);
+		//print_r($data['names']);
 		$data['orders'] = $this->admin_model->get_orders();
 		//print_r($tempPriceArray);
 		$data['prices'] = $this->admin_model->get_prices();

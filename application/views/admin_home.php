@@ -30,8 +30,8 @@
     <li onclick="sidedash()">
         <a>Dashboard</a>
     </li>
-    <li onclick="sidenotif()">
-        <a>Send Notification</a>
+    <li onclick="sidetalk()">
+        <a>Feedback</a>
     </li>
     <li onclick="sidetransaction()">
         <a>Transactions</a>
@@ -136,7 +136,7 @@
 </div>
 
 <!--- Tawk.to --->
-<div class="container">
+<div id="feedbackshow" class="container feedbackshow">
     <iframe width="100%" height="100%" frameborder="0" src="https://dashboard.tawk.to/"></iframe>
 </div>
 
@@ -356,6 +356,7 @@
             <thead>
                 <tr>
                     <th>Title</th>
+                    <th>Coach</th>
                     <th>Price</th>
                     <th>Type</th>
                     <th>Session</th>
@@ -369,6 +370,7 @@
 				?>
                 <?php 
 						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
 						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
                         echo "<td>".$row->services_type."</td>";
                         echo "<td>".$row->services_session."</td>";
@@ -378,8 +380,234 @@
 				?>
             </tbody>
         </table>
-    </div>                 
-</div>
+    </div>
+    
+    <div class ="containerhead">
+    <h1>Services By Day</h2>
+    </div>
+    <div class="container">
+        <h2>Monday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($monday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Tuesday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($tuesday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Wednesday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($wednesday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Thursday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($thursday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2">Friday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($friday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Saturday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($saturday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <h2>Sunday</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Coach</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Session</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+					foreach($sunday as $row) {
+				    	echo "<tr>";
+				?>
+                <?php 
+						echo "<td>".$row->services_title."</td>";
+                        echo "<td>".$row->users_name."</td>";
+						echo "<td>".number_format($row->services_price, 2, '.', ',')." PHP</td>";
+                        echo "<td>".$row->services_type."</td>";
+                        echo "<td>".$row->services_session."</td>";
+						echo "<td>".$row->services_time."</td>";
+						echo "</tr>";
+					}
+				?>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 
@@ -455,6 +683,7 @@
     <input type = "button" value = "Print" onclick="PrintDivCashout();" />
 </div>
 
+
 <div class="btn-logout">
         <a href="<?php echo base_url();?>admin/logout">LOG OUT</a>
     </div>
@@ -486,6 +715,22 @@ function setClass(els, className, fnName) {
 function sidedash(){
     document.getElementById('dashboardshow').style.display ='block';
     document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='none';
+    document.getElementById('transactionshow').style.display ='none';
+    document.getElementById('serviceshow').style.display ='none';
+    document.getElementById('cashoutshow').style.display ='none';
+    document.getElementById("addadminshow").style.display = "none";
+    document.getElementById("notifshow").style.display = "none";
+    document.getElementById("printTransac").style.display = "none";
+    document.getElementById("printService").style.display = "none";
+    document.getElementById("printCashout").style.display = "none";
+    document.getElementById("location").innerHTML = "Dashboard";
+}
+
+function sidetalk(){
+    document.getElementById('dashboardshow').style.display ='none';
+    document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='block';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='none';
@@ -500,6 +745,7 @@ function sidedash(){
 function sidetransaction(){
     document.getElementById('dashboardshow').style.display ='none';
     document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='block';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='none';
@@ -514,6 +760,7 @@ function sidetransaction(){
 function sidechart(){
     document.getElementById('dashboardshow').style.display ='none';
     document.getElementById('chartshow').style.display ='block';
+    document.getElementById('feedbackshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById("cashoutshow").style.display = "none";
@@ -526,6 +773,7 @@ function sidechart(){
 function sideservice(){
     document.getElementById('dashboardshow').style.display ='none';
     document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='block';
     document.getElementById("cashoutshow").style.display = "none";
@@ -540,6 +788,7 @@ function sideservice(){
 function sidecashout(){
     document.getElementById('dashboardshow').style.display ='none';
     document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='block';
@@ -551,20 +800,10 @@ function sidecashout(){
     document.getElementById("location").innerHTML = "Cashouts";
 }
 
-function sidenotif(){
-    document.getElementById('dashboardshow').style.display ='none';
-    document.getElementById('chartshow').style.display ='none';
-    document.getElementById('transactionshow').style.display ='none';
-    document.getElementById('serviceshow').style.display ='none';
-    document.getElementById('cashoutshow').style.display ='none';
-    document.getElementById("addadminshow").style.display = "none";
-    document.getElementById("notifshow").style.display = "block";
-    document.getElementById("location").innerHTML = "Send Notifications";
-}
-
 function sideadmin(){
     document.getElementById('dashboardshow').style.display ='none';
     document.getElementById('chartshow').style.display ='none';
+    document.getElementById('feedbackshow').style.display ='none';
     document.getElementById('transactionshow').style.display ='none';
     document.getElementById('serviceshow').style.display ='none';
     document.getElementById('cashoutshow').style.display ='none';
