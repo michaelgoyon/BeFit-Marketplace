@@ -140,7 +140,10 @@
 						</div>
 						<div class="input-form2">
 							<label>Workout Time</label>
-							<input type="time" name="workout_time_start"><input type="time" name="workout_time_end">
+							<label>Start</label>
+							<input type="time" name="workout_time_start">
+							<label>End</label>
+							<input type="time" name="workout_time_end">
 							<div></div>
 						</div>
 						<div class="input-form2">
