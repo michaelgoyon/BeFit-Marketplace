@@ -169,7 +169,7 @@
 							<label>Workout Image</label><br>
 							<input type="file" name="workout_image">
 						</div>
-						<div>
+						<div style="color:red;" class="registerbtn2">
 							<?php 
 								if($this->session->flashdata('valid')) {
 							?>
