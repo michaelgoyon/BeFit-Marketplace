@@ -55,8 +55,12 @@
 						</ul>
 						<br>
 						<h2>Cancellation Policy</h2>
-						<p>Once an agreement has been reached, ask Customer Support to cancel it, and be sure to include sufficient evidence of work not delivered. Note: As per our Terms of Service, 
-							orders may only be canceled within 14 days of the order being marked as completed. Orders complete for longer may not be eligible to be canceled.</p>
+						<p>Cancellation of orders can only be made when the orders from the coaches has not been accepted nor recognized.</p>
+						<br>
+						<h2>Request for Refund</h2>
+						<p>Refunds can only be made when a session of any workout has not been used by the trainee.</p>
+						<p>Once an agreement has been reached between the coach and the trainee, ask Customer Support via tawk.to to cancel it, and be sure to include sufficient evidence of work not delivered. </p>
+						<p><b>Note:</b> As per our Terms of Service, orders may only be canceled within 14 days of the order being marked as completed. Orders complete for longer may not be eligible to be canceled.</p>
 						<br>
 						<div class="popupBtn">
 							<p>Click <b>Accept</b> if you wish to continue.</p>
