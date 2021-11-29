@@ -152,10 +152,33 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
-	public function did_delete_row($id)	{
+	public function did_deactivate_row($id)	{
+        $this->db->set('users_active', 0);
 	    $this->db->where('users_id', $id);
 	    $this->db->delete('users');
+	    $this->db->update('users');
 	}
+
+    public function did_activate_row($id)	{
+        $this->db->set('users_active', 1);
+	    $this->db->where('users_id', $id);
+	    $this->db->update('users');
+	}
+
+    public function fetch_user_by_id($id) {
+        $query = $this->db->get_where('users', array('users_id' => $id));
+        $result = $query->result();
+        return $result;
+    }
+
+    public function get_cashout_by_id($cashoutid)
+    {
+        $this->db->select('*');
+        $this->db->from('cashout');
+        $this->db->where('cashout_id', $cashoutid);
+        $query = $this->db->get()->result();
+        return $query;
+    }
 
     public function get_services_by_sales(){
         $this->db->select('*');
