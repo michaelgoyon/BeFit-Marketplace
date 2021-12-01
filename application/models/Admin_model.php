@@ -155,7 +155,6 @@ class Admin_Model extends CI_Model {
 	public function did_deactivate_row($id)	{
         $this->db->set('users_active', 0);
 	    $this->db->where('users_id', $id);
-	    $this->db->delete('users');
 	    $this->db->update('users');
 	}
 
