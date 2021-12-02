@@ -99,8 +99,17 @@ class Admin extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['trainees'] = $this->admin_model->get_trainee_users($config["per_page"], $page);
-		$data['coaches'] = $this->admin_model->get_coach_users($config["per_page"], $page);
+		$data['deleted'] = $this->admin_model->get_deleted_records();
+		$deleted = array();
+		if(empty($data['deleted'])) {
+			array_push($deleted, "a");
+		} else {
+			foreach($data['deleted'] as $row) {
+				array_push($deleted, $row->deleted_userid);
+			}
+		}
+		$data['trainees'] = $this->admin_model->get_trainee_users($config["per_page"], $page, $deleted);
+		$data['coaches'] = $this->admin_model->get_coach_users($config["per_page"], $page, $deleted);
 		//$this->load->view('admin_dashboard', $data);
 		$data['numusers'] = $this->admin_model->get_num_users();
 		$data['numservices'] = $this->admin_model->get_num_services();
@@ -185,7 +194,7 @@ class Admin extends CI_Controller {
 			);
 			$this->admin_model->insert_deleted_record($user);
 
-			$this->admin_model->did_delete_row($id);
+			//$this->admin_model->did_delete_row($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
