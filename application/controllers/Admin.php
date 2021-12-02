@@ -171,7 +171,21 @@ class Admin extends CI_Controller {
 	public function deactivate_data() {
 		if(isset($_GET['id'])) {
 			$id=$_GET['id'];
-			$this->admin_model->did_deactivate_row($id);
+			$tempUser = $this->admin_model->fetch_user_by_id($id);
+
+			$user = array(
+				'deleted_userid' => $tempUser[0]->users_id,
+				'deleted_account' => $tempUser[0]->users_account,
+				'deleted_avatar' => $tempUser[0]->users_avatar,
+				'deleted_name' => $tempUser[0]->users_name,
+				'deleted_username' => $tempUser[0]->users_username,
+				'deleted_birthdate' => $tempUser[0]->users_birthdate,
+				'deleted_email' => $tempUser[0]->users_email,
+				'deleted_wallet' => $tempUser[0]->users_wallet
+			);
+			$this->admin_model->insert_deleted_record($user);
+
+			$this->admin_model->did_delete_row($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}

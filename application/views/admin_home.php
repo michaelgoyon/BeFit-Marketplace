@@ -200,7 +200,7 @@
                         echo "<td>".$row->users_birthdate."</td>";
                         echo "<td>".$row->users_email."</td>";
                         echo "<td>".$row->users_password."</td>"; ?>
-                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Deactivate</a></td>
+                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Delete</a></td>
                         <?php
                         echo "</tr>";
                     }
@@ -246,7 +246,7 @@
                         <?php 
                             if($row->users_active == 1) {
                         ?>
-                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Deactivate</a></td>
+                        <td><a class="deletebutton" href="<?php echo base_url().'admin/deactivate_data?id='.$row->users_id;?>">Delete</a></td>
                         <?php 
                            } else {
                         ?>

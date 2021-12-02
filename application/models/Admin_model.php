@@ -152,11 +152,9 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
-	public function did_deactivate_row($id)	{
-        $this->db->set('users_active', 0);
+	public function did_delete_row($id)	{
 	    $this->db->where('users_id', $id);
 	    $this->db->delete('users');
-	    $this->db->update('users');
 	}
 
     public function did_activate_row($id)	{
@@ -164,6 +162,10 @@ class Admin_Model extends CI_Model {
 	    $this->db->where('users_id', $id);
 	    $this->db->update('users');
 	}
+
+    public function insert_deleted_record($record) {
+        $this->db->insert('deleted', $record);
+    }
 
     public function fetch_user_by_id($id) {
         $query = $this->db->get_where('users', array('users_id' => $id));
