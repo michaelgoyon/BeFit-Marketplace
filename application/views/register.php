@@ -17,12 +17,12 @@
 	<div class="overlay">
 		<div class="popup">
 			<div class="contentHead">
-				<h1>Data Privacy Policy</h1>
+				<h1>BeFit Marketplace Policy</h1>
 			</div>
 			<div class="contentBox">
 				<div class="content">
 					<div class="contentParagraph">
-						<h2>BeFit Marketplace Data Privacy Policy</h2>
+						<h2>Data Privacy Policy</h2>
 						<p>Effective Date: November 10, 2021</p>
 						<br>
 						<p>This policy explains what information we collect when you use BeFit's
@@ -53,6 +53,14 @@
 							<li>fight spam and other forms of abuse</li>
 							<li>generate aggregate, non-identifying information about how people use</li>
 						</ul>
+						<br>
+						<h2>Cancellation Policy</h2>
+						<p>Cancellation of orders can only be made when the orders from the coaches has not been accepted nor recognized.</p>
+						<br>
+						<h2>Request for Refund</h2>
+						<p>Refunds can only be made when a session of any workout has not been used by the trainee.</p>
+						<p>Once an agreement has been reached between the coach and the trainee, ask Customer Support via tawk.to to cancel it, and be sure to include sufficient evidence of work not delivered. </p>
+						<p><b>Note:</b> As per our Terms of Service, orders may only be canceled within 14 days of the order being marked as completed. Orders complete for longer may not be eligible to be canceled.</p>
 						<br>
 						<div class="popupBtn">
 							<p>Click <b>Accept</b> if you wish to continue.</p>
