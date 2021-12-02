@@ -26,7 +26,7 @@
 						<p>Effective Date: November 10, 2021</p>
 						<br>
 						<p>This policy explains what information we collect when you use BeFit's
-							sites, services, mobile applications, products, and content ("Services). It also
+							sites, services, mobile applications, products, and content (Services). It also
 							has information about how we store, use, transfer, and delete that
 							information. Our aim is not just to comply with privacy law. It's to earn your
 							trust.</p>
@@ -60,8 +60,13 @@
 						<h2>Request for Refund</h2>
 						<p>Refunds can only be made when a session of any workout has not been used by the trainee.</p>
 						<p>Once an agreement has been reached between the coach and the trainee, ask Customer Support via tawk.to to cancel it, and be sure to include sufficient evidence of work not delivered. </p>
-						<p><b>Note:</b> As per our Terms of Service, orders may only be canceled within 14 days of the order being marked as completed. Orders complete for longer may not be eligible to be canceled.</p>
 						<br>
+						<h2>Coaches' Agreement</h2>
+						<ul>
+							<li>This website is used only for fitness and wellness purposes. Sharing of important information between any user is strictly prohibited.</li>
+							<li>All of the payouts to be transacted by the coaches will be deducted by 10% of their total cashout earning.</li>
+						</ul>
+						<p>Any form of disobedience to the rules stated above shall be sanctioned for account deactivation.</p>
 						<div class="popupBtn">
 							<p>Click <b>Accept</b> if you wish to continue.</p>
 							<button class="acceptBtn"><b>Accept</b></button>

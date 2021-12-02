@@ -514,7 +514,7 @@
     </div>
 
     <div class="container">
-        <h2">Friday</h2>
+        <h2>Friday</h2>
         <table>
             <thead>
                 <tr>
