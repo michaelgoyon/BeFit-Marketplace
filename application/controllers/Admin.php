@@ -194,7 +194,7 @@ class Admin extends CI_Controller {
 			);
 			$this->admin_model->insert_deleted_record($user);
 
-			//$this->admin_model->did_delete_row($id);
+			$this->admin_model->did_delete_row($id);
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
