@@ -17,17 +17,31 @@ class Admin_Model extends CI_Model {
         return $result;
     }
 
-    public function get_trainee_users($limit, $start) {
+    public function get_trainee_users($limit, $start, $delete) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get_where('users', array('users_account'=>"Trainee"));
-		return $query->result();
+        $this->db->select('*');
+        $this->db->from('users');
+        //$this->db->join('deleted', 'users.users_id = deleted.deleted_userid', 'left');
+        $this->db->where('users.users_account', 'Trainee');
+        $this->db->where_not_in('users.users_id', $delete);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
-    public function get_coach_users($limit, $start) {
+    public function get_coach_users($limit, $start, $delete) {
         $this->db->limit($limit, $start);
         $this->db->select('*');
         $this->db->from('users');
         $this->db->join('coachprofile', 'users.users_id = coachprofile.ID');
+        //$this->db->join('deleted', 'users.users_id = deleted.deleted_userid', 'left');
+        $this->db->where_not_in('users.users_id', $delete);
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    public function get_deleted_records() {
+        $this->db->select("deleted_userid");
+        $this->db->from("deleted");
         $query = $this->db->get()->result();
         return $query;
     }
@@ -152,10 +166,9 @@ class Admin_Model extends CI_Model {
         return $query;
     }
 
-	public function did_deactivate_row($id)	{
+	public function did_delete_row($id)	{
         $this->db->set('users_active', 0);
 	    $this->db->where('users_id', $id);
-	    $this->db->delete('users');
 	    $this->db->update('users');
 	}
 
@@ -164,6 +177,10 @@ class Admin_Model extends CI_Model {
 	    $this->db->where('users_id', $id);
 	    $this->db->update('users');
 	}
+
+    public function insert_deleted_record($record) {
+        $this->db->insert('deleted', $record);
+    }
 
     public function fetch_user_by_id($id) {
         $query = $this->db->get_where('users', array('users_id' => $id));
