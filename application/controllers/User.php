@@ -548,7 +548,7 @@ class User extends CI_Controller
         $timeStart = date('g:i A', strtotime($this->input->post('workout_time_start')));
         $timeEnd = date('g:i A', strtotime($this->input->post('workout_time_end')));
 
-        $timeCheck = false;
+        $timeCheck = true;
 
         for($i = 0; $i < count($tempTimes); $i++) {
             if(strtotime($timeStart) >= strtotime($tempTimes[$i][0]) && strtotime($timeStart) <= strtotime($tempTimes[$i][1])) {
