@@ -32,7 +32,7 @@
 
             <button class="accordion">Is the service refundable?<i class="arrow down"></i></button>
             <div class="panel">
-                <p>Once the service has been availed, the said service won't be refundable.</p>
+                <p>Once the service has been confirmed by the coach, the said service won't be refundable. However, the trainee applicant can still cancel if the booking is still pending. </p>
             </div>
 
             <button class="accordion">How do I cashout my currency as a coach?<i class="arrow down"></i></button>
