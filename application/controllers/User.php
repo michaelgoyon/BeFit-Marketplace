@@ -498,7 +498,8 @@ class User extends CI_Controller
             'cashout_phone' => $this->input->post("phone"),
             'cashout_email' => $email,
             'cashout_datetime' => $datetime,
-            'users_id' => $row->users_id
+            'users_id' => $row->users_id,
+            'cashout_remarks' => 0
         );
 
 
