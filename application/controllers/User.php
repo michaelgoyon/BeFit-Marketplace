@@ -11,7 +11,7 @@ class User extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->library('session');
-        $this->load->library('javascript');
+        //$this->load->library('javascript');
 
         //get all users
         $this->data['users'] = $this->user_model->getAllUsers();
