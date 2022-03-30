@@ -63,7 +63,7 @@
         "requestReferenceNumber": "1551191039",
         "metadata": {}
       };
-      PayMayaSDK.init('pk-Z0OSzLvIcOI2UIvDhdTGVVfRSSeiGStnceqwUE7n0Ah', true);
+      PayMayaSDK.init('pk-eo4sL393CWU5KmveJUaW8V730TTei2zY8zE4dHJDxkF', true);
       PayMayaSDK.createCheckout(myExampleObject);
     }
   </script>
